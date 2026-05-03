@@ -1,0 +1,213 @@
+{
+  "site": {
+    "name": "Shankar Binjawadgi",
+    "shortName": "Shankar",
+    "title": "Shankar Binjawadgi | Product Portfolio",
+    "description": "MBA candidate and product-minded builder focused on AI products, customer discovery, go-to-market strategy, and human-centered product leadership.",
+    "location": "Seattle, WA"
+  },
+  "about": "I am an MBA candidate at the University of Washington Foster School of Business and a product-minded builder with a software engineering foundation. My work centers on AI products, customer discovery, product strategy, and clear go-to-market thinking, with a bias toward understanding real user behavior before shaping solutions.",
+  "contact": [
+    {
+      "type": "email",
+      "label": "Email",
+      "value": "smb007@uw.edu",
+      "link": "mailto:smb007@uw.edu"
+    },
+    {
+      "type": "phone",
+      "label": "Phone",
+      "value": "(206) 476-8074",
+      "link": "tel:+12064768074"
+    },
+    {
+      "type": "linkedin",
+      "label": "LinkedIn",
+      "value": "linkedin.com/in/shankarmbinj",
+      "link": "https://www.linkedin.com/in/shankarmbinj"
+    }
+  ],
+  "experiences": [
+    {
+      "title": "Master of Business Administration (MBA), Management Science (STEM)",
+      "organization": "Foster School of Business, University of Washington",
+      "location": "Seattle, WA",
+      "duration": "Mar 2026",
+      "summary": "VP of Foster Tech Club and AI Product Builder, focused on product strategy, customer research, AI prototyping, go-to-market thinking, and product leadership.",
+      "projects": [
+        {
+          "title": "AI Hike Researcher",
+          "link": {
+            "label": "Private prototype",
+            "url": ""
+          },
+          "skills": [
+            "Agentic workflow design",
+            "Personalization",
+            "Safety-critical research",
+            "Product automation"
+          ],
+          "tools": [
+            "LLMs",
+            "RAG",
+            "Research workflows",
+            "Prompt design"
+          ],
+          "description": "Architected an agentic skill that automates real-time hike research across six safety-critical dimensions, reducing weekly planning time by 98% through staged research and personalized filtering."
+        },
+        {
+          "title": "GenAI Music Recommendation Engine",
+          "link": {
+            "label": "Private prototype",
+            "url": ""
+          },
+          "skills": [
+            "Recommendation logic",
+            "Experiment design",
+            "User relevance evaluation",
+            "Workflow automation"
+          ],
+          "tools": [
+            "n8n",
+            "LLMs",
+            "Dynamic song features",
+            "Testing rubric"
+          ],
+          "description": "Built a mood and occasion-based sub-playlist curation engine using dynamic song-feature selection, improving relevance by 73% versus a rule-based baseline in project testing."
+        },
+        {
+          "title": "Student Wellness Codex Hackathon Prototype",
+          "link": {
+            "label": "Private prototype",
+            "url": ""
+          },
+          "skills": [
+            "Customer interviews",
+            "Needs synthesis",
+            "Behavioral psychology",
+            "Rapid prototyping"
+          ],
+          "tools": [
+            "OpenAI Codex",
+            "Figma",
+            "Interview notes",
+            "Prototype storyboard"
+          ],
+          "description": "Discovered student wellness pain points through six customer interviews, synthesized unmet needs, and built a behavioral psychology-informed prototype in three hours."
+        },
+        {
+          "title": "Asana Sales Strategy and GTM Assessment",
+          "link": {
+            "label": "Private case",
+            "url": ""
+          },
+          "skills": [
+            "Competitive analysis",
+            "PLG vs. SLG strategy",
+            "Positioning",
+            "Executive storytelling"
+          ],
+          "tools": [
+            "Market research",
+            "GTM scorecard",
+            "Strategy deck",
+            "Benchmarking"
+          ],
+          "description": "Benchmarked Asana's sales strategy and go-to-market motion across nine dimensions, recommending clearer PLG versus SLG guidance and competitive differentiation; awarded first place among eight teams."
+        },
+        {
+          "title": "HeyLily GenAI Scam-Call Assistant",
+          "link": {
+            "label": "Private venture concept",
+            "url": ""
+          },
+          "skills": [
+            "Cross-functional leadership",
+            "User research",
+            "B2B2C strategy",
+            "Product roadmapping"
+          ],
+          "tools": [
+            "Android prototype",
+            "Interview synthesis",
+            "GTM model",
+            "Product brief"
+          ],
+          "description": "Led an 11-member design, engineering, and business team to build a GenAI scam-call assistant for seniors; ran 15+ user interviews, guided Android app development, and shaped a five-year B2B2C go-to-market model."
+        },
+        {
+          "title": "Product Teardown Series",
+          "link": {
+            "label": "Program notes",
+            "url": ""
+          },
+          "skills": [
+            "Community building",
+            "Product critique",
+            "Facilitation",
+            "Product storytelling"
+          ],
+          "tools": [
+            "Event programming",
+            "Product teardown templates",
+            "Discussion guides"
+          ],
+          "description": "Launched a Product Teardown series for Foster Tech Club to deconstruct world-class products, producing three events with 110+ attendees."
+        }
+      ]
+    },
+    {
+      "title": "Product Management Fellowship",
+      "organization": "NextLeap",
+      "location": "Bangalore, India",
+      "duration": "Feb 2023",
+      "summary": "Product management fellowship focused on structured product thinking, customer pain-point analysis, and capstone problem solving.",
+      "projects": [
+        {
+          "title": "Bumble Barney GenAI Wingman",
+          "link": {
+            "label": "Capstone project",
+            "url": ""
+          },
+          "skills": [
+            "App review analysis",
+            "Root-cause analysis",
+            "Product ideation",
+            "Metric definition"
+          ],
+          "tools": [
+            "App Store reviews",
+            "User pain-point synthesis",
+            "Concept brief",
+            "Prioritization"
+          ],
+          "description": "Analyzed 100 one-star Bumble app reviews, root-caused the recurring 'no matches' problem, and proposed Bumble Barney, a GenAI wingman concept intended to decrease no-match outcomes by 10%; placed second in the February capstone."
+        }
+      ]
+    },
+    {
+      "title": "Senior Product Manager Technical Intern, L6, AWS FinOps",
+      "organization": "Amazon Web Services",
+      "location": "Seattle, WA",
+      "duration": "Jun 2025 - Sep 2025",
+      "summary": "Worked on AWS FinOps cost optimization strategy, customer discovery, roadmap prioritization, and PRFAQ-style product definition. Internal Amazon project details are intentionally not listed here.",
+      "projects": []
+    },
+    {
+      "title": "Software Engineer 2, L62",
+      "organization": "Microsoft",
+      "location": "Bangalore, India",
+      "duration": "Jul 2018 - Jul 2024",
+      "summary": "Built and led work across Azure Storage, Migrate, and Monitor, with experience spanning developer experience, distributed systems, UX performance, incident workflows, and cross-team delivery. Internal Microsoft project details are intentionally not listed here.",
+      "projects": []
+    },
+    {
+      "title": "Bachelor of Engineering, Computer Science",
+      "organization": "PES University",
+      "location": "Bangalore, India",
+      "duration": "Jun 2018",
+      "summary": "Graduated with a 9.5 CGPA, ranked in the top 5% of the class.",
+      "projects": []
+    }
+  ]
+}

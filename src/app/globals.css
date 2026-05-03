@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fbf7ee;
+  --foreground: #162531;
+  --navy: #142432;
+  --teal: #0e97a0;
+  --coral: #f47e60;
+  --muted: #5f6d76;
+  --card: #fffdf8;
+  --border: #e8dfd0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(14, 151, 160, 0.09), transparent 34rem),
+    radial-gradient(circle at 90% 10%, rgba(244, 126, 96, 0.08), transparent 28rem),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(14, 151, 160, 0.18);
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(20, 36, 50, 0.16) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.topo-lines {
+  background-image: url("data:image/svg+xml,%3Csvg width='640' height='260' viewBox='0 0 640 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.22'%3E%3Cpath d='M-10 65C70 18 145 18 214 65s148 48 215 0 139-48 221 0'/%3E%3Cpath d='M-20 118C62 72 142 72 218 118s150 46 225 0 145-46 225 0'/%3E%3Cpath d='M-10 176C74 130 154 130 232 176s150 46 226 0 145-46 220 0'/%3E%3Cpath d='M-35 226C54 182 144 182 230 226s158 44 242 0 153-44 232 0'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 640px 260px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
