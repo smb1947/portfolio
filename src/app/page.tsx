@@ -1,9 +1,10 @@
-import { ArrowUpRight, BriefcaseBusiness, ChevronDown, GraduationCap, MapPin } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, ChevronDown, GraduationCap, MapPin, Sparkles } from "lucide-react";
 import {
   contactIconMap,
   experienceIconMap,
   getExperienceKind,
-  portfolio
+  portfolio,
+  projectCount
 } from "@/lib/data";
 
 function TagList({ title, items }: { title: string; items: string[] }) {
@@ -25,25 +26,72 @@ function TagList({ title, items }: { title: string; items: string[] }) {
 }
 
 export default function Home() {
-  const { site, contact, experiences } = portfolio;
+  const { site, about, contact, experiences } = portfolio;
 
   return (
     <>
       <section className="relative overflow-hidden border-b border-line">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-[1.05fr_0.95fr] md:items-end md:py-20">
           <div>
-            <h1 className="font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
+            <p className="inline-flex rounded-full border border-teal/20 bg-teal/10 px-4 py-2 text-sm font-bold text-teal">
+              Product Explorer
+            </p>
+            <h1 className="mt-6 font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
               Shankar Binjawadgi
             </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+              MBA candidate and product builder turning customer discovery, AI prototypes, and strategy work into clear product decisions.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#experience"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-teal bg-teal px-6 text-sm font-bold text-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:bg-[#0d7c83] focus:outline-none focus:ring-4 focus:ring-teal/20"
+              >
+                View Experience
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-navy/15 bg-white/70 px-6 text-sm font-bold text-navy transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+
+          <div className="grid gap-4 rounded-[1.35rem] border border-line bg-card p-6 shadow-soft">
+            <div className="flex items-start gap-4">
+              <div className="grid h-12 w-12 flex-none place-items-center rounded-full bg-coral/10 text-coral">
+                <Sparkles className="h-5 w-5" aria-hidden="true" />
+              </div>
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.18em] text-teal">Current Focus</p>
+                <p className="mt-2 text-base leading-7 text-muted">
+                  AI product building, go-to-market strategy, customer discovery, and product leadership.
+                </p>
+              </div>
+            </div>
+            <dl className="grid grid-cols-2 gap-3 border-t border-line pt-5">
+              <div>
+                <dt className="text-xs font-bold uppercase tracking-[0.16em] text-muted">Experiences</dt>
+                <dd className="mt-1 font-serif text-3xl font-semibold text-navy">{experiences.length}</dd>
+              </div>
+              <div>
+                <dt className="text-xs font-bold uppercase tracking-[0.16em] text-muted">Projects</dt>
+                <dd className="mt-1 font-serif text-3xl font-semibold text-navy">{projectCount}</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <div>
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">About</p>
-          <h2 className="mt-3 font-serif text-4xl font-semibold text-navy">Who I am</h2>
+        <div className="grid gap-8 md:grid-cols-[0.32fr_0.68fr] md:items-start">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">About</p>
+            <h2 className="mt-3 font-serif text-4xl font-semibold text-navy">Who I am</h2>
+          </div>
+          <p className="max-w-3xl text-xl leading-9 text-navy/80">{about}</p>
         </div>
       </section>
 
@@ -150,6 +198,9 @@ export default function Home() {
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">Contact</p>
             <h2 className="mt-3 font-serif text-4xl font-semibold text-navy">Connect</h2>
+            <p className="mt-4 text-base leading-8 text-muted">
+              Contact methods are managed in the same JSON file as the portfolio content.
+            </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {contact.map((method) => {
