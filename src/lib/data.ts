@@ -5,12 +5,12 @@ import {
   Code2,
   Github,
   GraduationCap,
+  Instagram,
   Linkedin,
   Mail,
   MapPin,
   Phone,
   Rocket,
-  Sparkles,
   Target,
   Users
 } from "lucide-react";
@@ -30,18 +30,52 @@ export type Project = {
     label: string;
     url: string;
   };
+  doc: string;
+  code: string;
+  demo: string;
   skills: string[];
   tools: string[];
   description: string;
 };
 
+export type ExperienceType = "education" | "work";
+
+export type EducationDetails = {
+  type: "Bachelors" | "Masters" | "Fellowship" | "Certificate";
+  name: string;
+};
+
+export type WorkDetails = {
+  companyName: string;
+  teamName: string;
+};
+
 export type Experience = {
+  type: ExperienceType;
+  education?: EducationDetails;
+  work?: WorkDetails;
   title: string;
   organization: string;
   location: string;
-  duration: string;
+  from: string;
+  to: string;
   summary: string;
   projects: Project[];
+};
+
+export type Resume = {
+  summary: string;
+  downloadLabel: string;
+  downloadUrl: string;
+  highlights: string[];
+  skills: string[];
+  tools: string[];
+};
+
+export type ContactFormContent = {
+  title: string;
+  embedUrl: string;
+  linkUrl?: string;
 };
 
 export type PortfolioContent = {
@@ -53,7 +87,9 @@ export type PortfolioContent = {
     location: string;
   };
   about: string;
+  resume: Resume;
   contact: ContactMethod[];
+  contactForm: ContactFormContent;
   experiences: Experience[];
 };
 
@@ -66,6 +102,7 @@ export const site = {
 export const navLinks = [
   { label: "About", href: "/#about" },
   { label: "Experience", href: "/#experience" },
+  { label: "Education", href: "/#education" },
   { label: "Contact", href: "/#contact" }
 ];
 
@@ -73,7 +110,8 @@ export const contactIconMap = {
   email: Mail,
   phone: Phone,
   linkedin: Linkedin,
-  github: Github
+  github: Github,
+  instagram: Instagram
 };
 
 export const contactLinks = portfolio.contact.map((item) => ({
@@ -84,22 +122,23 @@ export const contactLinks = portfolio.contact.map((item) => ({
 
 export const experienceIconMap = {
   education: GraduationCap,
-  fellowship: Sparkles,
   work: BriefcaseBusiness
 };
 
 export function getExperienceKind(experience: Experience): keyof typeof experienceIconMap {
-  const text = `${experience.title} ${experience.organization}`.toLowerCase();
+  return experience.type;
+}
 
-  if (text.includes("fellowship")) {
-    return "fellowship";
+export function formatExperienceDuration(experience: Experience) {
+  if (!experience.from) {
+    return experience.to;
   }
 
-  if (text.includes("university") || text.includes("school") || text.includes("mba") || text.includes("bachelor")) {
-    return "education";
+  if (!experience.to || experience.from === experience.to) {
+    return experience.from;
   }
 
-  return "work";
+  return `${experience.from} - ${experience.to}`;
 }
 
 export const projectCount = portfolio.experiences.reduce(

@@ -3,10 +3,45 @@
     "name": "Shankar Binjawadgi",
     "shortName": "Shankar",
     "title": "Shankar Binjawadgi | Product Portfolio",
-    "description": "MBA candidate and product-minded builder focused on AI products, customer discovery, go-to-market strategy, and human-centered product leadership.",
+    "description": "STEM MBA candidate and product-minded builder focused on AI products, customer discovery, go-to-market strategy, and human-centered product leadership.",
     "location": "Seattle, WA"
   },
-  "about": "I am an MBA candidate at the University of Washington Foster School of Business and a product-minded builder with a software engineering foundation. My work centers on AI products, customer discovery, product strategy, and clear go-to-market thinking, with a bias toward understanding real user behavior before shaping solutions.",
+  "about": "I am a STEM MBA candidate at the University of Washington Foster School of Business and a product-minded builder with a software engineering foundation. My work centers on AI products, customer discovery, product strategy, and clear go-to-market thinking, with a bias toward understanding real user behavior before shaping solutions.",
+  "resume": {
+    "summary": "A concise view of my product, strategy, and technical background across Foster STEM MBA work, NextLeap product management, AWS FinOps, Microsoft Azure engineering, and computer science education.",
+    "downloadLabel": "Download resume",
+    "downloadUrl": "/resume.pdf",
+    "highlights": [
+      "MBA candidate in Management Science (STEM) at Foster School of Business",
+      "VP of Foster Tech Club and AI product builder",
+      "Senior PM-T internship experience in AWS FinOps",
+      "Six years of Azure engineering experience across storage, migration, and monitoring"
+    ],
+    "skills": [
+      "User and market research",
+      "Customer interviews",
+      "Product strategy",
+      "Metric-driven prioritization",
+      "Go-to-market strategy",
+      "Competitive analysis",
+      "Design thinking",
+      "Cross-functional collaboration",
+      "Technical roadmapping",
+      "Developer experience"
+    ],
+    "tools": [
+      "LLMs and RAG",
+      "Claude Code",
+      "OpenAI Codex",
+      "Figma",
+      "Canva",
+      "Tableau / Power BI",
+      "AWS",
+      "Azure",
+      "Python",
+      "SQL"
+    ]
+  },
   "contact": [
     {
       "type": "email",
@@ -25,14 +60,37 @@
       "label": "LinkedIn",
       "value": "linkedin.com/in/shankarmbinj",
       "link": "https://www.linkedin.com/in/shankarmbinj"
+    },
+    {
+      "type": "github",
+      "label": "GitHub",
+      "value": "github.com/smb1947",
+      "link": "https://github.com/smb1947/"
+    },
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "value": "instagram.com/shankarmb007",
+      "link": "https://www.instagram.com/shankarmb007/"
     }
   ],
+  "contactForm": {
+    "title": "Send Me a Message",
+    "embedUrl": "",
+    "linkUrl": ""
+  },
   "experiences": [
     {
+      "type": "education",
+      "education": {
+        "type": "Masters",
+        "name": "Master of Business Administration (MBA), Management Science (STEM)"
+      },
       "title": "Master of Business Administration (MBA), Management Science (STEM)",
       "organization": "Foster School of Business, University of Washington",
       "location": "Seattle, WA",
-      "duration": "Mar 2026",
+      "from": "Sep 2024",
+      "to": "Mar 2026",
       "summary": "VP of Foster Tech Club and AI Product Builder, focused on product strategy, customer research, AI prototyping, go-to-market thinking, and product leadership.",
       "projects": [
         {
@@ -41,6 +99,7 @@
             "label": "Private prototype",
             "url": ""
           },
+          "demo": "",
           "skills": [
             "Agentic workflow design",
             "Personalization",
@@ -53,14 +112,17 @@
             "Research workflows",
             "Prompt design"
           ],
-          "description": "Architected an agentic skill that automates real-time hike research across six safety-critical dimensions, reducing weekly planning time by 98% through staged research and personalized filtering."
+          "description": "Architected an agentic AI hike researcher that automates real-time trail planning across six safety-critical dimensions, including weather, snow, road conditions, user history, and personalized filtering. Reduced weekly hike-planning time by 98% through staged research and recommendation workflows.",
+          "doc": "",
+          "code": "https://github.com/smb1947/vibing/tree/main/hiking"
         },
         {
-          "title": "GenAI Music Recommendation Engine",
+          "title": "Spotify MiniMix",
           "link": {
             "label": "Private prototype",
             "url": ""
           },
+          "demo": "",
           "skills": [
             "Recommendation logic",
             "Experiment design",
@@ -73,14 +135,17 @@
             "Dynamic song features",
             "Testing rubric"
           ],
-          "description": "Built a mood and occasion-based sub-playlist curation engine using dynamic song-feature selection, improving relevance by 73% versus a rule-based baseline in project testing."
+          "description": "Built a GenAI music recommendation workflow in n8n for mood and occasion-based sub-playlist curation, using dynamic song-feature selection to improve recommendation relevance by 73% versus a rule-based baseline in project testing. Documented the product concept through a PRFAQ-style narrative and workflow design.",
+          "doc": "https://docs.google.com/document/d/1TAZJYFGwsECSZBnXRbaKKpg1vIf6z9akTHhqQDNJm3M/edit?usp=sharing",
+          "code": ""
         },
         {
-          "title": "Student Wellness Codex Hackathon Prototype",
+          "title": "StreakFit",
           "link": {
             "label": "Private prototype",
             "url": ""
           },
+          "demo": "",
           "skills": [
             "Customer interviews",
             "Needs synthesis",
@@ -93,7 +158,9 @@
             "Interview notes",
             "Prototype storyboard"
           ],
-          "description": "Discovered student wellness pain points through six customer interviews, synthesized unmet needs, and built a behavioral psychology-informed prototype in three hours."
+          "description": "Discovered student wellness pain points through six customer interviews and synthesized unmet needs into a behavioral-psychology-informed fitness prototype. Built the initial product experience in three hours at the OpenAI Codex Hackathon to reduce pre-gym friction and improve habit follow-through.",
+          "doc": "",
+          "code": "https://github.com/smb1947/vibing/tree/main/streakfit"
         },
         {
           "title": "Asana Sales Strategy and GTM Assessment",
@@ -101,6 +168,7 @@
             "label": "Private case",
             "url": ""
           },
+          "demo": "",
           "skills": [
             "Competitive analysis",
             "PLG vs. SLG strategy",
@@ -113,7 +181,9 @@
             "Strategy deck",
             "Benchmarking"
           ],
-          "description": "Benchmarked Asana's sales strategy and go-to-market motion across nine dimensions, recommending clearer PLG versus SLG guidance and competitive differentiation; awarded first place among eight teams."
+          "description": "Conducted a comprehensive GTM and sales audit of Asana across nine sales-motion dimensions, defining its Ideal Seller Profile and aligning PLG-to-SLG motions with the skills, traits, and enablement needed for stronger enterprise selling. Awarded 1st place for the most comprehensive GTM assessment.",
+          "doc": "",
+          "code": ""
         },
         {
           "title": "HeyLily GenAI Scam-Call Assistant",
@@ -133,7 +203,10 @@
             "GTM model",
             "Product brief"
           ],
-          "description": "Led an 11-member design, engineering, and business team to build a GenAI scam-call assistant for seniors; ran 15+ user interviews, guided Android app development, and shaped a five-year B2B2C go-to-market model."
+          "description": "Led an 11-member cross-functional team across design, engineering, and business to build HeyLily, a GenAI scam-call assistant for seniors and Hiya competitor. Ran 15+ user interviews, guided development of an Android call app, and shaped a 5-year B2B2C go-to-market model.",
+          "doc": "",
+          "code": "",
+          "demo": "https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final?node-id=5073-298&t=3PUqZmh69iUGjvfl-0"
         },
         {
           "title": "Product Teardown Series",
@@ -141,6 +214,7 @@
             "label": "Program notes",
             "url": ""
           },
+          "demo": "",
           "skills": [
             "Community building",
             "Product critique",
@@ -152,15 +226,138 @@
             "Product teardown templates",
             "Discussion guides"
           ],
-          "description": "Launched a Product Teardown series for Foster Tech Club to deconstruct world-class products, producing three events with 110+ attendees."
+          "description": "Launched and facilitated a Foster Tech Club product teardown series that helped students deconstruct world-class products, discuss product strategy, and build sharper product critique skills. Produced three events with 110+ attendees.",
+          "doc": "https://drive.google.com/drive/folders/1m-FFKfevWguf3x7LTzPfVcA3bGwagrTz?usp=sharing",
+          "code": ""
+        },
+        {
+          "title": "Roblox Foster Case",
+          "link": {
+            "label": "Case presentation",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "M&A strategy",
+            "Valuation",
+            "Synergy analysis",
+            "Executive presentation"
+          ],
+          "tools": [
+            "Market research",
+            "Financial analysis",
+            "Case deck",
+            "Strategic framing"
+          ],
+          "description": "Proposed Roblox, a user-generated-content platform, as the acquirer for Shutterstock in the Foster Case Competition. Presented a $1.5B valuation and synergy analysis showing how Shutterstock assets could expand Roblox creator tools, content quality, and market share.",
+          "doc": "https://drive.google.com/file/d/1Cutqu6X0Y3DZu96bkY4LwCZSCeCzsfMZ/view?usp=drive_link",
+          "code": ""
+        },
+        {
+          "title": "Microsoft 365 Copilot GTM Strategy",
+          "link": {
+            "label": "Strategy deck",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "Go-to-market strategy",
+            "Market sizing",
+            "Positioning",
+            "Adoption strategy"
+          ],
+          "tools": [
+            "Strategy deck",
+            "Market analysis",
+            "Value model",
+            "Campus adoption plan"
+          ],
+          "description": "Developed a go-to-market strategy for Microsoft 365 Copilot to capture 1% of the U.S. university student market, modeling $2.9M in value over four years. Positioned Copilot as a Gen Z-facing AI productivity product through campus adoption, value messaging, and education-focused GTM tactics.",
+          "doc": "https://docs.google.com/presentation/d/10VuZnPZ5pZWoKns6Z-sSELhXx2ZazbUi/edit?usp=sharing&ouid=102121910561907720427&rtpof=true&sd=true",
+          "code": ""
+        },
+        {
+          "title": "Quantum Tech Partners Gaming GTM",
+          "link": {
+            "label": "Consulting report",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "Market sizing",
+            "Investment analysis",
+            "Target prioritization",
+            "GTM planning"
+          ],
+          "tools": [
+            "Market research",
+            "Developer map",
+            "Publisher map",
+            "Outreach list"
+          ],
+          "description": "Produced four milestone reports on South Korea's gaming sector, covering market sizing, developer and publisher mapping, growth themes, and investment analysis. Turned the research into a prioritized outreach list of six targets to guide 2025 go-to-market planning.",
+          "doc": "https://drive.google.com/file/d/1FUK6K_u_iYryK-SOCpGBpZIlV8l9O9Mm/view?usp=sharing",
+          "code": ""
+        },
+        {
+          "title": "SBS Consulting Strategy",
+          "link": {
+            "label": "Consulting deliverable",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "Client research",
+            "Strategic analysis",
+            "Recommendation design",
+            "Executive storytelling"
+          ],
+          "tools": [
+            "Research synthesis",
+            "Strategy deck",
+            "Market analysis",
+            "Prioritization"
+          ],
+          "description": "Developed a structured consulting analysis for SBS, turning client context, market research, and strategic signals into prioritized recommendations, supporting rationale, and an executive-ready presentation.",
+          "doc": "https://drive.google.com/file/d/1Y_R9-I6kk6mykYyAv23QMf89o_WfAJzE/view?usp=sharing",
+          "code": ""
+        },
+        {
+          "title": "Tech Club Event Marketing",
+          "link": {
+            "label": "Event page",
+            "url": ""
+          },
+          "demo": "https://luma.com/user/smb007",
+          "skills": [
+            "Event marketing",
+            "Audience messaging",
+            "Visual communication",
+            "Community building"
+          ],
+          "tools": [
+            "Luma",
+            "Poster design",
+            "Marketing copy",
+            "Event operations"
+          ],
+          "description": "Created event marketing assets, posters, and audience-facing messaging for Foster Tech Club programming, translating event goals into clear promotional content and registration flows.",
+          "doc": "",
+          "code": ""
         }
       ]
     },
     {
+      "type": "education",
+      "education": {
+        "type": "Fellowship",
+        "name": "Product Management Fellowship"
+      },
       "title": "Product Management Fellowship",
       "organization": "NextLeap",
       "location": "Bangalore, India",
-      "duration": "Feb 2023",
+      "from": "Feb 2023",
+      "to": "Feb 2023",
       "summary": "Product management fellowship focused on structured product thinking, customer pain-point analysis, and capstone problem solving.",
       "projects": [
         {
@@ -169,6 +366,7 @@
             "label": "Capstone project",
             "url": ""
           },
+          "demo": "https://canva.link/ti1j8ki7yl7nx89",
           "skills": [
             "App review analysis",
             "Root-cause analysis",
@@ -181,33 +379,216 @@
             "Concept brief",
             "Prioritization"
           ],
-          "description": "Analyzed 100 one-star Bumble app reviews, root-caused the recurring 'no matches' problem, and proposed Bumble Barney, a GenAI wingman concept intended to decrease no-match outcomes by 10%; placed second in the February capstone."
+          "description": "Analyzed 100 one-star Bumble App Store reviews, root-caused the recurring 'no matches' problem, and proposed Bumble Barney, a GenAI wingman concept intended to decrease no-match outcomes by 10%. Won 2nd place in the February NextLeap Capstone project.",
+          "doc": "",
+          "code": ""
+        },
+        {
+          "title": "Netflix Circle Wireframes",
+          "link": {
+            "label": "Wireframes",
+            "url": ""
+          },
+          "demo": "https://whimsical.com/smb-nextleap/netflix-circle-wireframes-VRjXbX9CWHtFBHjnt2YCra",
+          "skills": [
+            "Wireframing",
+            "Social discovery",
+            "Onboarding design",
+            "Product concepting"
+          ],
+          "tools": [
+            "Whimsical",
+            "Journey mapping",
+            "UX flows",
+            "Product framing"
+          ],
+          "description": "Designed wireframes for a Netflix social discovery concept, exploring how friend circles, onboarding, and recommendation flows could make content discovery more social and habit-forming.",
+          "doc": "",
+          "code": ""
+        },
+        {
+          "title": "Netflix New User Onboarding Journey Map",
+          "link": {
+            "label": "Journey map",
+            "url": ""
+          },
+          "demo": "https://www.figma.com/community/file/1176152340680507456/netflix-new-user-onboarding-journey-map",
+          "skills": [
+            "User persona",
+            "Journey mapping",
+            "Activation analysis",
+            "UX research"
+          ],
+          "tools": [
+            "Figma",
+            "Persona mapping",
+            "Onboarding audit",
+            "Friction analysis"
+          ],
+          "description": "Created a user persona and mapped Netflix's new-user onboarding journey to identify friction points, emotional states, and opportunities to improve activation, personalization, and first-session value. Published the journey map on Figma, where it received 650+ uses and 17+ likes.",
+          "doc": "",
+          "code": ""
+        },
+        {
+          "title": "Figma Product Design Work",
+          "link": {
+            "label": "Figma profile",
+            "url": ""
+          },
+          "demo": "https://www.figma.com/@bourne007",
+          "skills": [
+            "Interaction design",
+            "Journey mapping",
+            "Wireframing",
+            "Design communication"
+          ],
+          "tools": [
+            "Figma",
+            "UX artifacts",
+            "Interface concepts",
+            "Design systems"
+          ],
+          "description": "Collected product design explorations in Figma, including journey maps, wireframes, and interface concepts that show product thinking across discovery, interaction design, and user experience.",
+          "doc": "",
+          "code": ""
         }
       ]
     },
     {
+      "type": "work",
+      "work": {
+        "companyName": "Amazon Web Services",
+        "teamName": "AWS FinOps"
+      },
       "title": "Senior Product Manager Technical Intern, L6, AWS FinOps",
       "organization": "Amazon Web Services",
       "location": "Seattle, WA",
-      "duration": "Jun 2025 - Sep 2025",
-      "summary": "Worked on AWS FinOps cost optimization strategy, customer discovery, roadmap prioritization, and PRFAQ-style product definition. Internal Amazon project details are intentionally not listed here.",
+      "from": "Jun 2025",
+      "to": "Sep 2025",
+      "summary": "Worked on AWS FinOps cost optimization strategy, customer discovery, roadmap prioritization, and PRFAQ-style product definition.",
       "projects": []
     },
     {
+      "type": "work",
+      "work": {
+        "companyName": "Microsoft",
+        "teamName": "Azure Storage, Migrate, and Monitor"
+      },
       "title": "Software Engineer 2, L62",
       "organization": "Microsoft",
       "location": "Bangalore, India",
-      "duration": "Jul 2018 - Jul 2024",
-      "summary": "Built and led work across Azure Storage, Migrate, and Monitor, with experience spanning developer experience, distributed systems, UX performance, incident workflows, and cross-team delivery. Internal Microsoft project details are intentionally not listed here.",
-      "projects": []
+      "from": "Jul 2018",
+      "to": "Jul 2024",
+      "summary": "Built and led work across Azure Storage, Migrate, and Monitor, with experience spanning developer experience, distributed systems, UX performance, incident workflows, and cross-team delivery.",
+      "projects": [
+        {
+          "title": "WSLBlobNFS PowerShell Module",
+          "link": {
+            "label": "Open source",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "0-to-1 development",
+            "Developer experience",
+            "GTM partnership",
+            "CLI product design"
+          ],
+          "tools": [
+            "PowerShell",
+            "WSL2",
+            "Azure Blob NFS",
+            "Windows CLI"
+          ],
+          "description": "Spearheaded 0-to-1 development and launch of a Windows CLI client using WSL2 virtualization for Azure Blob NFS, unlocking a new Windows user segment and onboarding 150+ B2B customers. Partnered with product leadership on the go-to-market strategy while delivering the core developer workflow.",
+          "doc": "",
+          "code": "https://github.com/Azure/BlobNFS-wsl2/tree/develop"
+        },
+        {
+          "title": "WSLBlobNFS Package Distribution",
+          "link": {
+            "label": "Package",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "Package distribution",
+            "Developer adoption",
+            "Installation UX",
+            "Documentation"
+          ],
+          "tools": [
+            "PowerShell Gallery",
+            "PowerShell",
+            "Azure Blob NFS",
+            "Release packaging"
+          ],
+          "description": "Packaged and distributed the WSLBlobNFS module through PowerShell Gallery, improving discoverability and installation for Windows users who need Azure Blob NFS access through familiar command-line tooling.",
+          "doc": "",
+          "code": "https://www.powershellgallery.com/packages/WSLBlobNFS/1.1.0"
+        },
+        {
+          "title": "BlobNFS Troubleshooting Tool",
+          "link": {
+            "label": "Open source",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "Diagnostics",
+            "Support tooling",
+            "Root-cause analysis",
+            "Developer experience"
+          ],
+          "tools": [
+            "Azure Blob NFS",
+            "Troubleshooting scripts",
+            "Log collection",
+            "Support workflows"
+          ],
+          "description": "Built troubleshooting tooling to diagnose Azure Blob NFS issues, collect useful logs, and support faster root-cause analysis for users and Azure support workflows.",
+          "doc": "",
+          "code": "https://github.com/Azure/blobnfs-troubleshoot/tree/develop"
+        }
+      ]
     },
     {
+      "type": "education",
+      "education": {
+        "type": "Bachelors",
+        "name": "Bachelor of Engineering, Computer Science"
+      },
       "title": "Bachelor of Engineering, Computer Science",
       "organization": "PES University",
       "location": "Bangalore, India",
-      "duration": "Jun 2018",
+      "from": "Aug 2014",
+      "to": "Jun 2018",
       "summary": "Graduated with a 9.5 CGPA, ranked in the top 5% of the class.",
-      "projects": []
+      "projects": [
+        {
+          "title": "Sketch-to-Image GenAI Tool",
+          "link": {
+            "label": "Final year project",
+            "url": ""
+          },
+          "demo": "",
+          "skills": [
+            "Computer vision",
+            "Generative AI",
+            "Image generation",
+            "Model prototyping"
+          ],
+          "tools": [
+            "CNN",
+            "GAN",
+            "Python",
+            "Deep learning"
+          ],
+          "description": "Built a GenAI tool that transforms hand-drawn sketches into realistic images using Convolutional Neural Networks and Generative Adversarial Networks. Won 2nd place in the final-year project competition for applying computer vision and generative modeling to creative image generation.",
+          "doc": "",
+          "code": ""
+        }
+      ]
     }
   ]
 }
