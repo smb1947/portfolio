@@ -59,7 +59,7 @@ The app keeps GitHub Pages behavior behind an environment flag so other hosts ca
 ### Branch Deployment Behavior
 
 - Pushes to `main` automatically deploy the live GitHub Pages site at `https://smb1947.github.io/portfolio/`.
-- Pushes to `dev` automatically run production and GitHub Pages export builds in the `dev-preview` environment, then upload the static export as an Actions artifact named `portfolio-dev-static-export`.
+- Pushes to `dev` automatically run production and GitHub Pages export builds in the `github-pages-dev` environment, then upload the static export as an Actions artifact named `portfolio-dev-static-export`.
 - GitHub Pages does not provide a separate public preview URL per branch through the official Pages deploy workflow. Deploying `dev` with `actions/deploy-pages` would update the same live Pages site, so the `dev` workflow intentionally validates and packages the branch without overwriting production.
 
 ## Updating Content

@@ -110,11 +110,12 @@ function ProjectActionButton({
 function ExperienceLogo({ organization }: { organization: string }) {
   if (organization.includes("Microsoft")) {
     return (
-      <div className="grid h-12 w-12 grid-cols-2 gap-1 rounded-xl bg-white p-2 shadow-sm ring-1 ring-line" aria-label="Microsoft logo">
-        <span className="bg-[#f25022]" />
-        <span className="bg-[#7fba00]" />
-        <span className="bg-[#00a4ef]" />
-        <span className="bg-[#ffb900]" />
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0078d4] shadow-sm ring-1 ring-line" aria-label="Azure logo">
+        <div className="relative h-7 w-8" aria-hidden="true">
+          <span className="absolute bottom-0 left-0 h-7 w-4 skew-x-[-18deg] bg-white" />
+          <span className="absolute bottom-0 right-0 h-7 w-4 skew-x-[18deg] bg-white/85" />
+          <span className="absolute bottom-0 left-3 h-2.5 w-5 bg-[#0078d4]" />
+        </div>
       </div>
     );
   }
@@ -152,6 +153,57 @@ function ExperienceLogo({ organization }: { organization: string }) {
   }
 
   return null;
+}
+
+function ExperienceSubLogo({ organization, fallback: Fallback }: { organization: string; fallback: LucideIcon }) {
+  if (organization.includes("Microsoft")) {
+    return (
+      <span className="grid h-7 w-7 grid-cols-2 gap-0.5 rounded-full border-2 border-card bg-white p-1 shadow-sm" aria-label="Microsoft logo">
+        <span className="bg-[#f25022]" />
+        <span className="bg-[#7fba00]" />
+        <span className="bg-[#00a4ef]" />
+        <span className="bg-[#ffb900]" />
+      </span>
+    );
+  }
+
+  if (organization.includes("Amazon")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#ff9900] text-[0.54rem] font-black lowercase text-[#232f3e] shadow-sm" aria-label="Amazon logo">
+        aws
+      </span>
+    );
+  }
+
+  if (organization.includes("University of Washington")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#b7a57a] font-serif text-sm font-black text-[#4b2e83] shadow-sm" aria-label="University of Washington logo">
+        W
+      </span>
+    );
+  }
+
+  if (organization.includes("NextLeap")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-teal text-[0.58rem] font-black text-white shadow-sm" aria-label="NextLeap logo">
+        NL
+      </span>
+    );
+  }
+
+  if (organization.includes("PES")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-white text-[0.5rem] font-black text-[#005baa] shadow-sm" aria-label="PES University logo">
+        PES
+      </span>
+    );
+  }
+
+  return (
+    <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-coral text-white shadow-sm">
+      <Fallback className="h-3.5 w-3.5" aria-hidden="true" />
+    </span>
+  );
 }
 
 function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon; className: string; mark?: string } {
@@ -224,8 +276,8 @@ function ExperienceCard({ experience }: { experience: Experience }) {
     <>
       <div className="relative h-14 w-14">
         <ExperienceLogo organization={experience.organization} />
-        <div className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-coral text-white">
-          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+        <div className="absolute -bottom-1 -right-1">
+          <ExperienceSubLogo organization={experience.organization} fallback={Icon} />
         </div>
       </div>
       <div className="min-w-0">
