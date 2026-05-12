@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/data";
 import "./globals.css";
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <div className="pb-24 xl:pb-0 xl:pl-56">
           <main>{children}</main>
+          <Footer />
         </div>
         <Analytics />
         <SpeedInsights />
