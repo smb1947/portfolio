@@ -43,7 +43,7 @@ git push -u origin main
 2. Connect the GitHub repository.
 3. Vercel should automatically detect the Next.js framework preset.
 4. Deploy.
-5. Future pushes to `main` redeploy automatically.
+5. Future pushes to `main` can redeploy automatically once production is connected in Vercel.
 
 ## Deployment Channels
 
@@ -51,16 +51,15 @@ The app keeps GitHub Pages behavior behind an environment flag so other hosts ca
 
 - Standard Next.js build: `npm run build`
 - GitHub Pages static export: `npm run build:github-pages`
-- Live GitHub Pages workflow: `.github/workflows/deploy-pages.yml`
-- Dev branch validation workflow: `.github/workflows/dev-preview.yml`
+- GitHub Pages dev workflow: `.github/workflows/deploy-pages.yml`
 
 `next.config.ts` only enables `output: "export"`, `basePath`, and `assetPrefix` when `GITHUB_PAGES=true`. This keeps the code deployable to GitHub Pages, Vercel, or another Next-compatible host without rewriting application code.
 
 ### Branch Deployment Behavior
 
-- Pushes to `main` automatically deploy the live GitHub Pages site at `https://smb1947.github.io/portfolio/`.
-- Pushes to `dev` automatically run production and GitHub Pages export builds in the `github-pages-dev` environment, then upload the static export as an Actions artifact named `portfolio-dev-static-export`.
-- GitHub Pages does not provide a separate public preview URL per branch through the official Pages deploy workflow. Deploying `dev` with `actions/deploy-pages` would update the same live Pages site, so the `dev` workflow intentionally validates and packages the branch without overwriting production.
+- Pushes to `dev` automatically deploy the GitHub Pages site at `https://smb1947.github.io/portfolio/` through the `github-pages-dev` environment.
+- The `github-pages-dev` environment is restricted to the `dev` branch.
+- Pushes to `main` do not deploy GitHub Pages. Use `main` for production once Vercel is connected.
 
 ## Updating Content
 
