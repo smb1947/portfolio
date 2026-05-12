@@ -100,10 +100,10 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Education", href: "/#education" },
-  { label: "Contact", href: "/#contact" }
+  { label: "About", href: "/about" },
+  { label: "Experience", href: "/experience" },
+  { label: "Education", href: "/education" },
+  { label: "Contact", href: "/contact" }
 ];
 
 export const contactIconMap = {

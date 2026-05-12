@@ -32,6 +32,7 @@ import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
+import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
 function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
@@ -377,6 +378,7 @@ export default function Home() {
 
   return (
     <>
+      <SectionRouteSync />
       <section id="home" className="relative scroll-mt-24 overflow-hidden border-b border-line">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">

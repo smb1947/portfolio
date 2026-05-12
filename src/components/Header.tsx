@@ -16,17 +16,25 @@ const navIconMap: Record<string, LucideIcon> = {
   Contact: Mail
 };
 
+const sectionPathMap: Record<string, string> = {
+  "/": "home",
+  "/about": "about",
+  "/experience": "experience",
+  "/education": "education",
+  "/contact": "contact"
+};
+
 function getSectionId(href: string) {
-  return href.includes("#") ? href.split("#")[1] : "";
+  return sectionPathMap[href] ?? "";
 }
 
 type Theme = "light" | "dark";
 
 export function Header() {
   const pathname = usePathname();
-  const navItems = useMemo(() => [{ label: "Home", href: "/#home" }, ...navLinks], []);
+  const navItems = useMemo(() => [{ label: "Home", href: "/" }, ...navLinks], []);
   const sectionIds = useMemo(() => navItems.map((link) => getSectionId(link.href)).filter(Boolean), [navItems]);
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? "");
+  const [activeSection, setActiveSection] = useState(sectionPathMap[pathname] ?? sectionIds[0] ?? "");
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
@@ -35,11 +43,6 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (pathname !== "/") {
-      setActiveSection("");
-      return;
-    }
-
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY + 180;
       let current = sectionIds[0] ?? "";
@@ -85,7 +88,7 @@ export function Header() {
           {navItems.map((link) => {
             const sectionId = getSectionId(link.href);
             const Icon = navIconMap[link.label] ?? UserRound;
-            const isActive = pathname === "/" && activeSection === sectionId;
+            const isActive = activeSection === sectionId;
 
             return (
               <Link

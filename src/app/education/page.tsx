@@ -1,5 +1,5 @@
 import Home from "../page";
 
-export default function AboutPage() {
+export default function EducationPage() {
   return <Home />;
 }
