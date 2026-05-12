@@ -4,8 +4,6 @@ import {
   Building2,
   ChevronDown,
   Code2,
-  FileCode2,
-  FileText,
   GraduationCap,
   Landmark,
   MapPin,
@@ -33,6 +31,8 @@ import type { Experience } from "@/lib/data";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { ProjectActionButton } from "@/components/ProjectActionButton";
+import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
 function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
   return (
@@ -75,35 +75,6 @@ function TagList({
         ))}
       </ul>
     </div>
-  );
-}
-
-function ProjectActionButton({
-  label,
-  href,
-  icon: Icon
-}: {
-  label: "Doc" | "Code" | "Demo";
-  href: string;
-  icon: LucideIcon;
-}) {
-  const className = "inline-grid h-11 w-11 place-items-center rounded-full border transition";
-
-  if (!href) {
-    return null;
-  }
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Open ${label}`}
-      title={label}
-      className={`${className} border-line bg-card text-coral shadow-sm hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20`}
-    >
-      <Icon className="h-4 w-4" aria-hidden="true" />
-    </a>
   );
 }
 
@@ -268,7 +239,13 @@ const aboutFocus = [
   }
 ];
 
-function ExperienceCard({ experience }: { experience: Experience }) {
+function ExperienceCard({
+  experience,
+  section
+}: {
+  experience: Experience;
+  section: "experience" | "education";
+}) {
   const kind = getExperienceKind(experience);
   const Icon = experienceIconMap[kind];
   const hasProjects = experience.projects.length > 0;
@@ -303,7 +280,13 @@ function ExperienceCard({ experience }: { experience: Experience }) {
       className="rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift"
     >
       {hasProjects ? (
-        <details className="group open:mb-8">
+        <TrackedExperienceDetails
+          className="group open:mb-8"
+          section={section}
+          experienceType={experience.type}
+          organization={experience.organization}
+          title={experience.title}
+        >
           <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7">
             {experienceSummary}
             <div className="flex items-center gap-3 text-sm font-bold text-navy md:justify-end">
@@ -335,19 +318,48 @@ function ExperienceCard({ experience }: { experience: Experience }) {
                   </div>
                   {project.doc || project.code || project.demo ? (
                     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-                      <ProjectActionButton label="Doc" href={project.doc} icon={FileText} />
-                      <ProjectActionButton label="Code" href={project.code} icon={FileCode2} />
-                      <ProjectActionButton label="Demo" href={project.demo} icon={PlayCircle} />
+                      <ProjectActionButton
+                        label="Doc"
+                        href={project.doc}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
+                      <ProjectActionButton
+                        label="Code"
+                        href={project.code}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
+                      <ProjectActionButton
+                        label="Demo"
+                        href={project.demo}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
                     </div>
                   ) : null}
                 </section>
               ))}
             </div>
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-              <CollapseProjectsButton />
+              <CollapseProjectsButton
+                section={section}
+                experienceType={experience.type}
+                organization={experience.organization}
+                title={experience.title}
+              />
             </div>
           </div>
-        </details>
+        </TrackedExperienceDetails>
       ) : (
         <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7">
           {experienceSummary}
@@ -446,6 +458,7 @@ export default function Home() {
             <ExperienceCard
               key={`${experience.organization}-${experience.title}`}
               experience={experience}
+              section="experience"
             />
           ))}
         </div>
@@ -459,6 +472,7 @@ export default function Home() {
             <ExperienceCard
               key={`${experience.organization}-${experience.title}`}
               experience={experience}
+              section="education"
             />
           ))}
         </div>
