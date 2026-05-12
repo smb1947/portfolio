@@ -6,6 +6,7 @@ import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Sun, UserRound } fr
 import type { LucideIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { navLinks } from "@/lib/data";
+import { trackPortfolioEvent } from "@/lib/analytics";
 
 const navIconMap: Record<string, LucideIcon> = {
   Home,
@@ -94,6 +95,12 @@ export function Header() {
                 title={link.label}
                 onClick={(event) => {
                   setActiveSection(sectionId);
+                  trackPortfolioEvent("navigation.item.click", {
+                    section: sectionId,
+                    label: link.label,
+                    href: link.href,
+                    source: "sidebar_nav"
+                  });
                   if (event.detail > 0) {
                     event.currentTarget.blur();
                   }
@@ -123,7 +130,14 @@ export function Header() {
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           onClick={(event) => {
+            const fromTheme: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+            const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
             toggleTheme();
+            trackPortfolioEvent("theme.toggle.click", {
+              fromTheme,
+              toTheme,
+              source: "sidebar_nav"
+            });
             if (event.detail > 0) {
               event.currentTarget.blur();
             }

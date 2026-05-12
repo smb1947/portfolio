@@ -4,8 +4,6 @@ import {
   Building2,
   ChevronDown,
   Code2,
-  FileCode2,
-  FileText,
   GraduationCap,
   Landmark,
   MapPin,
@@ -33,6 +31,8 @@ import type { Experience } from "@/lib/data";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { ProjectActionButton } from "@/components/ProjectActionButton";
+import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
 function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
   return (
@@ -78,43 +78,15 @@ function TagList({
   );
 }
 
-function ProjectActionButton({
-  label,
-  href,
-  icon: Icon
-}: {
-  label: "Doc" | "Code" | "Demo";
-  href: string;
-  icon: LucideIcon;
-}) {
-  const className = "inline-grid h-11 w-11 place-items-center rounded-full border transition";
-
-  if (!href) {
-    return null;
-  }
-
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={`Open ${label}`}
-      title={label}
-      className={`${className} border-line bg-card text-coral shadow-sm hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20`}
-    >
-      <Icon className="h-4 w-4" aria-hidden="true" />
-    </a>
-  );
-}
-
 function ExperienceLogo({ organization }: { organization: string }) {
   if (organization.includes("Microsoft")) {
     return (
-      <div className="grid h-12 w-12 grid-cols-2 gap-1 rounded-xl bg-white p-2 shadow-sm ring-1 ring-line" aria-label="Microsoft logo">
-        <span className="bg-[#f25022]" />
-        <span className="bg-[#7fba00]" />
-        <span className="bg-[#00a4ef]" />
-        <span className="bg-[#ffb900]" />
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0078d4] shadow-sm ring-1 ring-line" aria-label="Azure logo">
+        <div className="relative h-7 w-8" aria-hidden="true">
+          <span className="absolute bottom-0 left-0 h-7 w-4 skew-x-[-18deg] bg-white" />
+          <span className="absolute bottom-0 right-0 h-7 w-4 skew-x-[18deg] bg-white/85" />
+          <span className="absolute bottom-0 left-3 h-2.5 w-5 bg-[#0078d4]" />
+        </div>
       </div>
     );
   }
@@ -152,6 +124,57 @@ function ExperienceLogo({ organization }: { organization: string }) {
   }
 
   return null;
+}
+
+function ExperienceSubLogo({ organization, fallback: Fallback }: { organization: string; fallback: LucideIcon }) {
+  if (organization.includes("Microsoft")) {
+    return (
+      <span className="grid h-7 w-7 grid-cols-2 gap-0.5 rounded-full border-2 border-card bg-white p-1 shadow-sm" aria-label="Microsoft logo">
+        <span className="bg-[#f25022]" />
+        <span className="bg-[#7fba00]" />
+        <span className="bg-[#00a4ef]" />
+        <span className="bg-[#ffb900]" />
+      </span>
+    );
+  }
+
+  if (organization.includes("Amazon")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#ff9900] text-[0.54rem] font-black lowercase text-[#232f3e] shadow-sm" aria-label="Amazon logo">
+        aws
+      </span>
+    );
+  }
+
+  if (organization.includes("University of Washington")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#b7a57a] font-serif text-sm font-black text-[#4b2e83] shadow-sm" aria-label="University of Washington logo">
+        W
+      </span>
+    );
+  }
+
+  if (organization.includes("NextLeap")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-teal text-[0.58rem] font-black text-white shadow-sm" aria-label="NextLeap logo">
+        NL
+      </span>
+    );
+  }
+
+  if (organization.includes("PES")) {
+    return (
+      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-white text-[0.5rem] font-black text-[#005baa] shadow-sm" aria-label="PES University logo">
+        PES
+      </span>
+    );
+  }
+
+  return (
+    <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-coral text-white shadow-sm">
+      <Fallback className="h-3.5 w-3.5" aria-hidden="true" />
+    </span>
+  );
 }
 
 function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon; className: string; mark?: string } {
@@ -216,7 +239,13 @@ const aboutFocus = [
   }
 ];
 
-function ExperienceCard({ experience }: { experience: Experience }) {
+function ExperienceCard({
+  experience,
+  section
+}: {
+  experience: Experience;
+  section: "experience" | "education";
+}) {
   const kind = getExperienceKind(experience);
   const Icon = experienceIconMap[kind];
   const hasProjects = experience.projects.length > 0;
@@ -224,8 +253,8 @@ function ExperienceCard({ experience }: { experience: Experience }) {
     <>
       <div className="relative h-14 w-14">
         <ExperienceLogo organization={experience.organization} />
-        <div className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-coral text-white">
-          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+        <div className="absolute -bottom-1 -right-1">
+          <ExperienceSubLogo organization={experience.organization} fallback={Icon} />
         </div>
       </div>
       <div className="min-w-0">
@@ -251,7 +280,13 @@ function ExperienceCard({ experience }: { experience: Experience }) {
       className="rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift"
     >
       {hasProjects ? (
-        <details className="group open:mb-8">
+        <TrackedExperienceDetails
+          className="group open:mb-8"
+          section={section}
+          experienceType={experience.type}
+          organization={experience.organization}
+          title={experience.title}
+        >
           <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7">
             {experienceSummary}
             <div className="flex items-center gap-3 text-sm font-bold text-navy md:justify-end">
@@ -283,19 +318,48 @@ function ExperienceCard({ experience }: { experience: Experience }) {
                   </div>
                   {project.doc || project.code || project.demo ? (
                     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-                      <ProjectActionButton label="Doc" href={project.doc} icon={FileText} />
-                      <ProjectActionButton label="Code" href={project.code} icon={FileCode2} />
-                      <ProjectActionButton label="Demo" href={project.demo} icon={PlayCircle} />
+                      <ProjectActionButton
+                        label="Doc"
+                        href={project.doc}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
+                      <ProjectActionButton
+                        label="Code"
+                        href={project.code}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
+                      <ProjectActionButton
+                        label="Demo"
+                        href={project.demo}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
                     </div>
                   ) : null}
                 </section>
               ))}
             </div>
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-              <CollapseProjectsButton />
+              <CollapseProjectsButton
+                section={section}
+                experienceType={experience.type}
+                organization={experience.organization}
+                title={experience.title}
+              />
             </div>
           </div>
-        </details>
+        </TrackedExperienceDetails>
       ) : (
         <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7">
           {experienceSummary}
@@ -394,6 +458,7 @@ export default function Home() {
             <ExperienceCard
               key={`${experience.organization}-${experience.title}`}
               experience={experience}
+              section="experience"
             />
           ))}
         </div>
@@ -407,6 +472,7 @@ export default function Home() {
             <ExperienceCard
               key={`${experience.organization}-${experience.title}`}
               experience={experience}
+              section="education"
             />
           ))}
         </div>

@@ -1,4 +1,7 @@
+"use client";
+
 import { ExternalLink } from "lucide-react";
+import { trackPortfolioEvent } from "@/lib/analytics";
 
 type ContactFormProps = {
   title: string;
@@ -34,6 +37,13 @@ export function ContactForm({ title, embedUrl, linkUrl }: ContactFormProps) {
             href={openUrl}
             target="_blank"
             rel="noreferrer"
+            onClick={() => {
+              trackPortfolioEvent("contact.form.click", {
+                label: "Open form",
+                href: openUrl,
+                source: "contact_section"
+              });
+            }}
             className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-line bg-background px-4 text-xs font-bold text-navy transition hover:border-teal/40 hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
           >
             Open form
