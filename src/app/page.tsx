@@ -1,13 +1,26 @@
 import {
+  BadgeCheck,
   Brain,
+  Building2,
   ChevronDown,
   Code2,
   FileCode2,
   FileText,
+  GraduationCap,
+  Landmark,
   MapPin,
+  Mail,
+  Mountain,
   PlayCircle,
+  Puzzle,
+  Radio,
+  School,
+  Search,
+  ShieldCheck,
+  Sparkles,
   Target,
-  Users
+  Users,
+  Wrench
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -21,11 +34,16 @@ import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 
-function SectionHeading({ children }: { children: string }) {
+function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
   return (
-    <div>
-      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
-      <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
+    <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
+      <div className="grid h-14 w-14 place-items-center rounded-2xl border border-teal/20 bg-teal/10 text-teal shadow-sm">
+        <Icon className="h-6 w-6" aria-hidden="true" />
+      </div>
+      <div>
+        <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
+        <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
+      </div>
     </div>
   );
 }
@@ -72,15 +90,7 @@ function ProjectActionButton({
   const className = "inline-grid h-11 w-11 place-items-center rounded-full border transition";
 
   if (!href) {
-    return (
-      <span
-        aria-label={`${label} unavailable`}
-        title={`${label} is private`}
-        className={`${className} cursor-not-allowed border-line bg-card text-muted/75`}
-      >
-        <Icon className="h-4 w-4" aria-hidden="true" />
-      </span>
-    );
+    return null;
   }
 
   return (
@@ -94,6 +104,92 @@ function ProjectActionButton({
     >
       <Icon className="h-4 w-4" aria-hidden="true" />
     </a>
+  );
+}
+
+function ExperienceLogo({ organization }: { organization: string }) {
+  if (organization.includes("Microsoft")) {
+    return (
+      <div className="grid h-12 w-12 grid-cols-2 gap-1 rounded-xl bg-white p-2 shadow-sm ring-1 ring-line" aria-label="Microsoft logo">
+        <span className="bg-[#f25022]" />
+        <span className="bg-[#7fba00]" />
+        <span className="bg-[#00a4ef]" />
+        <span className="bg-[#ffb900]" />
+      </div>
+    );
+  }
+
+  if (organization.includes("Amazon")) {
+    return (
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#232f3e] text-[0.72rem] font-black lowercase tracking-tight text-white shadow-sm ring-1 ring-line" aria-label="AWS logo">
+        aws
+      </div>
+    );
+  }
+
+  if (organization.includes("University of Washington")) {
+    return (
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#4b2e83] font-serif text-2xl font-black text-[#b7a57a] shadow-sm ring-1 ring-line" aria-label="University of Washington logo">
+        W
+      </div>
+    );
+  }
+
+  if (organization.includes("NextLeap")) {
+    return (
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#142432] text-sm font-black text-teal shadow-sm ring-1 ring-line" aria-label="NextLeap logo">
+        NL
+      </div>
+    );
+  }
+
+  if (organization.includes("PES")) {
+    return (
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#005baa] text-sm font-black text-white shadow-sm ring-1 ring-line" aria-label="PES University logo">
+        PES
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon; className: string; mark?: string } {
+  const title = projectTitle.toLowerCase();
+
+  if (title.includes("spotify")) return { label: "Spotify", icon: Radio, className: "bg-[#1db954] text-white" };
+  if (title.includes("asana")) return { label: "Asana", icon: Puzzle, className: "bg-[#fc636b] text-white" };
+  if (title.includes("heylily")) return { label: "HeyLily", icon: ShieldCheck, className: "bg-teal text-white" };
+  if (title.includes("roblox")) return { label: "Roblox", icon: Building2, className: "bg-[#111111] text-white" };
+  if (title.includes("copilot")) return { label: "Microsoft 365 Copilot", icon: Sparkles, className: "bg-[#2563eb] text-white" };
+  if (title.includes("netflix")) return { label: "Netflix", icon: PlayCircle, className: "bg-[#e50914] text-white", mark: "N" };
+  if (title.includes("figma")) return { label: "Figma", icon: Puzzle, className: "bg-[#a259ff] text-white", mark: "F" };
+  if (title.includes("bumble")) return { label: "Bumble", icon: Users, className: "bg-[#ffcb37] text-navy", mark: "B" };
+  if (title.includes("wslblobnfs")) return { label: "WSLBlobNFS", icon: Code2, className: "bg-[#0078d4] text-white" };
+  if (title.includes("blobnfs")) return { label: "Azure Blob NFS", icon: Wrench, className: "bg-[#0078d4] text-white" };
+  if (title.includes("hike")) return { label: "AI Hike Researcher", icon: Mountain, className: "bg-teal text-white" };
+  if (title.includes("streakfit")) return { label: "StreakFit", icon: BadgeCheck, className: "bg-coral text-white" };
+  if (title.includes("teardown")) return { label: "Product Teardown Series", icon: Search, className: "bg-navy text-white" };
+  if (title.includes("quantum")) return { label: "Quantum Tech Partners", icon: Target, className: "bg-[#2f4858] text-white" };
+  if (title.includes("sbs")) return { label: "SBS Consulting", icon: Landmark, className: "bg-[#6f4e37] text-white" };
+  if (title.includes("tech club")) return { label: "Foster Tech Club", icon: School, className: "bg-[#4b2e83] text-[#b7a57a]" };
+  if (title.includes("sketch")) return { label: "Sketch-to-Image", icon: Sparkles, className: "bg-[#005baa] text-white" };
+
+  return { label: projectTitle, icon: Sparkles, className: "bg-coral text-white" };
+}
+
+function ProjectLogo({ title }: { title: string }) {
+  const logo = getProjectLogo(title);
+  const Icon = logo.icon;
+
+  return (
+    <div
+      className={`grid h-12 w-12 flex-none place-items-center rounded-2xl shadow-sm ring-1 ring-line ${logo.className}`}
+      aria-label={`${logo.label} logo`}
+      title={logo.label}
+    >
+      {logo.mark ? <span className="font-serif text-2xl font-black">{logo.mark}</span> : <Icon className="h-6 w-6" aria-hidden="true" />}
+    </div>
   );
 }
 
@@ -126,8 +222,11 @@ function ExperienceCard({ experience }: { experience: Experience }) {
   const hasProjects = experience.projects.length > 0;
   const experienceSummary = (
     <>
-      <div className="grid h-12 w-12 place-items-center rounded-full bg-coral/10 text-coral">
-        <Icon className="h-5 w-5" aria-hidden="true" />
+      <div className="relative h-14 w-14">
+        <ExperienceLogo organization={experience.organization} />
+        <div className="absolute -bottom-1 -right-1 grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-coral text-white">
+          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+        </div>
       </div>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-3">
@@ -171,21 +270,24 @@ function ExperienceCard({ experience }: { experience: Experience }) {
                   key={project.title}
                   className="flex h-full flex-col rounded-2xl border border-line bg-background p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
                 >
-                  <div>
+                  <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
+                    <ProjectLogo title={project.title} />
                     <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
                       {project.title}
                     </h4>
                   </div>
                   <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
                   <div className="mt-5 grid gap-5">
-                    <TagList title="Skills" items={project.skills} />
-                    <TagList title="Tools" items={project.tools} />
+                    <TagList title="Soft Skills" items={project.skills} />
+                    <TagList title="Hard Skills" items={project.tools} />
                   </div>
-                  <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-                    <ProjectActionButton label="Doc" href={project.doc} icon={FileText} />
-                    <ProjectActionButton label="Code" href={project.code} icon={FileCode2} />
-                    <ProjectActionButton label="Demo" href={project.demo} icon={PlayCircle} />
-                  </div>
+                  {project.doc || project.code || project.demo ? (
+                    <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
+                      <ProjectActionButton label="Doc" href={project.doc} icon={FileText} />
+                      <ProjectActionButton label="Code" href={project.code} icon={FileCode2} />
+                      <ProjectActionButton label="Demo" href={project.demo} icon={PlayCircle} />
+                    </div>
+                  ) : null}
                 </section>
               ))}
             </div>
@@ -231,7 +333,7 @@ export default function Home() {
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>About Me</SectionHeading>
+        <SectionHeading icon={Users}>About Me</SectionHeading>
 
         <div className="mt-8 max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
           <p>{about}</p>
@@ -285,7 +387,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>Experience</SectionHeading>
+        <SectionHeading icon={Building2}>Experience</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {professionalExperiences.map((experience) => (
@@ -298,7 +400,7 @@ export default function Home() {
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>Education</SectionHeading>
+        <SectionHeading icon={GraduationCap}>Education</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {educationExperiences.map((experience) => (
@@ -311,7 +413,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>Contact</SectionHeading>
+        <SectionHeading icon={Mail}>Contact</SectionHeading>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
           <div className="flex flex-wrap gap-3">
             {contact.map((method) => (
