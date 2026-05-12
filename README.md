@@ -45,6 +45,16 @@ git push -u origin main
 4. Deploy.
 5. Future pushes to `main` redeploy automatically.
 
+## Deployment Channels
+
+The app keeps GitHub Pages behavior behind an environment flag so other hosts can use a normal Next.js build.
+
+- Standard Next.js build: `npm run build`
+- GitHub Pages static export: `npm run build:github-pages`
+- GitHub Pages workflow: `.github/workflows/deploy-pages.yml`
+
+`next.config.ts` only enables `output: "export"`, `basePath`, and `assetPrefix` when `GITHUB_PAGES=true`. This keeps the code deployable to GitHub Pages, Vercel, or another Next-compatible host without rewriting application code.
+
 ## Updating Content
 
 Most site content lives in `src/lib/data.ts`, including navigation, projects, principles, timeline items, writing placeholders, and contact links.

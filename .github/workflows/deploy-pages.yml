@@ -35,9 +35,9 @@ jobs:
         run: npm ci
 
       - name: Build static site
-        run: npm run build
+        run: npm run build:github-pages
         env:
-          GITHUB_PAGES: "true"
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
