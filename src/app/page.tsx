@@ -1,6 +1,5 @@
 import {
   BadgeCheck,
-  Brain,
   Building2,
   ChevronDown,
   Code2,
@@ -25,6 +24,7 @@ import {
   experienceIconMap,
   formatExperienceDuration,
   getExperienceKind,
+  aboutProfile,
   portfolio
 } from "@/lib/data";
 import type { Experience } from "@/lib/data";
@@ -49,23 +49,11 @@ function SectionHeading({ children, icon: Icon }: { children: string; icon: Luci
   );
 }
 
-function TagList({
-  title,
-  items,
-  variant = "compact"
-}: {
-  title: string;
-  items: string[];
-  variant?: "compact" | "card";
-}) {
+function TagList({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      {variant === "card" ? (
-        <h3 className="font-serif text-2xl font-semibold text-navy">{title}</h3>
-      ) : (
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-coral">{title}</p>
-      )}
-      <ul className={variant === "card" ? "mt-5 flex flex-wrap gap-2" : "mt-3 flex flex-wrap gap-2"}>
+      <p className="text-xs font-bold uppercase tracking-[0.16em] text-coral">{title}</p>
+      <ul className="mt-3 flex flex-wrap gap-2">
         {items.map((item) => (
           <li
             key={item}
@@ -217,29 +205,6 @@ function ProjectLogo({ title }: { title: string }) {
   );
 }
 
-const aboutFocus = [
-  {
-    title: "AI Product Building",
-    description: "Designing practical GenAI workflows, prototypes, and product concepts from real user needs.",
-    icon: Brain
-  },
-  {
-    title: "Customer Discovery",
-    description: "Turning interviews, reviews, and market signals into sharp problem framing and product direction.",
-    icon: Users
-  },
-  {
-    title: "GTM Strategy",
-    description: "Connecting positioning, segmentation, adoption barriers, and metrics into clear launch thinking.",
-    icon: Target
-  },
-  {
-    title: "Technical Leadership",
-    description: "Bringing engineering judgment to product tradeoffs, roadmap clarity, and cross-functional execution.",
-    icon: Code2
-  }
-];
-
 function ExperienceCard({
   experience,
   section
@@ -371,7 +336,7 @@ function ExperienceCard({
 }
 
 export default function Home() {
-  const { about, contact, contactForm, experiences, resume } = portfolio;
+  const { contact, contactForm, experiences } = portfolio;
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
   const professionalExperiences = experiences.filter((experience) => experience.type === "work");
@@ -401,51 +366,20 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading icon={Users}>About Me</SectionHeading>
 
-        <div className="mt-8 max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
-          <p>{about}</p>
-          <p>
-            I like product work that starts with a messy human problem, moves through disciplined discovery,
-            and ends in a clear strategy, prototype, or roadmap that teams can actually use.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-5">
-          <article className="rounded-[1.35rem] border border-line bg-card p-6 shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift md:p-7">
-            <h3 className="font-serif text-2xl font-semibold text-navy">Highlights</h3>
-            <ul className="mt-5 grid gap-3">
-              {resume.highlights.map((highlight) => (
-                <li key={highlight} className="grid grid-cols-[auto_minmax(0,1fr)] gap-3 text-sm leading-7 text-muted">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-coral" aria-hidden="true" />
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          <div className="grid gap-5 lg:grid-cols-2">
-            <article className="rounded-[1.35rem] border border-line bg-card p-6 shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift">
-              <TagList title="Skills" items={resume.skills} variant="card" />
-            </article>
-            <article className="rounded-[1.35rem] border border-line bg-card p-6 shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift">
-              <TagList title="Tools" items={resume.tools} variant="card" />
-            </article>
-          </div>
+        <div className="mt-8 max-w-5xl space-y-5">
+          <h3 className="font-serif text-3xl font-semibold leading-tight text-navy md:text-4xl">
+            {aboutProfile.title}
+          </h3>
+          <p className="max-w-4xl text-base leading-8 text-muted md:text-lg">{aboutProfile.intro}</p>
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">What I&apos;m doing</h3>
+          <h3 className="font-serif text-3xl font-semibold text-navy">Core Capabilities</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {aboutFocus.map(({ title, description, icon: Icon }) => (
-              <article key={title} className="rounded-2xl border border-line bg-card p-5 shadow-soft transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-lift">
-                <div className="grid gap-4 sm:grid-cols-[56px_minmax(0,1fr)]">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-coral/20 bg-coral/10 text-coral">
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-2xl font-semibold text-navy">{title}</h4>
-                    <p className="mt-2 text-sm leading-7 text-muted">{description}</p>
-                  </div>
-                </div>
+            {aboutProfile.capabilities.map((capability) => (
+              <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
+                <h4 className="font-serif text-2xl font-semibold text-navy">{capability.title}</h4>
+                <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
               </article>
             ))}
           </div>
