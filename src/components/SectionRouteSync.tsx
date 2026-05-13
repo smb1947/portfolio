@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef } from "react";
 
 const sectionRoutes = [
@@ -14,6 +14,26 @@ const sectionRoutes = [
 const sectionByPath = new Map(sectionRoutes.map((section) => [section.path, section.id]));
 const pathBySection = new Map(sectionRoutes.map((section) => [section.id, section.path]));
 
+function getBasePath() {
+  return window.location.pathname.startsWith("/portfolio") ? "/portfolio" : "";
+}
+
+function getBrowserPath(path: string) {
+  const basePath = getBasePath();
+  return path === "/" ? `${basePath}/` : `${basePath}${path}`;
+}
+
+function getAppPath() {
+  const basePath = getBasePath();
+  const pathname = window.location.pathname;
+
+  if (basePath && pathname.startsWith(basePath)) {
+    return pathname.slice(basePath.length) || "/";
+  }
+
+  return pathname;
+}
+
 function scrollToSection(sectionId: string) {
   if (sectionId === "home") {
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -25,11 +45,9 @@ function scrollToSection(sectionId: string) {
 
 export function SectionRouteSync() {
   const pathname = usePathname();
-  const router = useRouter();
   const activePathRef = useRef(pathname);
   const routeScrollTimeoutRef = useRef<number | null>(null);
   const suppressScrollRoutingUntilRef = useRef(0);
-  const scrollDrivenPathRef = useRef<string | null>(null);
   const sectionIds = useMemo(() => sectionRoutes.map((section) => section.id), []);
 
   useEffect(() => {
@@ -37,11 +55,6 @@ export function SectionRouteSync() {
     const sectionId = sectionByPath.get(pathname);
 
     if (!sectionId) {
-      return;
-    }
-
-    if (scrollDrivenPathRef.current === pathname) {
-      scrollDrivenPathRef.current = null;
       return;
     }
 
@@ -87,8 +100,8 @@ export function SectionRouteSync() {
 
       if (nextPath && nextPath !== activePathRef.current) {
         activePathRef.current = nextPath;
-        scrollDrivenPathRef.current = nextPath;
-        router.replace(nextPath, { scroll: false });
+        window.history.replaceState(null, "", getBrowserPath(nextPath));
+        window.va?.("pageview", { route: nextPath, path: nextPath });
       }
     };
 
@@ -101,15 +114,25 @@ export function SectionRouteSync() {
       window.requestAnimationFrame(updateRouteForScroll);
     };
 
+    const handlePopState = () => {
+      const sectionId = sectionByPath.get(getAppPath());
+
+      if (sectionId) {
+        scrollToSection(sectionId);
+      }
+    };
+
     updateRouteForScroll();
     window.addEventListener("scroll", requestRouteUpdate, { passive: true });
     window.addEventListener("resize", requestRouteUpdate);
+    window.addEventListener("popstate", handlePopState);
 
     return () => {
       window.removeEventListener("scroll", requestRouteUpdate);
       window.removeEventListener("resize", requestRouteUpdate);
+      window.removeEventListener("popstate", handlePopState);
     };
-  }, [router, sectionIds]);
+  }, [sectionIds]);
 
   return null;
 }
