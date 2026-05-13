@@ -21,13 +21,12 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
-  experienceIconMap,
   formatExperienceDuration,
-  getExperienceKind,
   aboutProfile,
   portfolio
 } from "@/lib/data";
 import type { Experience } from "@/lib/data";
+import { publicAsset } from "@/lib/assets";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
@@ -67,47 +66,65 @@ function TagList({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function ExperienceLogo({ organization }: { organization: string }) {
+type LogoAsset = {
+  src: `/${string}`;
+  alt: string;
+  padded?: boolean;
+  compact?: boolean;
+};
+
+function getExperienceCompanyLogo(organization: string): LogoAsset | null {
   if (organization.includes("Microsoft")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0078d4] shadow-sm ring-1 ring-line" aria-label="Azure logo">
-        <div className="relative h-7 w-8" aria-hidden="true">
-          <span className="absolute bottom-0 left-0 h-7 w-4 skew-x-[-18deg] bg-white" />
-          <span className="absolute bottom-0 right-0 h-7 w-4 skew-x-[18deg] bg-white/85" />
-          <span className="absolute bottom-0 left-3 h-2.5 w-5 bg-[#0078d4]" />
-        </div>
-      </div>
-    );
+    return { src: "/logos/microsoft.svg", alt: "Microsoft logo" };
   }
 
   if (organization.includes("Amazon")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#232f3e] text-[0.72rem] font-black lowercase tracking-tight text-white shadow-sm ring-1 ring-line" aria-label="AWS logo">
-        aws
-      </div>
-    );
+    return { src: "/logos/amazon.svg", alt: "Amazon logo" };
   }
 
   if (organization.includes("University of Washington")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#4b2e83] font-serif text-2xl font-black text-[#b7a57a] shadow-sm ring-1 ring-line" aria-label="University of Washington logo">
-        W
-      </div>
-    );
+    return { src: "/logos/uw.svg", alt: "University of Washington logo" };
   }
 
   if (organization.includes("NextLeap")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#142432] text-sm font-black text-teal shadow-sm ring-1 ring-line" aria-label="NextLeap logo">
-        NL
-      </div>
-    );
+    return { src: "/logos/nextleap.svg", alt: "NextLeap logo", compact: true };
   }
 
   if (organization.includes("PES")) {
+    return { src: "/logos/pes.png", alt: "PES University logo", compact: true };
+  }
+
+  return null;
+}
+
+function getExperienceProductLogo(organization: string): LogoAsset | null {
+  if (organization.includes("Microsoft")) {
+    return { src: "/logos/azure.svg", alt: "Microsoft Azure logo" };
+  }
+
+  if (organization.includes("Amazon")) {
+    return { src: "/logos/aws.svg", alt: "Amazon Web Services logo", padded: true };
+  }
+
+  return null;
+}
+
+function ExperienceLogo({ organization }: { organization: string }) {
+  const logo = getExperienceCompanyLogo(organization);
+
+  if (logo) {
     return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#005baa] text-sm font-black text-white shadow-sm ring-1 ring-line" aria-label="PES University logo">
-        PES
+      <div
+        className="grid h-12 w-12 place-items-center rounded-xl bg-white shadow-sm ring-1 ring-line"
+        aria-label={logo.alt}
+      >
+        <img
+          src={publicAsset(logo.src)}
+          alt=""
+          className={`h-full w-full object-contain ${
+            logo.compact ? "p-1" : logo.padded ? "p-1.5" : "p-2"
+          }`}
+        />
       </div>
     );
   }
@@ -115,53 +132,19 @@ function ExperienceLogo({ organization }: { organization: string }) {
   return null;
 }
 
-function ExperienceSubLogo({ organization, fallback: Fallback }: { organization: string; fallback: LucideIcon }) {
-  if (organization.includes("Microsoft")) {
-    return (
-      <span className="grid h-7 w-7 grid-cols-2 gap-0.5 rounded-full border-2 border-card bg-white p-1 shadow-sm" aria-label="Microsoft logo">
-        <span className="bg-[#f25022]" />
-        <span className="bg-[#7fba00]" />
-        <span className="bg-[#00a4ef]" />
-        <span className="bg-[#ffb900]" />
-      </span>
-    );
-  }
+function ExperienceSubLogo({ organization }: { organization: string }) {
+  const logo = getExperienceProductLogo(organization);
 
-  if (organization.includes("Amazon")) {
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#ff9900] text-[0.54rem] font-black lowercase text-[#232f3e] shadow-sm" aria-label="Amazon logo">
-        aws
-      </span>
-    );
-  }
-
-  if (organization.includes("University of Washington")) {
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#b7a57a] font-serif text-sm font-black text-[#4b2e83] shadow-sm" aria-label="University of Washington logo">
-        W
-      </span>
-    );
-  }
-
-  if (organization.includes("NextLeap")) {
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-teal text-[0.58rem] font-black text-white shadow-sm" aria-label="NextLeap logo">
-        NL
-      </span>
-    );
-  }
-
-  if (organization.includes("PES")) {
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-white text-[0.5rem] font-black text-[#005baa] shadow-sm" aria-label="PES University logo">
-        PES
-      </span>
-    );
+  if (!logo) {
+    return null;
   }
 
   return (
-    <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-coral text-white shadow-sm">
-      <Fallback className="h-3.5 w-3.5" aria-hidden="true" />
+    <span
+      className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border-2 border-card bg-white p-1 shadow-sm"
+      aria-label={logo.alt}
+    >
+      <img src={publicAsset(logo.src)} alt="" className="h-full w-full object-contain" />
     </span>
   );
 }
@@ -212,16 +195,17 @@ function ExperienceCard({
   experience: Experience;
   section: "experience" | "education";
 }) {
-  const kind = getExperienceKind(experience);
-  const Icon = experienceIconMap[kind];
   const hasProjects = experience.projects.length > 0;
+  const hasSubLogo = Boolean(getExperienceProductLogo(experience.organization));
   const experienceSummary = (
     <>
       <div className="relative h-14 w-14">
         <ExperienceLogo organization={experience.organization} />
-        <div className="absolute -bottom-1 -right-1">
-          <ExperienceSubLogo organization={experience.organization} fallback={Icon} />
-        </div>
+        {hasSubLogo ? (
+          <div className="absolute -bottom-1 -right-1">
+            <ExperienceSubLogo organization={experience.organization} />
+          </div>
+        ) : null}
       </div>
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-3">
