@@ -364,13 +364,18 @@ export default function Home() {
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Users}>About Me</SectionHeading>
+        <SectionHeading icon={Users}>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
           <h3 className="font-serif text-3xl font-semibold leading-tight text-navy md:text-4xl">
             {aboutProfile.title}
           </h3>
-          <p className="max-w-4xl text-base leading-8 text-muted md:text-lg">{aboutProfile.intro}</p>
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-coral">{aboutProfile.context}</p>
+          <div className="max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
+            {aboutProfile.intro.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
 
         <div className="mt-12">
@@ -387,7 +392,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Building2}>Experience</SectionHeading>
+        <SectionHeading icon={Building2}>Where I Worked</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {professionalExperiences.map((experience) => (
@@ -401,7 +406,7 @@ export default function Home() {
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={GraduationCap}>Education</SectionHeading>
+        <SectionHeading icon={GraduationCap}>What I Studied</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {educationExperiences.map((experience) => (
@@ -415,7 +420,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Mail}>Contact</SectionHeading>
+        <SectionHeading icon={Mail}>How to Contact Me</SectionHeading>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
           <div className="flex flex-wrap gap-3">
             {contact.map((method) => (
