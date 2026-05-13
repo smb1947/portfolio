@@ -51,9 +51,23 @@ The app keeps GitHub Pages behavior behind an environment flag so other hosts ca
 
 - Standard Next.js build: `npm run build`
 - GitHub Pages static export: `npm run build:github-pages`
+- Cloudflare Pages static export: `npm run build:cloudflare`
 - GitHub Pages dev workflow: `.github/workflows/deploy-pages.yml`
 
-`next.config.ts` only enables `output: "export"`, `basePath`, and `assetPrefix` when `GITHUB_PAGES=true`. This keeps the code deployable to GitHub Pages, Vercel, or another Next-compatible host without rewriting application code.
+`next.config.ts` always enables `output: "export"` so the build emits the static `out/` directory required by Cloudflare's Wrangler upload flow. GitHub Pages also gets `basePath` and `assetPrefix`; Cloudflare Pages exports at the domain root. This keeps the code deployable to GitHub Pages, Cloudflare Pages, Vercel, or another static-capable host without rewriting application code.
+
+### Cloudflare Pages
+
+Use these Cloudflare Pages settings:
+
+- Build command: `npm run build`
+- Build output directory: `out`
+- Root directory: repository root
+- Deploy command: `npx wrangler versions upload`
+
+`wrangler.jsonc` points Wrangler at `./out`, so Cloudflare's deploy command can upload the exported static assets without a Worker entry point.
+
+Cloudflare Web Analytics can be enabled either in the Cloudflare dashboard through automatic injection, or by setting `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` in Cloudflare Pages and redeploying. Do not use both methods at the same time, or the beacon can be loaded twice. The app uses path-based section routes like `/about` and `/experience`, so Cloudflare's SPA tracking can count section navigation as page views.
 
 ### Branch Deployment Behavior
 

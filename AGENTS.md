@@ -8,6 +8,7 @@ Guidance for future Codex work on this portfolio.
 - Do not make Microsoft work projects the homepage focus. Work experience can be referenced lightly as background only.
 - Use central data files for content changes, especially `src/lib/data.ts`.
 - Keep code modular, readable, and aligned with existing component patterns.
+- Git workflow: make requested changes directly on the `dev` branch and create pull requests from `dev` to `main`. Do not create separate feature branches unless the user explicitly asks.
 - Use Tailwind utilities, but keep class usage understandable.
 - Ensure `npm run build` passes before finalizing.
 - Do not add external services, a CMS, analytics, or paid dependencies unless requested.

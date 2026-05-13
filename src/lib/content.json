@@ -50,12 +50,6 @@
       "link": "mailto:smb007@uw.edu"
     },
     {
-      "type": "phone",
-      "label": "Phone",
-      "value": "(206) 476-8074",
-      "link": "tel:+12064768074"
-    },
-    {
       "type": "linkedin",
       "label": "LinkedIn",
       "value": "linkedin.com/in/shankarmbinj",
@@ -159,8 +153,8 @@
         {
           "title": "Asana Sales Strategy and GTM Assessment",
           "link": {
-            "label": "Private case",
-            "url": ""
+            "label": "LinkedIn post",
+            "url": "https://www.linkedin.com/posts/kellybreslinwright_culturedrivensales-activity-7328455582338686978-IEZL?utm_source=share&utm_medium=member_desktop&rcm=ACoAACFSo4UBcH8orMGfVdD9gMHpi9zpaFRvYlw"
           },
           "demo": "",
           "skills": [
@@ -174,14 +168,14 @@
             "Strategy deck"
           ],
           "description": "Conducted a comprehensive GTM and sales audit of Asana across nine sales-motion dimensions, defining its Ideal Seller Profile and aligning PLG-to-SLG motions with the skills, traits, and enablement needed for stronger enterprise selling. Awarded 1st place for the most comprehensive GTM assessment.",
-          "doc": "",
+          "doc": "https://canva.link/w5bg1przezf18k4",
           "code": ""
         },
         {
           "title": "HeyLily GenAI Scam-Call Assistant",
           "link": {
-            "label": "Private venture concept",
-            "url": ""
+            "label": "GeekWire feature",
+            "url": "https://www.geekwire.com/2026/heres-the-pitch-uw-students-get-in-the-room-with-key-investors-to-share-their-ai-startup-ideas/"
           },
           "skills": [
             "Cross-functional leadership",
@@ -342,8 +336,8 @@
         {
           "title": "Bumble Barney GenAI Wingman",
           "link": {
-            "label": "Capstone project",
-            "url": ""
+            "label": "NextLeap LinkedIn post",
+            "url": "https://www.linkedin.com/feed/update/urn:li:activity:7036584881761529856/"
           },
           "demo": "https://canva.link/ti1j8ki7yl7nx89",
           "skills": [
@@ -455,8 +449,8 @@
         {
           "title": "WSLBlobNFS PowerShell Module and Package Distribution",
           "link": {
-            "label": "Open source and package",
-            "url": ""
+            "label": "GTM article",
+            "url": "https://techcommunity.microsoft.com/blog/azurestorageblog/public-preview-use-azure-blob-storage-on-windows-as-a-file-share-using-network-f/4097273"
           },
           "demo": "",
           "skills": [

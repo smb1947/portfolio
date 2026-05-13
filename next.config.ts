@@ -5,13 +5,13 @@ const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "portfolio";
 const basePath = isGitHubPages ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
-  output: isGitHubPages ? "export" : undefined,
+  output: "export",
   basePath,
   assetPrefix: basePath || undefined,
   images: {
     unoptimized: true
   },
-  trailingSlash: isGitHubPages
+  trailingSlash: true
 };
 
 export default nextConfig;
