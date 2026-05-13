@@ -26,4 +26,5 @@ Guidance for future Codex work on this portfolio.
 - Commit and push completed changes to the remote every time unless the user explicitly says not to.
 - Do not create separate feature branches unless the user explicitly asks for one.
 - Run `npm run build` only when necessary for the change, especially for code, dependency, configuration, or user-visible site changes.
+- Do not run browser visual checks or open the site in a browser unless the user explicitly asks for browser verification.
 - Report changed files and verification results clearly.
