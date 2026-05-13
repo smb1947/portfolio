@@ -134,7 +134,31 @@ export const aboutProfile = {
       title: "Cross-Functional Collaboration",
       description: "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
     }
-  ]
+  ],
+  operatingModel: [
+    {
+      title: "Deliberate",
+      description: "Discipline, consistency, attention to detail, and simplicity."
+    },
+    {
+      title: "Analytical",
+      description: "Systematic thinking, observation, long-term orientation, and outcome-driven decisions."
+    },
+    {
+      title: "Human-Centered",
+      description: "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
+    }
+  ],
+  personalSignals: [
+    "Behavioral psychology",
+    "Neuroscience",
+    "Hiking",
+    "Gym",
+    "Poker",
+    "Anime"
+  ],
+  experienceContext:
+    "Experience and education are supporting evidence for how I build: technical depth, product judgment, and customer empathy applied across real teams, systems, and ambiguous product problems."
 };
 
 export const contactIconMap = {

@@ -386,10 +386,39 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-3xl font-semibold text-navy">Operating Model</h3>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {aboutProfile.operatingModel.map((principle) => (
+              <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
+                <h4 className="font-serif text-2xl font-semibold text-navy">{principle.title}</h4>
+                <p className="mt-3 text-sm leading-7 text-muted">{principle.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-3xl font-semibold text-navy">Personal Interests</h3>
+          <ul className="mt-6 flex flex-wrap gap-3">
+            {aboutProfile.personalSignals.map((signal) => (
+              <li
+                key={signal}
+                className="rounded-full border border-line bg-background px-4 py-2 text-sm font-bold text-navy/80"
+              >
+                {signal}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading icon={Building2}>Where I Worked</SectionHeading>
+        <p className="mt-6 max-w-3xl text-base leading-8 text-muted md:text-lg">
+          {aboutProfile.experienceContext}
+        </p>
 
         <div className="mt-10 space-y-5">
           {professionalExperiences.map((experience) => (
