@@ -266,8 +266,17 @@ function ExperienceCard({
                     <TagList title="Soft Skills" items={project.skills} />
                     <TagList title="Hard Skills" items={project.tools} />
                   </div>
-                  {project.doc || project.code || project.demo ? (
+                  {project.link.url || project.doc || project.code || project.demo ? (
                     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
+                      <ProjectActionButton
+                        label="Post"
+                        href={project.link.url}
+                        section={section}
+                        experienceType={experience.type}
+                        organization={experience.organization}
+                        experienceTitle={experience.title}
+                        projectTitle={project.title}
+                      />
                       <ProjectActionButton
                         label="Doc"
                         href={project.doc}
