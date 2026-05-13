@@ -87,7 +87,7 @@ function getExperienceCompanyLogo(organization: string): LogoAsset | null {
   }
 
   if (organization.includes("NextLeap")) {
-    return { src: "/logos/nextleap.svg", alt: "NextLeap logo", compact: true };
+    return { src: "/logos/nextleap.svg", alt: "NextLeap logo" };
   }
 
   if (organization.includes("PES")) {
