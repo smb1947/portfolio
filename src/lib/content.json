@@ -342,8 +342,8 @@
         {
           "title": "Bumble Barney GenAI Wingman",
           "link": {
-            "label": "Capstone project",
-            "url": ""
+            "label": "NextLeap LinkedIn post",
+            "url": "https://www.linkedin.com/feed/update/urn:li:activity:7036584881761529856/"
           },
           "demo": "https://canva.link/ti1j8ki7yl7nx89",
           "skills": [
@@ -455,8 +455,8 @@
         {
           "title": "WSLBlobNFS PowerShell Module and Package Distribution",
           "link": {
-            "label": "Open source and package",
-            "url": ""
+            "label": "GTM article",
+            "url": "https://techcommunity.microsoft.com/blog/azurestorageblog/public-preview-use-azure-blob-storage-on-windows-as-a-file-share-using-network-f/4097273"
           },
           "demo": "",
           "skills": [

@@ -5,7 +5,7 @@ import { FileCode2, FileText, Linkedin, PlayCircle } from "lucide-react";
 import { trackPortfolioEvent } from "@/lib/analytics";
 
 type ProjectActionButtonProps = {
-  label: "Doc" | "Code" | "Demo" | "Post";
+  label: "Doc" | "Code" | "Demo" | "Post" | "Article";
   href: string;
   section: "experience" | "education";
   experienceType: string;
@@ -23,6 +23,7 @@ function getActionDestination(href: string) {
 }
 
 const actionIconMap: Record<ProjectActionButtonProps["label"], LucideIcon> = {
+  Article: FileText,
   Doc: FileText,
   Code: FileCode2,
   Demo: PlayCircle,

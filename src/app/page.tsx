@@ -188,6 +188,10 @@ function ProjectLogo({ title }: { title: string }) {
   );
 }
 
+function getProjectLinkActionLabel(url: string) {
+  return url.includes("linkedin.com") ? "Post" : "Article";
+}
+
 function ExperienceCard({
   experience,
   section
@@ -269,7 +273,7 @@ function ExperienceCard({
                   {project.link.url || project.doc || project.code || project.demo ? (
                     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
                       <ProjectActionButton
-                        label="Post"
+                        label={getProjectLinkActionLabel(project.link.url)}
                         href={project.link.url}
                         section={section}
                         experienceType={experience.type}
