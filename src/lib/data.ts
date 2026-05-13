@@ -127,6 +127,10 @@ export const aboutProfile = {
       description: "Turning customer signals, usage patterns, and business context into better product decisions."
     },
     {
+      title: "Business Acumen",
+      description: "Connecting customer needs, market context, financial tradeoffs, and go-to-market realities into product decisions that create durable business value."
+    },
+    {
       title: "Technical Depth",
       description: "Working credibly with engineering teams across cloud infrastructure, distributed systems, scalability, and reliability."
     },

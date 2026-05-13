@@ -371,9 +371,17 @@ export default function Home() {
                 <div className="grid h-32 w-32 place-items-center rounded-[2rem] border-4 border-card bg-[#162531] text-white shadow-lift md:h-40 md:w-40">
                   <span className="font-serif text-5xl font-semibold text-coral md:text-6xl">SB</span>
                 </div>
-                <h1 className="max-w-3xl font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
-                  Shankar Binjawadgi
-                </h1>
+                <div className="max-w-3xl">
+                  <h1 className="font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
+                    Shankar Binjawadgi
+                  </h1>
+                  <p className="mt-5 font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
+                    {aboutProfile.title}
+                  </p>
+                  <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-coral">
+                    {aboutProfile.context}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -384,10 +392,6 @@ export default function Home() {
         <SectionHeading icon={Users}>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
-          <h3 className="font-serif text-3xl font-semibold leading-tight text-navy md:text-4xl">
-            {aboutProfile.title}
-          </h3>
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-coral">{aboutProfile.context}</p>
           <div className="max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -396,7 +400,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">Core Capabilities</h3>
+          <h3 className="font-serif text-3xl font-semibold text-navy">My Core Capabilities</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
@@ -408,7 +412,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">Operating Model</h3>
+          <h3 className="font-serif text-3xl font-semibold text-navy">My Modus Operandi</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
@@ -420,7 +424,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">Personal Interests</h3>
+          <h3 className="font-serif text-3xl font-semibold text-navy">My Personal Interests</h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
               <li
