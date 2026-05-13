@@ -28,6 +28,7 @@ import {
   portfolio
 } from "@/lib/data";
 import type { Experience } from "@/lib/data";
+import { publicAsset } from "@/lib/assets";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
@@ -67,31 +68,54 @@ function TagList({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function ExperienceLogo({ organization }: { organization: string }) {
+type LogoAsset = {
+  src: `/${string}`;
+  alt: string;
+  padded?: boolean;
+};
+
+function getExperienceLogo(organization: string): LogoAsset | null {
   if (organization.includes("Microsoft")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0078d4] shadow-sm ring-1 ring-line" aria-label="Azure logo">
-        <div className="relative h-7 w-8" aria-hidden="true">
-          <span className="absolute bottom-0 left-0 h-7 w-4 skew-x-[-18deg] bg-white" />
-          <span className="absolute bottom-0 right-0 h-7 w-4 skew-x-[18deg] bg-white/85" />
-          <span className="absolute bottom-0 left-3 h-2.5 w-5 bg-[#0078d4]" />
-        </div>
-      </div>
-    );
+    return { src: "/logos/azure.svg", alt: "Microsoft Azure logo" };
   }
 
   if (organization.includes("Amazon")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#232f3e] text-[0.72rem] font-black lowercase tracking-tight text-white shadow-sm ring-1 ring-line" aria-label="AWS logo">
-        aws
-      </div>
-    );
+    return { src: "/logos/aws.svg", alt: "Amazon Web Services logo", padded: true };
   }
 
   if (organization.includes("University of Washington")) {
+    return { src: "/logos/uw.svg", alt: "University of Washington logo" };
+  }
+
+  if (organization.includes("PES")) {
+    return { src: "/logos/pes.png", alt: "PES University logo", padded: true };
+  }
+
+  return null;
+}
+
+function getExperienceSubLogo(organization: string): LogoAsset | null {
+  if (organization.includes("Microsoft")) {
+    return { src: "/logos/microsoft.svg", alt: "Microsoft logo" };
+  }
+
+  return getExperienceLogo(organization);
+}
+
+function ExperienceLogo({ organization }: { organization: string }) {
+  const logo = getExperienceLogo(organization);
+
+  if (logo) {
     return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#4b2e83] font-serif text-2xl font-black text-[#b7a57a] shadow-sm ring-1 ring-line" aria-label="University of Washington logo">
-        W
+      <div
+        className="grid h-12 w-12 place-items-center rounded-xl bg-white shadow-sm ring-1 ring-line"
+        aria-label={logo.alt}
+      >
+        <img
+          src={publicAsset(logo.src)}
+          alt=""
+          className={`h-full w-full object-contain ${logo.padded ? "p-1.5" : "p-2"}`}
+        />
       </div>
     );
   }
@@ -104,41 +128,19 @@ function ExperienceLogo({ organization }: { organization: string }) {
     );
   }
 
-  if (organization.includes("PES")) {
-    return (
-      <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#005baa] text-sm font-black text-white shadow-sm ring-1 ring-line" aria-label="PES University logo">
-        PES
-      </div>
-    );
-  }
-
   return null;
 }
 
 function ExperienceSubLogo({ organization, fallback: Fallback }: { organization: string; fallback: LucideIcon }) {
-  if (organization.includes("Microsoft")) {
-    return (
-      <span className="grid h-7 w-7 grid-cols-2 gap-0.5 rounded-full border-2 border-card bg-white p-1 shadow-sm" aria-label="Microsoft logo">
-        <span className="bg-[#f25022]" />
-        <span className="bg-[#7fba00]" />
-        <span className="bg-[#00a4ef]" />
-        <span className="bg-[#ffb900]" />
-      </span>
-    );
-  }
+  const logo = getExperienceSubLogo(organization);
 
-  if (organization.includes("Amazon")) {
+  if (logo) {
     return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#ff9900] text-[0.54rem] font-black lowercase text-[#232f3e] shadow-sm" aria-label="Amazon logo">
-        aws
-      </span>
-    );
-  }
-
-  if (organization.includes("University of Washington")) {
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-[#b7a57a] font-serif text-sm font-black text-[#4b2e83] shadow-sm" aria-label="University of Washington logo">
-        W
+      <span
+        className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border-2 border-card bg-white p-1 shadow-sm"
+        aria-label={logo.alt}
+      >
+        <img src={publicAsset(logo.src)} alt="" className="h-full w-full object-contain" />
       </span>
     );
   }
@@ -147,14 +149,6 @@ function ExperienceSubLogo({ organization, fallback: Fallback }: { organization:
     return (
       <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-teal text-[0.58rem] font-black text-white shadow-sm" aria-label="NextLeap logo">
         NL
-      </span>
-    );
-  }
-
-  if (organization.includes("PES")) {
-    return (
-      <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-card bg-white text-[0.5rem] font-black text-[#005baa] shadow-sm" aria-label="PES University logo">
-        PES
       </span>
     );
   }
