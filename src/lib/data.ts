@@ -100,11 +100,42 @@ export const site = {
 };
 
 export const navLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Education", href: "/#education" },
-  { label: "Contact", href: "/#contact" }
+  { label: "About", href: "/about" },
+  { label: "Experience", href: "/experience" },
+  { label: "Education", href: "/education" },
+  { label: "Contact", href: "/contact" }
 ];
+
+export const aboutProfile = {
+  title: "AI-First Technical Product Manager",
+  context: "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · Foster STEM MBA ’26",
+  intro: [
+    "Hi, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
+    "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
+  ],
+  capabilities: [
+    {
+      title: "Customer & Behavioral Psychology",
+      description: "Understanding how users think, struggle, decide, and adopt products."
+    },
+    {
+      title: "AI-First Product Building",
+      description: "Using AI to rethink workflows, reduce friction, and create new product experiences."
+    },
+    {
+      title: "Data-Driven Product Judgment",
+      description: "Turning customer signals, usage patterns, and business context into better product decisions."
+    },
+    {
+      title: "Technical Depth",
+      description: "Working credibly with engineering teams across cloud infrastructure, distributed systems, scalability, and reliability."
+    },
+    {
+      title: "Cross-Functional Collaboration",
+      description: "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
+    }
+  ]
+};
 
 export const contactIconMap = {
   email: Mail,

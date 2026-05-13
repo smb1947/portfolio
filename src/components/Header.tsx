@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Sun, UserRound } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { navLinks } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
@@ -16,17 +17,29 @@ const navIconMap: Record<string, LucideIcon> = {
   Contact: Mail
 };
 
+const sectionPathMap: Record<string, string> = {
+  "/": "home",
+  "/about": "about",
+  "/experience": "experience",
+  "/education": "education",
+  "/contact": "contact"
+};
+
 function getSectionId(href: string) {
-  return href.includes("#") ? href.split("#")[1] : "";
+  return sectionPathMap[href] ?? "";
+}
+
+function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
+  return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
 type Theme = "light" | "dark";
 
 export function Header() {
   const pathname = usePathname();
-  const navItems = useMemo(() => [{ label: "Home", href: "/#home" }, ...navLinks], []);
+  const navItems = useMemo(() => [{ label: "Home", href: "/" }, ...navLinks], []);
   const sectionIds = useMemo(() => navItems.map((link) => getSectionId(link.href)).filter(Boolean), [navItems]);
-  const [activeSection, setActiveSection] = useState(sectionIds[0] ?? "");
+  const [activeSection, setActiveSection] = useState(sectionPathMap[pathname] ?? sectionIds[0] ?? "");
   const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
@@ -35,11 +48,6 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (pathname !== "/") {
-      setActiveSection("");
-      return;
-    }
-
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY + 180;
       let current = sectionIds[0] ?? "";
@@ -85,7 +93,7 @@ export function Header() {
           {navItems.map((link) => {
             const sectionId = getSectionId(link.href);
             const Icon = navIconMap[link.label] ?? UserRound;
-            const isActive = pathname === "/" && activeSection === sectionId;
+            const isActive = activeSection === sectionId;
 
             return (
               <Link
@@ -101,6 +109,16 @@ export function Header() {
                     href: link.href,
                     source: "sidebar_nav"
                   });
+
+                  if (sectionId && shouldHandleSectionClick(event) && document.getElementById(sectionId)) {
+                    event.preventDefault();
+                    window.dispatchEvent(
+                      new CustomEvent("portfolio:navigate-section", {
+                        detail: { sectionId, path: link.href }
+                      })
+                    );
+                  }
+
                   if (event.detail > 0) {
                     event.currentTarget.blur();
                   }
