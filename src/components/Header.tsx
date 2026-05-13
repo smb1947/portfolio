@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Sun, UserRound } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { navLinks } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
@@ -26,6 +27,10 @@ const sectionPathMap: Record<string, string> = {
 
 function getSectionId(href: string) {
   return sectionPathMap[href] ?? "";
+}
+
+function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
+  return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
 type Theme = "light" | "dark";
@@ -104,6 +109,16 @@ export function Header() {
                     href: link.href,
                     source: "sidebar_nav"
                   });
+
+                  if (sectionId && shouldHandleSectionClick(event) && document.getElementById(sectionId)) {
+                    event.preventDefault();
+                    window.dispatchEvent(
+                      new CustomEvent("portfolio:navigate-section", {
+                        detail: { sectionId, path: link.href }
+                      })
+                    );
+                  }
+
                   if (event.detail > 0) {
                     event.currentTarget.blur();
                   }

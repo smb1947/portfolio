@@ -14,6 +14,8 @@ const sectionRoutes = [
 const sectionByPath = new Map(sectionRoutes.map((section) => [section.path, section.id]));
 const pathBySection = new Map(sectionRoutes.map((section) => [section.id, section.path]));
 
+type SectionNavigateEvent = CustomEvent<{ sectionId: string; path: string }>;
+
 function getBasePath() {
   return window.location.pathname.startsWith("/portfolio") ? "/portfolio" : "";
 }
@@ -35,12 +37,14 @@ function getAppPath() {
 }
 
 function scrollToSection(sectionId: string) {
+  const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+
   if (sectionId === "home") {
-    window.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo({ top: 0, behavior });
     return;
   }
 
-  document.getElementById(sectionId)?.scrollIntoView({ block: "start", behavior: "auto" });
+  document.getElementById(sectionId)?.scrollIntoView({ block: "start", behavior });
 }
 
 export function SectionRouteSync() {
@@ -48,6 +52,7 @@ export function SectionRouteSync() {
   const activePathRef = useRef(pathname);
   const routeScrollTimeoutRef = useRef<number | null>(null);
   const suppressScrollRoutingUntilRef = useRef(0);
+  const scrollDrivenPathRef = useRef<string | null>(null);
   const sectionIds = useMemo(() => sectionRoutes.map((section) => section.id), []);
 
   useEffect(() => {
@@ -55,6 +60,11 @@ export function SectionRouteSync() {
     const sectionId = sectionByPath.get(pathname);
 
     if (!sectionId) {
+      return;
+    }
+
+    if (scrollDrivenPathRef.current === pathname) {
+      scrollDrivenPathRef.current = null;
       return;
     }
 
@@ -100,6 +110,7 @@ export function SectionRouteSync() {
 
       if (nextPath && nextPath !== activePathRef.current) {
         activePathRef.current = nextPath;
+        scrollDrivenPathRef.current = nextPath;
         window.history.replaceState(null, "", getBrowserPath(nextPath));
         window.va?.("pageview", { route: nextPath, path: nextPath });
       }
@@ -114,10 +125,27 @@ export function SectionRouteSync() {
       window.requestAnimationFrame(updateRouteForScroll);
     };
 
+    const handleSectionNavigate = (event: Event) => {
+      const { sectionId, path } = (event as SectionNavigateEvent).detail;
+
+      activePathRef.current = path;
+      suppressScrollRoutingUntilRef.current = Date.now() + 1200;
+      window.history.pushState(null, "", getBrowserPath(path));
+      window.va?.("pageview", { route: path, path });
+      scrollToSection(sectionId);
+    };
+
     const handlePopState = () => {
       const sectionId = sectionByPath.get(getAppPath());
 
       if (sectionId) {
+        const path = pathBySection.get(sectionId);
+
+        if (path) {
+          activePathRef.current = path;
+        }
+
+        suppressScrollRoutingUntilRef.current = Date.now() + 1200;
         scrollToSection(sectionId);
       }
     };
@@ -125,11 +153,13 @@ export function SectionRouteSync() {
     updateRouteForScroll();
     window.addEventListener("scroll", requestRouteUpdate, { passive: true });
     window.addEventListener("resize", requestRouteUpdate);
+    window.addEventListener("portfolio:navigate-section", handleSectionNavigate);
     window.addEventListener("popstate", handlePopState);
 
     return () => {
       window.removeEventListener("scroll", requestRouteUpdate);
       window.removeEventListener("resize", requestRouteUpdate);
+      window.removeEventListener("portfolio:navigate-section", handleSectionNavigate);
       window.removeEventListener("popstate", handlePopState);
     };
   }, [sectionIds]);

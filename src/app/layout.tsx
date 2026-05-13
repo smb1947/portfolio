@@ -1,10 +1,32 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/data";
 import "./globals.css";
+
+const inter = localFont({
+  variable: "--font-sans",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/inter-400.ttf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/inter-500.ttf", weight: "500", style: "normal" },
+    { path: "../../public/fonts/inter-600.ttf", weight: "600", style: "normal" },
+    { path: "../../public/fonts/inter-700.ttf", weight: "700", style: "normal" },
+    { path: "../../public/fonts/inter-800.ttf", weight: "800", style: "normal" }
+  ]
+});
+
+const playfair = localFont({
+  variable: "--font-serif",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/playfair-display-600.ttf", weight: "600", style: "normal" },
+    { path: "../../public/fonts/playfair-display-700.ttf", weight: "700", style: "normal" }
+  ]
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shankar-portfolio.vercel.app"),
@@ -51,7 +73,7 @@ const themeScript = `
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
