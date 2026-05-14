@@ -8,7 +8,7 @@ export function Footer() {
       </div>
       <div className="mx-auto max-w-6xl px-5 py-8 text-center text-sm text-muted sm:px-8">
         <p>
-          <span className="font-semibold text-navy">{site.name}</span> · AI Product Builder · Made with ❤️ in the USA.
+          {site.name} · AI Product Builder · Crafted with ❤️ in the USA.
         </p>
       </div>
     </footer>
