@@ -212,6 +212,26 @@ function getProjectSection(experience: Experience): ProjectSection {
   return experience.type === "education" ? "education" : "experience";
 }
 
+function CredentialLine({ text }: { text: string }) {
+  const highlightPattern = /(AWS|Azure|UW Foster)/g;
+  const highlightedTerms = new Set(["AWS", "Azure", "UW Foster"]);
+  const parts = text.split(highlightPattern);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        highlightedTerms.has(part) ? (
+          <span key={`${part}-${index}`} className="text-teal">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 function ProjectResourceActions({
   project,
   experience,
@@ -430,7 +450,7 @@ export default function Home() {
                     {aboutProfile.title}
                   </p>
                   <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-coral">
-                    {aboutProfile.context}
+                    <CredentialLine text={aboutProfile.context} />
                   </p>
                 </div>
               </div>

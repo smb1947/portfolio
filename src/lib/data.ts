@@ -108,7 +108,7 @@ export const navLinks = [
 
 export const aboutProfile = {
   title: "AI-First Technical Product Manager",
-  context: "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · Foster STEM MBA ’26",
+  context: "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · UW Foster STEM MBA ’26",
   intro: [
     "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
     "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
