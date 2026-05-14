@@ -450,9 +450,6 @@ export default function Home() {
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>Where I Worked</SectionHeading>
-        <p className="mt-6 max-w-3xl text-base leading-8 text-muted md:text-lg">
-          {aboutProfile.experienceContext}
-        </p>
 
         <div className="mt-10 space-y-5">
           {professionalExperiences.map((experience) => (
