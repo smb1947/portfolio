@@ -159,16 +159,20 @@ export const aboutProfile = {
       description: "A behavioral psychology-informed GenAI product built in three hours at the OpenAI Codex Hackathon after six customer interviews on student wellness pain points."
     },
     {
-      title: "AI Hike Researcher",
-      description: "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
+      title: "Bumble Barney GenAI Wingman",
+      description: "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
+    },
+    {
+      title: "HeyLily GenAI Scam-Call Assistant",
+      description: "A GenAI scam-call assistant for seniors built by an 11-member design, engineering, and business team, backed by 15+ interviews and B2B2C GTM planning."
     },
     {
       title: "Spotify MiniMix",
       description: "A GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation using dynamic song-feature selection."
     },
     {
-      title: "HeyLily GenAI Scam-Call Assistant",
-      description: "A GenAI scam-call assistant for seniors built by an 11-member design, engineering, and business team, backed by 15+ interviews and B2B2C GTM planning."
+      title: "AI Hike Researcher",
+      description: "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
     }
   ],
   personalSignals: [
