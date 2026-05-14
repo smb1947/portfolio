@@ -415,8 +415,12 @@ export default function Home() {
             <div className="h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
             <div className="px-6 pb-8 md:px-10 md:pb-10">
               <div className="-mt-16 flex flex-col gap-6 md:-mt-20 md:flex-row md:items-end md:justify-between">
-                <div className="grid h-32 w-32 place-items-center rounded-[2rem] border-4 border-card bg-[#162531] text-white shadow-lift md:h-40 md:w-40">
-                  <span className="font-serif text-5xl font-semibold text-coral md:text-6xl">SB</span>
+                <div className="aspect-square h-32 w-32 overflow-hidden rounded-[2rem] border-4 border-card bg-[#162531] shadow-lift md:h-40 md:w-40">
+                  <img
+                    src={publicAsset("/images/headshot.jpg")}
+                    alt="Shankar Binjawadgi"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div className="max-w-3xl">
                   <h1 className="font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
