@@ -153,6 +153,24 @@ export const aboutProfile = {
       description: "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
     }
   ],
+  featuredProjects: [
+    {
+      title: "StreakFit",
+      description: "A behavioral-psychology-informed fitness prototype built from student wellness interviews to reduce pre-gym friction and improve habit follow-through."
+    },
+    {
+      title: "AI Hike Researcher",
+      description: "An agentic AI trail-planning workflow that automates hike research across weather, snow, road conditions, user history, and personalized filtering."
+    },
+    {
+      title: "Spotify MiniMix",
+      description: "A GenAI music recommendation workflow for mood and occasion-based sub-playlist curation, designed to improve recommendation relevance."
+    },
+    {
+      title: "HeyLily GenAI Scam-Call Assistant",
+      description: "A GenAI scam-call assistant for seniors shaped through user interviews, Android prototyping, and B2B2C go-to-market planning."
+    }
+  ],
   personalSignals: [
     "Behavioral psychology",
     "Hiking",

@@ -80,24 +80,6 @@ function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
   return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
 }
 
-function TagList({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <p className="text-xs font-bold uppercase tracking-[0.16em] text-coral">{title}</p>
-      <ul className="mt-3 flex flex-wrap gap-2">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-line bg-background px-3 py-1 text-xs font-bold text-navy/80"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 type LogoAsset = {
   src: `/${string}`;
   alt: string;
@@ -298,10 +280,6 @@ function ExperienceCard({
                     </h4>
                   </div>
                   <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
-                  <div className="mt-5 grid gap-5">
-                    <TagList title="Soft Skills" items={project.skills} />
-                    <TagList title="Hard Skills" items={project.tools} />
-                  </div>
                   {project.link.url || project.doc || project.code || project.demo ? (
                     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
                       <ProjectActionButton
@@ -426,6 +404,18 @@ export default function Home() {
                     <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
                   </div>
                 </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Featured Project Work</h3>
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            {aboutProfile.featuredProjects.map((project) => (
+              <article key={project.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
+                <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{project.title}</h4>
+                <p className="mt-3 text-sm leading-7 text-muted">{project.description}</p>
               </article>
             ))}
           </div>
