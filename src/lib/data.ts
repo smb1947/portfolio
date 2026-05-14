@@ -156,19 +156,19 @@ export const aboutProfile = {
   featuredProjects: [
     {
       title: "StreakFit",
-      description: "A behavioral-psychology-informed fitness prototype built from student wellness interviews to reduce pre-gym friction and improve habit follow-through."
+      description: "A behavioral psychology-informed GenAI product built in three hours at the OpenAI Codex Hackathon after six customer interviews on student wellness pain points."
     },
     {
       title: "AI Hike Researcher",
-      description: "An agentic AI trail-planning workflow that automates hike research across weather, snow, road conditions, user history, and personalized filtering."
+      description: "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
     },
     {
       title: "Spotify MiniMix",
-      description: "A GenAI music recommendation workflow for mood and occasion-based sub-playlist curation, designed to improve recommendation relevance."
+      description: "A GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation using dynamic song-feature selection."
     },
     {
       title: "HeyLily GenAI Scam-Call Assistant",
-      description: "A GenAI scam-call assistant for seniors shaped through user interviews, Android prototyping, and B2B2C go-to-market planning."
+      description: "A GenAI scam-call assistant for seniors built by an 11-member design, engineering, and business team, backed by 15+ interviews and B2B2C GTM planning."
     }
   ],
   personalSignals: [
