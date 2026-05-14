@@ -442,7 +442,7 @@ export default function Home() {
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
-          <div className="max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
+          <div className="space-y-5 text-base leading-8 text-muted md:text-lg">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
