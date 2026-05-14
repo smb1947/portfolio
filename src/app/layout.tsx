@@ -86,7 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
-        <div className="pb-24 xl:pb-0 xl:pl-56">
+        <div className="pb-24 xl:pb-0">
           <main>{children}</main>
           <Footer />
         </div>

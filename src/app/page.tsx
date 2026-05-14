@@ -1,12 +1,13 @@
 import {
   BadgeCheck,
+  Brain,
   Building2,
   ChevronDown,
   Code2,
-  GraduationCap,
+  Drama,
+  Dumbbell,
   Landmark,
   MapPin,
-  Mail,
   Mountain,
   PlayCircle,
   Puzzle,
@@ -14,6 +15,7 @@ import {
   School,
   Search,
   ShieldCheck,
+  Spade,
   Sparkles,
   Target,
   Users,
@@ -25,7 +27,7 @@ import {
   aboutProfile,
   portfolio
 } from "@/lib/data";
-import type { Experience } from "@/lib/data";
+import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
@@ -34,36 +36,48 @@ import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
-function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
+function SectionHeading({ children }: { children: string }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
-      <div className="grid h-14 w-14 place-items-center rounded-2xl border border-teal/20 bg-teal/10 text-teal shadow-sm">
-        <Icon className="h-6 w-6" aria-hidden="true" />
-      </div>
-      <div>
-        <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
-        <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
-      </div>
+    <div>
+      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
+      <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
     </div>
   );
 }
 
-function TagList({ title, items }: { title: string; items: string[] }) {
+const capabilityIconMap: Record<string, LucideIcon> = {
+  "Customer & Behavioral Psychology": Brain,
+  "AI-First Product Building": Sparkles,
+  "Data-Driven Product Judgment": Target,
+  "Business Acumen": Landmark,
+  "Technical Depth": Code2,
+  "Cross-Functional Collaboration": Users
+};
+
+const operatingModelIconMap: Record<string, LucideIcon> = {
+  Deliberate: BadgeCheck,
+  Analytical: Search,
+  "Human-Centered": Users
+};
+
+const personalInterestIconMap: Record<string, LucideIcon> = {
+  "Behavioral psychology": Brain,
+  Hiking: Mountain,
+  Gym: Dumbbell,
+  Poker: Spade,
+  Anime: Drama
+};
+
+function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
   return (
-    <div>
-      <p className="text-xs font-bold uppercase tracking-[0.16em] text-coral">{title}</p>
-      <ul className="mt-3 flex flex-wrap gap-2">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="rounded-full border border-line bg-background px-3 py-1 text-xs font-bold text-navy/80"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-coral/20 bg-coral/10 text-coral">
+      <Icon className="h-5 w-5" aria-hidden="true" />
+    </span>
   );
+}
+
+function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
+  return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
 }
 
 type LogoAsset = {
@@ -188,8 +202,117 @@ function ProjectLogo({ title }: { title: string }) {
   );
 }
 
+type ProjectSection = "experience" | "education";
+
 function getProjectLinkActionLabel(url: string) {
   return url.includes("linkedin.com") ? "Post" : "Article";
+}
+
+function getProjectSection(experience: Experience): ProjectSection {
+  return experience.type === "education" ? "education" : "experience";
+}
+
+function CredentialLine({ text }: { text: string }) {
+  const highlightPattern = /(AWS|Azure|UW Foster)/g;
+  const highlightedTerms = new Set(["AWS", "Azure", "UW Foster"]);
+  const parts = text.split(highlightPattern);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        highlightedTerms.has(part) ? (
+          <span key={`${part}-${index}`} className="text-teal">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
+function ProjectResourceActions({
+  project,
+  experience,
+  section
+}: {
+  project: Project;
+  experience: Experience;
+  section: ProjectSection;
+}) {
+  if (!project.link.url && !project.doc && !project.code && !project.demo) {
+    return null;
+  }
+
+  return (
+    <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
+      <ProjectActionButton
+        label={getProjectLinkActionLabel(project.link.url)}
+        href={project.link.url}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+      <ProjectActionButton
+        label="Doc"
+        href={project.doc}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+      <ProjectActionButton
+        label="Code"
+        href={project.code}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+      <ProjectActionButton
+        label="Demo"
+        href={project.demo}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+    </div>
+  );
+}
+
+function ProjectCard({
+  project,
+  experience,
+  section,
+  id
+}: {
+  project: Project;
+  experience: Experience;
+  section: ProjectSection;
+  id?: string;
+}) {
+  return (
+    <section
+      id={id}
+      className="flex h-full flex-col rounded-2xl border border-line bg-background p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
+    >
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
+        <ProjectLogo title={project.title} />
+        <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
+          {project.title}
+        </h4>
+      </div>
+      <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
+      <ProjectResourceActions project={project} experience={experience} section={section} />
+    </section>
+  );
 }
 
 function ExperienceCard({
@@ -254,63 +377,13 @@ function ExperienceCard({
           <div className="relative border-t border-line px-6 pb-12 md:px-7 md:pb-14">
             <div className="grid gap-5 pt-6 lg:grid-cols-2">
               {experience.projects.map((project) => (
-                <section
+                <ProjectCard
                   id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
                   key={project.title}
-                  className="flex h-full flex-col rounded-2xl border border-line bg-background p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
-                >
-                  <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
-                    <ProjectLogo title={project.title} />
-                    <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
-                      {project.title}
-                    </h4>
-                  </div>
-                  <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
-                  <div className="mt-5 grid gap-5">
-                    <TagList title="Soft Skills" items={project.skills} />
-                    <TagList title="Hard Skills" items={project.tools} />
-                  </div>
-                  {project.link.url || project.doc || project.code || project.demo ? (
-                    <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-                      <ProjectActionButton
-                        label={getProjectLinkActionLabel(project.link.url)}
-                        href={project.link.url}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                      <ProjectActionButton
-                        label="Doc"
-                        href={project.doc}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                      <ProjectActionButton
-                        label="Code"
-                        href={project.code}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                      <ProjectActionButton
-                        label="Demo"
-                        href={project.demo}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                    </div>
-                  ) : null}
-                </section>
+                  project={project}
+                  experience={experience}
+                  section={section}
+                />
               ))}
             </div>
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
@@ -337,38 +410,63 @@ export default function Home() {
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
   const professionalExperiences = experiences.filter((experience) => experience.type === "work");
+  const featuredProjectTitles = aboutProfile.featuredProjects.map((project) => project.title);
+  const featuredProjects = experiences
+    .flatMap((experience) =>
+      experience.projects.map((project) => ({
+        experience,
+        project,
+        section: getProjectSection(experience)
+      }))
+    )
+    .filter(({ project }) => featuredProjectTitles.includes(project.title))
+    .sort(
+      (a, b) =>
+        featuredProjectTitles.indexOf(a.project.title) - featuredProjectTitles.indexOf(b.project.title)
+    );
 
   return (
     <>
       <SectionRouteSync />
-      <section id="home" className="relative scroll-mt-24 overflow-hidden border-b border-line">
+      <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
-          <div className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-teal/30 hover:shadow-lift">
+          <div className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
             <div className="h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
             <div className="px-6 pb-8 md:px-10 md:pb-10">
               <div className="-mt-16 flex flex-col gap-6 md:-mt-20 md:flex-row md:items-end md:justify-between">
-                <div className="grid h-32 w-32 place-items-center rounded-[2rem] border-4 border-card bg-[#162531] text-white shadow-lift md:h-40 md:w-40">
-                  <span className="font-serif text-5xl font-semibold text-coral md:text-6xl">SB</span>
+                <div className="aspect-square h-32 w-32 overflow-hidden rounded-[2rem] border-4 border-card bg-[#162531] shadow-lift md:h-40 md:w-40">
+                  <img
+                    src={publicAsset("/images/headshot.jpg")}
+                    alt="Shankar Binjawadgi"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                <h1 className="max-w-3xl font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
-                  Shankar Binjawadgi
-                </h1>
+                <div className="max-w-3xl">
+                  <h1 className="font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
+                    Shankar Binjawadgi
+                  </h1>
+                  <p className="mt-5 font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
+                    {aboutProfile.title}
+                  </p>
+                  <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-coral">
+                    <CredentialLine text={aboutProfile.context} />
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
+          <div className="h-px bg-line" />
+        </div>
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Users}>Who I Am</SectionHeading>
+        <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
-          <h3 className="font-serif text-3xl font-semibold leading-tight text-navy md:text-4xl">
-            {aboutProfile.title}
-          </h3>
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-coral">{aboutProfile.context}</p>
-          <div className="max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
+          <div className="space-y-5 text-base leading-8 text-muted md:text-lg">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -376,20 +474,74 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">Core Capabilities</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Featured Project Work</h3>
+          <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
+            Below are a few of my latest projects, some of which are still works in progress. For more project work, check out the Experience and Education sections below.
+          </p>
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            {featuredProjects.map(({ project, experience, section }) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                experience={experience}
+                section={section}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Core Capabilities</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
-                <h4 className="font-serif text-2xl font-semibold text-navy">{capability.title}</h4>
-                <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
+                <div className="flex items-start gap-4">
+                  <CardIcon icon={capabilityIconMap[capability.title] ?? Sparkles} />
+                  <div>
+                    <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{capability.title}</h4>
+                    <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
         </div>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Modus Operandi</h3>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">
+            {aboutProfile.operatingModel.map((principle) => (
+              <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
+                <div className="flex items-start gap-4">
+                  <CardIcon icon={operatingModelIconMap[principle.title] ?? BadgeCheck} />
+                  <div>
+                    <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{principle.title}</h4>
+                    <p className="mt-3 text-sm leading-7 text-muted">{principle.description}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12">
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Personal Interests</h3>
+          <ul className="mt-6 flex flex-wrap gap-3">
+            {aboutProfile.personalSignals.map((signal) => (
+              <li
+                key={signal}
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm font-bold text-navy/80"
+              >
+                <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
+                {signal}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Building2}>Where I Worked</SectionHeading>
+        <SectionHeading>Where I Worked</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {professionalExperiences.map((experience) => (
@@ -403,7 +555,7 @@ export default function Home() {
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={GraduationCap}>What I Studied</SectionHeading>
+        <SectionHeading>What I Studied</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {educationExperiences.map((experience) => (
@@ -417,7 +569,10 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Mail}>How to Contact Me</SectionHeading>
+        <SectionHeading>How to Contact Me</SectionHeading>
+        <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
+          Liked my work, have an idea to collaborate on, or just want to chat? I’d be happy to hear from you. ☕
+        </p>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
           <div className="flex flex-wrap gap-3">
             {contact.map((method) => (

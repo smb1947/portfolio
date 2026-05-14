@@ -108,9 +108,9 @@ export const navLinks = [
 
 export const aboutProfile = {
   title: "AI-First Technical Product Manager",
-  context: "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · Foster STEM MBA ’26",
+  context: "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · UW Foster STEM MBA ’26",
   intro: [
-    "Hi, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
+    "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
     "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
   ],
   capabilities: [
@@ -127,6 +127,10 @@ export const aboutProfile = {
       description: "Turning customer signals, usage patterns, and business context into better product decisions."
     },
     {
+      title: "Business Acumen",
+      description: "Connecting customer needs, market context, financial tradeoffs, and go-to-market realities into product decisions that create durable business value."
+    },
+    {
       title: "Technical Depth",
       description: "Working credibly with engineering teams across cloud infrastructure, distributed systems, scalability, and reliability."
     },
@@ -134,6 +138,45 @@ export const aboutProfile = {
       title: "Cross-Functional Collaboration",
       description: "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
     }
+  ],
+  operatingModel: [
+    {
+      title: "Deliberate",
+      description: "Discipline, consistency, attention to detail, and simplicity."
+    },
+    {
+      title: "Analytical",
+      description: "Systematic thinking, observation, long-term orientation, and outcome-driven decisions."
+    },
+    {
+      title: "Human-Centered",
+      description: "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
+    }
+  ],
+  featuredProjects: [
+    {
+      title: "StreakFit",
+      description: "A behavioral psychology-informed GenAI product built in three hours at the OpenAI Codex Hackathon after six customer interviews on student wellness pain points."
+    },
+    {
+      title: "AI Hike Researcher",
+      description: "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
+    },
+    {
+      title: "Spotify MiniMix",
+      description: "A GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation using dynamic song-feature selection."
+    },
+    {
+      title: "HeyLily GenAI Scam-Call Assistant",
+      description: "A GenAI scam-call assistant for seniors built by an 11-member design, engineering, and business team, backed by 15+ interviews and B2B2C GTM planning."
+    }
+  ],
+  personalSignals: [
+    "Behavioral psychology",
+    "Hiking",
+    "Gym",
+    "Poker",
+    "Anime"
   ]
 };
 

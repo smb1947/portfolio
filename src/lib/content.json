@@ -104,7 +104,7 @@
             "RAG",
             "Research workflows"
           ],
-          "description": "Architected an agentic AI hike researcher that automates real-time trail planning across six safety-critical dimensions, including weather, snow, road conditions, user history, and personalized filtering. Reduced weekly hike-planning time by 98% through staged research and recommendation workflows.",
+          "description": "Architected a cost- and time-efficient AI Hike Researcher, an agentic skill that automates real-time data gathering across six safety-critical dimensions, reducing weekly planning time by 98% through staged research and personalized filtering.",
           "doc": "",
           "code": "https://github.com/smb1947/vibing/tree/main/hiking"
         },
@@ -114,7 +114,7 @@
             "label": "Private prototype",
             "url": ""
           },
-          "demo": "",
+          "demo": "https://drive.google.com/drive/folders/18cTfZPGQGmYcqDHMRMsS4e3OYMMxOA1B?usp=sharing",
           "skills": [
             "Recommendation logic",
             "Experiment design",
@@ -125,7 +125,7 @@
             "LLMs",
             "Dynamic song features"
           ],
-          "description": "Built a GenAI music recommendation workflow in n8n for mood and occasion-based sub-playlist curation, using dynamic song-feature selection to improve recommendation relevance by 73% versus a rule-based baseline in project testing. Documented the product concept through a PRFAQ-style narrative and workflow design.",
+          "description": "Built a GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation, using dynamic song-feature selection and improving relevance by 73% versus a rule-based baseline in project testing.",
           "doc": "https://docs.google.com/document/d/1TAZJYFGwsECSZBnXRbaKKpg1vIf6z9akTHhqQDNJm3M/edit?usp=sharing",
           "code": ""
         },
@@ -146,7 +146,7 @@
             "Figma",
             "Interview notes"
           ],
-          "description": "Discovered student wellness pain points through six customer interviews and synthesized unmet needs into a behavioral-psychology-informed fitness prototype. Built the initial product experience in three hours at the OpenAI Codex Hackathon to reduce pre-gym friction and improve habit follow-through.",
+          "description": "Discovered student wellness pain points through six customer interviews, synthesized unmet needs, and built a behavioral psychology-informed GenAI product in three hours at the OpenAI Codex Hackathon.",
           "doc": "",
           "code": "https://github.com/smb1947/vibing/tree/main/streakfit"
         },
@@ -167,7 +167,7 @@
             "GTM scorecard",
             "Strategy deck"
           ],
-          "description": "Conducted a comprehensive GTM and sales audit of Asana across nine sales-motion dimensions, defining its Ideal Seller Profile and aligning PLG-to-SLG motions with the skills, traits, and enablement needed for stronger enterprise selling. Awarded 1st place for the most comprehensive GTM assessment.",
+          "description": "Benchmarked Asana's sales strategy and go-to-market motion across nine dimensions, recommending clearer PLG vs. SLG guidance and competitive differentiation. Awarded 1st place for best assessment out of eight teams.",
           "doc": "https://canva.link/w5bg1przezf18k4",
           "code": ""
         },
@@ -187,7 +187,7 @@
             "Interview synthesis",
             "GTM model"
           ],
-          "description": "Led an 11-member cross-functional team across design, engineering, and business to build HeyLily, a GenAI scam-call assistant for seniors and Hiya competitor. Ran 15+ user interviews, guided development of an Android call app, and shaped a 5-year B2B2C go-to-market model.",
+          "description": "Led an 11-member cross-functional team across design, engineering, and business to build HeyLily, a Hiya competitor and GenAI scam-call assistant for seniors. Ran 15+ user interviews, guided development of an android call app, and crafted a 5-year B2B2C go-to-market model.",
           "doc": "",
           "code": "",
           "demo": "https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final?node-id=5073-298&t=3PUqZmh69iUGjvfl-0"
@@ -209,7 +209,7 @@
             "Product teardown templates",
             "Discussion guides"
           ],
-          "description": "Launched and facilitated a Foster Tech Club product teardown series that helped students deconstruct world-class products, discuss product strategy, and build sharper product critique skills. Produced three events with 110+ attendees.",
+          "description": "Launched a new Product Teardown series to deconstruct world-class products, producing three events with 110+ attendees.",
           "doc": "https://drive.google.com/drive/folders/1m-FFKfevWguf3x7LTzPfVcA3bGwagrTz?usp=sharing",
           "code": ""
         },
@@ -350,7 +350,7 @@
             "User pain-point synthesis",
             "Concept brief"
           ],
-          "description": "Analyzed 100 one-star Bumble App Store reviews, root-caused the recurring 'no matches' problem, and proposed Bumble Barney, a GenAI wingman concept intended to decrease no-match outcomes by 10%. Won 2nd place in the February NextLeap Capstone project.",
+          "description": "Analyzed 100 one-star Bumble App Store ratings, root-caused the recurring no-matches problem, brainstormed solutions, and proposed Bumble Barney, a GenAI wingman intended to decrease no matches by 10%. Won 2nd rank in the February NextLeap Capstone project.",
           "doc": "",
           "code": ""
         },
@@ -463,7 +463,7 @@
             "WSL2",
             "PowerShell Gallery"
           ],
-          "description": "Spearheaded 0-to-1 development and launch of a Windows CLI client using WSL2 virtualization for Azure Blob NFS, unlocking a new Windows user segment and onboarding 150+ B2B customers. Packaged and distributed the module through PowerShell Gallery to improve discoverability, installation UX, and adoption for Windows users.",
+          "description": "Spearheaded the 0-to-1 development and launch of a Windows CLI client using WSL2 virtualization for Blob NFS, unlocking a new Windows segment and onboarding 150+ B2B customers while partnering with product leadership on go-to-market strategy.",
           "doc": "https://www.powershellgallery.com/packages/WSLBlobNFS/1.1.0",
           "code": "https://github.com/Azure/BlobNFS-wsl2/tree/develop"
         },

@@ -21,7 +21,7 @@ export function CollapseProjectsButton({
       type="button"
       aria-label="Collapse projects"
       title="Collapse projects"
-      className="grid h-12 w-12 place-items-center rounded-full border border-line bg-card text-coral shadow-soft transition hover:-translate-y-0.5 hover:border-coral/40 hover:bg-coral hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+      className="grid h-12 w-12 place-items-center rounded-full border border-line bg-card text-coral shadow-soft transition hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
       onClick={(event) => {
         trackPortfolioEvent("experience.projects.collapse.click", {
           section,

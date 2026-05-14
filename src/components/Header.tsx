@@ -49,7 +49,9 @@ export function Header() {
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + 180;
+      const scrollPosition = window.scrollY + Math.min(window.innerHeight * 0.45, 360);
+      const isNearPageBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
       let current = sectionIds[0] ?? "";
 
       for (const sectionId of sectionIds) {
@@ -58,6 +60,10 @@ export function Header() {
         if (section && section.offsetTop <= scrollPosition) {
           current = sectionId;
         }
+      }
+
+      if (isNearPageBottom) {
+        current = sectionIds[sectionIds.length - 1] ?? current;
       }
 
       setActiveSection(current);
