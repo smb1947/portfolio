@@ -59,7 +59,7 @@ const operatingModelIconMap: Record<string, LucideIcon> = {
 
 function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
   return (
-    <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-teal/20 bg-teal/10 text-teal">
+    <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-coral/20 bg-coral/10 text-coral">
       <Icon className="h-5 w-5" aria-hidden="true" />
     </span>
   );
