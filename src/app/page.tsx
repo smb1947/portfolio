@@ -27,7 +27,7 @@ import {
   aboutProfile,
   portfolio
 } from "@/lib/data";
-import type { Experience } from "@/lib/data";
+import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
@@ -202,8 +202,97 @@ function ProjectLogo({ title }: { title: string }) {
   );
 }
 
+type ProjectSection = "experience" | "education";
+
 function getProjectLinkActionLabel(url: string) {
   return url.includes("linkedin.com") ? "Post" : "Article";
+}
+
+function getProjectSection(experience: Experience): ProjectSection {
+  return experience.type === "education" ? "education" : "experience";
+}
+
+function ProjectResourceActions({
+  project,
+  experience,
+  section
+}: {
+  project: Project;
+  experience: Experience;
+  section: ProjectSection;
+}) {
+  if (!project.link.url && !project.doc && !project.code && !project.demo) {
+    return null;
+  }
+
+  return (
+    <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
+      <ProjectActionButton
+        label={getProjectLinkActionLabel(project.link.url)}
+        href={project.link.url}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+      <ProjectActionButton
+        label="Doc"
+        href={project.doc}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+      <ProjectActionButton
+        label="Code"
+        href={project.code}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+      <ProjectActionButton
+        label="Demo"
+        href={project.demo}
+        section={section}
+        experienceType={experience.type}
+        organization={experience.organization}
+        experienceTitle={experience.title}
+        projectTitle={project.title}
+      />
+    </div>
+  );
+}
+
+function ProjectCard({
+  project,
+  experience,
+  section,
+  id
+}: {
+  project: Project;
+  experience: Experience;
+  section: ProjectSection;
+  id?: string;
+}) {
+  return (
+    <section
+      id={id}
+      className="flex h-full flex-col rounded-2xl border border-line bg-background p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
+    >
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
+        <ProjectLogo title={project.title} />
+        <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
+          {project.title}
+        </h4>
+      </div>
+      <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
+      <ProjectResourceActions project={project} experience={experience} section={section} />
+    </section>
+  );
 }
 
 function ExperienceCard({
@@ -268,59 +357,13 @@ function ExperienceCard({
           <div className="relative border-t border-line px-6 pb-12 md:px-7 md:pb-14">
             <div className="grid gap-5 pt-6 lg:grid-cols-2">
               {experience.projects.map((project) => (
-                <section
+                <ProjectCard
                   id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
                   key={project.title}
-                  className="flex h-full flex-col rounded-2xl border border-line bg-background p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
-                >
-                  <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
-                    <ProjectLogo title={project.title} />
-                    <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
-                      {project.title}
-                    </h4>
-                  </div>
-                  <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
-                  {project.link.url || project.doc || project.code || project.demo ? (
-                    <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-                      <ProjectActionButton
-                        label={getProjectLinkActionLabel(project.link.url)}
-                        href={project.link.url}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                      <ProjectActionButton
-                        label="Doc"
-                        href={project.doc}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                      <ProjectActionButton
-                        label="Code"
-                        href={project.code}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                      <ProjectActionButton
-                        label="Demo"
-                        href={project.demo}
-                        section={section}
-                        experienceType={experience.type}
-                        organization={experience.organization}
-                        experienceTitle={experience.title}
-                        projectTitle={project.title}
-                      />
-                    </div>
-                  ) : null}
-                </section>
+                  project={project}
+                  experience={experience}
+                  section={section}
+                />
               ))}
             </div>
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
@@ -347,6 +390,20 @@ export default function Home() {
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
   const professionalExperiences = experiences.filter((experience) => experience.type === "work");
+  const featuredProjectTitles = aboutProfile.featuredProjects.map((project) => project.title);
+  const featuredProjects = experiences
+    .flatMap((experience) =>
+      experience.projects.map((project) => ({
+        experience,
+        project,
+        section: getProjectSection(experience)
+      }))
+    )
+    .filter(({ project }) => featuredProjectTitles.includes(project.title))
+    .sort(
+      (a, b) =>
+        featuredProjectTitles.indexOf(a.project.title) - featuredProjectTitles.indexOf(b.project.title)
+    );
 
   return (
     <>
@@ -393,6 +450,20 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Featured Project Work</h3>
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            {featuredProjects.map(({ project, experience, section }) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                experience={experience}
+                section={section}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Core Capabilities</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
@@ -404,18 +475,6 @@ export default function Home() {
                     <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Featured Project Work</h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {aboutProfile.featuredProjects.map((project) => (
-              <article key={project.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
-                <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{project.title}</h4>
-                <p className="mt-3 text-sm leading-7 text-muted">{project.description}</p>
               </article>
             ))}
           </div>
