@@ -34,27 +34,7 @@ import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
-function SectionHeading({
-  children,
-  icon: Icon,
-  align = "left"
-}: {
-  children: string;
-  icon: LucideIcon;
-  align?: "left" | "center";
-}) {
-  if (align === "center") {
-    return (
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <div className="grid h-14 w-14 place-items-center rounded-2xl border border-teal/20 bg-teal/10 text-teal shadow-sm">
-          <Icon className="h-6 w-6" aria-hidden="true" />
-        </div>
-        <p className="mt-5 font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
-        <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
-      </div>
-    );
-  }
-
+function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
   return (
     <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
       <div className="grid h-14 w-14 place-items-center rounded-2xl border border-teal/20 bg-teal/10 text-teal shadow-sm">
@@ -361,7 +341,7 @@ export default function Home() {
   return (
     <>
       <SectionRouteSync />
-      <section id="home" className="relative scroll-mt-24 overflow-hidden border-b border-line">
+      <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
           <div className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-teal/30 hover:shadow-lift">
@@ -385,6 +365,9 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
+          <div className="h-px bg-line" />
         </div>
       </section>
 
@@ -470,9 +453,9 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Mail} align="center">How to Contact Me</SectionHeading>
+        <SectionHeading icon={Mail}>How to Contact Me</SectionHeading>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap gap-3">
             {contact.map((method) => (
               <ContactCard key={method.type} item={method} />
             ))}
