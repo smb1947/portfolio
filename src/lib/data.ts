@@ -159,9 +159,7 @@ export const aboutProfile = {
     "Gym",
     "Poker",
     "Anime"
-  ],
-  experienceContext:
-    "Experience and education are supporting evidence for how I build: technical depth, product judgment, and customer empathy applied across real teams, systems, and ambiguous product problems."
+  ]
 };
 
 export const contactIconMap = {

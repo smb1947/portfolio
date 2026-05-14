@@ -400,14 +400,14 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">My Core Capabilities</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Core Capabilities</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
                   <CardIcon icon={capabilityIconMap[capability.title] ?? Sparkles} />
                   <div>
-                    <h4 className="font-serif text-2xl font-semibold text-navy">{capability.title}</h4>
+                    <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{capability.title}</h4>
                     <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
                   </div>
                 </div>
@@ -417,14 +417,14 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">My Modus Operandi</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Modus Operandi</h3>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
                   <CardIcon icon={operatingModelIconMap[principle.title] ?? BadgeCheck} />
                   <div>
-                    <h4 className="font-serif text-2xl font-semibold text-navy">{principle.title}</h4>
+                    <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{principle.title}</h4>
                     <p className="mt-3 text-sm leading-7 text-muted">{principle.description}</p>
                   </div>
                 </div>
@@ -434,7 +434,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-3xl font-semibold text-navy">My Personal Interests</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Personal Interests</h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
               <li
