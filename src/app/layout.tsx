@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: site.description,
     type: "website",
     locale: "en_US",
-    siteName: "Shankar Binjawadgi | Product Explorer"
+    siteName: "Shankar Binjawadgi Portfolio"
   },
   twitter: {
     card: "summary_large_image",
