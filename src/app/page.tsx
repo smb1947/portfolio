@@ -1,12 +1,11 @@
 import {
   BadgeCheck,
+  Brain,
   Building2,
   ChevronDown,
   Code2,
-  GraduationCap,
   Landmark,
   MapPin,
-  Mail,
   Mountain,
   PlayCircle,
   Puzzle,
@@ -34,17 +33,35 @@ import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
-function SectionHeading({ children, icon: Icon }: { children: string; icon: LucideIcon }) {
+function SectionHeading({ children }: { children: string }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)] sm:items-center">
-      <div className="grid h-14 w-14 place-items-center rounded-2xl border border-teal/20 bg-teal/10 text-teal shadow-sm">
-        <Icon className="h-6 w-6" aria-hidden="true" />
-      </div>
-      <div>
-        <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
-        <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
-      </div>
+    <div>
+      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
+      <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
     </div>
+  );
+}
+
+const capabilityIconMap: Record<string, LucideIcon> = {
+  "Customer & Behavioral Psychology": Brain,
+  "AI-First Product Building": Sparkles,
+  "Data-Driven Product Judgment": Target,
+  "Business Acumen": Landmark,
+  "Technical Depth": Code2,
+  "Cross-Functional Collaboration": Users
+};
+
+const operatingModelIconMap: Record<string, LucideIcon> = {
+  Deliberate: BadgeCheck,
+  Analytical: Search,
+  "Human-Centered": Users
+};
+
+function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
+  return (
+    <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-teal/20 bg-teal/10 text-teal">
+      <Icon className="h-5 w-5" aria-hidden="true" />
+    </span>
   );
 }
 
@@ -372,7 +389,7 @@ export default function Home() {
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Users}>Who I Am</SectionHeading>
+        <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
           <div className="max-w-4xl space-y-5 text-base leading-8 text-muted md:text-lg">
@@ -387,8 +404,13 @@ export default function Home() {
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
-                <h4 className="font-serif text-2xl font-semibold text-navy">{capability.title}</h4>
-                <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
+                <div className="flex items-start gap-4">
+                  <CardIcon icon={capabilityIconMap[capability.title] ?? Sparkles} />
+                  <div>
+                    <h4 className="font-serif text-2xl font-semibold text-navy">{capability.title}</h4>
+                    <p className="mt-3 text-sm leading-7 text-muted">{capability.description}</p>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
@@ -399,8 +421,13 @@ export default function Home() {
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
-                <h4 className="font-serif text-2xl font-semibold text-navy">{principle.title}</h4>
-                <p className="mt-3 text-sm leading-7 text-muted">{principle.description}</p>
+                <div className="flex items-start gap-4">
+                  <CardIcon icon={operatingModelIconMap[principle.title] ?? BadgeCheck} />
+                  <div>
+                    <h4 className="font-serif text-2xl font-semibold text-navy">{principle.title}</h4>
+                    <p className="mt-3 text-sm leading-7 text-muted">{principle.description}</p>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
@@ -422,7 +449,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Building2}>Where I Worked</SectionHeading>
+        <SectionHeading>Where I Worked</SectionHeading>
         <p className="mt-6 max-w-3xl text-base leading-8 text-muted md:text-lg">
           {aboutProfile.experienceContext}
         </p>
@@ -439,7 +466,7 @@ export default function Home() {
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={GraduationCap}>What I Studied</SectionHeading>
+        <SectionHeading>What I Studied</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {educationExperiences.map((experience) => (
@@ -453,7 +480,7 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading icon={Mail}>How to Contact Me</SectionHeading>
+        <SectionHeading>How to Contact Me</SectionHeading>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
           <div className="flex flex-wrap gap-3">
             {contact.map((method) => (

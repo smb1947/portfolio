@@ -155,7 +155,6 @@ export const aboutProfile = {
   ],
   personalSignals: [
     "Behavioral psychology",
-    "Neuroscience",
     "Hiking",
     "Gym",
     "Poker",
