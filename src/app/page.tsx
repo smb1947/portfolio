@@ -4,6 +4,8 @@ import {
   Building2,
   ChevronDown,
   Code2,
+  Drama,
+  Dumbbell,
   Landmark,
   MapPin,
   Mountain,
@@ -13,6 +15,7 @@ import {
   School,
   Search,
   ShieldCheck,
+  Spade,
   Sparkles,
   Target,
   Users,
@@ -57,12 +60,24 @@ const operatingModelIconMap: Record<string, LucideIcon> = {
   "Human-Centered": Users
 };
 
+const personalInterestIconMap: Record<string, LucideIcon> = {
+  "Behavioral psychology": Brain,
+  Hiking: Mountain,
+  Gym: Dumbbell,
+  Poker: Spade,
+  Anime: Drama
+};
+
 function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
   return (
     <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-coral/20 bg-coral/10 text-coral">
       <Icon className="h-5 w-5" aria-hidden="true" />
     </span>
   );
+}
+
+function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
+  return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
 }
 
 function TagList({ title, items }: { title: string; items: string[] }) {
@@ -439,8 +454,9 @@ export default function Home() {
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="rounded-full border border-line bg-background px-4 py-2 text-sm font-bold text-navy/80"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-background px-4 py-2 text-sm font-bold text-navy/80"
               >
+                <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}
               </li>
             ))}
