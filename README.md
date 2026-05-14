@@ -1,17 +1,25 @@
-# Shankar Binjawadgi | Product Explorer
+# Shankar Binjawadgi Portfolio
 
-A premium personal portfolio website for Shankar Binjawadgi, positioned around MBA projects, Nextleap-style product explorations, AI, consumer behavior, GTM strategy, health and fitness tech, writing, and product leadership identity.
+Personal portfolio for Shankar Binjawadgi. The site presents my AI-first technical product management positioning, selected project work, work experience, education, and contact links.
 
 ## Tech Stack
 
 - Next.js App Router
+- React
 - TypeScript
 - Tailwind CSS
-- React components
 - lucide-react icons
-- Google fonts via `next/font`
+- Google fonts through `next/font`
 
-## Local Setup
+## Content
+
+Most portfolio content lives in `src/lib/content.json`.
+
+Supporting profile/navigation data and content helpers live in `src/lib/data.ts`.
+
+Static assets live in `public/`, including logos and the hero headshot.
+
+## Local Development
 
 ```bash
 npm install
@@ -20,76 +28,37 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-To verify a production build:
+To check a production build:
 
 ```bash
 npm run build
 ```
 
-## GitHub Push Instructions
+## Deployment
 
-```bash
-git init
-git add .
-git commit -m "Initial portfolio site"
-git branch -M main
-git remote add origin <repo-url>
-git push -u origin main
-```
+- Production/homepage: `https://portfolio-ebon-three-n7rtoljc0n.vercel.app`
+- GitHub Pages dev deployment: `https://smb1947.github.io/portfolio/`
+- Repository: `https://github.com/smb1947/portfolio`
 
-## Vercel Deployment
+The app is statically exported through `next.config.ts`.
 
-1. Create or import a project in Vercel.
-2. Connect the GitHub repository.
-3. Vercel should automatically detect the Next.js framework preset.
-4. Deploy.
-5. Future pushes to `main` can redeploy automatically once production is connected in Vercel.
+Deployment commands:
 
-## Deployment Channels
+- Standard static build: `npm run build`
+- GitHub Pages build: `npm run build:github-pages`
+- Cloudflare-compatible build: `npm run build:cloudflare`
 
-The app keeps GitHub Pages behavior behind an environment flag so other hosts can use a normal Next.js build.
+## Workflow
 
-- Standard Next.js build: `npm run build`
-- GitHub Pages static export: `npm run build:github-pages`
-- Cloudflare Pages static export: `npm run build:cloudflare`
-- GitHub Pages dev workflow: `.github/workflows/deploy-pages.yml`
+- Work happens on `dev`.
+- Pull requests are opened from `dev` to `main`.
+- The GitHub Pages workflow deploys from `dev`.
+- Keep content centralized and avoid scattering portfolio copy across components.
 
-`next.config.ts` always enables `output: "export"` so the build emits the static `out/` directory required by Cloudflare's Wrangler upload flow. GitHub Pages also gets `basePath` and `assetPrefix`; Cloudflare Pages exports at the domain root. This keeps the code deployable to GitHub Pages, Cloudflare Pages, Vercel, or another static-capable host without rewriting application code.
+## What To Update
 
-### Cloudflare Pages
+When refreshing the site, the usual files are:
 
-Use these Cloudflare Pages settings:
-
-- Build command: `npm run build`
-- Build output directory: `out`
-- Root directory: repository root
-- Deploy command: `npx wrangler versions upload`
-
-`wrangler.jsonc` points Wrangler at `./out`, so Cloudflare's deploy command can upload the exported static assets without a Worker entry point.
-
-Cloudflare Web Analytics can be enabled either in the Cloudflare dashboard through automatic injection, or by setting `NEXT_PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN` in Cloudflare Pages and redeploying. Do not use both methods at the same time, or the beacon can be loaded twice. The app uses path-based section routes like `/about` and `/experience`, so Cloudflare's SPA tracking can count section navigation as page views.
-
-### Branch Deployment Behavior
-
-- Pushes to `dev` automatically deploy the GitHub Pages site at `https://smb1947.github.io/portfolio/` through the `github-pages-dev` environment.
-- The `github-pages-dev` environment is restricted to the `dev` branch.
-- Pushes to `main` do not deploy GitHub Pages. Use `main` for production once Vercel is connected.
-
-## Updating Content
-
-Most site content lives in `src/lib/data.ts`, including navigation, projects, principles, timeline items, writing placeholders, and contact links.
-
-Update placeholder contact links in `contactLinks` when real profiles are ready:
-
-- Email
-- LinkedIn
-- GitHub
-- Medium
-
-## Adding a New Exploration
-
-1. Add a new object to the `explorations` array in `src/lib/data.ts`.
-2. Choose a unique `slug`.
-3. Add title, subtitle, tags, metadata, and section copy.
-4. Reuse an existing `visual` type or add a new visual treatment in `src/components/ProjectVisual.tsx`.
-5. The index and detail page will update automatically.
+- `src/lib/content.json` for experience, education, projects, links, and contact content.
+- `src/lib/data.ts` for profile framing, capabilities, navigation, and helper mappings.
+- `public/` for images and logos.
