@@ -14,6 +14,7 @@ Guidance for future Codex work on this portfolio.
 ## Technical Rules
 
 - Keep code modular, readable, and aligned with existing component patterns.
+- Git workflow: make requested changes directly on the `dev` branch and create pull requests from `dev` to `main`. Do not create separate feature branches unless the user explicitly asks.
 - Use Tailwind utilities, but keep class usage understandable.
 - Do not add external services, a CMS, analytics, or paid dependencies unless requested.
 - Prefer existing components and data patterns over introducing new abstractions.
