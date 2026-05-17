@@ -24,6 +24,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import {
   formatExperienceDuration,
+  formatProjectDuration,
   aboutProfile,
   portfolio
 } from "@/lib/data";
@@ -305,9 +306,14 @@ function ProjectCard({
     >
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
-        <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
-          {project.title}
-        </h4>
+        <div className="min-w-0">
+          <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
+            {project.title}
+          </h4>
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+            {formatProjectDuration(project)}
+          </p>
+        </div>
       </div>
       <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
       <ProjectResourceActions project={project} experience={experience} section={section} />

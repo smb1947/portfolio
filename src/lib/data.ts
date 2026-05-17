@@ -26,6 +26,8 @@ export type ContactMethod = {
 
 export type Project = {
   title: string;
+  from: string;
+  to: string;
   link: {
     label: string;
     url: string;
@@ -78,6 +80,26 @@ export type ContactFormContent = {
   linkUrl?: string;
 };
 
+export type AboutProfileItem = {
+  title: string;
+  description: string;
+};
+
+export type FeaturedProject = {
+  title: string;
+  description: string;
+};
+
+export type AboutProfile = {
+  title: string;
+  context: string;
+  intro: string[];
+  capabilities: AboutProfileItem[];
+  operatingModel: AboutProfileItem[];
+  featuredProjects: FeaturedProject[];
+  personalSignals: string[];
+};
+
 export type PortfolioContent = {
   site: {
     name: string;
@@ -90,6 +112,7 @@ export type PortfolioContent = {
   resume: Resume;
   contact: ContactMethod[];
   contactForm: ContactFormContent;
+  aboutProfile: AboutProfile;
   experiences: Experience[];
 };
 
@@ -106,83 +129,7 @@ export const navLinks = [
   { label: "Contact", href: "/contact" }
 ];
 
-export const aboutProfile = {
-  title: "AI-First Technical Product Manager",
-  context: "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · UW Foster STEM MBA ’26",
-  intro: [
-    "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
-    "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
-  ],
-  capabilities: [
-    {
-      title: "Customer & Behavioral Psychology",
-      description: "Understanding how users think, struggle, decide, and adopt products."
-    },
-    {
-      title: "AI-First Product Building",
-      description: "Using AI to rethink workflows, reduce friction, and create new product experiences."
-    },
-    {
-      title: "Data-Driven Product Judgment",
-      description: "Turning customer signals, usage patterns, and business context into better product decisions."
-    },
-    {
-      title: "Business Acumen",
-      description: "Connecting customer needs, market context, financial tradeoffs, and go-to-market realities into product decisions that create durable business value."
-    },
-    {
-      title: "Technical Depth",
-      description: "Working credibly with engineering teams across cloud infrastructure, distributed systems, scalability, and reliability."
-    },
-    {
-      title: "Cross-Functional Collaboration",
-      description: "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
-    }
-  ],
-  operatingModel: [
-    {
-      title: "Deliberate",
-      description: "Discipline, consistency, attention to detail, and simplicity."
-    },
-    {
-      title: "Analytical",
-      description: "Systematic thinking, observation, long-term orientation, and outcome-driven decisions."
-    },
-    {
-      title: "Human-Centered",
-      description: "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
-    }
-  ],
-  featuredProjects: [
-    {
-      title: "StreakFit",
-      description: "A behavioral psychology-informed GenAI product built in three hours at the OpenAI Codex Hackathon after six customer interviews on student wellness pain points."
-    },
-    {
-      title: "Bumble Barney GenAI Wingman",
-      description: "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
-    },
-    {
-      title: "HeyLily GenAI Scam-Call Assistant",
-      description: "A GenAI scam-call assistant for seniors built by an 11-member design, engineering, and business team, backed by 15+ interviews and B2B2C GTM planning."
-    },
-    {
-      title: "Spotify MiniMix",
-      description: "A GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation using dynamic song-feature selection."
-    },
-    {
-      title: "AI Hike Researcher",
-      description: "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
-    }
-  ],
-  personalSignals: [
-    "Behavioral psychology",
-    "Hiking",
-    "Gym",
-    "Poker",
-    "Anime"
-  ]
-};
+export const aboutProfile = portfolio.aboutProfile;
 
 export const contactIconMap = {
   email: Mail,
@@ -217,6 +164,18 @@ export function formatExperienceDuration(experience: Experience) {
   }
 
   return `${experience.from} - ${experience.to}`;
+}
+
+export function formatProjectDuration(project: Project) {
+  if (!project.from) {
+    return project.to;
+  }
+
+  if (!project.to || project.from === project.to) {
+    return project.from;
+  }
+
+  return `${project.from} - ${project.to}`;
 }
 
 export const projectCount = portfolio.experiences.reduce(
