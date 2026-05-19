@@ -9,12 +9,11 @@ Reference list for project-level skills and tools. The website currently keeps t
 | StreakFit | Customer interviews; Needs synthesis; Behavioral psychology | OpenAI Codex; Figma; Interview notes |
 | Asana Sales Strategy and GTM Assessment | Competitive analysis; PLG vs. SLG strategy; Positioning | Market research; GTM scorecard; Strategy deck |
 | HeyLily GenAI Scam-Call Assistant | Cross-functional leadership; User research; B2B2C strategy | Android prototype; Interview synthesis; GTM model |
-| Product Teardown Series | Community building; Product critique; Facilitation | Event programming; Product teardown templates; Discussion guides |
+| Product Teardown Series | Community building; Product critique; Event marketing | Event programming; Product teardown templates; Luma; Marketing copy |
 | Roblox Foster Case | M&A strategy; Valuation; Synergy analysis | Market research; Financial analysis; Case deck |
 | Microsoft 365 Copilot GTM Strategy | Go-to-market strategy; Market sizing; Positioning | Strategy deck; Market analysis; Value model |
 | Quantum Tech Partners Gaming GTM | Market sizing; Investment analysis; Target prioritization | Market research; Developer map; Publisher map |
 | SBS Consulting Strategy | Client research; Strategic analysis; Recommendation design | Research synthesis; Strategy deck; Market analysis |
-| Tech Club Event Marketing | Event marketing; Audience messaging; Visual communication | Luma; Poster design; Marketing copy |
 | Bumble Barney GenAI Wingman | App review analysis; Root-cause analysis; Product ideation | App Store reviews; User pain-point synthesis; Concept brief |
 | Netflix Circle Wireframes | Wireframing; Social discovery; Onboarding design | Whimsical; Journey mapping; UX flows |
 | Netflix New User Onboarding Journey Map | User persona; Journey mapping; Activation analysis | Figma; Persona mapping; Onboarding audit |

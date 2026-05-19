@@ -88,19 +88,11 @@ Developed a structured consulting analysis for SBS, turning client context, mark
 
 ## Tech Club Work
 
-### Product Teardowns
+### Product Teardown Series
 
-Launched and facilitated a Foster Tech Club product teardown series that helped students deconstruct world-class products, discuss product strategy, and build sharper product critique skills. Produced three events with 110+ attendees.
+Ideated, launched, and ran the Foster Tech Club program that made product thinking more social and hands-on; created event marketing, posters, Luma pages, and audience messaging; produced three teardown events with 110+ attendees.
 
 - Doc: https://drive.google.com/drive/folders/1m-FFKfevWguf3x7LTzPfVcA3bGwagrTz?usp=sharing
-- Code:
-- Demo:
-
-### Event Marketing and Messaging
-
-Created event marketing assets, posters, and audience-facing messaging for Foster Tech Club programming, translating event goals into clear promotional content and registration flows.
-
-- Doc:
 - Code:
 - Demo: https://luma.com/user/smb007
 
