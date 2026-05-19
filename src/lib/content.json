@@ -618,7 +618,7 @@
         "description": "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
       }
     ],
-    "personalSignalsHeading": "What can you quiz me on?",
+    "personalSignalsHeading": "What I can geek out on",
     "personalSignals": [
       "Behavioral psychology",
       "Hiking",
@@ -627,6 +627,6 @@
       "Anime"
     ],
     "contactHeading": "How to Contact Me",
-    "contactIntro": "Liked my work, have an idea to collaborate on, or just want to geek out on product psychology? I’d be happy to hear from you. ☕"
+    "contactIntro": "Liked my work, have an idea to collaborate on, or just want to geek out on any of my interests? I’d be happy to hear from you. ☕"
   }
 }
