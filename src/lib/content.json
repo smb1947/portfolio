@@ -548,8 +548,9 @@
       "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
       "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
     ],
-    "featuredProductsHeading": "What are the fun products I’ve worked on?",
+    "featuredProductsHeading": "What have I been building?",
     "featuredProductsIntro": "A few things I’ve built, tested, pitched, or helped bring to life — from AI helpers and music workflows to community product events. Some are polished, some are scrappy, and all of them taught me something useful about people, behavior, and product craft.",
+    "capabilitiesHeading": "What do I bring to the table?",
     "capabilities": [
       {
         "title": "Customer & Behavioral Psychology",
@@ -576,6 +577,7 @@
         "description": "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
       }
     ],
+    "operatingModelHeading": "What’s my modus operandi?",
     "operatingModel": [
       {
         "title": "Agency",
@@ -616,12 +618,15 @@
         "description": "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
       }
     ],
+    "personalSignalsHeading": "What can you quiz me on?",
     "personalSignals": [
       "Behavioral psychology",
       "Hiking",
       "Gym",
       "Poker",
       "Anime"
-    ]
+    ],
+    "contactHeading": "How to Contact Me",
+    "contactIntro": "Liked my work, have an idea to collaborate on, or just want to geek out on product psychology? I’d be happy to hear from you. ☕"
   }
 }

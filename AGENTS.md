@@ -19,6 +19,7 @@ Guidance for future Codex work on this portfolio.
 - Do not add external services, a CMS, analytics, or paid dependencies unless requested.
 - Prefer existing components and data patterns over introducing new abstractions.
 - Keep copy and layout changes scoped to the user's request.
+- When the user proposes copy or design wording, evaluate it critically before applying it. Preserve the user's intent and voice, but call out tradeoffs and make small improvements when wording can be clearer, more portfolio-specific, or more consistent with the site.
 
 ## Workflow
 

@@ -96,10 +96,15 @@ export type AboutProfile = {
   intro: string[];
   featuredProductsHeading: string;
   featuredProductsIntro: string;
+  capabilitiesHeading: string;
   capabilities: AboutProfileItem[];
+  operatingModelHeading: string;
   operatingModel: AboutProfileItem[];
   featuredProducts: FeaturedProject[];
+  personalSignalsHeading: string;
   personalSignals: string[];
+  contactHeading: string;
+  contactIntro: string;
 };
 
 export type PortfolioContent = {

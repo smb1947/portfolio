@@ -499,7 +499,9 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Core Capabilities</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+            {aboutProfile.capabilitiesHeading}
+          </h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
@@ -516,7 +518,9 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Modus Operandi</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+            {aboutProfile.operatingModelHeading}
+          </h3>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
@@ -533,7 +537,9 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Personal Interests</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+            {aboutProfile.personalSignalsHeading}
+          </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
               <li
@@ -577,9 +583,9 @@ export default function Home() {
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>How to Contact Me</SectionHeading>
+        <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
         <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
-          Liked my work, have an idea to collaborate on, or just want to chat? I’d be happy to hear from you. ☕
+          {aboutProfile.contactIntro}
         </p>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
           <div className="flex flex-wrap gap-3">
