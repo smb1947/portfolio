@@ -115,7 +115,6 @@ export type PortfolioContent = {
     description: string;
     location: string;
   };
-  about: string;
   resume: Resume;
   contact: ContactMethod[];
   contactForm: ContactFormContent;
@@ -253,7 +252,6 @@ export const principles = [
   }
 ];
 export const timelineItems: { title: string; description: string; icon: LucideIcon }[] = [];
-export const aboutSections = [{ title: "About", body: portfolio.about }];
 export const values = principles;
 export const writingPosts = [];
 export { MapPin };
