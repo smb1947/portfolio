@@ -578,16 +578,16 @@
     ],
     "operatingModel": [
       {
-        "title": "Deliberate",
-        "description": "Discipline, consistency, attention to detail, and simplicity."
-      },
-      {
-        "title": "Analytical",
-        "description": "Systematic thinking, observation, long-term orientation, and outcome-driven decisions."
+        "title": "Agency",
+        "description": "Driven, high ownership, comfort with ambiguity, proactive problem-solving, and outcome-focused execution."
       },
       {
         "title": "Human-Centered",
-        "description": "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
+        "description": "Listening for signals, understanding motivations, mentorship, and collaborative alignment."
+      },
+      {
+        "title": "Thoughtful",
+        "description": "Deliberate thinking, simplicity, attention to detail, and long-term orientation."
       }
     ],
     "featuredProducts": [
