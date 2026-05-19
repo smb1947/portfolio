@@ -198,28 +198,29 @@
           "description": "Led an 11-member cross-functional team across design, engineering, and business to build HeyLily, a Hiya competitor and GenAI scam-call assistant for seniors. Ran 15+ user interviews, guided development of an android call app, and crafted a 5-year B2B2C go-to-market model.",
           "doc": "",
           "code": "",
-          "demo": "https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final?node-id=5073-298&t=3PUqZmh69iUGjvfl-0",
+          "demo": "https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final",
           "from": "Sep 2024",
           "to": "Mar 2026"
         },
         {
-          "title": "Product Teardown Series",
+          "title": "Product Teardown Series + Tech Club Event Marketing",
           "link": {
-            "label": "Program notes",
+            "label": "Event hub",
             "url": ""
           },
-          "demo": "",
+          "demo": "https://luma.com/user/smb007",
           "skills": [
             "Community building",
             "Product critique",
-            "Facilitation"
+            "Event marketing"
           ],
           "tools": [
             "Event programming",
             "Product teardown templates",
-            "Discussion guides"
+            "Luma",
+            "Marketing copy"
           ],
-          "description": "Launched a new Product Teardown series to deconstruct world-class products, producing three events with 110+ attendees.",
+          "description": "Built Foster Tech Club programming that made product thinking more social and hands-on, pairing a Product Teardown series with event marketing, posters, Luma pages, and audience messaging. Produced three teardown events with 110+ attendees.",
           "doc": "https://drive.google.com/drive/folders/1m-FFKfevWguf3x7LTzPfVcA3bGwagrTz?usp=sharing",
           "code": "",
           "from": "Sep 2024",
@@ -313,29 +314,6 @@
           ],
           "description": "Developed a structured consulting analysis for SBS, turning client context, market research, and strategic signals into prioritized recommendations, supporting rationale, and an executive-ready presentation.",
           "doc": "https://drive.google.com/file/d/1Y_R9-I6kk6mykYyAv23QMf89o_WfAJzE/view?usp=sharing",
-          "code": "",
-          "from": "Sep 2024",
-          "to": "Mar 2026"
-        },
-        {
-          "title": "Tech Club Event Marketing",
-          "link": {
-            "label": "Event page",
-            "url": ""
-          },
-          "demo": "https://luma.com/user/smb007",
-          "skills": [
-            "Event marketing",
-            "Audience messaging",
-            "Visual communication"
-          ],
-          "tools": [
-            "Luma",
-            "Poster design",
-            "Marketing copy"
-          ],
-          "description": "Created event marketing assets, posters, and audience-facing messaging for Foster Tech Club programming, translating event goals into clear promotional content and registration flows.",
-          "doc": "",
           "code": "",
           "from": "Sep 2024",
           "to": "Mar 2026"
@@ -570,6 +548,8 @@
       "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
       "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
     ],
+    "featuredProductsHeading": "What are the fun products I’ve worked on?",
+    "featuredProductsIntro": "A few things I’ve built, tested, pitched, or helped bring to life — from AI helpers and music workflows to community product events. Some are polished, some are scrappy, and all of them taught me something useful about people, behavior, and product craft.",
     "capabilities": [
       {
         "title": "Customer & Behavioral Psychology",
@@ -610,14 +590,10 @@
         "description": "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
       }
     ],
-    "featuredProjects": [
+    "featuredProducts": [
       {
         "title": "StreakFit",
         "description": "A behavioral psychology-informed GenAI product built in three hours at the OpenAI Codex Hackathon after six customer interviews on student wellness pain points."
-      },
-      {
-        "title": "Bumble Barney GenAI Wingman",
-        "description": "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
       },
       {
         "title": "HeyLily GenAI Scam-Call Assistant",
@@ -630,6 +606,14 @@
       {
         "title": "AI Hike Researcher",
         "description": "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
+      },
+      {
+        "title": "Product Teardown Series + Tech Club Event Marketing",
+        "description": "A Foster Tech Club programming and marketing effort that made product critique more hands-on through teardown events, audience messaging, and event campaigns."
+      },
+      {
+        "title": "Bumble Barney GenAI Wingman",
+        "description": "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
       }
     ],
     "personalSignals": [
