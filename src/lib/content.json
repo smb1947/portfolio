@@ -106,7 +106,9 @@
           ],
           "description": "Architected a cost- and time-efficient AI Hike Researcher, an agentic skill that automates real-time data gathering across six safety-critical dimensions, reducing weekly planning time by 98% through staged research and personalized filtering.",
           "doc": "",
-          "code": "https://github.com/smb1947/vibing/tree/main/hiking"
+          "code": "https://github.com/smb1947/vibing/tree/main/hiking",
+          "from": "Sep 2024",
+          "to": "Ongoing"
         },
         {
           "title": "Spotify MiniMix",
@@ -127,7 +129,9 @@
           ],
           "description": "Built a GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation, using dynamic song-feature selection and improving relevance by 73% versus a rule-based baseline in project testing.",
           "doc": "https://docs.google.com/document/d/1TAZJYFGwsECSZBnXRbaKKpg1vIf6z9akTHhqQDNJm3M/edit?usp=sharing",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Ongoing"
         },
         {
           "title": "StreakFit",
@@ -148,7 +152,9 @@
           ],
           "description": "Discovered student wellness pain points through six customer interviews, synthesized unmet needs, and built a behavioral psychology-informed GenAI product in three hours at the OpenAI Codex Hackathon.",
           "doc": "",
-          "code": "https://github.com/smb1947/vibing/tree/main/streakfit"
+          "code": "https://github.com/smb1947/vibing/tree/main/streakfit",
+          "from": "Sep 2024",
+          "to": "Ongoing"
         },
         {
           "title": "Asana Sales Strategy and GTM Assessment",
@@ -169,7 +175,9 @@
           ],
           "description": "Benchmarked Asana's sales strategy and go-to-market motion across nine dimensions, recommending clearer PLG vs. SLG guidance and competitive differentiation. Awarded 1st place for best assessment out of eight teams.",
           "doc": "https://canva.link/w5bg1przezf18k4",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         },
         {
           "title": "HeyLily GenAI Scam-Call Assistant",
@@ -190,28 +198,33 @@
           "description": "Led an 11-member cross-functional team across design, engineering, and business to build HeyLily, a Hiya competitor and GenAI scam-call assistant for seniors. Ran 15+ user interviews, guided development of an android call app, and crafted a 5-year B2B2C go-to-market model.",
           "doc": "",
           "code": "",
-          "demo": "https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final?node-id=5073-298&t=3PUqZmh69iUGjvfl-0"
+          "demo": "https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         },
         {
-          "title": "Product Teardown Series",
+          "title": "Product Teardown Series + Tech Club Event Marketing",
           "link": {
-            "label": "Program notes",
+            "label": "Event hub",
             "url": ""
           },
-          "demo": "",
+          "demo": "https://luma.com/user/smb007",
           "skills": [
             "Community building",
             "Product critique",
-            "Facilitation"
+            "Event marketing"
           ],
           "tools": [
             "Event programming",
             "Product teardown templates",
-            "Discussion guides"
+            "Luma",
+            "Marketing copy"
           ],
-          "description": "Launched a new Product Teardown series to deconstruct world-class products, producing three events with 110+ attendees.",
+          "description": "Built Foster Tech Club programming that made product thinking more social and hands-on, pairing a Product Teardown series with event marketing, posters, Luma pages, and audience messaging. Produced three teardown events with 110+ attendees.",
           "doc": "https://drive.google.com/drive/folders/1m-FFKfevWguf3x7LTzPfVcA3bGwagrTz?usp=sharing",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         },
         {
           "title": "Roblox Foster Case",
@@ -232,7 +245,9 @@
           ],
           "description": "Proposed Roblox, a user-generated-content platform, as the acquirer for Shutterstock in the Foster Case Competition. Presented a $1.5B valuation and synergy analysis showing how Shutterstock assets could expand Roblox creator tools, content quality, and market share.",
           "doc": "https://drive.google.com/file/d/1Cutqu6X0Y3DZu96bkY4LwCZSCeCzsfMZ/view?usp=drive_link",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         },
         {
           "title": "Microsoft 365 Copilot GTM Strategy",
@@ -253,7 +268,9 @@
           ],
           "description": "Developed a go-to-market strategy for Microsoft 365 Copilot to capture 1% of the U.S. university student market, modeling $2.9M in value over four years. Positioned Copilot as a Gen Z-facing AI productivity product through campus adoption, value messaging, and education-focused GTM tactics.",
           "doc": "https://docs.google.com/presentation/d/10VuZnPZ5pZWoKns6Z-sSELhXx2ZazbUi/edit?usp=sharing&ouid=102121910561907720427&rtpof=true&sd=true",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         },
         {
           "title": "Quantum Tech Partners Gaming GTM",
@@ -274,7 +291,9 @@
           ],
           "description": "Produced four milestone reports on South Korea's gaming sector, covering market sizing, developer and publisher mapping, growth themes, and investment analysis. Turned the research into a prioritized outreach list of six targets to guide 2025 go-to-market planning.",
           "doc": "https://drive.google.com/file/d/1FUK6K_u_iYryK-SOCpGBpZIlV8l9O9Mm/view?usp=sharing",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         },
         {
           "title": "SBS Consulting Strategy",
@@ -295,28 +314,9 @@
           ],
           "description": "Developed a structured consulting analysis for SBS, turning client context, market research, and strategic signals into prioritized recommendations, supporting rationale, and an executive-ready presentation.",
           "doc": "https://drive.google.com/file/d/1Y_R9-I6kk6mykYyAv23QMf89o_WfAJzE/view?usp=sharing",
-          "code": ""
-        },
-        {
-          "title": "Tech Club Event Marketing",
-          "link": {
-            "label": "Event page",
-            "url": ""
-          },
-          "demo": "https://luma.com/user/smb007",
-          "skills": [
-            "Event marketing",
-            "Audience messaging",
-            "Visual communication"
-          ],
-          "tools": [
-            "Luma",
-            "Poster design",
-            "Marketing copy"
-          ],
-          "description": "Created event marketing assets, posters, and audience-facing messaging for Foster Tech Club programming, translating event goals into clear promotional content and registration flows.",
-          "doc": "",
-          "code": ""
+          "code": "",
+          "from": "Sep 2024",
+          "to": "Mar 2026"
         }
       ]
     },
@@ -352,7 +352,9 @@
           ],
           "description": "Analyzed 100 one-star Bumble App Store ratings, root-caused the recurring no-matches problem, brainstormed solutions, and proposed Bumble Barney, a GenAI wingman intended to decrease no matches by 10%. Won 2nd rank in the February NextLeap Capstone project.",
           "doc": "",
-          "code": ""
+          "code": "",
+          "from": "Feb 2023",
+          "to": "Feb 2023"
         },
         {
           "title": "Netflix Circle Wireframes",
@@ -373,7 +375,9 @@
           ],
           "description": "Designed wireframes for a Netflix social discovery concept, exploring how friend circles, onboarding, and recommendation flows could make content discovery more social and habit-forming.",
           "doc": "",
-          "code": ""
+          "code": "",
+          "from": "Feb 2023",
+          "to": "Feb 2023"
         },
         {
           "title": "Netflix New User Onboarding Journey Map",
@@ -394,7 +398,9 @@
           ],
           "description": "Created a user persona and mapped Netflix's new-user onboarding journey to identify friction points, emotional states, and opportunities to improve activation, personalization, and first-session value. Published the journey map on Figma, where it received 650+ uses and 17+ likes.",
           "doc": "",
-          "code": ""
+          "code": "",
+          "from": "Feb 2023",
+          "to": "Feb 2023"
         },
         {
           "title": "Figma Product Design Work",
@@ -415,7 +421,9 @@
           ],
           "description": "Collected product design explorations in Figma, including journey maps, wireframes, and interface concepts that show product thinking across discovery, interaction design, and user experience.",
           "doc": "",
-          "code": ""
+          "code": "",
+          "from": "Feb 2023",
+          "to": "Feb 2023"
         }
       ]
     },
@@ -465,7 +473,9 @@
           ],
           "description": "Spearheaded the 0-to-1 development and launch of a Windows CLI client using WSL2 virtualization for Blob NFS, unlocking a new Windows segment and onboarding 150+ B2B customers while partnering with product leadership on go-to-market strategy.",
           "doc": "https://www.powershellgallery.com/packages/WSLBlobNFS/1.1.0",
-          "code": "https://github.com/Azure/BlobNFS-wsl2/tree/develop"
+          "code": "https://github.com/Azure/BlobNFS-wsl2/tree/develop",
+          "from": "Jul 2018",
+          "to": "Jul 2024"
         },
         {
           "title": "BlobNFS Troubleshooting Tool",
@@ -486,7 +496,9 @@
           ],
           "description": "Built troubleshooting tooling to diagnose Azure Blob NFS issues, collect useful logs, and support faster root-cause analysis for users and Azure support workflows.",
           "doc": "",
-          "code": "https://github.com/Azure/blobnfs-troubleshoot/tree/develop"
+          "code": "https://github.com/Azure/blobnfs-troubleshoot/tree/develop",
+          "from": "Jul 2018",
+          "to": "Jul 2024"
         }
       ]
     },
@@ -522,9 +534,94 @@
           ],
           "description": "Built a GenAI tool that transforms hand-drawn sketches into realistic images using Convolutional Neural Networks and Generative Adversarial Networks. Won 2nd place in the final-year project competition for applying computer vision and generative modeling to creative image generation.",
           "doc": "",
-          "code": ""
+          "code": "",
+          "from": "Aug 2014",
+          "to": "Jun 2018"
         }
       ]
     }
-  ]
+  ],
+  "aboutProfile": {
+    "title": "AI-First Technical Product Manager",
+    "context": "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · UW Foster STEM MBA ’26",
+    "intro": [
+      "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
+      "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
+    ],
+    "featuredProductsHeading": "What are the fun products I’ve worked on?",
+    "featuredProductsIntro": "A few things I’ve built, tested, pitched, or helped bring to life — from AI helpers and music workflows to community product events. Some are polished, some are scrappy, and all of them taught me something useful about people, behavior, and product craft.",
+    "capabilities": [
+      {
+        "title": "Customer & Behavioral Psychology",
+        "description": "Understanding how users think, struggle, decide, and adopt products."
+      },
+      {
+        "title": "AI-First Product Building",
+        "description": "Using AI to rethink workflows, reduce friction, and create new product experiences."
+      },
+      {
+        "title": "Data-Driven Product Judgment",
+        "description": "Turning customer signals, usage patterns, and business context into better product decisions."
+      },
+      {
+        "title": "Business Acumen",
+        "description": "Connecting customer needs, market context, financial tradeoffs, and go-to-market realities into product decisions that create durable business value."
+      },
+      {
+        "title": "Technical Depth",
+        "description": "Working credibly with engineering teams across cloud infrastructure, distributed systems, scalability, and reliability."
+      },
+      {
+        "title": "Cross-Functional Collaboration",
+        "description": "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
+      }
+    ],
+    "operatingModel": [
+      {
+        "title": "Deliberate",
+        "description": "Discipline, consistency, attention to detail, and simplicity."
+      },
+      {
+        "title": "Analytical",
+        "description": "Systematic thinking, observation, long-term orientation, and outcome-driven decisions."
+      },
+      {
+        "title": "Human-Centered",
+        "description": "Curiosity, empathy, inquisitiveness, abstract thinking, and high IQ + EQ."
+      }
+    ],
+    "featuredProducts": [
+      {
+        "title": "StreakFit",
+        "description": "A behavioral psychology-informed GenAI product built in three hours at the OpenAI Codex Hackathon after six customer interviews on student wellness pain points."
+      },
+      {
+        "title": "HeyLily GenAI Scam-Call Assistant",
+        "description": "A GenAI scam-call assistant for seniors built by an 11-member design, engineering, and business team, backed by 15+ interviews and B2B2C GTM planning."
+      },
+      {
+        "title": "Spotify MiniMix",
+        "description": "A GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation using dynamic song-feature selection."
+      },
+      {
+        "title": "AI Hike Researcher",
+        "description": "A cost- and time-efficient agentic skill that automates real-time data gathering across six safety-critical hike-planning dimensions."
+      },
+      {
+        "title": "Product Teardown Series + Tech Club Event Marketing",
+        "description": "A Foster Tech Club programming and marketing effort that made product critique more hands-on through teardown events, audience messaging, and event campaigns."
+      },
+      {
+        "title": "Bumble Barney GenAI Wingman",
+        "description": "A GenAI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
+      }
+    ],
+    "personalSignals": [
+      "Behavioral psychology",
+      "Hiking",
+      "Gym",
+      "Poker",
+      "Anime"
+    ]
+  }
 }
