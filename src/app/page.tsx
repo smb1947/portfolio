@@ -56,9 +56,9 @@ const capabilityIconMap: Record<string, LucideIcon> = {
 };
 
 const operatingModelIconMap: Record<string, LucideIcon> = {
-  Deliberate: BadgeCheck,
-  Analytical: Search,
-  "Human-Centered": Users
+  Agency: BadgeCheck,
+  "Human-Centered": Users,
+  Thoughtful: Search
 };
 
 const personalInterestIconMap: Record<string, LucideIcon> = {
