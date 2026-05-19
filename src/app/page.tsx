@@ -416,8 +416,8 @@ export default function Home() {
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
   const professionalExperiences = experiences.filter((experience) => experience.type === "work");
-  const featuredProjectTitles = aboutProfile.featuredProjects.map((project) => project.title);
-  const featuredProjects = experiences
+  const featuredProductTitles = aboutProfile.featuredProducts.map((product) => product.title);
+  const featuredProducts = experiences
     .flatMap((experience) =>
       experience.projects.map((project) => ({
         experience,
@@ -425,10 +425,10 @@ export default function Home() {
         section: getProjectSection(experience)
       }))
     )
-    .filter(({ project }) => featuredProjectTitles.includes(project.title))
+    .filter(({ project }) => featuredProductTitles.includes(project.title))
     .sort(
       (a, b) =>
-        featuredProjectTitles.indexOf(a.project.title) - featuredProjectTitles.indexOf(b.project.title)
+        featuredProductTitles.indexOf(a.project.title) - featuredProductTitles.indexOf(b.project.title)
     );
 
   return (
@@ -480,12 +480,14 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">My Featured Project Work</h3>
+          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+            {aboutProfile.featuredProductsHeading}
+          </h3>
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
-            Below are a few of my latest projects, some of which are still works in progress. For more project work, check out the Experience and Education sections below.
+            {aboutProfile.featuredProductsIntro}
           </p>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {featuredProjects.map(({ project, experience, section }) => (
+            {featuredProducts.map(({ project, experience, section }) => (
               <ProjectCard
                 key={project.title}
                 project={project}

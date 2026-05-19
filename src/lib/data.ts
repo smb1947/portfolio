@@ -94,9 +94,11 @@ export type AboutProfile = {
   title: string;
   context: string;
   intro: string[];
+  featuredProductsHeading: string;
+  featuredProductsIntro: string;
   capabilities: AboutProfileItem[];
   operatingModel: AboutProfileItem[];
-  featuredProjects: FeaturedProject[];
+  featuredProducts: FeaturedProject[];
   personalSignals: string[];
 };
 
