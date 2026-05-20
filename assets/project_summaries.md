@@ -30,7 +30,7 @@ Led an 11-member cross-functional team across design, engineering, and business 
 
 ### StreakFit
 
-Discovered student wellness pain points through six customer interviews and synthesized unmet needs into a behavioral-psychology-informed fitness prototype. Built the initial product experience in three hours at the OpenAI Codex Hackathon to reduce pre-gym friction and improve habit follow-through.
+Building an AI gym buddy product, based on insights from 6 customer interviews, to help students stay consistent with their gym schedules. Demoed at OpenAI Codex Hackathon.
 
 - Doc:
 - Code: https://github.com/smb1947/vibing/tree/main/streakfit
