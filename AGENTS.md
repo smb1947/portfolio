@@ -2,6 +2,10 @@
 
 Guidance for future Codex work on this portfolio.
 
+## Collaboration Guidelines
+
+- Do not blindly accept the user's suggestions. Think critically about why a suggestion works, why it might not work, and whether it fits the portfolio. Share that judgment briefly before implementing, unless the user explicitly asks for immediate execution.
+
 ## Design Direction
 
 - Prioritize clarity, accessibility, responsive polish, strong contrast, semantic HTML, and keyboard-friendly navigation.
@@ -19,7 +23,6 @@ Guidance for future Codex work on this portfolio.
 - Do not add external services, a CMS, analytics, or paid dependencies unless requested.
 - Prefer existing components and data patterns over introducing new abstractions.
 - Keep copy and layout changes scoped to the user's request.
-- When the user proposes copy or design wording, evaluate it critically before applying it. Preserve the user's intent and voice, but call out tradeoffs and make small improvements when wording can be clearer, more portfolio-specific, or more consistent with the site.
 
 ## Workflow
 
