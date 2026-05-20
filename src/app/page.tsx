@@ -6,6 +6,7 @@ import {
   Code2,
   Drama,
   Dumbbell,
+  HeartHandshake,
   Landmark,
   MapPin,
   Mountain,
@@ -19,7 +20,8 @@ import {
   Sparkles,
   Target,
   Users,
-  Wrench
+  Wrench,
+  Zap
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -56,8 +58,8 @@ const capabilityIconMap: Record<string, LucideIcon> = {
 };
 
 const operatingModelIconMap: Record<string, LucideIcon> = {
-  Agency: BadgeCheck,
-  "Human-Centered": Users,
+  Agency: Zap,
+  "Human-Centered": HeartHandshake,
   Thoughtful: Search
 };
 
