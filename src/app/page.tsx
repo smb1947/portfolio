@@ -304,7 +304,7 @@ function ProjectCard({
   return (
     <section
       id={id}
-      className="flex h-full flex-col rounded-2xl border border-line bg-background p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
+      className="flex h-full flex-col rounded-2xl border border-line bg-card p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
     >
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
