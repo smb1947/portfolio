@@ -294,17 +294,21 @@ function ProjectCard({
   project,
   experience,
   section,
-  id
+  id,
+  surface = "nested"
 }: {
   project: Project;
   experience: Experience;
   section: ProjectSection;
   id?: string;
+  surface?: "nested" | "card";
 }) {
+  const surfaceClassName = surface === "card" ? "bg-card" : "bg-background";
+
   return (
     <section
       id={id}
-      className="flex h-full flex-col rounded-2xl border border-line bg-card p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
+      className={`flex h-full flex-col rounded-2xl border border-line ${surfaceClassName} p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft`}
     >
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
@@ -495,6 +499,7 @@ export default function Home() {
                 project={project}
                 experience={experience}
                 section={section}
+                surface="card"
               />
             ))}
           </div>
