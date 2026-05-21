@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Palette, Sun, UserRound } from "lucide-react";
+import { BriefcaseBusiness, ChevronDown, GraduationCap, Home, Mail, Moon, Palette, Sun, UserRound } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
@@ -33,13 +33,17 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
-type Theme = "light" | "dark" | "ink" | "midnight";
+type Theme = "light" | "dark" | "ink" | "sage" | "clay" | "midnight" | "ocean" | "ember";
 
 const themeOptions: { id: Theme; label: string; tone: "light" | "dark" }[] = [
   { id: "light", label: "Warm Light", tone: "light" },
   { id: "dark", label: "Warm Dark", tone: "dark" },
   { id: "ink", label: "Ink & Paper", tone: "light" },
-  { id: "midnight", label: "Midnight", tone: "dark" }
+  { id: "sage", label: "Sage Museum", tone: "light" },
+  { id: "clay", label: "Clay Studio", tone: "light" },
+  { id: "midnight", label: "Midnight", tone: "dark" },
+  { id: "ocean", label: "Ocean Dusk", tone: "dark" },
+  { id: "ember", label: "Ember & Ink", tone: "dark" }
 ];
 
 const themeIds = new Set<Theme>(themeOptions.map((option) => option.id));
@@ -220,8 +224,19 @@ export function Header() {
             >
               <Palette className="h-5 w-5" aria-hidden="true" />
             </span>
+            <span className="pointer-events-none hidden min-w-0 items-center justify-between gap-2 rounded-full border border-line bg-background px-3 py-2 text-left opacity-0 shadow-sm transition-opacity duration-200 group-hover/item:opacity-100 group-focus-within/item:opacity-100 xl:flex">
+              <span className="min-w-0">
+                <span className="block text-[0.65rem] font-black uppercase tracking-[0.12em] text-coral">
+                  Theme
+                </span>
+                <span className="block truncate text-sm font-bold text-navy">
+                  {currentThemeOption.label}
+                </span>
+              </span>
+              <ChevronDown className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
+            </span>
             <select
-              className="absolute inset-0 h-full w-full cursor-pointer opacity-0 outline-none xl:static xl:h-auto xl:min-w-0 xl:appearance-none xl:bg-transparent xl:text-sm xl:font-bold xl:text-current xl:opacity-0 xl:transition-opacity xl:duration-200 xl:group-hover/item:opacity-100 xl:group-focus-within/item:opacity-100"
+              className="absolute inset-0 h-full w-full cursor-pointer opacity-0 outline-none"
               value={theme}
               aria-label="Theme"
               onChange={(event) => {
