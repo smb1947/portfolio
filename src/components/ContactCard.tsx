@@ -43,7 +43,7 @@ export function ContactCard({ item }: ContactCardProps) {
             source: "contact_section"
           });
         }}
-        className="grid h-14 w-14 place-items-center rounded-full border border-line bg-card text-coral shadow-soft transition duration-200 hover:-translate-y-1 hover:border-teal/40 hover:bg-teal hover:text-white hover:shadow-lift focus:outline-none focus:ring-4 focus:ring-teal/20"
+        className="grid h-14 w-14 place-items-center rounded-full border border-iconBorder bg-iconSurface text-iconForeground shadow-soft transition duration-200 hover:-translate-y-1 hover:border-teal/40 hover:bg-teal hover:text-white hover:shadow-lift focus:outline-none focus:ring-4 focus:ring-teal/20"
       >
         <Icon className="h-6 w-6" aria-hidden="true" />
       </a>
@@ -54,7 +54,7 @@ export function ContactCard({ item }: ContactCardProps) {
     <span
       aria-label={label}
       title={label}
-      className="grid h-14 w-14 place-items-center rounded-full border border-line bg-card text-coral shadow-soft"
+      className="grid h-14 w-14 place-items-center rounded-full border border-iconBorder bg-iconSurface text-iconForeground shadow-soft"
     >
       <Icon className="h-6 w-6" aria-hidden="true" />
     </span>

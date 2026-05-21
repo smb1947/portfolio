@@ -16,11 +16,18 @@ const config: Config = {
         coral: "var(--coral)",
         muted: "var(--muted)",
         card: "var(--card)",
-        line: "var(--border)"
+        line: "var(--border)",
+        iconSurface: "var(--icon-surface)",
+        iconForeground: "var(--icon-foreground)",
+        iconBorder: "var(--icon-border)",
+        navIconSurface: "var(--nav-icon-surface)",
+        navIconForeground: "var(--nav-icon-foreground)",
+        activeSurface: "var(--active-surface)",
+        activeForeground: "var(--active-foreground)"
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(20, 36, 50, 0.10)",
-        lift: "0 22px 70px rgba(20, 36, 50, 0.16)"
+        soft: "0 18px 60px var(--shadow-soft)",
+        lift: "0 22px 70px var(--shadow-lift)"
       },
       fontFamily: {
         serif: ["var(--font-serif)"],
