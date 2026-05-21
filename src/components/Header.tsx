@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Sun, UserRound } from "lucide-react";
+import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Palette, Sun, UserRound } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
@@ -33,7 +33,21 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
-type Theme = "light" | "dark";
+type Theme = "light" | "dark" | "ink" | "midnight";
+
+const themeOptions: { id: Theme; label: string; tone: "light" | "dark" }[] = [
+  { id: "light", label: "Warm Light", tone: "light" },
+  { id: "dark", label: "Warm Dark", tone: "dark" },
+  { id: "ink", label: "Ink & Paper", tone: "light" },
+  { id: "midnight", label: "Midnight", tone: "dark" }
+];
+
+const themeIds = new Set<Theme>(themeOptions.map((option) => option.id));
+
+function getDocumentTheme(): Theme {
+  const theme = document.documentElement.dataset.theme;
+  return themeIds.has(theme as Theme) ? (theme as Theme) : "light";
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -41,10 +55,27 @@ export function Header() {
   const sectionIds = useMemo(() => navItems.map((link) => getSectionId(link.href)).filter(Boolean), [navItems]);
   const [activeSection, setActiveSection] = useState(sectionPathMap[pathname] ?? sectionIds[0] ?? "");
   const [theme, setTheme] = useState<Theme>("light");
+  const [isThemePickerEnabled, setIsThemePickerEnabled] = useState(false);
 
   useEffect(() => {
-    const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-    setTheme(currentTheme);
+    setTheme(getDocumentTheme());
+
+    const params = new URLSearchParams(window.location.search);
+    const themePickerFlag = params.get("themePicker");
+
+    if (themePickerFlag === "1" || themePickerFlag === "true") {
+      window.localStorage.setItem("portfolio-theme-picker", "enabled");
+      setIsThemePickerEnabled(true);
+      return;
+    }
+
+    if (themePickerFlag === "0" || themePickerFlag === "false") {
+      window.localStorage.removeItem("portfolio-theme-picker");
+      setIsThemePickerEnabled(false);
+      return;
+    }
+
+    setIsThemePickerEnabled(window.localStorage.getItem("portfolio-theme-picker") === "enabled");
   }, []);
 
   useEffect(() => {
@@ -79,15 +110,21 @@ export function Header() {
     };
   }, [pathname, sectionIds]);
 
-  const toggleTheme = () => {
-    const currentTheme: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-    const nextTheme: Theme = currentTheme === "dark" ? "light" : "dark";
+  const applyTheme = (nextTheme: Theme) => {
     document.documentElement.dataset.theme = nextTheme;
     window.localStorage.setItem("portfolio-theme", nextTheme);
     setTheme(nextTheme);
   };
 
-  const ThemeIcon = theme === "dark" ? Sun : Moon;
+  const toggleTheme = () => {
+    const currentTheme = getDocumentTheme();
+    const currentOption = themeOptions.find((option) => option.id === currentTheme) ?? themeOptions[0];
+    const nextTheme: Theme = currentOption.tone === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+  };
+
+  const currentThemeOption = themeOptions.find((option) => option.id === theme) ?? themeOptions[0];
+  const ThemeIcon = currentThemeOption.tone === "dark" ? Sun : Moon;
 
   return (
     <header className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
@@ -151,11 +188,12 @@ export function Header() {
         <button
           type="button"
           className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
-          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          aria-label={`Switch to ${currentThemeOption.tone === "dark" ? "light" : "dark"} mode`}
+          title={`Switch to ${currentThemeOption.tone === "dark" ? "light" : "dark"} mode`}
           onClick={(event) => {
-            const fromTheme: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-            const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
+            const fromTheme = getDocumentTheme();
+            const fromThemeOption = themeOptions.find((option) => option.id === fromTheme) ?? themeOptions[0];
+            const toTheme: Theme = fromThemeOption.tone === "dark" ? "light" : "dark";
             toggleTheme();
             trackPortfolioEvent("theme.toggle.click", {
               fromTheme,
@@ -171,9 +209,40 @@ export function Header() {
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
-            {theme === "dark" ? "Light" : "Dark"}
+            {currentThemeOption.tone === "dark" ? "Light" : "Dark"}
           </span>
         </button>
+        {isThemePickerEnabled ? (
+          <label className="group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus-within:ring-4 focus-within:ring-teal/20 xl:w-full xl:px-2">
+            <span
+              className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white"
+              title="Theme picker"
+            >
+              <Palette className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <select
+              className="absolute inset-0 h-full w-full cursor-pointer opacity-0 outline-none xl:static xl:h-auto xl:min-w-0 xl:appearance-none xl:bg-transparent xl:text-sm xl:font-bold xl:text-current xl:opacity-0 xl:transition-opacity xl:duration-200 xl:group-hover/item:opacity-100 xl:group-focus-within/item:opacity-100"
+              value={theme}
+              aria-label="Theme"
+              onChange={(event) => {
+                const nextTheme = event.currentTarget.value as Theme;
+                const fromTheme = getDocumentTheme();
+                applyTheme(nextTheme);
+                trackPortfolioEvent("theme.picker.change", {
+                  fromTheme,
+                  toTheme: nextTheme,
+                  source: "sidebar_nav"
+                });
+              }}
+            >
+              {themeOptions.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : null}
       </nav>
     </header>
   );
