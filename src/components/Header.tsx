@@ -33,17 +33,16 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
-type Theme = "light" | "dark" | "ink" | "sage" | "clay" | "midnight" | "ocean" | "ember";
+type Theme = "light" | "dark" | "ink" | "sage" | "clay" | "midnight" | "forest";
 
 const themeOptions: { id: Theme; label: string; tone: "light" | "dark" }[] = [
   { id: "light", label: "Warm Light", tone: "light" },
-  { id: "dark", label: "Warm Dark", tone: "dark" },
-  { id: "ink", label: "Ink & Paper", tone: "light" },
-  { id: "sage", label: "Sage Museum", tone: "light" },
+  { id: "ink", label: "Editorial Paper", tone: "light" },
+  { id: "sage", label: "Sage Gallery", tone: "light" },
   { id: "clay", label: "Clay Studio", tone: "light" },
   { id: "midnight", label: "Midnight", tone: "dark" },
-  { id: "ocean", label: "Ocean Dusk", tone: "dark" },
-  { id: "ember", label: "Ember & Ink", tone: "dark" }
+  { id: "forest", label: "Forest", tone: "dark" },
+  { id: "dark", label: "Ember", tone: "dark" }
 ];
 
 const themeIds = new Set<Theme>(themeOptions.map((option) => option.id));
@@ -176,7 +175,7 @@ export function Header() {
               >
                 <span
                   className={`grid h-10 w-10 flex-none place-items-center rounded-full transition ${
-                    isActive ? "bg-coral text-white shadow-soft" : "bg-background text-navy shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
+                    isActive ? "bg-activeSurface text-activeForeground shadow-soft" : "bg-navIconSurface text-navIconForeground shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
                   }`}
                 >
                   <Icon className="h-5 w-5" aria-hidden="true" />
@@ -209,7 +208,7 @@ export function Header() {
             }
           }}
         >
-          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white">
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-navIconSurface text-navIconForeground shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white">
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
@@ -219,7 +218,7 @@ export function Header() {
         {isThemePickerEnabled ? (
           <label className="group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus-within:ring-4 focus-within:ring-teal/20 xl:w-full xl:px-2">
             <span
-              className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white"
+              className="grid h-10 w-10 flex-none place-items-center rounded-full bg-navIconSurface text-navIconForeground shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white"
               title="Theme picker"
             >
               <Palette className="h-5 w-5" aria-hidden="true" />

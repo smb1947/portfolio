@@ -73,14 +73,14 @@ const personalInterestIconMap: Record<string, LucideIcon> = {
 
 function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
   return (
-    <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-coral/20 bg-coral/10 text-coral">
+    <span className="grid h-10 w-10 flex-none place-items-center rounded-xl border border-iconBorder bg-iconSurface text-iconForeground">
       <Icon className="h-5 w-5" aria-hidden="true" />
     </span>
   );
 }
 
 function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
-  return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
+  return <Icon className="h-4 w-4 flex-none text-iconForeground" aria-hidden="true" />;
 }
 
 type LogoAsset = {
