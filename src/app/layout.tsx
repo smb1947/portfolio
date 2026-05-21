@@ -53,9 +53,10 @@ export const metadata: Metadata = {
 const themeScript = `
 (() => {
   try {
+    const themeIds = ["light", "dark", "ink", "midnight"];
     const storedTheme = window.localStorage.getItem("portfolio-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : prefersDark ? "dark" : "light";
+    const theme = themeIds.includes(storedTheme) ? storedTheme : prefersDark ? "dark" : "light";
     document.documentElement.dataset.theme = theme;
   } catch {
     document.documentElement.dataset.theme = "light";
