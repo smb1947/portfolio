@@ -57,23 +57,17 @@ export function Header() {
 
   useEffect(() => {
     setTheme(getDocumentTheme());
+    window.localStorage.removeItem("portfolio-theme-picker");
 
     const params = new URLSearchParams(window.location.search);
     const themePickerFlag = params.get("themePicker");
 
     if (themePickerFlag === "1" || themePickerFlag === "true") {
-      window.localStorage.setItem("portfolio-theme-picker", "enabled");
       setIsThemePickerEnabled(true);
       return;
     }
 
-    if (themePickerFlag === "0" || themePickerFlag === "false") {
-      window.localStorage.removeItem("portfolio-theme-picker");
-      setIsThemePickerEnabled(false);
-      return;
-    }
-
-    setIsThemePickerEnabled(window.localStorage.getItem("portfolio-theme-picker") === "enabled");
+    setIsThemePickerEnabled(false);
   }, []);
 
   useEffect(() => {
