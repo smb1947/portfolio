@@ -33,15 +33,10 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
-type Theme = "light" | "dark" | "ink" | "sage" | "clay" | "midnight" | "forest";
+type Theme = "light" | "dark";
 
 const themeOptions: { id: Theme; label: string; tone: "light" | "dark" }[] = [
   { id: "light", label: "Warm Light", tone: "light" },
-  { id: "ink", label: "Editorial Paper", tone: "light" },
-  { id: "sage", label: "Sage Gallery", tone: "light" },
-  { id: "clay", label: "Clay Studio", tone: "light" },
-  { id: "midnight", label: "Midnight", tone: "dark" },
-  { id: "forest", label: "Forest", tone: "dark" },
   { id: "dark", label: "Ember", tone: "dark" }
 ];
 
