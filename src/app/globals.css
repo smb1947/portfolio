@@ -12,8 +12,8 @@
   --muted: #475569;
   --card: #ffffff;
   --border: #d6c4ad;
-  --icon-surface: #0f766e;
-  --icon-foreground: #ffffff;
+  --icon-surface: #ffffff;
+  --icon-foreground: #0f766e;
   --icon-border: rgba(15, 118, 110, 0.36);
   --nav-icon-surface: #ffffff;
   --nav-icon-foreground: #111827;
@@ -38,8 +38,8 @@
   --muted: #d6d3d1;
   --card: #292524;
   --border: #57534e;
-  --icon-surface: #fb923c;
-  --icon-foreground: #1c1917;
+  --icon-surface: #292524;
+  --icon-foreground: #fb923c;
   --icon-border: rgba(251, 146, 60, 0.46);
   --nav-icon-surface: #44403c;
   --nav-icon-foreground: #fafaf9;
@@ -62,8 +62,8 @@
   --muted: #475569;
   --card: #ffffff;
   --border: #cbd5e1;
-  --icon-surface: #2563eb;
-  --icon-foreground: #ffffff;
+  --icon-surface: #ffffff;
+  --icon-foreground: #2563eb;
   --icon-border: rgba(37, 99, 235, 0.34);
   --nav-icon-surface: #ffffff;
   --nav-icon-foreground: #0f172a;
@@ -86,8 +86,8 @@
   --muted: #3f5f4a;
   --card: #f7fff9;
   --border: #86efac;
-  --icon-surface: #047857;
-  --icon-foreground: #ffffff;
+  --icon-surface: #f7fff9;
+  --icon-foreground: #047857;
   --icon-border: rgba(4, 120, 87, 0.34);
   --nav-icon-surface: #f7fff9;
   --nav-icon-foreground: #052e16;
@@ -110,8 +110,8 @@
   --muted: #6b4a35;
   --card: #fffaf4;
   --border: #fdba74;
-  --icon-surface: #c2410c;
-  --icon-foreground: #ffffff;
+  --icon-surface: #fffaf4;
+  --icon-foreground: #c2410c;
   --icon-border: rgba(194, 65, 12, 0.36);
   --nav-icon-surface: #fffaf4;
   --nav-icon-foreground: #431407;
@@ -134,8 +134,8 @@
   --muted: #cbd5e1;
   --card: #1e293b;
   --border: #475569;
-  --icon-surface: #38bdf8;
-  --icon-foreground: #082f49;
+  --icon-surface: #1e293b;
+  --icon-foreground: #38bdf8;
   --icon-border: rgba(56, 189, 248, 0.42);
   --nav-icon-surface: #334155;
   --nav-icon-foreground: #f8fafc;
@@ -158,8 +158,8 @@
   --muted: #bbf7d0;
   --card: #064e3b;
   --border: #15803d;
-  --icon-surface: #86efac;
-  --icon-foreground: #052e16;
+  --icon-surface: #064e3b;
+  --icon-foreground: #86efac;
   --icon-border: rgba(134, 239, 172, 0.42);
   --nav-icon-surface: #166534;
   --nav-icon-foreground: #ecfdf5;
