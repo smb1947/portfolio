@@ -171,23 +171,23 @@ function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon
 
   if (title.includes("spotify")) return { label: "Spotify", icon: Radio, className: "bg-[#1db954] text-white" };
   if (title.includes("asana")) return { label: "Asana", icon: Puzzle, className: "bg-[#fc636b] text-white" };
-  if (title.includes("heylily")) return { label: "HeyLily", icon: ShieldCheck, className: "bg-teal text-white" };
+  if (title.includes("heylily")) return { label: "HeyLily", icon: ShieldCheck, className: "bg-[#0e97a0] text-white" };
   if (title.includes("roblox")) return { label: "Roblox", icon: Building2, className: "bg-[#111111] text-white" };
   if (title.includes("copilot")) return { label: "Microsoft 365 Copilot", icon: Sparkles, className: "bg-[#2563eb] text-white" };
   if (title.includes("netflix")) return { label: "Netflix", icon: PlayCircle, className: "bg-[#e50914] text-white", mark: "N" };
   if (title.includes("figma")) return { label: "Figma", icon: Puzzle, className: "bg-[#a259ff] text-white", mark: "F" };
-  if (title.includes("bumble")) return { label: "Bumble", icon: Users, className: "bg-[#ffcb37] text-navy", mark: "B" };
+  if (title.includes("bumble")) return { label: "Bumble", icon: Users, className: "bg-[#ffcb37] text-[#111827]", mark: "B" };
   if (title.includes("wslblobnfs")) return { label: "WSLBlobNFS", icon: Code2, className: "bg-[#0078d4] text-white" };
   if (title.includes("blobnfs")) return { label: "Azure Blob NFS", icon: Wrench, className: "bg-[#0078d4] text-white" };
-  if (title.includes("hike")) return { label: "AI Hike Researcher", icon: Mountain, className: "bg-teal text-white" };
-  if (title.includes("streakfit")) return { label: "StreakFit", icon: BadgeCheck, className: "bg-coral text-white" };
-  if (title.includes("teardown")) return { label: "Product Teardown Series", icon: Search, className: "bg-navy text-white" };
+  if (title.includes("hike")) return { label: "AI Hike Researcher", icon: Mountain, className: "bg-[#0e97a0] text-white" };
+  if (title.includes("streakfit")) return { label: "StreakFit", icon: BadgeCheck, className: "bg-[#f47e60] text-white" };
+  if (title.includes("teardown")) return { label: "Product Teardown Series", icon: Search, className: "bg-[#142432] text-white" };
   if (title.includes("quantum")) return { label: "Quantum Tech Partners", icon: Target, className: "bg-[#2f4858] text-white" };
   if (title.includes("sbs")) return { label: "SBS Consulting", icon: Landmark, className: "bg-[#6f4e37] text-white" };
   if (title.includes("tech club")) return { label: "Foster Tech Club", icon: School, className: "bg-[#4b2e83] text-[#b7a57a]" };
   if (title.includes("sketch")) return { label: "Sketch-to-Image", icon: Sparkles, className: "bg-[#005baa] text-white" };
 
-  return { label: projectTitle, icon: Sparkles, className: "bg-coral text-white" };
+  return { label: projectTitle, icon: Sparkles, className: "bg-[#f47e60] text-white" };
 }
 
 function ProjectLogo({ title }: { title: string }) {
