@@ -504,6 +504,44 @@
     {
       "type": "education",
       "education": {
+        "type": "Certification",
+        "name": "Advanced AI/ML Certification (ML & Deep Learning)"
+      },
+      "title": "Advanced AI/ML Certification (ML & Deep Learning)",
+      "organization": "IIIT Hyderabad",
+      "location": "Hyderabad, India",
+      "from": "Sep 2018",
+      "to": "Dec 2018",
+      "summary": "Completed an advanced AI/ML certification focused on machine learning and deep learning, placing 2nd in the capstone project.",
+      "projects": [
+        {
+          "title": "Advanced AI/ML Capstone",
+          "link": {
+            "label": "Certificate",
+            "url": "https://docs.google.com/document/d/1Bti51xc4Soj-5w127fanQG4JPM4IFSjygZcp_mlc0C8/edit?usp=sharing"
+          },
+          "demo": "",
+          "skills": [
+            "Machine learning",
+            "Deep learning",
+            "Capstone delivery"
+          ],
+          "tools": [
+            "AI/ML",
+            "Model development",
+            "Project presentation"
+          ],
+          "description": "Completed the Advanced AI/ML Certification capstone at IIIT Hyderabad and placed 2nd for the project.",
+          "doc": "",
+          "code": "",
+          "from": "Sep 2018",
+          "to": "Dec 2018"
+        }
+      ]
+    },
+    {
+      "type": "education",
+      "education": {
         "type": "Bachelors",
         "name": "Bachelor of Engineering, Computer Science"
       },
@@ -542,7 +580,7 @@
   ],
   "aboutProfile": {
     "title": "AI-First Technical Product Manager",
-    "context": "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · UW Foster STEM MBA ’26",
+    "context": "Ex-AWS PMT-ES · Ex-Microsoft Azure · UW Foster STEM MBA ’26",
     "intro": [
       "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
       "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
