@@ -444,14 +444,14 @@
       "type": "work",
       "work": {
         "companyName": "Microsoft",
-        "teamName": "Azure Storage, Migrate, and Monitor"
+        "teamName": "Azure Core Storage"
       },
-      "title": "Software Engineer 2, L62, Azure Storage, Migrate, and Monitor",
+      "title": "Technical Product Manager 2, Azure Core Storage",
       "organization": "Microsoft",
       "location": "Bangalore, India",
-      "from": "Jul 2018",
+      "from": "Jul 2021",
       "to": "Jul 2024",
-      "summary": "Built and led work across Azure Storage, Migrate, and Monitor, with experience spanning developer experience, distributed systems, UX performance, incident workflows, and cross-team delivery.",
+      "summary": "Led Azure Core Storage product and engineering work across Blob NFS, GenAI incident diagnosis, distributed caching, and high-throughput infrastructure for enterprise and HPC workloads.",
       "projects": [
         {
           "title": "WSLBlobNFS PowerShell Module and Package Distribution",
@@ -473,7 +473,7 @@
           "description": "Spearheaded the 0-to-1 development and launch of a Windows CLI client using WSL2 virtualization for Blob NFS, unlocking a new Windows segment and onboarding 150+ B2B customers while partnering with product leadership on go-to-market strategy.",
           "doc": "https://www.powershellgallery.com/packages/WSLBlobNFS/1.1.0",
           "code": "https://github.com/Azure/BlobNFS-wsl2/tree/develop",
-          "from": "Jul 2018",
+          "from": "Jul 2021",
           "to": "Jul 2024"
         },
         {
@@ -496,10 +496,24 @@
           "description": "Built troubleshooting tooling to diagnose Azure Blob NFS issues, collect useful logs, and support faster root-cause analysis for users and Azure support workflows.",
           "doc": "",
           "code": "https://github.com/Azure/blobnfs-troubleshoot/tree/develop",
-          "from": "Jul 2018",
+          "from": "Jul 2021",
           "to": "Jul 2024"
         }
       ]
+    },
+    {
+      "type": "work",
+      "work": {
+        "companyName": "Microsoft",
+        "teamName": "Azure Core Monitor & Migrate"
+      },
+      "title": "Software Engineer, Azure Core Monitor & Migrate",
+      "organization": "Microsoft",
+      "location": "Hyderabad, India",
+      "from": "Jul 2018",
+      "to": "Jul 2020",
+      "summary": "Built Azure Monitor and Migrate product experiences and cloud infrastructure improvements across UX, performance, cost, reliability, and disaster recovery.",
+      "projects": []
     },
     {
       "type": "education",
