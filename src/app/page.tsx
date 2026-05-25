@@ -52,7 +52,7 @@ const capabilityIconMap: Record<string, LucideIcon> = {
   "Customer & Behavioral Psychology": Brain,
   "AI-First Product Building": Sparkles,
   "Data-Driven Product Judgment": Target,
-  "Business Acumen": Landmark,
+  "Strategic Business Acumen": Landmark,
   "Technical Depth": Code2,
   "Cross-Functional Collaboration": Users
 };
