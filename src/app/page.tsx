@@ -107,6 +107,10 @@ function getExperienceCompanyLogo(organization: string): LogoAsset | null {
     return { src: "/logos/nextleap.svg", alt: "NextLeap logo" };
   }
 
+  if (organization.includes("IIIT Hyderabad")) {
+    return { src: "/logos/iiit-hyderabad.jpg", alt: "IIIT Hyderabad logo", compact: true };
+  }
+
   if (organization.includes("PES")) {
     return { src: "/logos/pes.png", alt: "PES University logo", compact: true };
   }
