@@ -115,7 +115,7 @@
             "label": "Private prototype",
             "url": ""
           },
-          "demo": "https://drive.google.com/drive/folders/18cTfZPGQGmYcqDHMRMsS4e3OYMMxOA1B?usp=sharing",
+          "demo": "https://canva.link/wvnqnlglxmruebt",
           "skills": [
             "Recommendation logic",
             "Experiment design",
@@ -128,7 +128,7 @@
           ],
           "description": "Built a GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation, using dynamic song-feature selection and improving relevance by 73% versus a rule-based baseline in project testing.",
           "doc": "https://docs.google.com/document/d/1TAZJYFGwsECSZBnXRbaKKpg1vIf6z9akTHhqQDNJm3M/edit?usp=sharing",
-          "code": "",
+          "code": "https://drive.google.com/drive/folders/18cTfZPGQGmYcqDHMRMsS4e3OYMMxOA1B?usp=sharing",
           "from": "Sep 2025",
           "to": "Ongoing"
         },
