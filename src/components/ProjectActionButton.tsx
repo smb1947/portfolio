@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { FileCode2, FileText, Linkedin, PlayCircle } from "lucide-react";
+import { Code, FileText, Linkedin, Presentation } from "lucide-react";
 import { trackPortfolioEvent } from "@/lib/analytics";
 
 type ProjectActionButtonProps = {
@@ -25,8 +25,8 @@ function getActionDestination(href: string) {
 const actionIconMap: Record<ProjectActionButtonProps["label"], LucideIcon> = {
   Article: FileText,
   Doc: FileText,
-  Code: FileCode2,
-  Demo: PlayCircle,
+  Code,
+  Demo: Presentation,
   Post: Linkedin
 };
 
