@@ -92,7 +92,7 @@
             "label": "Private prototype",
             "url": ""
           },
-          "demo": "",
+          "demo": "https://docs.google.com/presentation/d/12zA2U4v3IH3JdcJm89bIe6TyTNnE0__r/edit?usp=sharing&ouid=102121910561907720427&rtpof=true&sd=true",
           "skills": [
             "Agentic workflow design",
             "Personalization",
@@ -104,7 +104,7 @@
             "Research workflows"
           ],
           "description": "Architected a cost- and time-efficient AI Hike Researcher, an agentic skill that automates real-time data gathering across six safety-critical dimensions, reducing weekly planning time by 98% through staged research and personalized filtering.",
-          "doc": "",
+          "doc": "https://docs.google.com/presentation/d/12zA2U4v3IH3JdcJm89bIe6TyTNnE0__r/edit?usp=sharing&ouid=102121910561907720427&rtpof=true&sd=true",
           "code": "https://github.com/smb1947/vibing/tree/main/hiking",
           "from": "Jan 2024",
           "to": "Ongoing"
@@ -115,7 +115,7 @@
             "label": "Private prototype",
             "url": ""
           },
-          "demo": "https://drive.google.com/drive/folders/18cTfZPGQGmYcqDHMRMsS4e3OYMMxOA1B?usp=sharing",
+          "demo": "https://canva.link/wvnqnlglxmruebt",
           "skills": [
             "Recommendation logic",
             "Experiment design",
@@ -128,7 +128,7 @@
           ],
           "description": "Built a GenAI music recommendation engine in n8n for mood and occasion sub-playlist curation, using dynamic song-feature selection and improving relevance by 73% versus a rule-based baseline in project testing.",
           "doc": "https://docs.google.com/document/d/1TAZJYFGwsECSZBnXRbaKKpg1vIf6z9akTHhqQDNJm3M/edit?usp=sharing",
-          "code": "",
+          "code": "https://drive.google.com/drive/folders/18cTfZPGQGmYcqDHMRMsS4e3OYMMxOA1B?usp=sharing",
           "from": "Sep 2025",
           "to": "Ongoing"
         },
@@ -432,7 +432,7 @@
         "companyName": "Amazon Web Services",
         "teamName": "AWS FinOps"
       },
-      "title": "Senior Product Manager Technical Intern, L6, AWS FinOps",
+      "title": "Senior Product Manager Technical, AWS FinOps",
       "organization": "Amazon Web Services",
       "location": "Seattle, WA",
       "from": "Jun 2025",
@@ -444,14 +444,14 @@
       "type": "work",
       "work": {
         "companyName": "Microsoft",
-        "teamName": "Azure Storage, Migrate, and Monitor"
+        "teamName": "Azure Core Storage"
       },
-      "title": "Software Engineer 2, L62, Azure Storage, Migrate, and Monitor",
+      "title": "Technical Product Builder 2, Azure Core Storage",
       "organization": "Microsoft",
       "location": "Bangalore, India",
-      "from": "Jul 2018",
+      "from": "Jul 2021",
       "to": "Jul 2024",
-      "summary": "Built and led work across Azure Storage, Migrate, and Monitor, with experience spanning developer experience, distributed systems, UX performance, incident workflows, and cross-team delivery.",
+      "summary": "Led Azure Core Storage product and engineering work across Blob NFS, GenAI incident diagnosis, distributed caching, and high-throughput infrastructure for enterprise and HPC workloads.",
       "projects": [
         {
           "title": "WSLBlobNFS PowerShell Module and Package Distribution",
@@ -473,7 +473,7 @@
           "description": "Spearheaded the 0-to-1 development and launch of a Windows CLI client using WSL2 virtualization for Blob NFS, unlocking a new Windows segment and onboarding 150+ B2B customers while partnering with product leadership on go-to-market strategy.",
           "doc": "https://www.powershellgallery.com/packages/WSLBlobNFS/1.1.0",
           "code": "https://github.com/Azure/BlobNFS-wsl2/tree/develop",
-          "from": "Jul 2018",
+          "from": "Jul 2021",
           "to": "Jul 2024"
         },
         {
@@ -496,8 +496,60 @@
           "description": "Built troubleshooting tooling to diagnose Azure Blob NFS issues, collect useful logs, and support faster root-cause analysis for users and Azure support workflows.",
           "doc": "",
           "code": "https://github.com/Azure/blobnfs-troubleshoot/tree/develop",
-          "from": "Jul 2018",
+          "from": "Jul 2021",
           "to": "Jul 2024"
+        }
+      ]
+    },
+    {
+      "type": "work",
+      "work": {
+        "companyName": "Microsoft",
+        "teamName": "Azure Core Monitor & Migrate"
+      },
+      "title": "Software Engineer, Azure Core Monitor & Migrate",
+      "organization": "Microsoft",
+      "location": "Hyderabad, India",
+      "from": "Jul 2018",
+      "to": "Jul 2020",
+      "summary": "Built Azure Monitor and Migrate product experiences and cloud infrastructure improvements across UX, performance, cost, reliability, and disaster recovery.",
+      "projects": []
+    },
+    {
+      "type": "education",
+      "education": {
+        "type": "Certification",
+        "name": "Advanced AI/ML Certification (ML & Deep Learning)"
+      },
+      "title": "Advanced AI/ML Certification (ML & Deep Learning)",
+      "organization": "IIIT Hyderabad",
+      "location": "Hyderabad, India",
+      "from": "Sep 2018",
+      "to": "Dec 2018",
+      "summary": "Completed an advanced AI/ML certification focused on machine learning and deep learning, placing 2nd in the capstone project.",
+      "projects": [
+        {
+          "title": "Advanced AI/ML Capstone",
+          "link": {
+            "label": "Certificate",
+            "url": "https://drive.google.com/file/d/1YrWNoSuJKvceO_L97xIQviPWNCiXmF1r/view?usp=sharing"
+          },
+          "demo": "",
+          "skills": [
+            "Machine learning",
+            "Deep learning",
+            "Capstone delivery"
+          ],
+          "tools": [
+            "AI/ML",
+            "Model development",
+            "Project presentation"
+          ],
+          "description": "Completed the Advanced AI/ML Certification capstone at IIIT Hyderabad and placed 2nd for the project.",
+          "doc": "",
+          "code": "",
+          "from": "Sep 2018",
+          "to": "Dec 2018"
         }
       ]
     },
@@ -542,7 +594,7 @@
   ],
   "aboutProfile": {
     "title": "AI-First Technical Product Manager",
-    "context": "Ex-AWS PMT-ES Intern · Ex-Microsoft Azure Engineer · UW Foster STEM MBA ’26",
+    "context": "Ex-AWS PMT-ES · Ex-Microsoft Azure · UW Foster STEM MBA ’26",
     "intro": [
       "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
       "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
@@ -564,8 +616,8 @@
         "description": "Turning customer signals, usage patterns, and business context into better product decisions."
       },
       {
-        "title": "Business Acumen",
-        "description": "Connecting customer needs, market context, financial tradeoffs, and go-to-market realities into product decisions that create durable business value."
+        "title": "Strategic Business Acumen",
+        "description": "Connecting market needs, company goals, competitor research, financial tradeoffs, and go-to-market realities into product decisions that create durable business value."
       },
       {
         "title": "Technical Depth",
