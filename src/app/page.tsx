@@ -440,6 +440,7 @@ export default function Home() {
       (a, b) =>
         featuredProductTitles.indexOf(a.project.title) - featuredProductTitles.indexOf(b.project.title)
     );
+  const contactIntroText = aboutProfile.contactIntro.replace(/\s*☕\s*$/, "");
 
   return (
     <>
@@ -596,7 +597,10 @@ export default function Home() {
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
         <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
-          {aboutProfile.contactIntro}
+          {contactIntroText}{" "}
+          <span className="inline-block text-2xl leading-none align-[-0.1em]" aria-label="coffee">
+            ☕
+          </span>
         </p>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
           <div className="flex flex-wrap gap-3">
