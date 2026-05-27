@@ -15,6 +15,7 @@ import {
   Users
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { AllTrailsIcon } from "@/components/AllTrailsIcon";
 import content from "./content.json";
 
 export type ContactMethod = {
@@ -142,7 +143,8 @@ export const contactIconMap = {
   phone: Phone,
   linkedin: Linkedin,
   github: Github,
-  instagram: Instagram
+  instagram: Instagram,
+  alltrails: AllTrailsIcon
 };
 
 export const contactLinks = portfolio.contact.map((item) => ({
