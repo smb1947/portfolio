@@ -1,17 +1,19 @@
 "use client";
 
 import { BriefcaseBusiness, Github, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
+import { AllTrailsIcon } from "@/components/AllTrailsIcon";
 import type { ContactMethod } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
 
-const contactIconMap: Record<string, LucideIcon> = {
+const contactIconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   email: Mail,
   phone: Phone,
   linkedin: Linkedin,
   github: Github,
   instagram: Instagram,
-  location: MapPin
+  location: MapPin,
+  alltrails: AllTrailsIcon
 };
 
 type ContactCardProps = {

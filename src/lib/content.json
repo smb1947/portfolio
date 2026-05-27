@@ -43,12 +43,6 @@
   },
   "contact": [
     {
-      "type": "email",
-      "label": "Email",
-      "value": "smb007@uw.edu",
-      "link": "mailto:smb007@uw.edu"
-    },
-    {
       "type": "linkedin",
       "label": "LinkedIn",
       "value": "linkedin.com/in/shankarmbinj",
@@ -65,6 +59,12 @@
       "label": "Instagram",
       "value": "instagram.com/shankarmb007",
       "link": "https://www.instagram.com/shankarmb007/"
+    },
+    {
+      "type": "alltrails",
+      "label": "AllTrails",
+      "value": "alltrails.com/members/shankar-m-b",
+      "link": "https://www.alltrails.com/members/shankar-m-b"
     }
   ],
   "contactForm": {
