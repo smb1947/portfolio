@@ -8,6 +8,7 @@ import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { navLinks } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
+import { SignalTrailLogo } from "@/components/SignalTrailLogo";
 
 const navIconMap: Record<string, LucideIcon> = {
   Home,
@@ -138,7 +139,11 @@ export function Header() {
                     isActive ? "bg-coral text-white shadow-soft" : "bg-background text-navy shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
                   }`}
                 >
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                  {link.label === "Home" ? (
+                    <SignalTrailLogo className="h-7 w-7" aria-hidden="true" />
+                  ) : (
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  )}
                 </span>
                 <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
                   {link.label}
