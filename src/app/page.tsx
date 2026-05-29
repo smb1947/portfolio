@@ -211,10 +211,6 @@ function ProjectLogo({ title }: { title: string }) {
 
 type ProjectSection = "experience" | "education";
 
-function getProjectLinkActionLabel(url: string) {
-  return url.includes("linkedin.com") ? "Post" : "Article";
-}
-
 function getProjectSection(experience: Experience): ProjectSection {
   return experience.type === "education" ? "education" : "experience";
 }
@@ -248,48 +244,23 @@ function ProjectResourceActions({
   experience: Experience;
   section: ProjectSection;
 }) {
-  if (!project.link.url && !project.doc && !project.code && !project.demo) {
+  if (project.resources.length === 0) {
     return null;
   }
 
   return (
     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-      <ProjectActionButton
-        label={getProjectLinkActionLabel(project.link.url)}
-        href={project.link.url}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
-      <ProjectActionButton
-        label="Doc"
-        href={project.doc}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
-      <ProjectActionButton
-        label="Code"
-        href={project.code}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
-      <ProjectActionButton
-        label="Demo"
-        href={project.demo}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
+      {project.resources.map((resource) => (
+        <ProjectActionButton
+          key={`${resource.type}-${resource.label}-${resource.url}`}
+          resource={resource}
+          section={section}
+          experienceType={experience.type}
+          organization={experience.organization}
+          experienceTitle={experience.title}
+          projectTitle={project.title}
+        />
+      ))}
     </div>
   );
 }
