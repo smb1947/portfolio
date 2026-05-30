@@ -133,32 +133,30 @@ function ManagerNoteCard({
 }) {
   return (
     <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
-      <div className="grid gap-5 md:grid-cols-[auto_minmax(0,1fr)] md:items-start">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-4 md:gap-x-5">
         <QuoteIcon />
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
           <blockquote className="mt-3 font-serif text-xl font-semibold leading-snug text-navy md:text-2xl">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
-          <div className="mt-4 flex items-center gap-4">
-            <a
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Open LinkedIn comment"
-              title="LinkedIn Comment"
-              className="grid h-11 w-11 flex-none place-items-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
-            >
-              <Linkedin className="h-5 w-5" aria-hidden="true" />
-            </a>
-            <div className="min-w-0">
-              <p className="text-sm font-bold text-navy">{name}</p>
-              <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
-                {context}
-              </p>
-            </div>
-          </div>
+        </div>
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open LinkedIn comment"
+          title="LinkedIn Comment"
+          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+        >
+          <Linkedin className="h-5 w-5" aria-hidden="true" />
+        </a>
+        <div className="min-w-0 self-center">
+          <p className="text-sm font-bold text-navy">{name}</p>
+          <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+            {context}
+          </p>
         </div>
       </div>
     </article>
