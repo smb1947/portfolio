@@ -90,44 +90,38 @@ function ManagerNoteCard({
   quote,
   name,
   title,
+  context,
   link
 }: {
   eyebrow: string;
   quote: string;
   name: string;
   title: string;
+  context: string;
   link: string;
 }) {
   return (
     <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
-      <div className="grid gap-5 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center">
-        <div
-          className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-3xl leading-none text-coral"
-          aria-hidden="true"
-        >
-          &ldquo;
-        </div>
-        <div className="min-w-0">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="mt-3 font-serif text-2xl font-semibold leading-snug text-navy md:text-3xl">
-            &ldquo;{quote}&rdquo;
-          </blockquote>
-          <p className="mt-4 text-sm font-bold text-navy">{name}</p>
-          <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
-        </div>
+      <div className="grid gap-5 md:grid-cols-[auto_minmax(0,1fr)] md:items-start">
         <a
           href={link}
           target="_blank"
           rel="noreferrer"
           aria-label="Open LinkedIn comment"
           title="LinkedIn Comment"
-          className="group/comment inline-flex h-12 max-w-12 items-center justify-self-start overflow-hidden rounded-full border border-line bg-background px-0 text-coral shadow-sm transition-all duration-200 hover:max-w-48 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:px-4 hover:text-white focus:max-w-48 focus:px-4 focus:outline-none focus:ring-4 focus:ring-teal/20 md:justify-self-end"
+          className="grid h-12 w-12 place-items-center rounded-xl border border-line bg-background text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
         >
-          <Linkedin className="mx-[0.8125rem] h-5 w-5 flex-none transition-all duration-200 group-hover/comment:mx-0 group-focus/comment:mx-0" aria-hidden="true" />
-          <span className="ml-0 max-w-0 overflow-hidden whitespace-nowrap text-sm font-bold opacity-0 transition-all duration-200 group-hover/comment:ml-2 group-hover/comment:max-w-36 group-hover/comment:opacity-100 group-focus/comment:ml-2 group-focus/comment:max-w-36 group-focus/comment:opacity-100">
-            LinkedIn Comment
-          </span>
+          <Linkedin className="h-5 w-5" aria-hidden="true" />
         </a>
+        <div className="min-w-0">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
+          <blockquote className="mt-3 font-serif text-xl font-semibold leading-snug text-navy md:text-2xl">
+            &ldquo;{quote}&rdquo;
+          </blockquote>
+          <p className="mt-4 text-sm font-bold text-navy">{name}</p>
+          <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">{context}</p>
+        </div>
       </div>
     </article>
   );
