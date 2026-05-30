@@ -116,7 +116,7 @@ button {
 
 .coffee-cue {
   transform-origin: 50% 72%;
-  animation: coffee-cue-wiggle 10s ease-in-out infinite;
+  animation: coffee-cue-wiggle 5s ease-in-out infinite;
 }
 
 @keyframes project-resource-wiggle {
