@@ -74,6 +74,9 @@ button {
 
 .project-resource-button[data-resource-spotlight="true"] {
   max-width: 12rem;
+  border-color: color-mix(in srgb, var(--teal) 40%, transparent);
+  background: var(--teal);
+  color: #fffdf8;
   padding-left: 1rem;
   padding-right: 1rem;
   animation: project-resource-wiggle 680ms ease-in-out;
