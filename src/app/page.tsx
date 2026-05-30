@@ -650,7 +650,10 @@ export default function Home() {
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
         <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
           {contactIntroText}{" "}
-          <span className="inline-block text-2xl leading-none align-[-0.1em]" aria-label="coffee">
+          <span
+            className="coffee-cue inline-block text-3xl leading-none align-[-0.16em] md:text-4xl"
+            aria-label="coffee"
+          >
             ☕
           </span>
         </p>
