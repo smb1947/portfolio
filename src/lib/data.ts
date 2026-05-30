@@ -93,6 +93,14 @@ export type FeaturedProject = {
   description: string;
 };
 
+export type ManagerNote = {
+  eyebrow: string;
+  quote: string;
+  name: string;
+  title: string;
+  link: string;
+};
+
 export type AboutProfile = {
   title: string;
   context: string;
@@ -103,6 +111,7 @@ export type AboutProfile = {
   capabilities: AboutProfileItem[];
   operatingModelHeading: string;
   operatingModel: AboutProfileItem[];
+  managerNote: ManagerNote;
   featuredProducts: FeaturedProject[];
   personalSignalsHeading: string;
   personalSignals: string[];
