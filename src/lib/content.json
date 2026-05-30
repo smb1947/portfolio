@@ -6,41 +6,6 @@
     "description": "AI-first Technical Product Manager who turns messy human problems into clear strategy, prototypes, and roadmaps that help teams build simple, scalable products customers adopt and trust.",
     "location": "Seattle, WA"
   },
-  "resume": {
-    "summary": "A concise view of my product, strategy, and technical background across Foster STEM MBA work, NextLeap product management, AWS FinOps, Microsoft Azure engineering, and computer science education.",
-    "downloadLabel": "Download resume",
-    "downloadUrl": "/resume.pdf",
-    "highlights": [
-      "MBA candidate in Management Science (STEM) at Foster School of Business",
-      "VP of Foster Tech Club and AI product builder",
-      "Senior PM-T internship experience in AWS FinOps",
-      "Six years of Azure engineering experience across storage, migration, and monitoring"
-    ],
-    "skills": [
-      "User and market research",
-      "Customer interviews",
-      "Product strategy",
-      "Metric-driven prioritization",
-      "Go-to-market strategy",
-      "Competitive analysis",
-      "Design thinking",
-      "Cross-functional collaboration",
-      "Technical roadmapping",
-      "Developer experience"
-    ],
-    "tools": [
-      "LLMs and RAG",
-      "Claude Code",
-      "OpenAI Codex",
-      "Figma",
-      "Canva",
-      "Tableau / Power BI",
-      "AWS",
-      "Azure",
-      "Python",
-      "SQL"
-    ]
-  },
   "contact": [
     {
       "type": "linkedin",

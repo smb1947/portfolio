@@ -68,15 +68,6 @@ export type Experience = {
   projects: Project[];
 };
 
-export type Resume = {
-  summary: string;
-  downloadLabel: string;
-  downloadUrl: string;
-  highlights: string[];
-  skills: string[];
-  tools: string[];
-};
-
 export type ContactFormContent = {
   title: string;
   embedUrl: string;
@@ -128,7 +119,6 @@ export type PortfolioContent = {
     description: string;
     location: string;
   };
-  resume: Resume;
   contact: ContactMethod[];
   contactForm: ContactFormContent;
   aboutProfile: AboutProfile;
