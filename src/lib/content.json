@@ -169,11 +169,6 @@
           "to": "Ongoing",
           "resources": [
             {
-              "type": "code",
-              "label": "Code",
-              "url": "https://github.com/smb1947/vibing/tree/main/streakfit"
-            },
-            {
               "type": "demo",
               "label": "Live demo",
               "url": "https://streakfit-v2-preview.vercel.app/"
