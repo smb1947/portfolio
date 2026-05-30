@@ -25,17 +25,19 @@ export type ContactMethod = {
   link: string;
 };
 
+export type ProjectResourceType = "doc" | "code" | "demo" | "article" | "slides" | "other";
+
+export type ProjectResource = {
+  type: ProjectResourceType;
+  label: string;
+  url: string;
+};
+
 export type Project = {
   title: string;
   from: string;
   to: string;
-  link: {
-    label: string;
-    url: string;
-  };
-  doc: string;
-  code: string;
-  demo: string;
+  resources: ProjectResource[];
   skills: string[];
   tools: string[];
   description: string;

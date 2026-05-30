@@ -46,17 +46,36 @@ export const metadata: Metadata = {
     description: site.description
   },
   icons: {
-    icon: "/icon.svg"
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/brand/signal-trail-s-logo-192.png", sizes: "192x192", type: "image/png" }
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }]
   }
 };
 
 const themeScript = `
 (() => {
   try {
+    const params = new URLSearchParams(window.location.search);
+    const normalizeTheme = (theme) => theme === "graphite" ? "dark" : theme;
+    const requestedTheme = normalizeTheme(params.get("theme"));
+    const pickerEnabled = params.get("themePicker") === "1" || requestedTheme === "dark" || requestedTheme === "classic";
     const storedTheme = window.localStorage.getItem("portfolio-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : prefersDark ? "dark" : "light";
+    const allowedThemes = pickerEnabled ? ["light", "dark", "classic"] : ["light", "dark"];
+    const storedThemeValue = normalizeTheme(storedTheme);
+    const theme = allowedThemes.includes(requestedTheme)
+      ? requestedTheme
+      : allowedThemes.includes(storedThemeValue)
+        ? storedThemeValue
+        : prefersDark
+          ? "dark"
+          : "light";
     document.documentElement.dataset.theme = theme;
+    if (pickerEnabled) {
+      document.documentElement.dataset.themePicker = "true";
+    }
   } catch {
     document.documentElement.dataset.theme = "light";
   }
