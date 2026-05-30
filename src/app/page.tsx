@@ -141,13 +141,6 @@ function ManagerNoteCard({
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
           <div className="mt-4 flex items-center gap-4">
-            <div className="min-w-0">
-              <p className="text-sm font-bold text-navy">{name}</p>
-              <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
-              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
-                {context}
-              </p>
-            </div>
             <a
               href={link}
               target="_blank"
@@ -158,6 +151,13 @@ function ManagerNoteCard({
             >
               <Linkedin className="h-5 w-5" aria-hidden="true" />
             </a>
+            <div className="min-w-0">
+              <p className="text-sm font-bold text-navy">{name}</p>
+              <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+                {context}
+              </p>
+            </div>
           </div>
         </div>
       </div>
