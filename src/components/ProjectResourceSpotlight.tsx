@@ -18,47 +18,22 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
     }
 
     const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const touchInteractionQuery = window.matchMedia("(hover: none), (pointer: coarse)");
     let isInView = false;
     let activeButton: HTMLElement | null = null;
-    let collapseTimeout: number | null = null;
-    let focusFrame: number | null = null;
-    let scheduleTimeout: number | null = null;
+    let spotlightTimeout: number | null = null;
 
     const clearActiveButton = () => {
       if (activeButton) {
         activeButton.removeAttribute("data-resource-spotlight");
-        activeButton.removeAttribute("data-resource-spotlight-mode");
         activeButton = null;
       }
     };
 
-    const clearCollapseTimer = () => {
-      if (collapseTimeout) {
-        window.clearTimeout(collapseTimeout);
-        collapseTimeout = null;
+    const clearTimers = () => {
+      if (spotlightTimeout) {
+        window.clearTimeout(spotlightTimeout);
+        spotlightTimeout = null;
       }
-    };
-
-    const clearScheduleTimer = () => {
-      if (scheduleTimeout) {
-        window.clearTimeout(scheduleTimeout);
-        scheduleTimeout = null;
-      }
-    };
-
-    const stopSpotlight = () => {
-      clearScheduleTimer();
-      clearCollapseTimer();
-      clearActiveButton();
-    };
-
-    const isContainerFocused = () => {
-      const rect = container.getBoundingClientRect();
-      const focusStart = window.innerHeight * 0.18;
-      const focusEnd = window.innerHeight * 0.82;
-
-      return rect.top < focusEnd && rect.bottom > focusStart;
     };
 
     const getVisibleButtons = () =>
@@ -75,18 +50,14 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
         }
       );
 
-    const getSpotlightDuration = () => (touchInteractionQuery.matches ? null : 1900);
-
-    const getInitialDelay = () => (touchInteractionQuery.matches ? 250 : 1000);
-
     const scheduleSpotlight = (delay = 10000) => {
-      clearScheduleTimer();
+      clearTimers();
 
       if (!isInView || reduceMotionQuery.matches) {
         return;
       }
 
-      scheduleTimeout = window.setTimeout(() => {
+      spotlightTimeout = window.setTimeout(() => {
         spotlightRandomButton();
         scheduleSpotlight();
       }, delay);
@@ -106,87 +77,65 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
       }
 
       const nextButton = buttons[Math.floor(Math.random() * buttons.length)];
-      clearCollapseTimer();
       clearActiveButton();
       activeButton = nextButton;
       activeButton.setAttribute("data-resource-spotlight", "true");
-      activeButton.setAttribute(
-        "data-resource-spotlight-mode",
-        touchInteractionQuery.matches ? "touch" : "hover"
-      );
 
-      const spotlightDuration = getSpotlightDuration();
-
-      if (spotlightDuration) {
-        collapseTimeout = window.setTimeout(() => {
-          if (activeButton === nextButton) {
-            clearActiveButton();
-          }
-        }, spotlightDuration);
-      }
+      window.setTimeout(() => {
+        if (activeButton === nextButton) {
+          clearActiveButton();
+        }
+      }, 1900);
     }
 
     const startSpotlight = () => {
-      stopSpotlight();
+      clearTimers();
+      clearActiveButton();
 
       if (reduceMotionQuery.matches) {
         return;
       }
 
-      scheduleSpotlight(getInitialDelay());
+      scheduleSpotlight(1000);
     };
 
     const handleInteractionPreferenceChange = () => {
       if (isInView) {
         startSpotlight();
       } else {
-        stopSpotlight();
+        clearTimers();
+        clearActiveButton();
       }
     };
 
-    const updateFocusState = () => {
-      const nextIsInView = isContainerFocused();
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const nextIsInView = entry.isIntersecting && entry.intersectionRatio >= 0.35;
 
-      if (nextIsInView === isInView) {
-        return;
-      }
+        if (nextIsInView === isInView) {
+          return;
+        }
 
-      isInView = nextIsInView;
+        isInView = nextIsInView;
 
-      if (isInView) {
-        startSpotlight();
-      } else {
-        stopSpotlight();
-      }
-    };
+        if (isInView) {
+          startSpotlight();
+        } else {
+          clearTimers();
+          clearActiveButton();
+        }
+      },
+      { threshold: [0, 0.35, 0.6] }
+    );
 
-    const requestFocusUpdate = () => {
-      if (focusFrame) {
-        return;
-      }
-
-      focusFrame = window.requestAnimationFrame(() => {
-        focusFrame = null;
-        updateFocusState();
-      });
-    };
-
-    updateFocusState();
-    window.addEventListener("scroll", requestFocusUpdate, { passive: true });
-    window.addEventListener("resize", requestFocusUpdate);
+    observer.observe(container);
     reduceMotionQuery.addEventListener("change", handleInteractionPreferenceChange);
-    touchInteractionQuery.addEventListener("change", handleInteractionPreferenceChange);
 
     return () => {
-      if (focusFrame) {
-        window.cancelAnimationFrame(focusFrame);
-      }
-
-      window.removeEventListener("scroll", requestFocusUpdate);
-      window.removeEventListener("resize", requestFocusUpdate);
+      observer.disconnect();
       reduceMotionQuery.removeEventListener("change", handleInteractionPreferenceChange);
-      touchInteractionQuery.removeEventListener("change", handleInteractionPreferenceChange);
-      stopSpotlight();
+      clearTimers();
+      clearActiveButton();
     };
   }, []);
 
