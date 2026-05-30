@@ -18,22 +18,38 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
     }
 
     const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const touchInteractionQuery = window.matchMedia("(hover: none), (pointer: coarse)");
     let isInView = false;
     let activeButton: HTMLElement | null = null;
-    let spotlightTimeout: number | null = null;
+    let collapseTimeout: number | null = null;
+    let scheduleTimeout: number | null = null;
 
     const clearActiveButton = () => {
       if (activeButton) {
         activeButton.removeAttribute("data-resource-spotlight");
+        activeButton.removeAttribute("data-resource-spotlight-mode");
         activeButton = null;
       }
     };
 
-    const clearTimers = () => {
-      if (spotlightTimeout) {
-        window.clearTimeout(spotlightTimeout);
-        spotlightTimeout = null;
+    const clearCollapseTimer = () => {
+      if (collapseTimeout) {
+        window.clearTimeout(collapseTimeout);
+        collapseTimeout = null;
       }
+    };
+
+    const clearScheduleTimer = () => {
+      if (scheduleTimeout) {
+        window.clearTimeout(scheduleTimeout);
+        scheduleTimeout = null;
+      }
+    };
+
+    const stopSpotlight = () => {
+      clearScheduleTimer();
+      clearCollapseTimer();
+      clearActiveButton();
     };
 
     const getVisibleButtons = () =>
@@ -50,14 +66,18 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
         }
       );
 
+    const getSpotlightDuration = () => (touchInteractionQuery.matches ? 4200 : 1900);
+
+    const getInitialDelay = () => (touchInteractionQuery.matches ? 600 : 1000);
+
     const scheduleSpotlight = (delay = 10000) => {
-      clearTimers();
+      clearScheduleTimer();
 
       if (!isInView || reduceMotionQuery.matches) {
         return;
       }
 
-      spotlightTimeout = window.setTimeout(() => {
+      scheduleTimeout = window.setTimeout(() => {
         spotlightRandomButton();
         scheduleSpotlight();
       }, delay);
@@ -77,26 +97,38 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
       }
 
       const nextButton = buttons[Math.floor(Math.random() * buttons.length)];
+      clearCollapseTimer();
       clearActiveButton();
       activeButton = nextButton;
       activeButton.setAttribute("data-resource-spotlight", "true");
+      activeButton.setAttribute(
+        "data-resource-spotlight-mode",
+        touchInteractionQuery.matches ? "touch" : "hover"
+      );
 
-      window.setTimeout(() => {
+      collapseTimeout = window.setTimeout(() => {
         if (activeButton === nextButton) {
           clearActiveButton();
         }
-      }, 1900);
+      }, getSpotlightDuration());
     }
 
     const startSpotlight = () => {
-      clearTimers();
-      clearActiveButton();
+      stopSpotlight();
 
       if (reduceMotionQuery.matches) {
         return;
       }
 
-      scheduleSpotlight(1000);
+      scheduleSpotlight(getInitialDelay());
+    };
+
+    const handleInteractionPreferenceChange = () => {
+      if (isInView) {
+        startSpotlight();
+      } else {
+        stopSpotlight();
+      }
     };
 
     const observer = new IntersectionObserver(
@@ -112,19 +144,21 @@ export function ProjectResourceSpotlight({ children, ...props }: ProjectResource
         if (isInView) {
           startSpotlight();
         } else {
-          clearTimers();
-          clearActiveButton();
+          stopSpotlight();
         }
       },
       { threshold: [0, 0.35, 0.6] }
     );
 
     observer.observe(container);
+    reduceMotionQuery.addEventListener("change", handleInteractionPreferenceChange);
+    touchInteractionQuery.addEventListener("change", handleInteractionPreferenceChange);
 
     return () => {
       observer.disconnect();
-      clearTimers();
-      clearActiveButton();
+      reduceMotionQuery.removeEventListener("change", handleInteractionPreferenceChange);
+      touchInteractionQuery.removeEventListener("change", handleInteractionPreferenceChange);
+      stopSpotlight();
     };
   }, []);
 
