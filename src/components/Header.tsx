@@ -136,11 +136,21 @@ export function Header() {
               >
                 <span
                   className={`grid h-10 w-10 flex-none place-items-center rounded-full transition ${
-                    isActive ? "bg-coral text-white shadow-soft" : "bg-background text-navy shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
+                    isActive
+                      ? "bg-coral text-white shadow-soft"
+                      : "bg-background text-navy shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
                   }`}
                 >
                   {link.label === "Home" ? (
-                    <SignalTrailLogo className="h-7 w-7" aria-hidden="true" />
+                    <SignalTrailLogo
+                      tone={isActive ? "activeNav" : "nav"}
+                      className={`h-7 w-7 ${
+                        isActive
+                          ? ""
+                          : "group-hover/item:[--logo-accent:#fffdf8] group-hover/item:[--logo-channel:#142432] group-hover/item:[--logo-node:#fffdf8] group-hover/item:[--logo-trail:#fffdf8]"
+                      }`}
+                      aria-hidden="true"
+                    />
                   ) : (
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   )}
