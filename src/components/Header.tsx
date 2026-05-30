@@ -34,18 +34,18 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
 
-type Theme = "light" | "dark" | "graphite";
+type Theme = "light" | "dark" | "classic";
 
 const themeOptions: Array<{ label: string; value: Theme; Icon: LucideIcon; swatchClassName: string }> = [
-  { label: "Light", value: "light", Icon: Sun, swatchClassName: "bg-[#fbf7ee]" },
-  { label: "Classic dark", value: "dark", Icon: Moon, swatchClassName: "bg-[#111715]" },
-  { label: "Graphite", value: "graphite", Icon: Palette, swatchClassName: "bg-[#0f1214]" }
+  { label: "Light", value: "light", Icon: Sun, swatchClassName: "bg-[#f8f2e8]" },
+  { label: "Graphite dark", value: "dark", Icon: Palette, swatchClassName: "bg-[#090d10]" },
+  { label: "Classic dark", value: "classic", Icon: Moon, swatchClassName: "bg-[#0a100e]" }
 ];
 
 function getCurrentTheme(): Theme {
   const theme = document.documentElement.dataset.theme;
 
-  return theme === "dark" || theme === "graphite" ? theme : "light";
+  return theme === "dark" || theme === "classic" ? theme : "light";
 }
 
 export function Header() {

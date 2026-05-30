@@ -58,15 +58,17 @@ const themeScript = `
 (() => {
   try {
     const params = new URLSearchParams(window.location.search);
-    const requestedTheme = params.get("theme");
-    const pickerEnabled = params.get("themePicker") === "1" || requestedTheme === "graphite";
+    const normalizeTheme = (theme) => theme === "graphite" ? "dark" : theme;
+    const requestedTheme = normalizeTheme(params.get("theme"));
+    const pickerEnabled = params.get("themePicker") === "1" || requestedTheme === "dark" || requestedTheme === "classic";
     const storedTheme = window.localStorage.getItem("portfolio-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const allowedThemes = pickerEnabled ? ["light", "dark", "graphite"] : ["light", "dark"];
+    const allowedThemes = pickerEnabled ? ["light", "dark", "classic"] : ["light", "dark"];
+    const storedThemeValue = normalizeTheme(storedTheme);
     const theme = allowedThemes.includes(requestedTheme)
       ? requestedTheme
-      : allowedThemes.includes(storedTheme)
-        ? storedTheme
+      : allowedThemes.includes(storedThemeValue)
+        ? storedThemeValue
         : prefersDark
           ? "dark"
           : "light";
