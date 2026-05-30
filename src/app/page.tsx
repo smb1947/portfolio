@@ -36,6 +36,7 @@ import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
+import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
@@ -461,7 +462,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12">
+        <ProjectResourceSpotlight className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.featuredProductsHeading}
           </h3>
@@ -479,7 +480,7 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        </ProjectResourceSpotlight>
 
         <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
