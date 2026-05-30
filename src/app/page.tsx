@@ -8,6 +8,7 @@ import {
   Dumbbell,
   HeartHandshake,
   Landmark,
+  Linkedin,
   MapPin,
   Mountain,
   PlayCircle,
@@ -84,21 +85,6 @@ function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
   return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
 }
 
-function LinkedInCommentIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" aria-hidden="true">
-      <path
-        d="M6.75 10.25V17.5M11 10.25V17.5M11 13.5C11 11.6 12.15 10.25 13.85 10.25C15.55 10.25 16.5 11.45 16.5 13.55V17.5"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle cx="6.75" cy="6.9" r="1.1" fill="currentColor" />
-    </svg>
-  );
-}
-
 function QuoteIcon() {
   return (
     <span
@@ -168,7 +154,7 @@ function ManagerNoteCard({
           title="LinkedIn Comment"
           className="grid h-11 w-11 place-items-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
         >
-          <LinkedInCommentIcon />
+          <Linkedin className="h-5 w-5" aria-hidden="true" />
         </a>
       </div>
     </article>
