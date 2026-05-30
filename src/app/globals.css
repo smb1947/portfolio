@@ -34,6 +34,21 @@
   --dot-color: rgba(247, 241, 231, 0.10);
 }
 
+:root[data-theme="graphite"] {
+  color-scheme: dark;
+  --background: #0f1214;
+  --foreground: #f6f0e8;
+  --navy: #f6f0e8;
+  --teal: #2fc3c7;
+  --coral: #ff8a70;
+  --muted: #aab4b6;
+  --card: #171b1f;
+  --border: #2b3336;
+  --body-glow-left: rgba(47, 195, 199, 0.10);
+  --body-glow-right: rgba(255, 138, 112, 0.08);
+  --dot-color: rgba(246, 240, 232, 0.08);
+}
+
 * {
   box-sizing: border-box;
 }

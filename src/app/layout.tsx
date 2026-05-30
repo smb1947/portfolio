@@ -57,10 +57,23 @@ export const metadata: Metadata = {
 const themeScript = `
 (() => {
   try {
+    const params = new URLSearchParams(window.location.search);
+    const requestedTheme = params.get("theme");
+    const pickerEnabled = params.get("themePicker") === "1" || requestedTheme === "graphite";
     const storedTheme = window.localStorage.getItem("portfolio-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : prefersDark ? "dark" : "light";
+    const allowedThemes = pickerEnabled ? ["light", "dark", "graphite"] : ["light", "dark"];
+    const theme = allowedThemes.includes(requestedTheme)
+      ? requestedTheme
+      : allowedThemes.includes(storedTheme)
+        ? storedTheme
+        : prefersDark
+          ? "dark"
+          : "light";
     document.documentElement.dataset.theme = theme;
+    if (pickerEnabled) {
+      document.documentElement.dataset.themePicker = "true";
+    }
   } catch {
     document.documentElement.dataset.theme = "light";
   }
