@@ -132,30 +132,34 @@ function ManagerNoteCard({
   link: string;
 }) {
   return (
-    <article className="mt-5 flex flex-col rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
+    <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
       <div className="grid gap-5 md:grid-cols-[auto_minmax(0,1fr)] md:items-start">
         <QuoteIcon />
-        <div className="min-w-0 pb-5">
+        <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
           <blockquote className="mt-3 font-serif text-xl font-semibold leading-snug text-navy md:text-2xl">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
-          <p className="mt-4 text-sm font-bold text-navy">{name}</p>
-          <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
-          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">{context}</p>
+          <div className="mt-4 flex items-center gap-4">
+            <div className="min-w-0">
+              <p className="text-sm font-bold text-navy">{name}</p>
+              <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+                {context}
+              </p>
+            </div>
+            <a
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open LinkedIn comment"
+              title="LinkedIn Comment"
+              className="grid h-11 w-11 flex-none place-items-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+            >
+              <Linkedin className="h-5 w-5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
-      </div>
-      <div className="mt-auto flex gap-3 border-t border-line pt-5">
-        <a
-          href={link}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Open LinkedIn comment"
-          title="LinkedIn Comment"
-          className="grid h-11 w-11 place-items-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
-        >
-          <Linkedin className="h-5 w-5" aria-hidden="true" />
-        </a>
       </div>
     </article>
   );
