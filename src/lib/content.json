@@ -225,6 +225,11 @@
           "to": "Mar 2026",
           "resources": [
             {
+              "type": "doc",
+              "label": "PRFAQ and GTM",
+              "url": "https://docs.google.com/document/d/1Rc0yv4UPzb_mCud7SyCluu6BSgSwl0sQPn-64qn6b9w/edit?usp=sharing"
+            },
+            {
               "type": "article",
               "label": "GeekWire feature",
               "url": "https://www.geekwire.com/2026/heres-the-pitch-uw-students-get-in-the-room-with-key-investors-to-share-their-ai-startup-ideas/"
