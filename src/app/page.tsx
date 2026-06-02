@@ -13,6 +13,7 @@ import {
   Mountain,
   PlayCircle,
   Puzzle,
+  Quote,
   Radio,
   School,
   Search,
@@ -88,10 +89,10 @@ function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
 function QuoteIcon() {
   return (
     <span
-      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-3xl leading-none text-coral"
+      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 text-coral"
       aria-hidden="true"
     >
-      &ldquo;
+      <Quote className="h-6 w-6" strokeWidth={2.25} />
     </span>
   );
 }
