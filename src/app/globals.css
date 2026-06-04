@@ -273,17 +273,23 @@ button {
   }
 
   .nav-afterimage-stack-backward .nav-afterimage-one {
+    --nav-trail-offset-x: 0rem;
     --nav-trail-offset-y: 1.45rem;
+    --nav-trail-end-offset-x: 0rem;
     --nav-trail-end-offset-y: 0.26rem;
   }
 
   .nav-afterimage-stack-backward .nav-afterimage-two {
+    --nav-trail-offset-x: 0rem;
     --nav-trail-offset-y: 2.05rem;
+    --nav-trail-end-offset-x: 0rem;
     --nav-trail-end-offset-y: 0.37rem;
   }
 
   .nav-afterimage-stack-backward .nav-afterimage-three {
+    --nav-trail-offset-x: 0rem;
     --nav-trail-offset-y: 2.55rem;
+    --nav-trail-end-offset-x: 0rem;
     --nav-trail-end-offset-y: 0.46rem;
   }
 }
