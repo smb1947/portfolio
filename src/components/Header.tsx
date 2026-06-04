@@ -150,10 +150,10 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
       <nav
-        className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-stretch xl:rounded-[1.25rem] xl:hover:w-48 xl:focus-within:w-48"
+        className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-center xl:rounded-[1.25rem]"
         aria-label="Primary navigation"
       >
-        <div className="flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-stretch xl:justify-start xl:gap-1">
+        <div className="flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-center xl:justify-center xl:gap-1">
           {navItems.map((link) => {
             const sectionId = getSectionId(link.href);
             const Icon = navIconMap[link.label] ?? UserRound;
@@ -187,7 +187,7 @@ export function Header() {
                     event.currentTarget.blur();
                   }
                 }}
-                className={`group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2 ${
+                className={`group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
                   isActive ? "z-10 text-coral" : "z-0 text-navy/72 hover:text-teal"
                 }`}
               >
@@ -227,7 +227,7 @@ export function Header() {
                     <Icon className="relative z-10 h-5 w-5" aria-hidden="true" />
                   )}
                 </span>
-                <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
+                <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
                   {link.label}
                 </span>
               </Link>
@@ -237,7 +237,7 @@ export function Header() {
         <div className="h-8 w-px bg-line xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0"
           aria-label={
             isThemePickerEnabled
               ? `Choose theme, currently ${activeThemeOption.label}`
@@ -274,7 +274,7 @@ export function Header() {
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white">
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
             {isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}
           </span>
         </button>
