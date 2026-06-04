@@ -88,10 +88,10 @@ function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
 function QuoteIcon() {
   return (
     <span
-      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-3xl leading-none text-coral"
+      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-[2rem] leading-none text-coral"
       aria-hidden="true"
     >
-      &ldquo;
+      <span className="translate-y-1">&ldquo;</span>
     </span>
   );
 }
