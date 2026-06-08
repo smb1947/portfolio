@@ -130,12 +130,12 @@ export function Header() {
                   }
                 }}
                 className={`group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2 ${
-                  isActive ? "text-coral" : "text-navy/72 hover:text-teal"
+                  isActive ? "text-coral" : "text-navy/72 [@media(hover:hover)]:hover:text-teal"
                 }`}
               >
                 <span
                   className={`grid h-10 w-10 flex-none place-items-center rounded-full transition ${
-                    isActive ? "bg-coral text-white shadow-soft" : "bg-background text-navy shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
+                    isActive ? "bg-coral text-white shadow-soft" : "bg-background text-navy shadow-sm [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white"
                   }`}
                 >
                   <Icon className="h-5 w-5" aria-hidden="true" />
@@ -150,7 +150,7 @@ export function Header() {
         <div className="h-8 w-px bg-line xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           onClick={(event) => {
@@ -167,7 +167,7 @@ export function Header() {
             }
           }}
         >
-          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white">
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">

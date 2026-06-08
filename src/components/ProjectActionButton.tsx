@@ -67,7 +67,7 @@ export function ProjectActionButton({
           destination: getActionDestination(href)
         });
       }}
-      className={`${className} border-line bg-card text-coral shadow-sm hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20`}
+      className={`${className} border-line bg-card text-coral shadow-sm [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20`}
     >
       <Icon className="h-4 w-4" aria-hidden="true" />
     </a>
