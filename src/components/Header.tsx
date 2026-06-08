@@ -188,14 +188,14 @@ export function Header() {
                   }
                 }}
                 className={`group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
-                  isActive ? "z-10 text-coral" : "z-0 text-navy/72 hover:text-teal"
+                  isActive ? "z-10 text-coral" : "z-0 text-navy/72 [@media(hover:hover)]:hover:text-teal"
                 }`}
               >
                 <span
                   className={`relative grid h-10 w-10 flex-none place-items-center rounded-full transition ${
                     isActive
                       ? "bg-coral text-white shadow-soft"
-                      : "bg-background text-navy shadow-sm group-hover/item:bg-teal group-hover/item:text-white"
+                      : "bg-background text-navy shadow-sm [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white"
                   }`}
                 >
                   {isActive && navMotion.section === sectionId ? (
@@ -219,7 +219,7 @@ export function Header() {
                       className={`relative z-10 h-7 w-7 ${
                         isActive
                           ? ""
-                          : "group-hover/item:[--logo-accent:#fffdf8] group-hover/item:[--logo-channel:#142432] group-hover/item:[--logo-node:#fffdf8] group-hover/item:[--logo-trail:#fffdf8]"
+                          : "[@media(hover:hover)]:group-hover/item:[--logo-accent:#fffdf8] [@media(hover:hover)]:group-hover/item:[--logo-channel:#142432] [@media(hover:hover)]:group-hover/item:[--logo-node:#fffdf8] [@media(hover:hover)]:group-hover/item:[--logo-trail:#fffdf8]"
                       }`}
                       aria-hidden="true"
                     />
@@ -237,7 +237,7 @@ export function Header() {
         <div className="h-8 w-px bg-line xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0"
           aria-label={
             isThemePickerEnabled
               ? `Choose theme, currently ${activeThemeOption.label}`
@@ -271,7 +271,7 @@ export function Header() {
             }
           }}
         >
-          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition group-hover/item:bg-teal group-hover/item:text-white">
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
@@ -293,7 +293,7 @@ export function Header() {
                   role="radio"
                   aria-checked={isSelected}
                   className={`flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
-                    isSelected ? "bg-teal text-white" : "text-navy hover:bg-background hover:text-teal"
+                    isSelected ? "bg-teal text-white" : "text-navy [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
                   }`}
                   onClick={() => selectTheme(option.value)}
                 >
