@@ -548,7 +548,7 @@ export default function Home() {
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
           </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {featuredProducts.map(({ project, experience, section }) => (
               <ProjectCard
                 key={project.title}
@@ -565,7 +565,7 @@ export default function Home() {
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.capabilitiesHeading}
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
@@ -584,7 +584,7 @@ export default function Home() {
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.operatingModelHeading}
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
+          <div className="mt-6 grid gap-5 md:grid-cols-3 print:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
