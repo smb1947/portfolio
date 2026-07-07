@@ -5,6 +5,7 @@ node_modules.offloaded-*/
 # Next.js build output
 .next/
 out/
+.temp/
 
 # Production
 build/
