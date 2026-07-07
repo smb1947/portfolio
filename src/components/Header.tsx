@@ -427,7 +427,7 @@ export function Header() {
                     className="grid min-h-11 grid-cols-[2.25rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20"
                     onClick={() => void downloadPrintPdf("light")}
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-card text-coral">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-[#fffdf8] text-[#f47e60] ring-1 ring-[#e8dfd0]">
                       <Sun className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span>Light PDF</span>
@@ -437,7 +437,7 @@ export function Header() {
                     className="grid min-h-11 grid-cols-[2.25rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20"
                     onClick={() => void downloadPrintPdf("dark")}
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-navy text-card">
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-[#142432] text-[#fffdf8] ring-1 ring-[#374149]">
                       <Moon className="h-4 w-4" aria-hidden="true" />
                     </span>
                     <span>Dark PDF</span>
@@ -643,7 +643,7 @@ export function Header() {
               className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20 [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
               onClick={() => void downloadPrintPdf("light")}
             >
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-background text-coral">
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#fffdf8] text-[#f47e60] ring-1 ring-[#e8dfd0]">
                 <Sun className="h-4 w-4" aria-hidden="true" />
               </span>
               <span>Light PDF</span>
@@ -653,7 +653,7 @@ export function Header() {
               className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20 [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
               onClick={() => void downloadPrintPdf("dark")}
             >
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-navy text-card">
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#142432] text-[#fffdf8] ring-1 ring-[#374149]">
                 <Moon className="h-4 w-4" aria-hidden="true" />
               </span>
               <span>Dark PDF</span>
