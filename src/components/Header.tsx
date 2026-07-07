@@ -331,21 +331,9 @@ export function Header() {
             </div>
           </nav>
         ) : null}
-        <button
-          type="button"
-          className="ml-auto grid min-h-14 grid-cols-[2.5rem_1fr] items-center gap-2 rounded-full border border-line bg-card px-2 pr-4 text-sm font-bold text-navy shadow-lift transition focus:outline-none focus:ring-4 focus:ring-teal/20"
-          aria-expanded={isMobileMenuOpen}
-          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setIsMobileMenuOpen((current) => !current)}
-        >
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-coral text-white">
-            {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
-          </span>
-          <span>{isMobileMenuOpen ? "Close" : "Menu"}</span>
-        </button>
       </div>
       <nav
-        className="group mx-auto hidden max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border border-line bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:flex xl:w-16 xl:max-w-none xl:flex-col xl:items-stretch xl:rounded-[1.25rem] xl:hover:w-48 xl:focus-within:w-48"
+        className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border border-line bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-stretch xl:rounded-[1.25rem] xl:hover:w-48 xl:focus-within:w-48"
         aria-label="Primary navigation"
       >
         <div className="flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-stretch xl:justify-start xl:gap-1">
@@ -382,7 +370,27 @@ export function Header() {
         <div className="h-8 w-px bg-line xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:hidden print:hidden"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          title={isMobileMenuOpen ? "Close" : "Menu"}
+          onClick={(event) => {
+            setIsMobileMenuOpen((current) => !current);
+            if (event.detail > 0) {
+              event.currentTarget.blur();
+            }
+          }}
+        >
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+            {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </span>
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
+            {isMobileMenuOpen ? "Close" : "Menu"}
+          </span>
+        </button>
+        <button
+          type="button"
+          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:w-full xl:px-2 print:grid"
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           onClick={handleThemeButtonClick}
@@ -394,10 +402,10 @@ export function Header() {
             {theme === "dark" ? "Light" : "Dark"}
           </span>
         </button>
-        <div className="hidden h-px w-full bg-line xl:block" aria-hidden="true" />
+        <div className="hidden h-px w-full bg-line xl:block print:block" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:w-full xl:px-2 print:grid"
           aria-label="Open print-ready portfolio PDF"
           title="Print"
           onClick={(event) => {
@@ -416,7 +424,7 @@ export function Header() {
         </button>
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:w-full xl:px-2 print:grid"
           aria-label={shareStatus === "copied" ? "Portfolio link copied" : "Share portfolio"}
           title={shareStatus === "copied" ? "Copied" : "Share"}
           onClick={(event) => {
