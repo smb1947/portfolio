@@ -25,17 +25,19 @@ export type ContactMethod = {
   link: string;
 };
 
+export type ProjectResourceType = "doc" | "code" | "demo" | "article" | "slides" | "other";
+
+export type ProjectResource = {
+  type: ProjectResourceType;
+  label: string;
+  url: string;
+};
+
 export type Project = {
   title: string;
   from: string;
   to: string;
-  link: {
-    label: string;
-    url: string;
-  };
-  doc: string;
-  code: string;
-  demo: string;
+  resources: ProjectResource[];
   skills: string[];
   tools: string[];
   description: string;
@@ -66,15 +68,6 @@ export type Experience = {
   projects: Project[];
 };
 
-export type Resume = {
-  summary: string;
-  downloadLabel: string;
-  downloadUrl: string;
-  highlights: string[];
-  skills: string[];
-  tools: string[];
-};
-
 export type ContactFormContent = {
   title: string;
   embedUrl: string;
@@ -91,6 +84,15 @@ export type FeaturedProject = {
   description: string;
 };
 
+export type ManagerNote = {
+  eyebrow: string;
+  quote: string;
+  name: string;
+  title: string;
+  context: string;
+  link: string;
+};
+
 export type AboutProfile = {
   title: string;
   context: string;
@@ -101,6 +103,7 @@ export type AboutProfile = {
   capabilities: AboutProfileItem[];
   operatingModelHeading: string;
   operatingModel: AboutProfileItem[];
+  managerNote: ManagerNote;
   featuredProducts: FeaturedProject[];
   personalSignalsHeading: string;
   personalSignals: string[];
@@ -116,7 +119,6 @@ export type PortfolioContent = {
     description: string;
     location: string;
   };
-  resume: Resume;
   contact: ContactMethod[];
   contactForm: ContactFormContent;
   aboutProfile: AboutProfile;

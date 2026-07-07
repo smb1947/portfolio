@@ -19,8 +19,8 @@ const config: Config = {
         line: "var(--border)"
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(20, 36, 50, 0.10)",
-        lift: "0 22px 70px rgba(20, 36, 50, 0.16)"
+        soft: "var(--shadow-soft)",
+        lift: "var(--shadow-lift)"
       },
       fontFamily: {
         serif: ["var(--font-serif)"],

@@ -8,6 +8,7 @@ import {
   Dumbbell,
   HeartHandshake,
   Landmark,
+  Linkedin,
   MapPin,
   Mountain,
   PlayCircle,
@@ -36,6 +37,7 @@ import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
+import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
@@ -81,6 +83,84 @@ function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
 
 function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
   return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
+}
+
+function QuoteIcon() {
+  return (
+    <span
+      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-[2rem] leading-none text-coral"
+      aria-hidden="true"
+    >
+      <span className="translate-y-1">&ldquo;</span>
+    </span>
+  );
+}
+
+function HighlightedManagerQuote({ quote }: { quote: string }) {
+  const highlightPattern = /(fun|ownership|bias for action)/gi;
+  const exactHighlightPattern = /^(fun|ownership|bias for action)$/i;
+  const parts = quote.split(highlightPattern);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        exactHighlightPattern.test(part) ? (
+          <span key={`${part}-${index}`} className="text-coral">
+            {part}
+          </span>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
+function ManagerNoteCard({
+  eyebrow,
+  quote,
+  name,
+  title,
+  context,
+  link
+}: {
+  eyebrow: string;
+  quote: string;
+  name: string;
+  title: string;
+  context: string;
+  link: string;
+}) {
+  return (
+    <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-4 md:gap-x-5">
+        <QuoteIcon />
+        <div className="min-w-0">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
+          <blockquote className="mt-3 font-serif text-xl font-semibold leading-snug text-navy md:text-2xl">
+            &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
+          </blockquote>
+        </div>
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open LinkedIn comment"
+          title="LinkedIn Comment"
+          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+        >
+          <Linkedin className="h-5 w-5" aria-hidden="true" />
+        </a>
+        <div className="min-w-0 self-center">
+          <p className="text-sm font-bold text-navy">{name}</p>
+          <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
+          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+            {context}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
 }
 
 type LogoAsset = {
@@ -211,10 +291,6 @@ function ProjectLogo({ title }: { title: string }) {
 
 type ProjectSection = "experience" | "education";
 
-function getProjectLinkActionLabel(url: string) {
-  return url.includes("linkedin.com") ? "Post" : "Article";
-}
-
 function getProjectSection(experience: Experience): ProjectSection {
   return experience.type === "education" ? "education" : "experience";
 }
@@ -248,48 +324,23 @@ function ProjectResourceActions({
   experience: Experience;
   section: ProjectSection;
 }) {
-  if (!project.link.url && !project.doc && !project.code && !project.demo) {
+  if (project.resources.length === 0) {
     return null;
   }
 
   return (
     <div className="mt-auto flex flex-wrap gap-3 border-t border-line pt-5">
-      <ProjectActionButton
-        label={getProjectLinkActionLabel(project.link.url)}
-        href={project.link.url}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
-      <ProjectActionButton
-        label="Doc"
-        href={project.doc}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
-      <ProjectActionButton
-        label="Code"
-        href={project.code}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
-      <ProjectActionButton
-        label="Demo"
-        href={project.demo}
-        section={section}
-        experienceType={experience.type}
-        organization={experience.organization}
-        experienceTitle={experience.title}
-        projectTitle={project.title}
-      />
+      {project.resources.map((resource) => (
+        <ProjectActionButton
+          key={`${resource.type}-${resource.label}-${resource.url}`}
+          resource={resource}
+          section={section}
+          experienceType={experience.type}
+          organization={experience.organization}
+          experienceTitle={experience.title}
+          projectTitle={project.title}
+        />
+      ))}
     </div>
   );
 }
@@ -490,7 +541,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12">
+        <ProjectResourceSpotlight className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.featuredProductsHeading}
           </h3>
@@ -508,7 +559,7 @@ export default function Home() {
               />
             ))}
           </div>
-        </div>
+        </ProjectResourceSpotlight>
 
         <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
@@ -546,6 +597,7 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <ManagerNoteCard {...aboutProfile.managerNote} />
         </div>
 
         <div className="mt-12">
@@ -598,7 +650,10 @@ export default function Home() {
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
         <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
           {contactIntroText}{" "}
-          <span className="inline-block text-2xl leading-none align-[-0.1em]" aria-label="coffee">
+          <span
+            className="coffee-cue inline-block text-3xl leading-none align-[-0.16em] md:text-4xl"
+            aria-label="coffee"
+          >
             ☕
           </span>
         </p>
