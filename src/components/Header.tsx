@@ -159,13 +159,14 @@ export function Header() {
   }, [activeSection, sectionIds]);
 
   useEffect(() => {
-    if (!isPrintMenuOpen && !isThemeMenuOpen) {
+    if (!isPrintMenuOpen && !isThemeMenuOpen && !isMobileMenuOpen) {
       return;
     }
 
     const closeOpenMenus = () => {
       setIsPrintMenuOpen(false);
       setIsThemeMenuOpen(false);
+      setIsMobileMenuOpen(false);
     };
 
     const handlePointerDown = (event: PointerEvent) => {
@@ -191,7 +192,7 @@ export function Header() {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isPrintMenuOpen, isThemeMenuOpen]);
+  }, [isPrintMenuOpen, isThemeMenuOpen, isMobileMenuOpen]);
 
   const toggleTheme = () => {
     const currentTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
