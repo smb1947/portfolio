@@ -320,7 +320,7 @@ button {
 
 @media print {
   @page {
-    size: 1440px 9000px;
+    size: 1440px 2200px;
     margin: 0;
   }
 
@@ -370,6 +370,13 @@ button {
 
   body > div {
     padding-bottom: 0 !important;
+  }
+
+  article,
+  details,
+  aside {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   header.fixed {
