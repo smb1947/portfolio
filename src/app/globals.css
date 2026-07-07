@@ -458,6 +458,10 @@ button {
     justify-self: center !important;
   }
 
+  header nav .print\:hidden {
+    display: none !important;
+  }
+
   header nav > div[aria-hidden="true"] {
     width: 100% !important;
     height: 1px !important;

@@ -412,14 +412,14 @@ export function Header() {
                     key={link.href}
                     href={sectionId ? `#${sectionId}` : link.href}
                     aria-current={isActive ? "location" : undefined}
-                    className={`grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
-                      isActive ? "text-coral" : "text-navy/72"
+                    className={`group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
+                      isActive ? "text-coral" : "text-navy/72 [@media(hover:hover)]:hover:text-teal"
                     }`}
                     onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
                   >
                     <span
                       className={`grid h-10 w-10 place-items-center rounded-full ${
-                        isActive ? "bg-coral text-white" : "bg-background text-navy"
+                        isActive ? "bg-coral text-white" : "bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white"
                       }`}
                     >
                       {link.label === "Home" ? (
@@ -435,24 +435,24 @@ export function Header() {
             <div className="my-1 h-px bg-line" aria-hidden="true" />
               <button
                 type="button"
-                className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
                 onClick={handleThemeButtonClick}
               >
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
                   <ThemeIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span>{isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}</span>
               </button>
               <button
                 type="button"
-                className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
                 onClick={() => {
                   setIsPrintMenuOpen((current) => !current);
                   setIsThemeMenuOpen(false);
                 }}
                 aria-expanded={isPrintMenuOpen}
               >
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
                   <Printer className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span>Print</span>
@@ -483,10 +483,10 @@ export function Header() {
               ) : null}
               <button
                 type="button"
-                className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
                 onClick={() => void sharePortfolio()}
               >
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
                   <ShareIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span>{shareStatus === "copied" ? "Copied" : "Share"}</span>
