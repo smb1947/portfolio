@@ -320,7 +320,7 @@ button {
 
 @media print {
   @page {
-    size: 1440px 6600px;
+    size: 1440px 2100px;
     margin: 0;
   }
 
@@ -447,5 +447,48 @@ button {
   header nav > div[aria-hidden="true"] {
     width: 100% !important;
     height: 1px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  summary {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  article,
+  li,
+  blockquote,
+  details > div,
+  summary,
+  #about [class*="rounded-2xl"],
+  #experience [class*="rounded-"],
+  #education [class*="rounded-"],
+  #contact [class*="rounded-"] {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  #experience,
+  #education {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  #contact {
+    padding-top: 3rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  footer {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  footer > div:last-child {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
   }
 }
