@@ -82,3 +82,47 @@ button {
     animation-iteration-count: 1 !important;
   }
 }
+
+@media print {
+  @page {
+    size: 1440px 5200px;
+    margin: 0;
+  }
+
+  :root,
+  :root[data-theme="dark"] {
+    color-scheme: light;
+    --background: #fbf7ee;
+    --foreground: #162531;
+    --navy: #142432;
+    --teal: #0e97a0;
+    --coral: #f47e60;
+    --muted: #5f6d76;
+    --card: #fffdf8;
+    --border: #e8dfd0;
+    --body-glow-left: rgba(14, 151, 160, 0.09);
+    --body-glow-right: rgba(244, 126, 96, 0.08);
+    --dot-color: rgba(20, 36, 50, 0.16);
+  }
+
+  html {
+    width: 1440px;
+    background: var(--background);
+  }
+
+  body {
+    width: 1440px;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, var(--body-glow-left), transparent 34rem),
+      radial-gradient(circle at 90% 10%, var(--body-glow-right), transparent 28rem),
+      var(--background);
+    color: var(--foreground);
+  }
+
+  body,
+  body * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
