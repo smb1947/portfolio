@@ -85,7 +85,7 @@ button {
 
 @media print {
   @page {
-    size: 1440px 5200px;
+    size: 1440px 9000px;
     margin: 0;
   }
 
@@ -124,5 +124,59 @@ button {
   body * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body > div {
+    padding-bottom: 0 !important;
+  }
+
+  header.fixed {
+    inset: auto auto auto 1.5rem !important;
+    top: 50% !important;
+    bottom: auto !important;
+    z-index: 50 !important;
+    width: auto !important;
+    padding: 0 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  header nav {
+    max-width: none !important;
+    width: 4rem !important;
+    margin: 0 !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    border-radius: 1.25rem !important;
+  }
+
+  header nav > div:first-child {
+    flex: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+  }
+
+  header nav a,
+  header nav button {
+    width: 100% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  header nav a > span:last-child,
+  header nav button > span:last-child {
+    display: none !important;
+  }
+
+  header nav > div[aria-hidden="true"] {
+    width: 100% !important;
+    height: 1px !important;
   }
 }
