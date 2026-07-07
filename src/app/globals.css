@@ -324,8 +324,7 @@ button {
     margin: 0;
   }
 
-  :root,
-  :root[data-theme="dark"] {
+  :root {
     color-scheme: light;
     --background: #fbf7ee;
     --foreground: #162531;
@@ -338,6 +337,36 @@ button {
     --body-glow-left: rgba(14, 151, 160, 0.09);
     --body-glow-right: rgba(244, 126, 96, 0.08);
     --dot-color: rgba(20, 36, 50, 0.16);
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --background: #090d10;
+    --foreground: #f6f0e8;
+    --navy: #f6f0e8;
+    --teal: #2fc3c7;
+    --coral: #ff8a70;
+    --muted: #aab4b6;
+    --card: #171e24;
+    --border: #374149;
+    --body-glow-left: rgba(47, 195, 199, 0.10);
+    --body-glow-right: rgba(255, 138, 112, 0.08);
+    --dot-color: rgba(246, 240, 232, 0.08);
+  }
+
+  :root[data-theme="classic"] {
+    color-scheme: dark;
+    --background: #0a100e;
+    --foreground: #f7f1e7;
+    --navy: #f7f1e7;
+    --teal: #20b6bf;
+    --coral: #ff886c;
+    --muted: #aeb8b4;
+    --card: #18231f;
+    --border: #42524c;
+    --body-glow-left: rgba(32, 182, 191, 0.12);
+    --body-glow-right: rgba(255, 136, 108, 0.10);
+    --dot-color: rgba(247, 241, 231, 0.10);
   }
 
   html {

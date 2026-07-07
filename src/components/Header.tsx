@@ -52,13 +52,23 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
 type Theme = "light" | "dark" | "classic";
 type ShareStatus = "idle" | "copied";
 type PrintStatus = "idle" | "processing" | "downloading" | "ready" | "error";
+type PrintTheme = "light" | "dark";
 type NavMotion = {
   direction: "forward" | "backward";
   key: number;
   section: string;
 };
 
-const printFilename = "shankar-binjawadgi-portfolio.pdf";
+const printFileByTheme: Record<PrintTheme, { filename: string; path: `/${string}` }> = {
+  light: {
+    filename: "shankar-binjawadgi-portfolio-light.pdf",
+    path: "/portfolio-print.pdf"
+  },
+  dark: {
+    filename: "shankar-binjawadgi-portfolio-dark.pdf",
+    path: "/portfolio-print-dark.pdf"
+  }
+};
 
 const themeOptions: Array<{ label: string; value: Theme; Icon: LucideIcon; swatchClassName: string }> = [
   { label: "Light", value: "light", Icon: Sun, swatchClassName: "bg-[#f8f2e8]" },
@@ -84,6 +94,7 @@ export function Header() {
   const [shareStatus, setShareStatus] = useState<ShareStatus>("idle");
   const [printStatus, setPrintStatus] = useState<PrintStatus>("idle");
   const [printProgress, setPrintProgress] = useState<number | null>(null);
+  const [isPrintMenuOpen, setIsPrintMenuOpen] = useState(false);
   const previousActiveSectionRef = useRef(activeSection);
   const [navMotion, setNavMotion] = useState<NavMotion>({
     direction: "forward",
@@ -200,6 +211,7 @@ export function Header() {
   const handleThemeButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (isThemePickerEnabled) {
       setIsThemeMenuOpen((current) => !current);
+      setIsPrintMenuOpen(false);
       trackPortfolioEvent("theme.picker.open.click", {
         theme,
         source: "sidebar_nav"
@@ -221,17 +233,19 @@ export function Header() {
     }
   };
 
-  const downloadPrintPdf = async () => {
-    const printUrl = new URL(publicAsset("/portfolio-print.pdf"), window.location.origin).toString();
+  const downloadPrintPdf = async (printTheme: PrintTheme) => {
+    const printFile = printFileByTheme[printTheme];
+    const printUrl = new URL(publicAsset(printFile.path), window.location.origin).toString();
 
     if (printStatus === "processing" || printStatus === "downloading") {
       return;
     }
 
     setIsMobileMenuOpen(false);
+    setIsPrintMenuOpen(false);
     setPrintStatus("processing");
     setPrintProgress(null);
-    trackPortfolioEvent("print_pdf.download.start", { source: "sidebar_nav" });
+    trackPortfolioEvent("print_pdf.download.start", { source: "sidebar_nav", theme: printTheme });
 
     try {
       const response = await fetch(printUrl, { cache: "no-store" });
@@ -270,14 +284,14 @@ export function Header() {
       const objectUrl = URL.createObjectURL(blob);
       const anchor = document.createElement("a");
       anchor.href = objectUrl;
-      anchor.download = printFilename;
+      anchor.download = printFile.filename;
       document.body.append(anchor);
       anchor.click();
       anchor.remove();
       window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
       setPrintStatus("ready");
       setPrintProgress(100);
-      trackPortfolioEvent("print_pdf.download.complete", { source: "sidebar_nav" });
+      trackPortfolioEvent("print_pdf.download.complete", { source: "sidebar_nav", theme: printTheme });
       window.setTimeout(() => {
         setPrintStatus("idle");
         setPrintProgress(null);
@@ -285,7 +299,7 @@ export function Header() {
     } catch {
       setPrintStatus("error");
       setPrintProgress(null);
-      trackPortfolioEvent("print_pdf.download.error", { source: "sidebar_nav" });
+      trackPortfolioEvent("print_pdf.download.error", { source: "sidebar_nav", theme: printTheme });
       window.setTimeout(() => setPrintStatus("idle"), 3000);
     }
   };
@@ -381,7 +395,7 @@ export function Header() {
                   </Link>
                 );
               })}
-              <div className="my-1 h-px bg-line" aria-hidden="true" />
+            <div className="my-1 h-px bg-line" aria-hidden="true" />
               <button
                 type="button"
                 className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
@@ -395,13 +409,41 @@ export function Header() {
               <button
                 type="button"
                 className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
-                onClick={() => void downloadPrintPdf()}
+                onClick={() => {
+                  setIsPrintMenuOpen((current) => !current);
+                  setIsThemeMenuOpen(false);
+                }}
+                aria-expanded={isPrintMenuOpen}
               >
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
                   <Printer className="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span>Print</span>
               </button>
+              {isPrintMenuOpen ? (
+                <div className="grid gap-1 rounded-2xl bg-background p-2">
+                  <button
+                    type="button"
+                    className="grid min-h-11 grid-cols-[2.25rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                    onClick={() => void downloadPrintPdf("light")}
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-card text-coral">
+                      <Sun className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <span>Light PDF</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="grid min-h-11 grid-cols-[2.25rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                    onClick={() => void downloadPrintPdf("dark")}
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-navy text-card">
+                      <Moon className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <span>Dark PDF</span>
+                  </button>
+                </div>
+              ) : null}
               <button
                 type="button"
                 className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
@@ -531,7 +573,8 @@ export function Header() {
           aria-label="Download print-ready portfolio PDF"
           title="Print"
           onClick={(event) => {
-            void downloadPrintPdf();
+            setIsPrintMenuOpen((current) => !current);
+            setIsThemeMenuOpen(false);
             if (event.detail > 0) {
               event.currentTarget.blur();
             }
@@ -589,6 +632,32 @@ export function Header() {
                 </button>
               );
             })}
+          </div>
+        </div>
+      ) : null}
+      {isPrintMenuOpen ? (
+        <div className="absolute bottom-full right-4 mb-3 hidden w-52 rounded-2xl border border-line bg-card p-2 shadow-lift xl:bottom-auto xl:left-20 xl:right-auto xl:top-[calc(50%+4.5rem)] xl:mb-0 xl:block xl:-translate-y-1/2">
+          <div className="space-y-1" role="menu" aria-label="Choose print mode">
+            <button
+              type="button"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20 [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
+              onClick={() => void downloadPrintPdf("light")}
+            >
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-background text-coral">
+                <Sun className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span>Light PDF</span>
+            </button>
+            <button
+              type="button"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20 [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
+              onClick={() => void downloadPrintPdf("dark")}
+            >
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-navy text-card">
+                <Moon className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span>Dark PDF</span>
+            </button>
           </div>
         </div>
       ) : null}
