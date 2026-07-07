@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BriefcaseBusiness, Check, GraduationCap, Home, Mail, Moon, Printer, Share2, Sun, UserRound } from "lucide-react";
+import { BriefcaseBusiness, Check, GraduationCap, Home, Mail, Menu, Moon, Printer, Share2, Sun, UserRound, X } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
@@ -36,6 +36,9 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
 
 type Theme = "light" | "dark";
 type ShareStatus = "idle" | "copied";
+type PrintStatus = "idle" | "processing" | "downloading" | "ready" | "error";
+
+const printFilename = "shankar-binjawadgi-portfolio.pdf";
 
 export function Header() {
   const pathname = usePathname();
@@ -44,6 +47,9 @@ export function Header() {
   const [activeSection, setActiveSection] = useState(sectionPathMap[pathname] ?? sectionIds[0] ?? "");
   const [theme, setTheme] = useState<Theme>("light");
   const [shareStatus, setShareStatus] = useState<ShareStatus>("idle");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [printStatus, setPrintStatus] = useState<PrintStatus>("idle");
+  const [printProgress, setPrintProgress] = useState<number | null>(null);
 
   useEffect(() => {
     const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
@@ -93,12 +99,73 @@ export function Header() {
   const ThemeIcon = theme === "dark" ? Sun : Moon;
   const ShareIcon = shareStatus === "copied" ? Check : Share2;
 
-  const openPrintPdf = () => {
+  const downloadPrintPdf = async () => {
     const printUrl = new URL(publicAsset("/portfolio-print.pdf"), window.location.origin).toString();
-    trackPortfolioEvent("print_pdf.open", {
-      source: "sidebar_nav"
-    });
-    window.open(printUrl, "_blank", "noopener,noreferrer");
+
+    if (printStatus === "processing" || printStatus === "downloading") {
+      return;
+    }
+
+    setIsMobileMenuOpen(false);
+    setPrintStatus("processing");
+    setPrintProgress(null);
+    trackPortfolioEvent("print_pdf.download.start", { source: "sidebar_nav" });
+
+    try {
+      const response = await fetch(printUrl, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error(`Unable to fetch print PDF: ${response.status}`);
+      }
+
+      setPrintStatus("downloading");
+      const contentLength = Number(response.headers.get("content-length"));
+      const contentType = response.headers.get("content-type") ?? "application/pdf";
+      let blob: Blob;
+
+      if (response.body && Number.isFinite(contentLength) && contentLength > 0) {
+        const reader = response.body.getReader();
+        const chunks: ArrayBuffer[] = [];
+        let received = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+
+          if (done) {
+            break;
+          }
+
+          chunks.push(value.buffer.slice(value.byteOffset, value.byteOffset + value.byteLength));
+          received += value.length;
+          setPrintProgress(Math.min(100, Math.round((received / contentLength) * 100)));
+        }
+
+        blob = new Blob(chunks, { type: contentType });
+      } else {
+        blob = await response.blob();
+      }
+
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = objectUrl;
+      anchor.download = printFilename;
+      document.body.append(anchor);
+      anchor.click();
+      anchor.remove();
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      setPrintStatus("ready");
+      setPrintProgress(100);
+      trackPortfolioEvent("print_pdf.download.complete", { source: "sidebar_nav" });
+      window.setTimeout(() => {
+        setPrintStatus("idle");
+        setPrintProgress(null);
+      }, 2400);
+    } catch {
+      setPrintStatus("error");
+      setPrintProgress(null);
+      trackPortfolioEvent("print_pdf.download.error", { source: "sidebar_nav" });
+      window.setTimeout(() => setPrintStatus("idle"), 3000);
+    }
   };
 
   const sharePortfolio = async () => {
@@ -110,6 +177,8 @@ export function Header() {
     };
 
     try {
+      setIsMobileMenuOpen(false);
+
       if (navigator.share) {
         await navigator.share(shareData);
         trackPortfolioEvent("share.native.open", {
@@ -135,10 +204,148 @@ export function Header() {
     }
   };
 
+  const navigateToSection = (
+    event: MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+    label: string,
+    href: string
+  ) => {
+    setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
+    trackPortfolioEvent("navigation.item.click", {
+      section: sectionId,
+      label,
+      href,
+      source: "sidebar_nav"
+    });
+
+    if (sectionId && shouldHandleSectionClick(event) && document.getElementById(sectionId)) {
+      event.preventDefault();
+      window.dispatchEvent(
+        new CustomEvent("portfolio:navigate-section", {
+          detail: { sectionId, path: href }
+        })
+      );
+    }
+
+    if (event.detail > 0) {
+      event.currentTarget.blur();
+    }
+  };
+
+  const handleThemeButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const fromTheme: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
+    toggleTheme();
+    setIsMobileMenuOpen(false);
+    trackPortfolioEvent("theme.toggle.click", {
+      fromTheme,
+      toTheme,
+      source: "sidebar_nav"
+    });
+
+    if (event.detail > 0) {
+      event.currentTarget.blur();
+    }
+  };
+
+  const printStatusText =
+    printStatus === "processing"
+      ? "Preparing print PDF..."
+      : printStatus === "downloading"
+        ? printProgress === null
+          ? "Downloading print PDF..."
+          : `Downloading print PDF ${printProgress}%`
+        : printStatus === "ready"
+          ? "Download started"
+          : printStatus === "error"
+            ? "Could not download PDF"
+            : "";
+
   return (
     <header className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
+      <div className="mx-auto max-w-[calc(100vw-2rem)] xl:hidden">
+        {isMobileMenuOpen ? (
+          <nav
+            className="mb-3 overflow-hidden rounded-[1.25rem] border border-line bg-card p-2 shadow-lift"
+            aria-label="Primary navigation"
+          >
+            <div className="grid gap-1">
+              {navItems.map((link) => {
+                const sectionId = getSectionId(link.href);
+                const Icon = navIconMap[link.label] ?? UserRound;
+                const isActive = activeSection === sectionId;
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isActive ? "location" : undefined}
+                    className={`grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
+                      isActive ? "text-coral" : "text-navy/72"
+                    }`}
+                    onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
+                  >
+                    <span
+                      className={`grid h-10 w-10 place-items-center rounded-full ${
+                        isActive ? "bg-coral text-white" : "bg-background text-navy"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span>{link.label}</span>
+                  </Link>
+                );
+              })}
+              <div className="my-1 h-px bg-line" aria-hidden="true" />
+              <button
+                type="button"
+                className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                onClick={handleThemeButtonClick}
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
+                  <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>{theme === "dark" ? "Light" : "Dark"}</span>
+              </button>
+              <button
+                type="button"
+                className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                onClick={() => void downloadPrintPdf()}
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
+                  <Printer className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>Print</span>
+              </button>
+              <button
+                type="button"
+                className="grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                onClick={() => void sharePortfolio()}
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy">
+                  <ShareIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>{shareStatus === "copied" ? "Copied" : "Share"}</span>
+              </button>
+            </div>
+          </nav>
+        ) : null}
+        <button
+          type="button"
+          className="ml-auto grid min-h-14 grid-cols-[2.5rem_1fr] items-center gap-2 rounded-full border border-line bg-card px-2 pr-4 text-sm font-bold text-navy shadow-lift transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setIsMobileMenuOpen((current) => !current)}
+        >
+          <span className="grid h-10 w-10 place-items-center rounded-full bg-coral text-white">
+            {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </span>
+          <span>{isMobileMenuOpen ? "Close" : "Menu"}</span>
+        </button>
+      </div>
       <nav
-        className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border border-line bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-stretch xl:rounded-[1.25rem] xl:hover:w-48 xl:focus-within:w-48"
+        className="group mx-auto hidden max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border border-line bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:flex xl:w-16 xl:max-w-none xl:flex-col xl:items-stretch xl:rounded-[1.25rem] xl:hover:w-48 xl:focus-within:w-48"
         aria-label="Primary navigation"
       >
         <div className="flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-stretch xl:justify-start xl:gap-1">
@@ -153,28 +360,7 @@ export function Header() {
                 href={link.href}
                 aria-current={isActive ? "location" : undefined}
                 title={link.label}
-                onClick={(event) => {
-                  setActiveSection(sectionId);
-                  trackPortfolioEvent("navigation.item.click", {
-                    section: sectionId,
-                    label: link.label,
-                    href: link.href,
-                    source: "sidebar_nav"
-                  });
-
-                  if (sectionId && shouldHandleSectionClick(event) && document.getElementById(sectionId)) {
-                    event.preventDefault();
-                    window.dispatchEvent(
-                      new CustomEvent("portfolio:navigate-section", {
-                        detail: { sectionId, path: link.href }
-                      })
-                    );
-                  }
-
-                  if (event.detail > 0) {
-                    event.currentTarget.blur();
-                  }
-                }}
+                onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
                 className={`group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2 ${
                   isActive ? "text-coral" : "text-navy/72 [@media(hover:hover)]:hover:text-teal"
                 }`}
@@ -199,19 +385,7 @@ export function Header() {
           className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          onClick={(event) => {
-            const fromTheme: Theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-            const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
-            toggleTheme();
-            trackPortfolioEvent("theme.toggle.click", {
-              fromTheme,
-              toTheme,
-              source: "sidebar_nav"
-            });
-            if (event.detail > 0) {
-              event.currentTarget.blur();
-            }
-          }}
+          onClick={handleThemeButtonClick}
         >
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
@@ -227,7 +401,7 @@ export function Header() {
           aria-label="Open print-ready portfolio PDF"
           title="Print"
           onClick={(event) => {
-            openPrintPdf();
+            void downloadPrintPdf();
             if (event.detail > 0) {
               event.currentTarget.blur();
             }
@@ -260,6 +434,25 @@ export function Header() {
           </span>
         </button>
       </nav>
+      {printStatus !== "idle" ? (
+        <div
+          className="pointer-events-none fixed bottom-24 left-4 right-4 z-[60] rounded-2xl border border-line bg-card p-4 text-sm font-bold text-navy shadow-lift xl:left-24 xl:right-auto xl:w-80"
+          role="status"
+          aria-live="polite"
+        >
+          <div className="flex items-center gap-3">
+            <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-coral/10 text-coral">
+              {printStatus === "ready" ? <Check className="h-5 w-5" aria-hidden="true" /> : <Printer className="h-5 w-5" aria-hidden="true" />}
+            </span>
+            <span>{printStatusText}</span>
+          </div>
+          {printStatus === "downloading" && printProgress !== null ? (
+            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-background">
+              <div className="h-full rounded-full bg-teal transition-all" style={{ width: `${printProgress}%` }} />
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </header>
   );
 }
