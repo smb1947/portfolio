@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BriefcaseBusiness, GraduationCap, Home, Mail, Moon, Sun, UserRound } from "lucide-react";
+import { BriefcaseBusiness, Check, GraduationCap, Home, Mail, Moon, Printer, Share2, Sun, UserRound } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
-import { navLinks } from "@/lib/data";
+import { publicAsset } from "@/lib/assets";
+import { navLinks, site } from "@/lib/data";
 import { trackPortfolioEvent } from "@/lib/analytics";
 
 const navIconMap: Record<string, LucideIcon> = {
@@ -34,6 +35,7 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
 }
 
 type Theme = "light" | "dark";
+type ShareStatus = "idle" | "copied";
 
 export function Header() {
   const pathname = usePathname();
@@ -41,6 +43,7 @@ export function Header() {
   const sectionIds = useMemo(() => navItems.map((link) => getSectionId(link.href)).filter(Boolean), [navItems]);
   const [activeSection, setActiveSection] = useState(sectionPathMap[pathname] ?? sectionIds[0] ?? "");
   const [theme, setTheme] = useState<Theme>("light");
+  const [shareStatus, setShareStatus] = useState<ShareStatus>("idle");
 
   useEffect(() => {
     const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
@@ -88,6 +91,49 @@ export function Header() {
   };
 
   const ThemeIcon = theme === "dark" ? Sun : Moon;
+  const ShareIcon = shareStatus === "copied" ? Check : Share2;
+
+  const openPrintPdf = () => {
+    const printUrl = new URL(publicAsset("/portfolio-print.pdf"), window.location.origin).toString();
+    trackPortfolioEvent("print_pdf.open", {
+      source: "sidebar_nav"
+    });
+    window.open(printUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const sharePortfolio = async () => {
+    const shareUrl = window.location.href.split("#")[0];
+    const shareData = {
+      title: site.title,
+      text: site.description,
+      url: shareUrl
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        trackPortfolioEvent("share.native.open", {
+          source: "sidebar_nav"
+        });
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareUrl);
+      setShareStatus("copied");
+      window.setTimeout(() => setShareStatus("idle"), 1800);
+      trackPortfolioEvent("share.link.copy", {
+        source: "sidebar_nav"
+      });
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+
+      trackPortfolioEvent("share.error", {
+        source: "sidebar_nav"
+      });
+    }
+  };
 
   return (
     <header className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
@@ -172,6 +218,45 @@ export function Header() {
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
             {theme === "dark" ? "Light" : "Dark"}
+          </span>
+        </button>
+        <div className="hidden h-px w-full bg-line xl:block" aria-hidden="true" />
+        <button
+          type="button"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          aria-label="Open print-ready portfolio PDF"
+          title="Print"
+          onClick={(event) => {
+            openPrintPdf();
+            if (event.detail > 0) {
+              event.currentTarget.blur();
+            }
+          }}
+        >
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+            <Printer className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
+            Print
+          </span>
+        </button>
+        <button
+          type="button"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:w-full xl:px-2"
+          aria-label={shareStatus === "copied" ? "Portfolio link copied" : "Share portfolio"}
+          title={shareStatus === "copied" ? "Copied" : "Share"}
+          onClick={(event) => {
+            void sharePortfolio();
+            if (event.detail > 0) {
+              event.currentTarget.blur();
+            }
+          }}
+        >
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+            <ShareIcon className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100 xl:block">
+            {shareStatus === "copied" ? "Copied" : "Share"}
           </span>
         </button>
       </nav>
