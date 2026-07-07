@@ -320,7 +320,7 @@ button {
 
 @media print {
   @page {
-    size: 1440px 9000px;
+    size: 1440px 6600px;
     margin: 0;
   }
 
