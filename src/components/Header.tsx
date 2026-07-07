@@ -373,7 +373,7 @@ export function Header() {
                 return (
                   <Link
                     key={link.href}
-                    href={link.href}
+                    href={sectionId ? `#${sectionId}` : link.href}
                     aria-current={isActive ? "location" : undefined}
                     className={`grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
                       isActive ? "text-coral" : "text-navy/72"
@@ -471,7 +471,7 @@ export function Header() {
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={sectionId ? `#${sectionId}` : link.href}
                 aria-current={isActive ? "location" : undefined}
                 title={link.label}
                 onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
