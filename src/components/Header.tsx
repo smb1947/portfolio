@@ -95,6 +95,7 @@ export function Header() {
   const [printStatus, setPrintStatus] = useState<PrintStatus>("idle");
   const [printProgress, setPrintProgress] = useState<number | null>(null);
   const [isPrintMenuOpen, setIsPrintMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const previousActiveSectionRef = useRef(activeSection);
   const [navMotion, setNavMotion] = useState<NavMotion>({
     direction: "forward",
@@ -156,6 +157,41 @@ export function Header() {
     }));
     previousActiveSectionRef.current = activeSection;
   }, [activeSection, sectionIds]);
+
+  useEffect(() => {
+    if (!isPrintMenuOpen && !isThemeMenuOpen) {
+      return;
+    }
+
+    const closeOpenMenus = () => {
+      setIsPrintMenuOpen(false);
+      setIsThemeMenuOpen(false);
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+
+      if (target instanceof Node && headerRef.current?.contains(target)) {
+        return;
+      }
+
+      closeOpenMenus();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeOpenMenus();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPrintMenuOpen, isThemeMenuOpen]);
 
   const toggleTheme = () => {
     const currentTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
@@ -357,7 +393,7 @@ export function Header() {
             : "";
 
   return (
-    <header className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
+    <header ref={headerRef} className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
       <div className="mx-auto max-w-[calc(100vw-2rem)] xl:hidden">
         {isMobileMenuOpen ? (
           <nav
