@@ -322,14 +322,10 @@ button {
   display: none;
 }
 
-.print-unavailable-page {
-  display: none;
-}
-
 @media print {
   @page {
     size: 1440px 2100px;
-    margin: 96px 0;
+    margin: 0;
   }
 
   :root {
@@ -393,36 +389,6 @@ button {
     color: var(--foreground);
   }
 
-  :root[data-print-support="unsupported"] {
-    color-scheme: light;
-  }
-
-  html:root[data-print-support="unsupported"],
-  :root[data-print-support="unsupported"] body {
-    width: auto !important;
-    min-height: 100vh !important;
-    background: #fbf7ee !important;
-    color: #142432 !important;
-  }
-
-  :root[data-print-support="unsupported"] header,
-  :root[data-print-support="unsupported"] body > div:not(.print-unavailable-page) {
-    display: none !important;
-  }
-
-  :root[data-print-support="unsupported"] .print-unavailable-page {
-    display: grid !important;
-    min-height: 100vh !important;
-    place-items: center !important;
-    padding: 2rem !important;
-    color: #142432 !important;
-    font-family: var(--font-sans), system-ui, sans-serif !important;
-    font-size: 1rem !important;
-    font-weight: 800 !important;
-    line-height: 1.4 !important;
-    text-align: center !important;
-  }
-
   .dot-grid {
     display: none !important;
   }
@@ -445,7 +411,10 @@ button {
   }
 
   body > div {
-    padding-bottom: 0 !important;
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
     position: relative;
   }
 
