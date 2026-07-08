@@ -418,6 +418,10 @@ button {
     position: relative;
   }
 
+  main {
+    margin-top: -96px !important;
+  }
+
   header.fixed {
     position: absolute !important;
     inset: auto auto auto 2rem !important;
