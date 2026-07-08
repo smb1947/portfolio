@@ -10,6 +10,7 @@ const publicDir = join(rootDir, "public");
 const tempDir = join(rootDir, ".temp", "build-print-pdfs");
 const port = Number(process.env.PRINT_PDF_PORT ?? 4173);
 const chromePath = findChromeExecutable();
+const puppeteer = await loadPuppeteer();
 
 const printTargets = [
   {
@@ -29,14 +30,21 @@ if (process.env.SKIP_PRINT_PDF_BUILD === "1") {
   process.exit(0);
 }
 
-if (!chromePath) {
-  throw new Error(
-    "Could not find Chrome/Chromium for print PDF generation. Set CHROME_BIN to the browser executable, or set SKIP_PRINT_PDF_BUILD=1 to skip."
-  );
-}
-
 if (!existsSync(outDir)) {
   throw new Error("Missing out/ directory. Run next build before generating print PDFs.");
+}
+
+if (!chromePath && !puppeteer) {
+  const message =
+    "Could not find Chrome/Chromium or Puppeteer for print PDF generation. Using the committed print PDFs already copied into out/. Set CHROME_BIN or install puppeteer to regenerate during build.";
+
+  if (process.env.REQUIRE_PRINT_PDF_BUILD === "1") {
+    throw new Error(`${message} REQUIRE_PRINT_PDF_BUILD=1 was set, so this build cannot continue.`);
+  }
+
+  console.warn(message);
+  await ensureExistingPrintPdfs();
+  process.exit(0);
 }
 
 await mkdir(tempDir, { recursive: true });
@@ -46,7 +54,7 @@ const server = await startStaticServer(outDir, port);
 try {
   for (const target of printTargets) {
     const tempPdfPath = join(tempDir, target.fileName);
-    await printPdf(target.url, tempPdfPath);
+    await printPdf(target.url, tempPdfPath, target.theme);
     await copyFile(tempPdfPath, join(publicDir, target.fileName));
     await copyFile(tempPdfPath, join(outDir, target.fileName));
     const { size } = await stat(tempPdfPath);
@@ -57,6 +65,10 @@ try {
 }
 
 function findChromeExecutable() {
+  if (process.env.DISABLE_SYSTEM_CHROME_PRINT_PDF === "1") {
+    return null;
+  }
+
   const candidates = [
     process.env.CHROME_BIN,
     process.env.CHROMIUM_PATH,
@@ -70,6 +82,36 @@ function findChromeExecutable() {
   ].filter(Boolean);
 
   return candidates.find((candidate) => existsSync(candidate)) ?? null;
+}
+
+async function loadPuppeteer() {
+  if (process.env.DISABLE_PUPPETEER_PRINT_PDF === "1") {
+    return null;
+  }
+
+  try {
+    const puppeteerModule = await import("puppeteer");
+    return puppeteerModule.default ?? puppeteerModule;
+  } catch {
+    return null;
+  }
+}
+
+async function ensureExistingPrintPdfs() {
+  for (const target of printTargets) {
+    const publicPdfPath = join(publicDir, target.fileName);
+    const outPdfPath = join(outDir, target.fileName);
+
+    if (existsSync(outPdfPath)) {
+      continue;
+    }
+
+    if (!existsSync(publicPdfPath)) {
+      throw new Error(`Missing fallback print PDF: ${publicPdfPath}`);
+    }
+
+    await copyFile(publicPdfPath, outPdfPath);
+  }
 }
 
 function startStaticServer(root, serverPort) {
@@ -112,7 +154,43 @@ function startStaticServer(root, serverPort) {
   });
 }
 
-function printPdf(url, outputPath) {
+async function printPdf(url, outputPath, theme) {
+  if (puppeteer) {
+    await printPdfWithPuppeteer(url, outputPath, theme);
+    return;
+  }
+
+  await printPdfWithChrome(url, outputPath);
+}
+
+async function printPdfWithPuppeteer(url, outputPath, theme) {
+  const browser = await puppeteer.launch({
+    headless: true,
+    executablePath: chromePath ?? undefined,
+    args: [
+      "--disable-gpu",
+      "--no-sandbox",
+      "--disable-dev-shm-usage"
+    ]
+  });
+
+  try {
+    const page = await browser.newPage();
+    await page.goto(url, { waitUntil: "networkidle0" });
+    await page.emulateMediaType("print");
+    await page.pdf({
+      path: outputPath,
+      printBackground: true,
+      preferCSSPageSize: true,
+      displayHeaderFooter: false
+    });
+    console.log(`Generated ${theme} PDF with Puppeteer.`);
+  } finally {
+    await browser.close();
+  }
+}
+
+function printPdfWithChrome(url, outputPath) {
   const args = [
     "--headless",
     "--disable-gpu",
