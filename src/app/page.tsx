@@ -36,12 +36,11 @@ import { publicAsset } from "@/lib/assets";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { CurrentWebsiteLink } from "@/components/CurrentWebsiteLink";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
-
-const portfolioWebsiteUrl = "https://smb007.xyz";
 
 function SectionHeading({ children }: { children: string }) {
   return (
@@ -532,10 +531,7 @@ export default function Home() {
         </div>
       </section>
       <p className="print-page-one-footer hidden">
-        Portfolio website -{" "}
-        <a className="text-teal underline-offset-4" href={portfolioWebsiteUrl}>
-          smb007.xyz
-        </a>
+        <CurrentWebsiteLink />
       </p>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
