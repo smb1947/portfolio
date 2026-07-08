@@ -537,13 +537,13 @@ button {
   }
 
   .contact-methods {
-    margin-top: 6rem !important;
-    margin-bottom: 1.75rem !important;
+    margin-bottom: 5rem !important;
   }
 
   footer {
     break-before: avoid;
     page-break-before: avoid;
+    margin-top: 10rem !important;
   }
 
   footer > div:last-child {
