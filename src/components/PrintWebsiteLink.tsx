@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { basePath } from "@/lib/assets";
 
 export function PrintWebsiteLink() {
   const [websiteUrl, setWebsiteUrl] = useState("");
 
   useEffect(() => {
-    setWebsiteUrl(window.location.href.split("#")[0]);
+    setWebsiteUrl(`${window.location.origin}${basePath}/`);
   }, []);
 
   if (!websiteUrl) {
