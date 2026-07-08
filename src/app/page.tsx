@@ -431,7 +431,7 @@ function ExperienceCard({
           organization={experience.organization}
           title={experience.title}
         >
-          <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7">
+          <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)_auto] print:items-start">
             {experienceSummary}
             <div className="flex items-center gap-3 text-sm font-bold text-navy md:justify-end">
               <span>
@@ -442,7 +442,7 @@ function ExperienceCard({
           </summary>
 
           <div className="relative border-t border-line px-6 pb-12 md:px-7 md:pb-14">
-            <div className="grid gap-5 pt-6 lg:grid-cols-2">
+            <div className="grid gap-5 pt-6 lg:grid-cols-2 print:grid-cols-2">
               {experience.projects.map((project) => (
                 <ProjectCard
                   id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
@@ -464,7 +464,7 @@ function ExperienceCard({
           </div>
         </TrackedExperienceDetails>
       ) : (
-        <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7">
+        <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)] print:items-start">
           {experienceSummary}
         </div>
       )}
