@@ -22,7 +22,7 @@ import type { MouseEvent } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { publicAsset } from "@/lib/assets";
 import { navLinks, site } from "@/lib/data";
-import { trackPortfolioEvent } from "@/lib/analytics";
+import { trackPortfolioEvent, trackPortfolioUtilityRoute } from "@/lib/analytics";
 import { SignalTrailLogo } from "@/components/SignalTrailLogo";
 
 const navIconMap: Record<string, LucideIcon> = {
@@ -243,6 +243,7 @@ export function Header() {
       toTheme: nextTheme,
       source: "sidebar_nav"
     });
+    trackPortfolioUtilityRoute(`/utility/theme/${nextTheme}`);
   };
 
   const navigateToSection = (
@@ -282,6 +283,7 @@ export function Header() {
         theme,
         source: "sidebar_nav"
       });
+      trackPortfolioUtilityRoute("/utility/theme-picker");
     } else {
       const fromTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
       const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
@@ -292,6 +294,7 @@ export function Header() {
         toTheme,
         source: "sidebar_nav"
       });
+      trackPortfolioUtilityRoute(`/utility/theme/${toTheme}`);
     }
 
     if (event.detail > 0) {
@@ -312,6 +315,7 @@ export function Header() {
     setPrintStatus("processing");
     setPrintProgress(null);
     trackPortfolioEvent("print_pdf.download.start", { source: "sidebar_nav", theme: printTheme });
+    trackPortfolioUtilityRoute(`/utility/print/${printTheme}`);
 
     try {
       const response = await fetch(printUrl, { cache: "no-store" });
@@ -393,6 +397,7 @@ export function Header() {
         trackPortfolioEvent("share.native.open", {
           source: "sidebar_nav"
         });
+        trackPortfolioUtilityRoute("/utility/share");
         return;
       }
 
@@ -402,6 +407,7 @@ export function Header() {
       trackPortfolioEvent("share.link.copy", {
         source: "sidebar_nav"
       });
+      trackPortfolioUtilityRoute("/utility/share");
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") {
         return;
