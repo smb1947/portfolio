@@ -1,4 +1,5 @@
 import { site } from "@/lib/data";
+import { PrintWebsiteLink } from "@/components/PrintWebsiteLink";
 
 export function Footer() {
   return (
@@ -7,6 +8,7 @@ export function Footer() {
         <p className="text-sm font-semibold tracking-[0.04em] text-muted">
           {site.name} ✦ AI Technical Product Builder ✦ Crafted with ❤️ in 🇺🇸
         </p>
+        <PrintWebsiteLink />
       </div>
     </footer>
   );
