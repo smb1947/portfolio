@@ -58,6 +58,9 @@ type NavMotion = {
   key: number;
   section: string;
 };
+type ShareDataWithFiles = ShareData & {
+  files?: File[];
+};
 
 const printFileByTheme: Record<PrintTheme, { filename: string; path: `/${string}` }> = {
   light: {
@@ -80,6 +83,24 @@ function getCurrentTheme(): Theme {
   const theme = document.documentElement.dataset.theme;
 
   return theme === "dark" || theme === "classic" ? theme : "light";
+}
+
+async function getShareHeadshotFile() {
+  try {
+    const response = await fetch(publicAsset("/images/headshot.jpg"));
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const blob = await response.blob();
+
+    return new File([blob], "shankar-binjawadgi-headshot.jpg", {
+      type: blob.type || "image/jpeg"
+    });
+  } catch {
+    return null;
+  }
 }
 
 export function Header() {
@@ -343,9 +364,10 @@ export function Header() {
 
   const sharePortfolio = async () => {
     const shareUrl = window.location.href.split("#")[0];
-    const shareData = {
+    const shareText = `${shareUrl}\n${site.title}`;
+    const shareData: ShareDataWithFiles = {
       title: site.title,
-      text: site.description,
+      text: site.title,
       url: shareUrl
     };
 
@@ -353,6 +375,12 @@ export function Header() {
       setIsMobileMenuOpen(false);
 
       if (navigator.share) {
+        const headshotFile = await getShareHeadshotFile();
+
+        if (headshotFile && navigator.canShare?.({ files: [headshotFile] })) {
+          shareData.files = [headshotFile];
+        }
+
         await navigator.share(shareData);
         trackPortfolioEvent("share.native.open", {
           source: "sidebar_nav"
@@ -360,7 +388,7 @@ export function Header() {
         return;
       }
 
-      await navigator.clipboard.writeText(shareUrl);
+      await navigator.clipboard.writeText(shareText);
       setShareStatus("copied");
       window.setTimeout(() => setShareStatus("idle"), 1800);
       trackPortfolioEvent("share.link.copy", {
