@@ -613,9 +613,9 @@
       "Hi 👋, I’m Shankar — an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.",
       "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
     ],
-    "featuredProductsHeading": "What have I been building?",
+    "featuredProductsHeading": "What I’ve Been Building",
     "featuredProductsIntro": "A snapshot of a few products and prototypes I’ve built, tested, and shaped across AI, consumer, and community experiences.",
-    "capabilitiesHeading": "What do I bring to the table?",
+    "capabilitiesHeading": "What I Bring to the Table",
     "capabilities": [
       {
         "title": "Customer & Behavioral Psychology",
@@ -642,7 +642,7 @@
         "description": "Aligning engineering, design, business, and customer stakeholders around clear problems and measurable outcomes."
       }
     ],
-    "operatingModelHeading": "What is my modus operandi?",
+    "operatingModelHeading": "What Is My Modus Operandi",
     "operatingModel": [
       {
         "title": "Agency",
@@ -691,7 +691,7 @@
         "description": "An AI wingman concept proposed after analyzing 100 one-star Bumble App Store ratings and root-causing the recurring no-matches problem."
       }
     ],
-    "personalSignalsHeading": "What I can geek out on",
+    "personalSignalsHeading": "What I Geek Out On",
     "personalSignals": [
       "Behavioral psychology",
       "Hiking",
@@ -699,7 +699,7 @@
       "Poker",
       "Anime"
     ],
-    "contactHeading": "How to Connect with Me",
+    "contactHeading": "How to Connect",
     "contactIntro": "Liked my work, have an idea to collaborate on, or just want to geek out on any of my interests? I’d be happy to hear from you. ☕"
   }
 }

@@ -636,7 +636,7 @@ export default function Home() {
       </section>
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>Where I Worked</SectionHeading>
+        <SectionHeading>Where I&apos;ve Worked</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {professionalExperiences.map((experience) => (
@@ -650,7 +650,7 @@ export default function Home() {
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
-        <SectionHeading>What I Studied</SectionHeading>
+        <SectionHeading>What I&apos;ve Studied</SectionHeading>
 
         <div className="mt-10 space-y-5">
           {educationExperiences.map((experience) => (
