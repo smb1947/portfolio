@@ -500,7 +500,7 @@ export default function Home() {
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
           <div className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
-            <div className="h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
+            <div className="hero-banner h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
             <div className="px-6 pb-8 md:px-10 md:pb-10">
               <div className="-mt-16 flex flex-col gap-6 md:-mt-20 md:flex-row md:items-end md:justify-between">
                 <div className="aspect-square h-32 w-32 overflow-hidden rounded-[2rem] border-4 border-card bg-[#162531] shadow-lift md:h-40 md:w-40">
@@ -525,9 +525,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="relative mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
-          <div className="h-px bg-line" />
-        </div>
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
@@ -548,7 +545,7 @@ export default function Home() {
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
           </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {featuredProducts.map(({ project, experience, section }) => (
               <ProjectCard
                 key={project.title}
@@ -561,11 +558,11 @@ export default function Home() {
           </div>
         </ProjectResourceSpotlight>
 
-        <div className="mt-12">
+        <div className="mt-12 print:pt-72">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.capabilitiesHeading}
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
@@ -584,7 +581,7 @@ export default function Home() {
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.operatingModelHeading}
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
+          <div className="mt-6 grid gap-5 md:grid-cols-3 print:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
@@ -618,7 +615,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20 print:pt-72">
         <SectionHeading>Where I Worked</SectionHeading>
 
         <div className="mt-10 space-y-5">
@@ -632,7 +629,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20 print:pt-28">
         <SectionHeading>What I Studied</SectionHeading>
 
         <div className="mt-10 space-y-5">

@@ -2,12 +2,27 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BriefcaseBusiness, Check, GraduationCap, Home, Mail, Moon, Palette, Sun, UserRound } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Check,
+  GraduationCap,
+  Home,
+  Mail,
+  Menu,
+  Moon,
+  Palette,
+  Printer,
+  Share2,
+  Sun,
+  UserRound,
+  X
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { navLinks } from "@/lib/data";
-import { trackPortfolioEvent } from "@/lib/analytics";
+import { publicAsset } from "@/lib/assets";
+import { navLinks, site } from "@/lib/data";
+import { trackPortfolioEvent, trackPortfolioUtilityRoute } from "@/lib/analytics";
 import { SignalTrailLogo } from "@/components/SignalTrailLogo";
 
 const navIconMap: Record<string, LucideIcon> = {
@@ -35,10 +50,27 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
 }
 
 type Theme = "light" | "dark" | "classic";
+type ShareStatus = "idle" | "copied";
+type PrintStatus = "idle" | "processing" | "downloading" | "ready" | "error";
+type PrintTheme = "light" | "dark";
 type NavMotion = {
   direction: "forward" | "backward";
   key: number;
   section: string;
+};
+type ShareDataWithFiles = ShareData & {
+  files?: File[];
+};
+
+const printFileByTheme: Record<PrintTheme, { filename: string; path: `/${string}` }> = {
+  light: {
+    filename: "shankar-binjawadgi-portfolio-light.pdf",
+    path: "/portfolio-print.pdf"
+  },
+  dark: {
+    filename: "shankar-binjawadgi-portfolio-dark.pdf",
+    path: "/portfolio-print-dark.pdf"
+  }
 };
 
 const themeOptions: Array<{ label: string; value: Theme; Icon: LucideIcon; swatchClassName: string }> = [
@@ -53,6 +85,32 @@ function getCurrentTheme(): Theme {
   return theme === "dark" || theme === "classic" ? theme : "light";
 }
 
+async function getShareHeadshotFile() {
+  try {
+    const response = await fetch(publicAsset("/images/headshot.jpg"));
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const blob = await response.blob();
+
+    return new File([blob], "shankar-binjawadgi-headshot.jpg", {
+      type: blob.type || "image/jpeg"
+    });
+  } catch {
+    return null;
+  }
+}
+
+function shouldAttachHeadshotToShare() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  const platform = navigator.platform.toLowerCase();
+  const isApplePlatform = /mac|iphone|ipad|ipod/.test(platform) || /iphone|ipad|ipod/.test(userAgent);
+
+  return /android/.test(userAgent) && !isApplePlatform;
+}
+
 export function Header() {
   const pathname = usePathname();
   const navItems = useMemo(() => [{ label: "Home", href: "/" }, ...navLinks], []);
@@ -61,6 +119,12 @@ export function Header() {
   const [theme, setTheme] = useState<Theme>("light");
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
   const [isThemePickerEnabled, setIsThemePickerEnabled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [shareStatus, setShareStatus] = useState<ShareStatus>("idle");
+  const [printStatus, setPrintStatus] = useState<PrintStatus>("idle");
+  const [printProgress, setPrintProgress] = useState<number | null>(null);
+  const [isPrintMenuOpen, setIsPrintMenuOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const previousActiveSectionRef = useRef(activeSection);
   const [navMotion, setNavMotion] = useState<NavMotion>({
     direction: "forward",
@@ -123,6 +187,42 @@ export function Header() {
     previousActiveSectionRef.current = activeSection;
   }, [activeSection, sectionIds]);
 
+  useEffect(() => {
+    if (!isPrintMenuOpen && !isThemeMenuOpen && !isMobileMenuOpen) {
+      return;
+    }
+
+    const closeOpenMenus = () => {
+      setIsPrintMenuOpen(false);
+      setIsThemeMenuOpen(false);
+      setIsMobileMenuOpen(false);
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+
+      if (target instanceof Node && headerRef.current?.contains(target)) {
+        return;
+      }
+
+      closeOpenMenus();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeOpenMenus();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPrintMenuOpen, isThemeMenuOpen, isMobileMenuOpen]);
+
   const toggleTheme = () => {
     const currentTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
     const nextTheme: Theme = currentTheme === "dark" ? "light" : "dark";
@@ -137,18 +237,276 @@ export function Header() {
     window.localStorage.setItem("portfolio-theme", nextTheme);
     setTheme(nextTheme);
     setIsThemeMenuOpen(false);
+    setIsMobileMenuOpen(false);
     trackPortfolioEvent("theme.select.click", {
       fromTheme,
       toTheme: nextTheme,
       source: "sidebar_nav"
     });
+    trackPortfolioUtilityRoute(`/utility/theme/${nextTheme}`);
+  };
+
+  const navigateToSection = (
+    event: MouseEvent<HTMLAnchorElement>,
+    sectionId: string,
+    label: string,
+    href: string
+  ) => {
+    setActiveSection(sectionId);
+    setIsMobileMenuOpen(false);
+    trackPortfolioEvent("navigation.item.click", {
+      section: sectionId,
+      label,
+      href,
+      source: "sidebar_nav"
+    });
+
+    if (sectionId && shouldHandleSectionClick(event) && document.getElementById(sectionId)) {
+      event.preventDefault();
+      window.dispatchEvent(
+        new CustomEvent("portfolio:navigate-section", {
+          detail: { sectionId, path: href }
+        })
+      );
+    }
+
+    if (event.detail > 0) {
+      event.currentTarget.blur();
+    }
+  };
+
+  const handleThemeButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    if (isThemePickerEnabled) {
+      setIsThemeMenuOpen((current) => !current);
+      setIsPrintMenuOpen(false);
+      trackPortfolioEvent("theme.picker.open.click", {
+        theme,
+        source: "sidebar_nav"
+      });
+      trackPortfolioUtilityRoute("/utility/theme-picker");
+    } else {
+      const fromTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
+      const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
+      toggleTheme();
+      setIsMobileMenuOpen(false);
+      trackPortfolioEvent("theme.toggle.click", {
+        fromTheme,
+        toTheme,
+        source: "sidebar_nav"
+      });
+      trackPortfolioUtilityRoute(`/utility/theme/${toTheme}`);
+    }
+
+    if (event.detail > 0) {
+      event.currentTarget.blur();
+    }
+  };
+
+  const downloadPrintPdf = async (printTheme: PrintTheme) => {
+    const printFile = printFileByTheme[printTheme];
+    const printUrl = new URL(publicAsset(printFile.path), window.location.origin).toString();
+
+    if (printStatus === "processing" || printStatus === "downloading") {
+      return;
+    }
+
+    setIsMobileMenuOpen(false);
+    setIsPrintMenuOpen(false);
+    setPrintStatus("processing");
+    setPrintProgress(null);
+    trackPortfolioEvent("print_pdf.download.start", { source: "sidebar_nav", theme: printTheme });
+    trackPortfolioUtilityRoute(`/utility/print/${printTheme}`);
+
+    try {
+      const response = await fetch(printUrl, { cache: "no-store" });
+
+      if (!response.ok) {
+        throw new Error(`Unable to fetch print PDF: ${response.status}`);
+      }
+
+      setPrintStatus("downloading");
+      const contentLength = Number(response.headers.get("content-length"));
+      const contentType = response.headers.get("content-type") ?? "application/pdf";
+      let blob: Blob;
+
+      if (response.body && Number.isFinite(contentLength) && contentLength > 0) {
+        const reader = response.body.getReader();
+        const chunks: ArrayBuffer[] = [];
+        let received = 0;
+
+        while (true) {
+          const { done, value } = await reader.read();
+
+          if (done) {
+            break;
+          }
+
+          chunks.push(value.buffer.slice(value.byteOffset, value.byteOffset + value.byteLength));
+          received += value.length;
+          setPrintProgress(Math.min(100, Math.round((received / contentLength) * 100)));
+        }
+
+        blob = new Blob(chunks, { type: contentType });
+      } else {
+        blob = await response.blob();
+      }
+
+      const objectUrl = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = objectUrl;
+      anchor.download = printFile.filename;
+      document.body.append(anchor);
+      anchor.click();
+      anchor.remove();
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      setPrintStatus("ready");
+      setPrintProgress(100);
+      trackPortfolioEvent("print_pdf.download.complete", { source: "sidebar_nav", theme: printTheme });
+      window.setTimeout(() => {
+        setPrintStatus("idle");
+        setPrintProgress(null);
+      }, 2400);
+    } catch {
+      setPrintStatus("error");
+      setPrintProgress(null);
+      trackPortfolioEvent("print_pdf.download.error", { source: "sidebar_nav", theme: printTheme });
+      window.setTimeout(() => setPrintStatus("idle"), 3000);
+    }
+  };
+
+  const sharePortfolio = async () => {
+    const shareUrl = window.location.href.split("#")[0];
+    const shareText = `${shareUrl}\n${site.title}`;
+    const shareData: ShareDataWithFiles = {
+      title: site.title,
+      text: site.title,
+      url: shareUrl
+    };
+
+    try {
+      setIsMobileMenuOpen(false);
+
+      if (navigator.share) {
+        const headshotFile = shouldAttachHeadshotToShare() ? await getShareHeadshotFile() : null;
+
+        if (headshotFile && navigator.canShare?.({ files: [headshotFile] })) {
+          shareData.files = [headshotFile];
+        }
+
+        await navigator.share(shareData);
+        trackPortfolioEvent("share.native.open", {
+          source: "sidebar_nav"
+        });
+        trackPortfolioUtilityRoute("/utility/share");
+        return;
+      }
+
+      await navigator.clipboard.writeText(shareText);
+      setShareStatus("copied");
+      window.setTimeout(() => setShareStatus("idle"), 1800);
+      trackPortfolioEvent("share.link.copy", {
+        source: "sidebar_nav"
+      });
+      trackPortfolioUtilityRoute("/utility/share");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        return;
+      }
+
+      trackPortfolioEvent("share.error", {
+        source: "sidebar_nav"
+      });
+    }
   };
 
   const activeThemeOption = themeOptions.find((option) => option.value === theme) ?? themeOptions[0];
   const ThemeIcon = isThemePickerEnabled ? activeThemeOption.Icon : theme === "dark" ? Sun : Moon;
+  const PrintThemeIcon = theme === "dark" || theme === "classic" ? Sun : Moon;
+  const ShareIcon = shareStatus === "copied" ? Check : Share2;
+  const printStatusText =
+    printStatus === "processing"
+      ? "Preparing print PDF..."
+      : printStatus === "downloading"
+        ? printProgress === null
+          ? "Downloading print PDF..."
+          : `Downloading print PDF ${printProgress}%`
+        : printStatus === "ready"
+          ? "Download started"
+          : printStatus === "error"
+            ? "Could not download PDF"
+            : "";
 
   return (
-    <header className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
+    <header ref={headerRef} className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
+      <div className="mx-auto max-w-[calc(100vw-2rem)] xl:hidden">
+        {isMobileMenuOpen ? (
+          <nav
+            className="mb-3 overflow-hidden rounded-[1.25rem] border border-line bg-card p-2 shadow-lift"
+            aria-label="Utility menu"
+          >
+            <div className="grid gap-1">
+              <button
+                type="button"
+                className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
+                onClick={handleThemeButtonClick}
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+                  <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>{isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}</span>
+              </button>
+              <button
+                type="button"
+                className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
+                onClick={() => {
+                  setIsPrintMenuOpen((current) => !current);
+                  setIsThemeMenuOpen(false);
+                }}
+                aria-expanded={isPrintMenuOpen}
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+                  <Printer className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>Print</span>
+              </button>
+              {isPrintMenuOpen ? (
+                <div className="grid gap-1 rounded-2xl bg-background p-2">
+                  <button
+                    type="button"
+                    className="grid min-h-11 grid-cols-[2.25rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                    onClick={() => void downloadPrintPdf("light")}
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-[#fffdf8] text-[#f47e60] ring-1 ring-[#e8dfd0]">
+                      <Sun className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <span>Light PDF</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="grid min-h-11 grid-cols-[2.25rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20"
+                    onClick={() => void downloadPrintPdf("dark")}
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-[#142432] text-[#fffdf8] ring-1 ring-[#374149]">
+                      <Moon className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <span>Dark PDF</span>
+                  </button>
+                </div>
+              ) : null}
+              <button
+                type="button"
+                className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
+                onClick={() => void sharePortfolio()}
+              >
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+                  <ShareIcon className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>{shareStatus === "copied" ? "Copied" : "Share"}</span>
+              </button>
+            </div>
+          </nav>
+        ) : null}
+      </div>
       <nav
         className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-center xl:rounded-[1.25rem]"
         aria-label="Primary navigation"
@@ -162,31 +520,10 @@ export function Header() {
             return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={sectionId ? `#${sectionId}` : link.href}
                 aria-current={isActive ? "location" : undefined}
                 title={link.label}
-                onClick={(event) => {
-                  setActiveSection(sectionId);
-                  trackPortfolioEvent("navigation.item.click", {
-                    section: sectionId,
-                    label: link.label,
-                    href: link.href,
-                    source: "sidebar_nav"
-                  });
-
-                  if (sectionId && shouldHandleSectionClick(event) && document.getElementById(sectionId)) {
-                    event.preventDefault();
-                    window.dispatchEvent(
-                      new CustomEvent("portfolio:navigate-section", {
-                        detail: { sectionId, path: link.href }
-                      })
-                    );
-                  }
-
-                  if (event.detail > 0) {
-                    event.currentTarget.blur();
-                  }
-                }}
+                onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
                 className={`group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
                   isActive ? "z-10 text-coral" : "z-0 text-navy/72 [@media(hover:hover)]:hover:text-teal"
                 }`}
@@ -234,10 +571,30 @@ export function Header() {
             );
           })}
         </div>
-        <div className="h-8 w-px bg-line xl:h-px xl:w-full" aria-hidden="true" />
+        <div className="nav-utility-divider mx-2 h-8 w-px bg-line xl:mx-0 xl:my-1.5 xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0"
+          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:hidden print:hidden"
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          title={isMobileMenuOpen ? "Close" : "Menu"}
+          onClick={(event) => {
+            setIsMobileMenuOpen((current) => !current);
+            if (event.detail > 0) {
+              event.currentTarget.blur();
+            }
+          }}
+        >
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+            {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          </span>
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
+            {isMobileMenuOpen ? "Close" : "Menu"}
+          </span>
+        </button>
+        <button
+          type="button"
+          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
           aria-label={
             isThemePickerEnabled
               ? `Choose theme, currently ${activeThemeOption.label}`
@@ -249,33 +606,53 @@ export function Header() {
               ? `Choose theme, currently ${activeThemeOption.label}`
               : `Switch to ${theme === "dark" ? "light" : "dark"} mode`
           }
+          onClick={handleThemeButtonClick}
+        >
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+            <ThemeIcon className="h-5 w-5 print:hidden" aria-hidden="true" />
+            <PrintThemeIcon className="hidden h-5 w-5 print:block" aria-hidden="true" />
+          </span>
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
+            {isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}
+          </span>
+        </button>
+        <button
+          type="button"
+          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
+          aria-label="Download print-ready portfolio PDF"
+          title="Print"
           onClick={(event) => {
-            if (isThemePickerEnabled) {
-              setIsThemeMenuOpen((current) => !current);
-              trackPortfolioEvent("theme.picker.open.click", {
-                theme,
-                source: "sidebar_nav"
-              });
-            } else {
-              const fromTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
-              const toTheme: Theme = fromTheme === "dark" ? "light" : "dark";
-              toggleTheme();
-              trackPortfolioEvent("theme.toggle.click", {
-                fromTheme,
-                toTheme,
-                source: "sidebar_nav"
-              });
-            }
+            setIsPrintMenuOpen((current) => !current);
+            setIsThemeMenuOpen(false);
             if (event.detail > 0) {
               event.currentTarget.blur();
             }
           }}
         >
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
-            <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+            <Printer className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
-            {isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}
+            Print
+          </span>
+        </button>
+        <button
+          type="button"
+          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
+          aria-label={shareStatus === "copied" ? "Portfolio link copied" : "Share portfolio"}
+          title={shareStatus === "copied" ? "Copied" : "Share"}
+          onClick={(event) => {
+            void sharePortfolio();
+            if (event.detail > 0) {
+              event.currentTarget.blur();
+            }
+          }}
+        >
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+            <ShareIcon className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
+            {shareStatus === "copied" ? "Copied" : "Share"}
           </span>
         </button>
       </nav>
@@ -305,6 +682,51 @@ export function Header() {
               );
             })}
           </div>
+        </div>
+      ) : null}
+      {isPrintMenuOpen ? (
+        <div className="absolute bottom-full right-4 mb-3 hidden w-52 rounded-2xl border border-line bg-card p-2 shadow-lift xl:bottom-auto xl:left-20 xl:right-auto xl:top-[calc(50%+4.5rem)] xl:mb-0 xl:block xl:-translate-y-1/2">
+          <div className="space-y-1" role="menu" aria-label="Choose print mode">
+            <button
+              type="button"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20 [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
+              onClick={() => void downloadPrintPdf("light")}
+            >
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#fffdf8] text-[#f47e60] ring-1 ring-[#e8dfd0]">
+                <Sun className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span>Light PDF</span>
+            </button>
+            <button
+              type="button"
+              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm font-bold text-navy transition focus:outline-none focus:ring-4 focus:ring-teal/20 [@media(hover:hover)]:hover:bg-background [@media(hover:hover)]:hover:text-teal"
+              onClick={() => void downloadPrintPdf("dark")}
+            >
+              <span className="grid h-8 w-8 place-items-center rounded-full bg-[#142432] text-[#fffdf8] ring-1 ring-[#374149]">
+                <Moon className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span>Dark PDF</span>
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {printStatus !== "idle" ? (
+        <div
+          className="pointer-events-none fixed bottom-24 left-4 right-4 z-[60] rounded-2xl border border-line bg-card p-4 text-sm font-bold text-navy shadow-lift xl:left-24 xl:right-auto xl:w-80"
+          role="status"
+          aria-live="polite"
+        >
+          <div className="flex items-center gap-3">
+            <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-coral/10 text-coral">
+              {printStatus === "ready" ? <Check className="h-5 w-5" aria-hidden="true" /> : <Printer className="h-5 w-5" aria-hidden="true" />}
+            </span>
+            <span>{printStatusText}</span>
+          </div>
+          {printStatus === "downloading" && printProgress !== null ? (
+            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-background">
+              <div className="h-full rounded-full bg-teal transition-all" style={{ width: `${printProgress}%` }} />
+            </div>
+          ) : null}
         </div>
       ) : null}
     </header>
