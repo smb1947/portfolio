@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PrintWebsiteLink } from "@/components/PrintWebsiteLink";
 import { site } from "@/lib/data";
 import "./globals.css";
 
@@ -105,6 +106,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <div className="pb-24 xl:pb-0">
           <main>{children}</main>
+          <PrintWebsiteLink />
           <Footer />
         </div>
         <Analytics />
