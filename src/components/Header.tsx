@@ -367,7 +367,7 @@ export function Header() {
     const shareText = `${shareUrl}\n${site.title}`;
     const shareData: ShareDataWithFiles = {
       title: site.title,
-      text: site.title,
+      text: shareText,
       url: shareUrl
     };
 
