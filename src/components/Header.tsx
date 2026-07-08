@@ -415,6 +415,7 @@ export function Header() {
 
   const activeThemeOption = themeOptions.find((option) => option.value === theme) ?? themeOptions[0];
   const ThemeIcon = isThemePickerEnabled ? activeThemeOption.Icon : theme === "dark" ? Sun : Moon;
+  const PrintThemeIcon = theme === "dark" || theme === "classic" ? Sun : Moon;
   const ShareIcon = shareStatus === "copied" ? Check : Share2;
   const printStatusText =
     printStatus === "processing"
@@ -564,7 +565,7 @@ export function Header() {
             );
           })}
         </div>
-        <div className="mx-2 h-8 w-px bg-line xl:mx-0 xl:my-1.5 xl:h-px xl:w-full" aria-hidden="true" />
+        <div className="nav-utility-divider mx-2 h-8 w-px bg-line xl:mx-0 xl:my-1.5 xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
           className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:hidden print:hidden"
@@ -602,7 +603,8 @@ export function Header() {
           onClick={handleThemeButtonClick}
         >
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
-            <ThemeIcon className="h-5 w-5" aria-hidden="true" />
+            <ThemeIcon className="h-5 w-5 print:hidden" aria-hidden="true" />
+            <PrintThemeIcon className="hidden h-5 w-5 print:block" aria-hidden="true" />
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
             {isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}

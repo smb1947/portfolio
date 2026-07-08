@@ -36,7 +36,6 @@ import { publicAsset } from "@/lib/assets";
 import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
-import { CurrentWebsiteLink } from "@/components/CurrentWebsiteLink";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
@@ -527,9 +526,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <p className="print-page-one-footer hidden">
-        <CurrentWebsiteLink />
-      </p>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>Who I Am</SectionHeading>
