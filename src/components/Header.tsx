@@ -435,40 +435,9 @@ export function Header() {
         {isMobileMenuOpen ? (
           <nav
             className="mb-3 overflow-hidden rounded-[1.25rem] border border-line bg-card p-2 shadow-lift"
-            aria-label="Expanded navigation"
+            aria-label="Utility menu"
           >
             <div className="grid gap-1">
-              {navItems.map((link) => {
-                const sectionId = getSectionId(link.href);
-                const Icon = navIconMap[link.label] ?? UserRound;
-                const isActive = activeSection === sectionId;
-
-                return (
-                  <Link
-                    key={link.href}
-                    href={sectionId ? `#${sectionId}` : link.href}
-                    aria-current={isActive ? "location" : undefined}
-                    className={`group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
-                      isActive ? "text-coral" : "text-navy/72 [@media(hover:hover)]:hover:text-teal"
-                    }`}
-                    onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
-                  >
-                    <span
-                      className={`grid h-10 w-10 place-items-center rounded-full ${
-                        isActive ? "bg-coral text-white" : "bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white"
-                      }`}
-                    >
-                      {link.label === "Home" ? (
-                        <SignalTrailLogo tone={isActive ? "activeNav" : "nav"} className="h-7 w-7" aria-hidden="true" />
-                      ) : (
-                        <Icon className="h-5 w-5" aria-hidden="true" />
-                      )}
-                    </span>
-                    <span>{link.label}</span>
-                  </Link>
-                );
-              })}
-              <div className="my-1 h-px bg-line" aria-hidden="true" />
               <button
                 type="button"
                 className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
