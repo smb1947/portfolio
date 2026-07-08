@@ -533,6 +533,10 @@ button {
     padding-bottom: 0 !important;
   }
 
+  .contact-methods {
+    margin-bottom: 5rem !important;
+  }
+
   footer {
     break-before: avoid;
     page-break-before: avoid;
