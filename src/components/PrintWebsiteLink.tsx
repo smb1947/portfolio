@@ -15,9 +15,9 @@ export function PrintWebsiteLink() {
   }
 
   return (
-    <a className="print-first-page-link" href={websiteUrl}>
-      <span aria-hidden="true">🔗</span>
-      <span>{websiteUrl}</span>
+    <a className="print-footer-link" href={websiteUrl}>
+      <span className="print-footer-link-icon" aria-hidden="true">🔗</span>
+      <span className="print-footer-link-url">{websiteUrl}</span>
     </a>
   );
 }
