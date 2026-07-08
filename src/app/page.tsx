@@ -526,9 +526,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="relative mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
-          <div className="h-px bg-line" />
-        </div>
       </section>
       <p className="print-page-one-footer hidden">
         <CurrentWebsiteLink />
