@@ -53,7 +53,7 @@ function QuestionWordHighlight({ text }: { text: string }) {
 
   return (
     <>
-      <span className="text-coral">{questionWord}</span>
+      <span className="text-teal">{questionWord}</span>
       {rest}
     </>
   );
