@@ -558,7 +558,7 @@ export default function Home() {
           </div>
         </ProjectResourceSpotlight>
 
-        <div className="mt-12 print:pt-72">
+        <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.capabilitiesHeading}
           </h3>
@@ -615,7 +615,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20 print:pt-72">
+      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>Where I Worked</SectionHeading>
 
         <div className="mt-10 space-y-5">
@@ -629,7 +629,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20 print:pt-28">
+      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>What I Studied</SectionHeading>
 
         <div className="mt-10 space-y-5">
