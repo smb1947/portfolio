@@ -6,9 +6,9 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
         <div className="h-px bg-line" />
       </div>
-      <div className="mx-auto max-w-6xl px-5 py-8 text-center text-sm text-muted sm:px-8">
-        <p>
-          {site.name} · AI Technical Product Builder · Crafted with ❤️ in the USA.
+      <div className="mx-auto max-w-6xl px-5 py-8 text-center sm:px-8">
+        <p className="text-sm font-semibold tracking-[0.04em] text-muted">
+          {site.name} ✦ AI Technical Product Builder ✦ Crafted with ❤️ in 🇺🇸
         </p>
       </div>
     </footer>
