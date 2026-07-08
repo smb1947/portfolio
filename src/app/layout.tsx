@@ -74,16 +74,8 @@ const themeScript = `
     if (pickerEnabled) {
       document.documentElement.dataset.themePicker = "true";
     }
-    const userAgent = window.navigator.userAgent;
-    const vendor = window.navigator.vendor;
-    const isDesktop = !/Android|Mobi|Tablet|iPad|iPhone|iPod/i.test(userAgent);
-    const isGoogleChrome = /Chrome|Chromium/i.test(userAgent) && vendor === "Google Inc.";
-    const isChromeLikeButNotChrome = /Edg|OPR|Opera|SamsungBrowser/i.test(userAgent);
-    document.documentElement.dataset.printSupport =
-      isDesktop && isGoogleChrome && !isChromeLikeButNotChrome ? "supported" : "unsupported";
   } catch {
     document.documentElement.dataset.theme = "light";
-    document.documentElement.dataset.printSupport = "unsupported";
   }
 })();
 `;
@@ -111,9 +103,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
-        <div className="print-unavailable-page" aria-hidden="true">
-          Print is available only on desktop Chrome.
-        </div>
         <div className="pb-24 xl:pb-0">
           <main>{children}</main>
           <Footer />

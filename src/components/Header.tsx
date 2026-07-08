@@ -52,7 +52,6 @@ function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
 
 type Theme = "light" | "dark" | "classic";
 type ShareStatus = "idle" | "copied";
-type PrintNotice = "idle" | "chrome-only";
 type NavMotion = {
   direction: "forward" | "backward";
   key: number;
@@ -100,16 +99,6 @@ function shouldAttachHeadshotToShare() {
   return /android/.test(userAgent) && !isApplePlatform;
 }
 
-function canUseNativePrint() {
-  const userAgent = navigator.userAgent;
-  const vendor = navigator.vendor;
-  const isDesktop = !/Android|Mobi|Tablet|iPad|iPhone|iPod/i.test(userAgent);
-  const isGoogleChrome = /Chrome|Chromium/.test(userAgent) && vendor === "Google Inc.";
-  const isChromeLikeButNotChrome = /Edg|OPR|Opera|SamsungBrowser/.test(userAgent);
-
-  return isDesktop && isGoogleChrome && !isChromeLikeButNotChrome;
-}
-
 export function Header() {
   const pathname = usePathname();
   const navItems = useMemo(() => [{ label: "Home", href: "/" }, ...navLinks], []);
@@ -120,9 +109,7 @@ export function Header() {
   const [isThemePickerEnabled, setIsThemePickerEnabled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [shareStatus, setShareStatus] = useState<ShareStatus>("idle");
-  const [printNotice, setPrintNotice] = useState<PrintNotice>("idle");
   const headerRef = useRef<HTMLElement>(null);
-  const printNoticeTimeoutRef = useRef<number | null>(null);
   const previousActiveSectionRef = useRef(activeSection);
   const [navMotion, setNavMotion] = useState<NavMotion>({
     direction: "forward",
@@ -133,14 +120,6 @@ export function Header() {
   useEffect(() => {
     setTheme(getCurrentTheme());
     setIsThemePickerEnabled(document.documentElement.dataset.themePicker === "true");
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (printNoticeTimeoutRef.current !== null) {
-        window.clearTimeout(printNoticeTimeoutRef.current);
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -306,33 +285,11 @@ export function Header() {
     }
   };
 
-  const showChromeOnlyPrintNotice = (source: "keyboard_shortcut" | "sidebar_nav") => {
-    setIsMobileMenuOpen(false);
-    setIsThemeMenuOpen(false);
-    setPrintNotice("chrome-only");
-    trackPortfolioEvent("print.unavailable.browser", { source, requiredBrowser: "chrome" });
-    trackPortfolioUtilityRoute("/utility/print/chrome-only");
-
-    if (printNoticeTimeoutRef.current !== null) {
-      window.clearTimeout(printNoticeTimeoutRef.current);
-    }
-
-    printNoticeTimeoutRef.current = window.setTimeout(() => {
-      setPrintNotice("idle");
-      printNoticeTimeoutRef.current = null;
-    }, 3200);
-  };
-
   const printPortfolio = (triggerElement?: HTMLElement) => {
     const printTheme = getCurrentTheme();
     triggerElement?.blur();
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur();
-    }
-
-    if (!canUseNativePrint()) {
-      showChromeOnlyPrintNotice("sidebar_nav");
-      return;
     }
 
     setIsMobileMenuOpen(false);
@@ -341,24 +298,6 @@ export function Header() {
     trackPortfolioUtilityRoute(`/utility/print/${printTheme}`);
     window.setTimeout(() => window.print(), 50);
   };
-
-  useEffect(() => {
-    const handlePrintShortcut = (event: KeyboardEvent) => {
-      if (!(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== "p" || canUseNativePrint()) {
-        return;
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-      showChromeOnlyPrintNotice("keyboard_shortcut");
-    };
-
-    window.addEventListener("keydown", handlePrintShortcut, { capture: true });
-
-    return () => {
-      window.removeEventListener("keydown", handlePrintShortcut, { capture: true });
-    };
-  });
 
   const sharePortfolio = async () => {
     const shareUrl = window.location.href.split("#")[0];
@@ -629,20 +568,6 @@ export function Header() {
                 </button>
               );
             })}
-          </div>
-        </div>
-      ) : null}
-      {printNotice === "chrome-only" ? (
-        <div
-          className="fixed bottom-24 left-4 right-4 z-[60] rounded-2xl border border-line bg-card p-4 text-sm font-bold text-navy shadow-lift xl:left-24 xl:right-auto xl:w-80 print:hidden"
-          role="status"
-          aria-live="polite"
-        >
-          <div className="flex items-center gap-3">
-            <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-coral/10 text-coral">
-              <Printer className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <span>Print is available only on desktop Chrome.</span>
           </div>
         </div>
       ) : null}
