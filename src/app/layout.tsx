@@ -74,10 +74,6 @@ const themeScript = `
     if (pickerEnabled) {
       document.documentElement.dataset.themePicker = "true";
     }
-    const isSafari = /^((?!chrome|chromium|android).)*safari/i.test(window.navigator.userAgent);
-    if (isSafari) {
-      document.documentElement.dataset.printEngine = "safari";
-    }
   } catch {
     document.documentElement.dataset.theme = "light";
   }

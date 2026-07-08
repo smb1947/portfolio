@@ -389,47 +389,6 @@ button {
     color: var(--foreground);
   }
 
-  :root[data-print-engine="safari"] {
-    width: auto !important;
-    background: var(--background) !important;
-  }
-
-  :root[data-print-engine="safari"] body {
-    width: auto !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important;
-    background: var(--background) !important;
-  }
-
-  :root[data-print-engine="safari"] body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background: var(--background);
-  }
-
-  :root[data-print-engine="safari"] body > div {
-    width: auto !important;
-    overflow: hidden !important;
-    background: var(--background) !important;
-  }
-
-  :root[data-print-engine="safari"] #home > div,
-  :root[data-print-engine="safari"] main > section,
-  :root[data-print-engine="safari"] footer > div {
-    max-width: none !important;
-    margin-left: 5.25rem !important;
-    margin-right: 1.25rem !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  :root[data-print-engine="safari"] .print\:grid-cols-2,
-  :root[data-print-engine="safari"] .print\:grid-cols-3 {
-    grid-template-columns: minmax(0, 1fr) !important;
-  }
-
   .dot-grid {
     display: none !important;
   }
