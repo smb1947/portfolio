@@ -655,7 +655,7 @@ export default function Home() {
           </span>
         </p>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
-          <div className="flex flex-wrap gap-3">
+          <div className="contact-methods flex flex-wrap gap-3">
             {contact.map((method) => (
               <ContactCard key={method.type} item={method} />
             ))}
