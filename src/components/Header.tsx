@@ -103,10 +103,11 @@ function shouldAttachHeadshotToShare() {
 function canUseNativePrint() {
   const userAgent = navigator.userAgent;
   const vendor = navigator.vendor;
+  const isDesktop = !/Android|Mobi|Tablet|iPad|iPhone|iPod/i.test(userAgent);
   const isGoogleChrome = /Chrome|Chromium/.test(userAgent) && vendor === "Google Inc.";
   const isChromeLikeButNotChrome = /Edg|OPR|Opera|SamsungBrowser/.test(userAgent);
 
-  return isGoogleChrome && !isChromeLikeButNotChrome;
+  return isDesktop && isGoogleChrome && !isChromeLikeButNotChrome;
 }
 
 export function Header() {
@@ -641,7 +642,7 @@ export function Header() {
             <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-coral/10 text-coral">
               <Printer className="h-5 w-5" aria-hidden="true" />
             </span>
-            <span>Print is available only on Chrome.</span>
+            <span>Print is available only on desktop Chrome.</span>
           </div>
         </div>
       ) : null}
