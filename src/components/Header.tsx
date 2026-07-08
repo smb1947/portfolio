@@ -7,6 +7,7 @@ import {
   Check,
   GraduationCap,
   Home,
+  AtSign,
   Mail,
   Menu,
   Moon,
@@ -30,7 +31,7 @@ const navIconMap: Record<string, LucideIcon> = {
   About: UserRound,
   Education: GraduationCap,
   Experience: BriefcaseBusiness,
-  Contact: Mail
+  Contact: AtSign
 };
 
 const sectionPathMap: Record<string, string> = {
