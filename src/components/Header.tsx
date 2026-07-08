@@ -103,6 +103,14 @@ async function getShareHeadshotFile() {
   }
 }
 
+function shouldAttachHeadshotToShare() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  const platform = navigator.platform.toLowerCase();
+  const isApplePlatform = /mac|iphone|ipad|ipod/.test(platform) || /iphone|ipad|ipod/.test(userAgent);
+
+  return /android/.test(userAgent) && !isApplePlatform;
+}
+
 export function Header() {
   const pathname = usePathname();
   const navItems = useMemo(() => [{ label: "Home", href: "/" }, ...navLinks], []);
@@ -367,7 +375,7 @@ export function Header() {
     const shareText = `${shareUrl}\n${site.title}`;
     const shareData: ShareDataWithFiles = {
       title: site.title,
-      text: shareText,
+      text: site.title,
       url: shareUrl
     };
 
@@ -375,7 +383,7 @@ export function Header() {
       setIsMobileMenuOpen(false);
 
       if (navigator.share) {
-        const headshotFile = await getShareHeadshotFile();
+        const headshotFile = shouldAttachHeadshotToShare() ? await getShareHeadshotFile() : null;
 
         if (headshotFile && navigator.canShare?.({ files: [headshotFile] })) {
           shareData.files = [headshotFile];
