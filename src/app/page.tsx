@@ -41,6 +41,8 @@ import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight"
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
+const portfolioWebsiteUrl = "https://smb007.xyz";
+
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
@@ -528,6 +530,12 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
           <div className="h-px bg-line" />
         </div>
+        <p className="mx-auto hidden max-w-6xl px-5 pt-6 text-center text-[1.05rem] font-semibold tracking-[0.04em] text-muted sm:px-8 print:block">
+          Portfolio website -{" "}
+          <a className="text-teal underline-offset-4" href={portfolioWebsiteUrl}>
+            smb007.xyz
+          </a>
+        </p>
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
