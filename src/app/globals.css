@@ -329,7 +329,7 @@ button {
 @media print {
   @page {
     size: 1440px 2100px;
-    margin: 0;
+    margin: 96px 0;
   }
 
   :root {
