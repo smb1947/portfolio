@@ -487,11 +487,6 @@ button {
     display: none !important;
   }
 
-  header nav > div[aria-hidden="true"] {
-    width: 100% !important;
-    height: 1px !important;
-  }
-
   h1,
   h2,
   h3,

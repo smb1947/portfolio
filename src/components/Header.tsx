@@ -468,7 +468,6 @@ export function Header() {
                   </Link>
                 );
               })}
-            <div className="my-1 h-px bg-line" aria-hidden="true" />
               <button
                 type="button"
                 className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
@@ -595,7 +594,6 @@ export function Header() {
             );
           })}
         </div>
-        <div className="mx-2 h-8 w-px bg-line xl:mx-0 xl:my-1.5 xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
           className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:hidden print:hidden"
