@@ -65,7 +65,7 @@ function SectionHeading({ children }: { children: string }) {
       <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">
         <QuestionWordHighlight text={children} />
       </p>
-      <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
+      <div className="mt-5 h-1.5 w-16 rounded-full bg-coral" aria-hidden="true" />
     </div>
   );
 }
