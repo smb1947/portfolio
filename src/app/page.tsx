@@ -431,7 +431,7 @@ function ExperienceCard({
           organization={experience.organization}
           title={experience.title}
         >
-          <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7">
+          <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)_auto] print:items-start">
             {experienceSummary}
             <div className="flex items-center gap-3 text-sm font-bold text-navy md:justify-end">
               <span>
@@ -442,7 +442,7 @@ function ExperienceCard({
           </summary>
 
           <div className="relative border-t border-line px-6 pb-12 md:px-7 md:pb-14">
-            <div className="grid gap-5 pt-6 lg:grid-cols-2">
+            <div className="grid gap-5 pt-6 lg:grid-cols-2 print:grid-cols-2">
               {experience.projects.map((project) => (
                 <ProjectCard
                   id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
@@ -464,7 +464,7 @@ function ExperienceCard({
           </div>
         </TrackedExperienceDetails>
       ) : (
-        <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7">
+        <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)] print:items-start">
           {experienceSummary}
         </div>
       )}
@@ -500,7 +500,7 @@ export default function Home() {
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
           <div className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
-            <div className="h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
+            <div className="hero-banner h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
             <div className="px-6 pb-8 md:px-10 md:pb-10">
               <div className="-mt-16 flex flex-col gap-6 md:-mt-20 md:flex-row md:items-end md:justify-between">
                 <div className="aspect-square h-32 w-32 overflow-hidden rounded-[2rem] border-4 border-card bg-[#162531] shadow-lift md:h-40 md:w-40">
@@ -525,9 +525,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="relative mx-auto max-w-6xl px-5 sm:px-8" aria-hidden="true">
-          <div className="h-px bg-line" />
-        </div>
       </section>
 
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
@@ -548,7 +545,7 @@ export default function Home() {
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
           </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {featuredProducts.map(({ project, experience, section }) => (
               <ProjectCard
                 key={project.title}
@@ -565,7 +562,7 @@ export default function Home() {
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.capabilitiesHeading}
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
+          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
               <article key={capability.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
@@ -584,7 +581,7 @@ export default function Home() {
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             {aboutProfile.operatingModelHeading}
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-3">
+          <div className="mt-6 grid gap-5 md:grid-cols-3 print:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
               <article key={principle.title} className="rounded-2xl border border-line bg-card p-5 shadow-soft">
                 <div className="flex items-start gap-4">
@@ -658,7 +655,7 @@ export default function Home() {
           </span>
         </p>
         <div className={`mt-10 grid gap-6 ${hasContactForm ? "lg:grid-cols-[0.45fr_1.55fr] lg:items-start" : ""}`}>
-          <div className="flex flex-wrap gap-3">
+          <div className="contact-methods flex flex-wrap gap-3">
             {contact.map((method) => (
               <ContactCard key={method.type} item={method} />
             ))}
