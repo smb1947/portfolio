@@ -41,10 +41,30 @@ import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight"
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
+function QuestionWordHighlight({ text }: { text: string }) {
+  const match = text.match(/^(Who|What|Where|When|Why|How)(?=\b|['’]s\b)/i);
+
+  if (!match) {
+    return <>{text}</>;
+  }
+
+  const questionWord = text.slice(0, match[0].length);
+  const rest = text.slice(match[0].length);
+
+  return (
+    <>
+      <span className="text-coral">{questionWord}</span>
+      {rest}
+    </>
+  );
+}
+
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">{children}</p>
+      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">
+        <QuestionWordHighlight text={children} />
+      </p>
       <div className="mt-5 h-1.5 w-16 rounded-full bg-teal" aria-hidden="true" />
     </div>
   );
@@ -540,7 +560,7 @@ export default function Home() {
 
         <ProjectResourceSpotlight className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
-            {aboutProfile.featuredProductsHeading}
+            <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
@@ -560,7 +580,7 @@ export default function Home() {
 
         <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
-            {aboutProfile.capabilitiesHeading}
+            <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
             {aboutProfile.capabilities.map((capability) => (
@@ -579,7 +599,7 @@ export default function Home() {
 
         <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
-            {aboutProfile.operatingModelHeading}
+            <QuestionWordHighlight text={aboutProfile.operatingModelHeading} />
           </h3>
           <div className="mt-6 grid gap-5 md:grid-cols-3 print:grid-cols-3">
             {aboutProfile.operatingModel.map((principle) => (
@@ -599,7 +619,7 @@ export default function Home() {
 
         <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
-            {aboutProfile.personalSignalsHeading}
+            <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
