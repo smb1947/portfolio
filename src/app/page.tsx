@@ -378,7 +378,7 @@ function ProjectCard({
   id?: string;
   surface?: "nested" | "card";
 }) {
-  const surfaceClassName = surface === "card" ? "bg-card" : "bg-[#090d10]";
+  const surfaceClassName = surface === "card" ? "bg-card" : "bg-background";
 
   return (
     <section
@@ -550,7 +550,7 @@ function ExpandedHistoryDetails({
 
   return (
     <div className="border-t border-line bg-background/25 px-4 pb-8 pt-5 md:px-6 md:pb-10 md:pt-6">
-      <div className="rounded-2xl border border-line bg-card/70 p-5 shadow-soft md:p-6">
+      <div className="px-1 md:px-2">
         <div className="space-y-5">
           {entry.experiences.map((experience) => (
             <HistoryDetailSummary
