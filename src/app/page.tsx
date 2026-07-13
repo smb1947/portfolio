@@ -695,7 +695,7 @@ export default function Home() {
                   <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-coral">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="mt-3 flex items-center gap-2 text-sm font-bold text-muted">
+                  <p className="mt-3 flex items-center gap-2 text-sm font-bold text-navy">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
