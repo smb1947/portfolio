@@ -1,11 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import {
   BadgeCheck,
   Brain,
   Building2,
-  ChevronDown,
   Code2,
   Drama,
   Dumbbell,
+  Maximize2,
   HeartHandshake,
   Landmark,
   Linkedin,
@@ -22,6 +25,7 @@ import {
   Target,
   Users,
   Wrench,
+  X,
   Zap
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -33,13 +37,11 @@ import {
 } from "@/lib/data";
 import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
-import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
-import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
 
 function QuestionWordHighlight({ text }: { text: string }) {
   const match = text.match(/^(Who|What|Where|When|Why|How)(?=\b|['’]s\b)/i);
@@ -402,7 +404,7 @@ function ProjectCard({
   );
 }
 
-function ExperienceCard({
+function RichExperienceCard({
   experience,
   section
 }: {
@@ -444,24 +446,14 @@ function ExperienceCard({
       className="rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift"
     >
       {hasProjects ? (
-        <TrackedExperienceDetails
-          className="group open:mb-8"
-          section={section}
-          experienceType={experience.type}
-          organization={experience.organization}
-          title={experience.title}
-        >
-          <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)_auto] print:items-start">
+        <>
+          <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)_auto] print:items-start">
             {experienceSummary}
-            <div className="flex items-center gap-3 text-sm font-bold text-navy md:justify-end">
-              <span>
-                {experience.projects.length} project{experience.projects.length === 1 ? "" : "s"}
-              </span>
-              <ChevronDown className="h-5 w-5 text-coral transition group-open:rotate-180" aria-hidden="true" />
+            <div className="text-sm font-bold text-navy md:justify-self-end">
+              {experience.projects.length} project{experience.projects.length === 1 ? "" : "s"}
             </div>
-          </summary>
-
-          <div className="relative border-t border-line px-6 pb-12 md:px-7 md:pb-14">
+          </div>
+          <div className="border-t border-line px-6 pb-6 md:px-7 md:pb-7">
             <div className="grid gap-5 pt-6 lg:grid-cols-2 print:grid-cols-2">
               {experience.projects.map((project) => (
                 <ProjectCard
@@ -473,16 +465,8 @@ function ExperienceCard({
                 />
               ))}
             </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-              <CollapseProjectsButton
-                section={section}
-                experienceType={experience.type}
-                organization={experience.organization}
-                title={experience.title}
-              />
-            </div>
           </div>
-        </TrackedExperienceDetails>
+        </>
       ) : (
         <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)] print:items-start">
           {experienceSummary}
@@ -492,11 +476,168 @@ function ExperienceCard({
   );
 }
 
+type HistoryEntry = {
+  id: string;
+  organization: string;
+  from: string;
+  to: string;
+  experiences: Experience[];
+};
+
+function formatHistoryDateRange(entry: HistoryEntry) {
+  if (!entry.from) {
+    return entry.to;
+  }
+
+  if (!entry.to || entry.from === entry.to) {
+    return entry.from;
+  }
+
+  return `${entry.from} - ${entry.to}`;
+}
+
+function createHistoryEntries(experiences: Experience[], section: "experience" | "education"): HistoryEntry[] {
+  if (section === "experience") {
+    const microsoftExperiences = experiences.filter((experience) => experience.organization === "Microsoft");
+    const otherExperiences = experiences.filter((experience) => experience.organization !== "Microsoft");
+
+    return [
+      ...otherExperiences.map((experience) => ({
+        id: `${experience.organization}-${experience.from}-${experience.to}`,
+        organization: experience.organization,
+        from: experience.from,
+        to: experience.to,
+        experiences: [experience]
+      })),
+      ...(microsoftExperiences.length
+        ? [
+            {
+              id: "Microsoft-Jul 2018-Jul 2024",
+              organization: "Microsoft",
+              from: "Jul 2018",
+              to: "Jul 2024",
+              experiences: microsoftExperiences
+            }
+          ]
+        : [])
+    ];
+  }
+
+  return experiences.map((experience) => ({
+    id: `${experience.organization}-${experience.from}-${experience.to}`,
+    organization: experience.organization,
+    from: experience.from,
+    to: experience.to,
+    experiences: [experience]
+  }));
+}
+
+function HistoryList({
+  entries,
+  section,
+  onOpen
+}: {
+  entries: HistoryEntry[];
+  section: "experience" | "education";
+  onOpen: (entry: HistoryEntry, section: "experience" | "education") => void;
+}) {
+  return (
+    <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
+      {entries.map((entry, index) => (
+        <button
+          key={entry.id}
+          type="button"
+          onClick={() => onOpen(entry, section)}
+          className={`grid w-full gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/70 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center md:px-6 ${
+            index === 0 ? "" : "border-t border-line"
+          }`}
+          aria-label={`Open details for ${entry.organization}`}
+        >
+          <div className="relative h-14 w-14">
+            <ExperienceLogo organization={entry.organization} />
+            {getExperienceProductLogo(entry.organization) ? (
+              <div className="absolute -bottom-1 -right-1">
+                <ExperienceSubLogo organization={entry.organization} />
+              </div>
+            ) : null}
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
+              {entry.organization}
+            </h3>
+            <p className="mt-1 text-sm font-bold text-muted">{formatHistoryDateRange(entry)}</p>
+          </div>
+          <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-background text-coral shadow-sm transition duration-200 hover:border-teal/40 hover:bg-teal hover:text-white sm:justify-self-end">
+            <Maximize2 className="h-5 w-5" aria-hidden="true" />
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function HistoryModal({
+  entry,
+  section,
+  onClose
+}: {
+  entry: HistoryEntry | null;
+  section: "experience" | "education";
+  onClose: () => void;
+}) {
+  if (!entry) {
+    return null;
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto bg-[#05080b]/80 px-5 py-8 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${entry.organization} details`}
+      onClick={onClose}
+    >
+      <div
+        className="mx-auto max-w-6xl"
+        onClick={(event) => {
+          event.stopPropagation();
+        }}
+      >
+        <div className="mb-4 flex justify-end">
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-11 w-11 place-items-center rounded-full border border-line bg-card text-navy shadow-soft transition duration-200 hover:-translate-y-0.5 hover:border-coral/40 hover:bg-coral hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+            aria-label="Close details"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+          </button>
+        </div>
+        <div className="space-y-5">
+          {entry.experiences.map((experience) => (
+            <RichExperienceCard
+              key={`${experience.organization}-${experience.title}`}
+              experience={experience}
+              section={section}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
+  const [selectedHistory, setSelectedHistory] = useState<{
+    entry: HistoryEntry;
+    section: "experience" | "education";
+  } | null>(null);
   const { contact, contactForm, experiences } = portfolio;
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
   const professionalExperiences = experiences.filter((experience) => experience.type === "work");
+  const professionalHistoryEntries = createHistoryEntries(professionalExperiences, "experience");
+  const educationHistoryEntries = createHistoryEntries(educationExperiences, "education");
   const featuredProductTitles = aboutProfile.featuredProducts.map((product) => product.title);
   const featuredProducts = experiences
     .flatMap((experience) =>
@@ -516,6 +657,11 @@ export default function Home() {
   return (
     <>
       <SectionRouteSync />
+      <HistoryModal
+        entry={selectedHistory?.entry ?? null}
+        section={selectedHistory?.section ?? "experience"}
+        onClose={() => setSelectedHistory(null)}
+      />
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
@@ -637,30 +783,20 @@ export default function Home() {
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>Where I&apos;ve Worked</SectionHeading>
-
-        <div className="mt-10 space-y-5">
-          {professionalExperiences.map((experience) => (
-            <ExperienceCard
-              key={`${experience.organization}-${experience.title}`}
-              experience={experience}
-              section="experience"
-            />
-          ))}
-        </div>
+        <HistoryList
+          entries={professionalHistoryEntries}
+          section="experience"
+          onOpen={(entry, section) => setSelectedHistory({ entry, section })}
+        />
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>What I&apos;ve Studied</SectionHeading>
-
-        <div className="mt-10 space-y-5">
-          {educationExperiences.map((experience) => (
-            <ExperienceCard
-              key={`${experience.organization}-${experience.title}`}
-              experience={experience}
-              section="education"
-            />
-          ))}
-        </div>
+        <HistoryList
+          entries={educationHistoryEntries}
+          section="education"
+          onOpen={(entry, section) => setSelectedHistory({ entry, section })}
+        />
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
