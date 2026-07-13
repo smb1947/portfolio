@@ -446,10 +446,10 @@ function HistoryDetailSummary({
         <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
           {heading}
         </h4>
-        {compact && section === "experience" ? (
-          <span className="text-sm font-bold text-muted">{formatExperienceDuration(experience)}</span>
-        ) : null}
       </div>
+      {compact && section === "experience" ? (
+        <p className="mt-1 text-sm font-bold text-muted">{formatExperienceDuration(experience)}</p>
+      ) : null}
       <p className="mt-2 flex items-center gap-2 text-sm text-muted">
         <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
         {experience.location}
@@ -602,7 +602,7 @@ function HistoryList({
             <button
               type="button"
               onClick={() => onToggle(entryKey)}
-              className="grid w-full gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center md:px-6"
+              className="grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6"
               aria-expanded={isExpanded}
               aria-controls={`${entryKey}-details`}
             >
