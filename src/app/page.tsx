@@ -6,6 +6,7 @@ import {
   Brain,
   Building2,
   ChevronDown,
+  ChevronUp,
   Code2,
   Drama,
   Dumbbell,
@@ -403,78 +404,6 @@ function ProjectCard({
   );
 }
 
-function RichExperienceCard({
-  experience,
-  section
-}: {
-  experience: Experience;
-  section: "experience" | "education";
-}) {
-  const hasProjects = experience.projects.length > 0;
-  const hasSubLogo = Boolean(getExperienceProductLogo(experience.organization));
-  const experienceSummary = (
-    <>
-      <div className="relative h-14 w-14">
-        <ExperienceLogo organization={experience.organization} />
-        {hasSubLogo ? (
-          <div className="absolute -bottom-1 -right-1">
-            <ExperienceSubLogo organization={experience.organization} />
-          </div>
-        ) : null}
-      </div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-bold text-muted">{formatExperienceDuration(experience)}</span>
-        </div>
-        <h3 className="mt-4 font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
-          {experience.title}
-        </h3>
-        <p className="mt-2 text-base font-bold text-teal">{experience.organization}</p>
-        <p className="mt-2 flex items-center gap-2 text-sm text-muted">
-          <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
-          {experience.location}
-        </p>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">{experience.summary}</p>
-      </div>
-    </>
-  );
-
-  return (
-    <article
-      key={`${experience.organization}-${experience.title}`}
-      className="rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift"
-    >
-      {hasProjects ? (
-        <>
-          <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)_auto] print:items-start">
-            {experienceSummary}
-            <div className="text-sm font-bold text-navy md:justify-self-end">
-              {experience.projects.length} project{experience.projects.length === 1 ? "" : "s"}
-            </div>
-          </div>
-          <div className="border-t border-line px-6 pb-6 md:px-7 md:pb-7">
-            <div className="grid gap-5 pt-6 lg:grid-cols-2 print:grid-cols-2">
-              {experience.projects.map((project) => (
-                <ProjectCard
-                  id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
-                  key={project.title}
-                  project={project}
-                  experience={experience}
-                  section={section}
-                />
-              ))}
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)] print:items-start">
-          {experienceSummary}
-        </div>
-      )}
-    </article>
-  );
-}
-
 type HistoryEntry = {
   id: string;
   label: string;
@@ -494,6 +423,103 @@ function formatHistoryDateRange(entry: HistoryEntry) {
   }
 
   return `${entry.from} - ${entry.to}`;
+}
+
+function projectId(title: string) {
+  return `project-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
+}
+
+function HistoryDetailSummary({
+  experience,
+  section,
+  compact = false
+}: {
+  experience: Experience;
+  section: "experience" | "education";
+  compact?: boolean;
+}) {
+  const heading = section === "education" ? experience.organization : experience.title;
+
+  return (
+    <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <h4 className="font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
+          {heading}
+        </h4>
+        {compact && section === "experience" ? (
+          <span className="text-sm font-bold text-muted">{formatExperienceDuration(experience)}</span>
+        ) : null}
+      </div>
+      <p className="mt-2 flex items-center gap-2 text-sm text-muted">
+        <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
+        {experience.location}
+      </p>
+      <p className="mt-4 max-w-4xl text-sm leading-7 text-muted">{experience.summary}</p>
+    </article>
+  );
+}
+
+function ExpandedHistoryDetails({
+  entry,
+  section,
+  onCollapse
+}: {
+  entry: HistoryEntry;
+  section: "experience" | "education";
+  onCollapse: () => void;
+}) {
+  const projectItems = entry.experiences.flatMap((experience) =>
+    experience.projects.map((project) => ({ experience, project }))
+  );
+
+  return (
+    <div className="border-t border-line px-5 pb-8 pt-6 md:px-6 md:pb-10">
+      <div className="space-y-5">
+        {entry.experiences.map((experience) => (
+          <HistoryDetailSummary
+            key={`${experience.organization}-${experience.title}`}
+            experience={experience}
+            section={section}
+            compact={entry.experiences.length > 1}
+          />
+        ))}
+      </div>
+
+      {projectItems.length ? (
+        <div className="mt-7 border-t border-line pt-6">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <h4 className="font-serif text-2xl font-semibold text-navy">Projects</h4>
+            <span className="text-sm font-bold text-navy">
+              {projectItems.length} project{projectItems.length === 1 ? "" : "s"}
+            </span>
+          </div>
+          <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
+            {projectItems.map(({ experience, project }) => (
+              <ProjectCard
+                id={projectId(project.title)}
+                key={`${experience.title}-${project.title}`}
+                project={project}
+                experience={experience}
+                section={section}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      <div className="mt-8 flex justify-center">
+        <button
+          type="button"
+          aria-label={`Collapse ${entry.label} details`}
+          title="Collapse details"
+          onClick={onCollapse}
+          className="grid h-12 w-12 place-items-center rounded-full border border-line bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+        >
+          <ChevronUp className="h-5 w-5" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
 }
 
 function createHistoryEntries(experiences: Experience[], section: "experience" | "education"): HistoryEntry[] {
@@ -583,16 +609,12 @@ function HistoryList({
               </span>
             </button>
             {isExpanded ? (
-              <div id={`${entryKey}-details`} className="border-t border-line bg-background/40 px-5 py-5 md:px-6">
-                <div className="space-y-5">
-                  {entry.experiences.map((experience) => (
-                    <RichExperienceCard
-                      key={`${experience.organization}-${experience.title}`}
-                      experience={experience}
-                      section={section}
-                    />
-                  ))}
-                </div>
+              <div id={`${entryKey}-details`}>
+                <ExpandedHistoryDetails
+                  entry={entry}
+                  section={section}
+                  onCollapse={() => onToggle(entryKey)}
+                />
               </div>
             ) : null}
           </div>
