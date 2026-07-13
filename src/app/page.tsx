@@ -552,12 +552,32 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
 
   return experiences.map((experience) => ({
     id: `${experience.organization}-${experience.from}-${experience.to}`,
-    label: experience.title,
+    label: getEducationHistoryLabel(experience.title),
     organization: experience.organization,
     from: experience.from,
     to: experience.to,
     experiences: [experience]
   }));
+}
+
+function getEducationHistoryLabel(title: string) {
+  if (title.includes("Master of Business Administration")) {
+    return "Master of Business Administration";
+  }
+
+  if (title.includes("Advanced AI/ML")) {
+    return "Adv AI/ML";
+  }
+
+  if (title.includes("Product Management Fellowship")) {
+    return "Product Fellowship";
+  }
+
+  if (title.includes("Bachelor of Engineering")) {
+    return "Computer Science and Engineering";
+  }
+
+  return title;
 }
 
 function HistoryList({
