@@ -30,7 +30,6 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
-  formatExperienceDuration,
   formatProjectDuration,
   aboutProfile,
   portfolio
@@ -414,15 +413,85 @@ type HistoryEntry = {
 };
 
 function formatHistoryDateRange(entry: HistoryEntry) {
-  if (!entry.from) {
-    return entry.to;
+  if (!entry.to) {
+    return getDateYear(entry.from);
   }
 
-  if (!entry.to || entry.from === entry.to) {
-    return entry.from;
+  if (!entry.from || entry.from === entry.to) {
+    return getDateYear(entry.to);
   }
 
-  return `${entry.from} - ${entry.to}`;
+  const fromYear = getDateYear(entry.from);
+  const toYear = getDateYear(entry.to);
+
+  if (fromYear === toYear) {
+    return toYear;
+  }
+
+  return `${fromYear} - ${toYear}`;
+}
+
+function formatEducationHistoryDate(entry: HistoryEntry) {
+  return getDateYear(entry.to || entry.from);
+}
+
+function formatWorkHistoryDate(entry: HistoryEntry) {
+  return formatHistoryDateRange(entry);
+}
+
+function formatRoleHistoryDate(experience: Experience) {
+  return formatHistoryDateRange({
+    id: `${experience.organization}-${experience.title}`,
+    label: experience.title,
+    organization: experience.organization,
+    from: experience.from,
+    to: experience.to,
+    experiences: [experience]
+  });
+}
+
+function getDateYear(dateText: string) {
+  return dateText.match(/\d{4}/)?.[0] ?? dateText;
+}
+
+const monthIndex: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11
+};
+
+function getDateSortValue(dateText: string) {
+  if (dateText === "Ongoing") {
+    return Number.MAX_SAFE_INTEGER;
+  }
+
+  const [month, year] = dateText.split(" ");
+  const numericYear = Number(year);
+
+  if (!Number.isFinite(numericYear)) {
+    return 0;
+  }
+
+  return numericYear * 12 + (monthIndex[month] ?? 0);
+}
+
+function getHistoryRange(experiences: Experience[]) {
+  const sortedStarts = [...experiences].sort((a, b) => getDateSortValue(a.from) - getDateSortValue(b.from));
+  const sortedEnds = [...experiences].sort((a, b) => getDateSortValue(b.to) - getDateSortValue(a.to));
+
+  return {
+    from: sortedStarts[0]?.from ?? "",
+    to: sortedEnds[0]?.to ?? ""
+  };
 }
 
 function projectId(title: string) {
@@ -448,7 +517,7 @@ function HistoryDetailSummary({
         </h4>
       </div>
       {compact && section === "experience" ? (
-        <p className="mt-1 text-sm font-bold text-muted">{formatExperienceDuration(experience)}</p>
+        <p className="mt-1 text-sm font-bold text-muted">{formatRoleHistoryDate(experience)}</p>
       ) : null}
       <p className="mt-2 flex items-center gap-2 text-sm text-muted">
         <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
@@ -525,6 +594,7 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
   if (section === "experience") {
     const microsoftExperiences = experiences.filter((experience) => experience.organization === "Microsoft");
     const otherExperiences = experiences.filter((experience) => experience.organization !== "Microsoft");
+    const microsoftRange = getHistoryRange(microsoftExperiences);
 
     return [
       ...otherExperiences.map((experience) => ({
@@ -538,11 +608,11 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
       ...(microsoftExperiences.length
         ? [
             {
-              id: "Microsoft-Jul 2018-Jul 2024",
+              id: `Microsoft-${microsoftRange.from}-${microsoftRange.to}`,
               label: "Microsoft",
               organization: "Microsoft",
-              from: "Jul 2018",
-              to: "Jul 2024",
+              from: microsoftRange.from,
+              to: microsoftRange.to,
               experiences: microsoftExperiences
             }
           ]
@@ -618,7 +688,9 @@ function HistoryList({
                 <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
                   {entry.label}
                 </h3>
-                <p className="mt-1 text-sm font-bold text-muted">{formatHistoryDateRange(entry)}</p>
+                <p className="mt-1 text-sm font-bold text-muted">
+                  {section === "education" ? formatEducationHistoryDate(entry) : formatWorkHistoryDate(entry)}
+                </p>
               </div>
               <span className="grid h-11 w-11 place-items-center text-coral transition duration-200 [@media(hover:hover)]:hover:text-teal sm:justify-self-end">
                 {isExpanded ? (
