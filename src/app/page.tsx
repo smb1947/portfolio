@@ -488,11 +488,8 @@ function ExpandedHistoryDetails({
 
         {projectItems.length ? (
           <div className="mt-7 border-t border-line pt-6">
-            <div className="mb-4 flex items-center justify-between gap-4">
+            <div className="mb-4">
               <h4 className="font-serif text-xl font-semibold text-navy md:text-2xl">Projects</h4>
-              <span className="text-sm font-bold text-navy">
-                {projectItems.length} project{projectItems.length === 1 ? "" : "s"}
-              </span>
             </div>
             <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
               {projectItems.map(({ experience, project }) => (
