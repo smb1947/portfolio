@@ -5,10 +5,10 @@ import {
   BadgeCheck,
   Brain,
   Building2,
+  ChevronDown,
   Code2,
   Drama,
   Dumbbell,
-  Maximize2,
   HeartHandshake,
   Landmark,
   Linkedin,
@@ -25,7 +25,6 @@ import {
   Target,
   Users,
   Wrench,
-  X,
   Zap
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -478,6 +477,7 @@ function RichExperienceCard({
 
 type HistoryEntry = {
   id: string;
+  label: string;
   organization: string;
   from: string;
   to: string;
@@ -504,6 +504,7 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
     return [
       ...otherExperiences.map((experience) => ({
         id: `${experience.organization}-${experience.from}-${experience.to}`,
+        label: experience.organization,
         organization: experience.organization,
         from: experience.from,
         to: experience.to,
@@ -513,6 +514,7 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
         ? [
             {
               id: "Microsoft-Jul 2018-Jul 2024",
+              label: "Microsoft",
               organization: "Microsoft",
               from: "Jul 2018",
               to: "Jul 2024",
@@ -525,6 +527,7 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
 
   return experiences.map((experience) => ({
     id: `${experience.organization}-${experience.from}-${experience.to}`,
+    label: experience.title,
     organization: experience.organization,
     from: experience.from,
     to: experience.to,
@@ -535,103 +538,72 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
 function HistoryList({
   entries,
   section,
-  onOpen
+  expandedKey,
+  onToggle
 }: {
   entries: HistoryEntry[];
   section: "experience" | "education";
-  onOpen: (entry: HistoryEntry, section: "experience" | "education") => void;
+  expandedKey: string | null;
+  onToggle: (key: string) => void;
 }) {
   return (
     <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
-      {entries.map((entry, index) => (
-        <button
-          key={entry.id}
-          type="button"
-          onClick={() => onOpen(entry, section)}
-          className={`grid w-full gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/70 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center md:px-6 ${
-            index === 0 ? "" : "border-t border-line"
-          }`}
-          aria-label={`Open details for ${entry.organization}`}
-        >
-          <div className="relative h-14 w-14">
-            <ExperienceLogo organization={entry.organization} />
-            {getExperienceProductLogo(entry.organization) ? (
-              <div className="absolute -bottom-1 -right-1">
-                <ExperienceSubLogo organization={entry.organization} />
+      {entries.map((entry, index) => {
+        const entryKey = `${section}-${entry.id}`;
+        const isExpanded = expandedKey === entryKey;
+
+        return (
+          <div key={entry.id} className={index === 0 ? "" : "border-t border-line"}>
+            <button
+              type="button"
+              onClick={() => onToggle(entryKey)}
+              className="grid w-full gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/70 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center md:px-6"
+              aria-expanded={isExpanded}
+              aria-controls={`${entryKey}-details`}
+            >
+              <div className="relative h-14 w-14">
+                <ExperienceLogo organization={entry.organization} />
+                {getExperienceProductLogo(entry.organization) ? (
+                  <div className="absolute -bottom-1 -right-1">
+                    <ExperienceSubLogo organization={entry.organization} />
+                  </div>
+                ) : null}
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
+                  {entry.label}
+                </h3>
+                <p className="mt-1 text-sm font-bold text-muted">{formatHistoryDateRange(entry)}</p>
+              </div>
+              <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-background text-coral shadow-sm transition duration-200 hover:border-teal/40 hover:bg-teal hover:text-white sm:justify-self-end">
+                <ChevronDown
+                  className={`h-5 w-5 transition duration-200 ${isExpanded ? "rotate-180" : ""}`}
+                  aria-hidden="true"
+                />
+              </span>
+            </button>
+            {isExpanded ? (
+              <div id={`${entryKey}-details`} className="border-t border-line bg-background/40 px-5 py-5 md:px-6">
+                <div className="space-y-5">
+                  {entry.experiences.map((experience) => (
+                    <RichExperienceCard
+                      key={`${experience.organization}-${experience.title}`}
+                      experience={experience}
+                      section={section}
+                    />
+                  ))}
+                </div>
               </div>
             ) : null}
           </div>
-          <div className="min-w-0">
-            <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
-              {entry.organization}
-            </h3>
-            <p className="mt-1 text-sm font-bold text-muted">{formatHistoryDateRange(entry)}</p>
-          </div>
-          <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-background text-coral shadow-sm transition duration-200 hover:border-teal/40 hover:bg-teal hover:text-white sm:justify-self-end">
-            <Maximize2 className="h-5 w-5" aria-hidden="true" />
-          </span>
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function HistoryModal({
-  entry,
-  section,
-  onClose
-}: {
-  entry: HistoryEntry | null;
-  section: "experience" | "education";
-  onClose: () => void;
-}) {
-  if (!entry) {
-    return null;
-  }
-
-  return (
-    <div
-      className="fixed inset-0 z-50 overflow-y-auto bg-[#05080b]/80 px-5 py-8 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
-      aria-label={`${entry.organization} details`}
-      onClick={onClose}
-    >
-      <div
-        className="mx-auto max-w-6xl"
-        onClick={(event) => {
-          event.stopPropagation();
-        }}
-      >
-        <div className="mb-4 flex justify-end">
-          <button
-            type="button"
-            onClick={onClose}
-            className="grid h-11 w-11 place-items-center rounded-full border border-line bg-card text-navy shadow-soft transition duration-200 hover:-translate-y-0.5 hover:border-coral/40 hover:bg-coral hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
-            aria-label="Close details"
-          >
-            <X className="h-5 w-5" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="space-y-5">
-          {entry.experiences.map((experience) => (
-            <RichExperienceCard
-              key={`${experience.organization}-${experience.title}`}
-              experience={experience}
-              section={section}
-            />
-          ))}
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 }
 
 export default function Home() {
-  const [selectedHistory, setSelectedHistory] = useState<{
-    entry: HistoryEntry;
-    section: "experience" | "education";
-  } | null>(null);
+  const [expandedHistoryKey, setExpandedHistoryKey] = useState<string | null>(null);
   const { contact, contactForm, experiences } = portfolio;
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
@@ -657,11 +629,6 @@ export default function Home() {
   return (
     <>
       <SectionRouteSync />
-      <HistoryModal
-        entry={selectedHistory?.entry ?? null}
-        section={selectedHistory?.section ?? "experience"}
-        onClose={() => setSelectedHistory(null)}
-      />
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
@@ -786,7 +753,8 @@ export default function Home() {
         <HistoryList
           entries={professionalHistoryEntries}
           section="experience"
-          onOpen={(entry, section) => setSelectedHistory({ entry, section })}
+          expandedKey={expandedHistoryKey}
+          onToggle={(key) => setExpandedHistoryKey((current) => (current === key ? null : key))}
         />
       </section>
 
@@ -795,7 +763,8 @@ export default function Home() {
         <HistoryList
           entries={educationHistoryEntries}
           section="education"
-          onOpen={(entry, section) => setSelectedHistory({ entry, section })}
+          expandedKey={expandedHistoryKey}
+          onToggle={(key) => setExpandedHistoryKey((current) => (current === key ? null : key))}
         />
       </section>
 
