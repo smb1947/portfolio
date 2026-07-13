@@ -30,7 +30,6 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
-  formatProjectDuration,
   aboutProfile,
   portfolio
 } from "@/lib/data";
@@ -393,7 +392,7 @@ function ProjectCard({
             {project.title}
           </h4>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
-            {formatProjectDuration(project)}
+            {formatProjectDateRange(project)}
           </p>
         </div>
       </div>
@@ -413,16 +412,24 @@ type HistoryEntry = {
 };
 
 function formatHistoryDateRange(entry: HistoryEntry) {
-  if (!entry.to) {
-    return getDateYear(entry.from);
+  return formatYearDateRange(entry.from, entry.to);
+}
+
+function formatProjectDateRange(project: Project) {
+  return formatYearDateRange(project.from, project.to);
+}
+
+function formatYearDateRange(from: string, to: string) {
+  if (!to) {
+    return getDateYear(from);
   }
 
-  if (!entry.from || entry.from === entry.to) {
-    return getDateYear(entry.to);
+  if (!from || from === to) {
+    return getDateYear(to);
   }
 
-  const fromYear = getDateYear(entry.from);
-  const toYear = getDateYear(entry.to);
+  const fromYear = getDateYear(from);
+  const toYear = getDateYear(to);
 
   if (fromYear === toYear) {
     return toYear;
