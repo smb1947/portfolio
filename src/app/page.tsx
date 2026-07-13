@@ -380,7 +380,7 @@ function ProjectCard({
   id?: string;
   surface?: "nested" | "card";
 }) {
-  const surfaceClassName = surface === "card" ? "bg-card" : "bg-background";
+  const surfaceClassName = surface === "card" ? "bg-card" : "bg-[#090d10]";
 
   return (
     <section
@@ -390,7 +390,7 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
+          <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
             {project.title}
           </h4>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
@@ -443,7 +443,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
+        <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
           {heading}
         </h4>
         {compact && section === "experience" ? (
@@ -454,7 +454,7 @@ function HistoryDetailSummary({
         <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
         {experience.location}
       </p>
-      <p className="mt-4 max-w-4xl text-sm leading-7 text-muted">{experience.summary}</p>
+      <p className="mt-4 max-w-4xl text-sm leading-7 text-muted md:text-base">{experience.summary}</p>
     </article>
   );
 }
@@ -473,47 +473,49 @@ function ExpandedHistoryDetails({
   );
 
   return (
-    <div className="border-t border-line px-5 pb-8 pt-6 md:px-6 md:pb-10">
-      <div className="space-y-5">
-        {entry.experiences.map((experience) => (
-          <HistoryDetailSummary
-            key={`${experience.organization}-${experience.title}`}
-            experience={experience}
-            section={section}
-            compact={entry.experiences.length > 1}
-          />
-        ))}
+    <div className="border-t border-line bg-background/25 px-4 pb-8 pt-5 md:px-6 md:pb-10 md:pt-6">
+      <div className="rounded-2xl border border-line bg-card/70 p-5 shadow-soft md:p-6">
+        <div className="space-y-5">
+          {entry.experiences.map((experience) => (
+            <HistoryDetailSummary
+              key={`${experience.organization}-${experience.title}`}
+              experience={experience}
+              section={section}
+              compact={entry.experiences.length > 1}
+            />
+          ))}
+        </div>
+
+        {projectItems.length ? (
+          <div className="mt-7 border-t border-line pt-6">
+            <div className="mb-4 flex items-center justify-between gap-4">
+              <h4 className="font-serif text-xl font-semibold text-navy md:text-2xl">Projects</h4>
+              <span className="text-sm font-bold text-navy">
+                {projectItems.length} project{projectItems.length === 1 ? "" : "s"}
+              </span>
+            </div>
+            <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
+              {projectItems.map(({ experience, project }) => (
+                <ProjectCard
+                  id={projectId(project.title)}
+                  key={`${experience.title}-${project.title}`}
+                  project={project}
+                  experience={experience}
+                  section={section}
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
 
-      {projectItems.length ? (
-        <div className="mt-7 border-t border-line pt-6">
-          <div className="mb-4 flex items-center justify-between gap-4">
-            <h4 className="font-serif text-2xl font-semibold text-navy">Projects</h4>
-            <span className="text-sm font-bold text-navy">
-              {projectItems.length} project{projectItems.length === 1 ? "" : "s"}
-            </span>
-          </div>
-          <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
-            {projectItems.map(({ experience, project }) => (
-              <ProjectCard
-                id={projectId(project.title)}
-                key={`${experience.title}-${project.title}`}
-                project={project}
-                experience={experience}
-                section={section}
-              />
-            ))}
-          </div>
-        </div>
-      ) : null}
-
-      <div className="mt-8 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <button
           type="button"
           aria-label={`Collapse ${entry.label} details`}
           title="Collapse details"
           onClick={onCollapse}
-          className="grid h-12 w-12 place-items-center rounded-full border border-line bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+          className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-transparent text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-coral [@media(hover:hover)]:hover:bg-coral [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
         >
           <ChevronUp className="h-5 w-5" aria-hidden="true" />
         </button>
@@ -583,7 +585,7 @@ function HistoryList({
             <button
               type="button"
               onClick={() => onToggle(entryKey)}
-              className="grid w-full gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/70 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center md:px-6"
+              className="grid w-full gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-center md:px-6"
               aria-expanded={isExpanded}
               aria-controls={`${entryKey}-details`}
             >
@@ -601,11 +603,12 @@ function HistoryList({
                 </h3>
                 <p className="mt-1 text-sm font-bold text-muted">{formatHistoryDateRange(entry)}</p>
               </div>
-              <span className="grid h-11 w-11 place-items-center rounded-full border border-line bg-background text-coral shadow-sm transition duration-200 hover:border-teal/40 hover:bg-teal hover:text-white sm:justify-self-end">
-                <ChevronDown
-                  className={`h-5 w-5 transition duration-200 ${isExpanded ? "rotate-180" : ""}`}
-                  aria-hidden="true"
-                />
+              <span className="grid h-11 w-11 place-items-center text-coral transition duration-200 [@media(hover:hover)]:hover:text-teal sm:justify-self-end">
+                {isExpanded ? (
+                  <ChevronUp className="h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                )}
               </span>
             </button>
             {isExpanded ? (
