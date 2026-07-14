@@ -1,8 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import {
   BadgeCheck,
   Brain,
   Building2,
   ChevronDown,
+  ChevronUp,
   Code2,
   Drama,
   Dumbbell,
@@ -26,20 +30,17 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
-  formatExperienceDuration,
-  formatProjectDuration,
   aboutProfile,
   portfolio
 } from "@/lib/data";
 import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
-import { CollapseProjectsButton } from "@/components/CollapseProjectsButton";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
-import { TrackedExperienceDetails } from "@/components/TrackedExperienceDetails";
+import { trackPortfolioEvent, trackPortfolioUtilityRoute } from "@/lib/analytics";
 
 function QuestionWordHighlight({ text }: { text: string }) {
   const match = text.match(/^(Who|What|Where|When|Why|How)(?=\b|['’]s\b)/i);
@@ -388,11 +389,11 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="font-serif text-2xl font-semibold leading-tight text-navy">
+          <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
             {project.title}
           </h4>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
-            {formatProjectDuration(project)}
+            {formatProjectDateRange(project)}
           </p>
         </div>
       </div>
@@ -402,101 +403,420 @@ function ProjectCard({
   );
 }
 
-function ExperienceCard({
+type HistoryEntry = {
+  id: string;
+  label: string;
+  organization: string;
+  from: string;
+  to: string;
+  experiences: Experience[];
+};
+
+function formatHistoryDateRange(entry: HistoryEntry) {
+  return formatYearDateRange(entry.from, entry.to);
+}
+
+function formatProjectDateRange(project: Project) {
+  return formatYearDateRange(project.from, project.to);
+}
+
+function formatYearDateRange(from: string, to: string) {
+  if (!to) {
+    return getDateYear(from);
+  }
+
+  if (!from || from === to) {
+    return getDateYear(to);
+  }
+
+  const fromYear = getDateYear(from);
+  const toYear = getDateYear(to);
+
+  if (fromYear === toYear) {
+    return toYear;
+  }
+
+  return `${fromYear} - ${toYear}`;
+}
+
+function formatEducationHistoryDate(entry: HistoryEntry) {
+  return getDateYear(entry.to || entry.from);
+}
+
+function formatWorkHistoryDate(entry: HistoryEntry) {
+  return formatHistoryDateRange(entry);
+}
+
+function formatRoleHistoryDate(experience: Experience) {
+  return formatHistoryDateRange({
+    id: `${experience.organization}-${experience.title}`,
+    label: experience.title,
+    organization: experience.organization,
+    from: experience.from,
+    to: experience.to,
+    experiences: [experience]
+  });
+}
+
+function getDateYear(dateText: string) {
+  return dateText.match(/\d{4}/)?.[0] ?? dateText;
+}
+
+const monthIndex: Record<string, number> = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11
+};
+
+function getDateSortValue(dateText: string) {
+  if (dateText === "Ongoing") {
+    return Number.MAX_SAFE_INTEGER;
+  }
+
+  const [month, year] = dateText.split(" ");
+  const numericYear = Number(year);
+
+  if (!Number.isFinite(numericYear)) {
+    return 0;
+  }
+
+  return numericYear * 12 + (monthIndex[month] ?? 0);
+}
+
+function getHistoryRange(experiences: Experience[]) {
+  const sortedStarts = [...experiences].sort((a, b) => getDateSortValue(a.from) - getDateSortValue(b.from));
+  const sortedEnds = [...experiences].sort((a, b) => getDateSortValue(b.to) - getDateSortValue(a.to));
+
+  return {
+    from: sortedStarts[0]?.from ?? "",
+    to: sortedEnds[0]?.to ?? ""
+  };
+}
+
+function projectId(title: string) {
+  return `project-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
+}
+
+function HistoryDetailSummary({
   experience,
-  section
+  section,
+  compact = false
 }: {
   experience: Experience;
   section: "experience" | "education";
+  compact?: boolean;
 }) {
-  const hasProjects = experience.projects.length > 0;
-  const hasSubLogo = Boolean(getExperienceProductLogo(experience.organization));
-  const experienceSummary = (
-    <>
-      <div className="relative h-14 w-14">
-        <ExperienceLogo organization={experience.organization} />
-        {hasSubLogo ? (
-          <div className="absolute -bottom-1 -right-1">
-            <ExperienceSubLogo organization={experience.organization} />
-          </div>
-        ) : null}
+  const heading = section === "education" ? experience.organization : experience.title;
+
+  return (
+    <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+        <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
+          {heading}
+        </h4>
       </div>
-      <div className="min-w-0">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-bold text-muted">{formatExperienceDuration(experience)}</span>
-        </div>
-        <h3 className="mt-4 font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
-          {experience.title}
-        </h3>
-        <p className="mt-2 text-base font-bold text-teal">{experience.organization}</p>
-        <p className="mt-2 flex items-center gap-2 text-sm text-muted">
-          <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
-          {experience.location}
-        </p>
-        <p className="mt-4 max-w-3xl text-sm leading-7 text-muted">{experience.summary}</p>
-      </div>
-    </>
+      {compact && section === "experience" ? (
+        <p className="mt-1 text-sm font-bold text-muted">{formatRoleHistoryDate(experience)}</p>
+      ) : null}
+      <p className="mt-2 flex items-center gap-2 text-sm text-muted">
+        <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
+        {experience.location}
+      </p>
+      <p className="mt-4 max-w-4xl text-sm leading-7 text-muted md:text-base">{experience.summary}</p>
+    </article>
+  );
+}
+
+function ExpandedHistoryDetails({
+  entry,
+  section,
+  onCollapse
+}: {
+  entry: HistoryEntry;
+  section: "experience" | "education";
+  onCollapse: () => void;
+}) {
+  const projectItems = entry.experiences.flatMap((experience) =>
+    experience.projects.map((project) => ({ experience, project }))
   );
 
   return (
-    <article
-      key={`${experience.organization}-${experience.title}`}
-      className="rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 hover:-translate-y-1 hover:border-coral/30 hover:shadow-lift"
-    >
-      {hasProjects ? (
-        <TrackedExperienceDetails
-          className="group open:mb-8"
-          section={section}
-          experienceType={experience.type}
-          organization={experience.organization}
-          title={experience.title}
-        >
-          <summary className="grid cursor-pointer list-none gap-5 p-6 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)_auto] print:items-start">
-            {experienceSummary}
-            <div className="flex items-center gap-3 text-sm font-bold text-navy md:justify-end">
-              <span>
-                {experience.projects.length} project{experience.projects.length === 1 ? "" : "s"}
-              </span>
-              <ChevronDown className="h-5 w-5 text-coral transition group-open:rotate-180" aria-hidden="true" />
-            </div>
-          </summary>
+    <div className="border-t border-line bg-background/25 px-4 pb-8 pt-5 md:px-6 md:pb-10 md:pt-6">
+      <div className="px-1 md:px-2">
+        <div className="space-y-5">
+          {entry.experiences.map((experience) => (
+            <HistoryDetailSummary
+              key={`${experience.organization}-${experience.title}`}
+              experience={experience}
+              section={section}
+              compact={entry.experiences.length > 1}
+            />
+          ))}
+        </div>
 
-          <div className="relative border-t border-line px-6 pb-12 md:px-7 md:pb-14">
-            <div className="grid gap-5 pt-6 lg:grid-cols-2 print:grid-cols-2">
-              {experience.projects.map((project) => (
+        {projectItems.length ? (
+          <div className="mt-7 border-t border-line pt-6">
+            <div className="mb-4">
+              <h4 className="font-serif text-xl font-semibold text-navy md:text-2xl">Projects</h4>
+            </div>
+            <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
+              {projectItems.map(({ experience, project }) => (
                 <ProjectCard
-                  id={`project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
-                  key={project.title}
+                  id={projectId(project.title)}
+                  key={`${experience.title}-${project.title}`}
                   project={project}
                   experience={experience}
                   section={section}
                 />
               ))}
             </div>
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-              <CollapseProjectsButton
-                section={section}
-                experienceType={experience.type}
-                organization={experience.organization}
-                title={experience.title}
-              />
-            </div>
           </div>
-        </TrackedExperienceDetails>
-      ) : (
-        <div className="grid gap-5 p-6 md:grid-cols-[auto_minmax(0,1fr)] md:items-start md:p-7 print:grid-cols-[auto_minmax(0,1fr)] print:items-start">
-          {experienceSummary}
-        </div>
-      )}
-    </article>
+        ) : null}
+      </div>
+
+      <div className="mt-6 flex justify-center">
+        <button
+          type="button"
+          aria-label={`Collapse ${entry.label} details`}
+          title="Collapse details"
+          onClick={onCollapse}
+          className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-transparent text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-coral [@media(hover:hover)]:hover:bg-coral [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+        >
+          <ChevronUp className="h-5 w-5" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function createHistoryEntries(experiences: Experience[], section: "experience" | "education"): HistoryEntry[] {
+  if (section === "experience") {
+    const microsoftExperiences = experiences.filter((experience) => experience.organization === "Microsoft");
+    const otherExperiences = experiences.filter((experience) => experience.organization !== "Microsoft");
+    const microsoftRange = getHistoryRange(microsoftExperiences);
+
+    return [
+      ...otherExperiences.map((experience) => ({
+        id: `${experience.organization}-${experience.from}-${experience.to}`,
+        label: experience.organization,
+        organization: experience.organization,
+        from: experience.from,
+        to: experience.to,
+        experiences: [experience]
+      })),
+      ...(microsoftExperiences.length
+        ? [
+            {
+              id: `Microsoft-${microsoftRange.from}-${microsoftRange.to}`,
+              label: "Microsoft Azure",
+              organization: "Microsoft",
+              from: microsoftRange.from,
+              to: microsoftRange.to,
+              experiences: microsoftExperiences
+            }
+          ]
+        : [])
+    ];
+  }
+
+  return experiences.map((experience) => ({
+    id: `${experience.organization}-${experience.from}-${experience.to}`,
+    label: getEducationHistoryLabel(experience.title),
+    organization: experience.organization,
+    from: experience.from,
+    to: experience.to,
+    experiences: [experience]
+  }));
+}
+
+function getEducationHistoryLabel(title: string) {
+  if (title.includes("Master of Business Administration")) {
+    return "Master of Business Administration (STEM)";
+  }
+
+  if (title.includes("Advanced AI/ML")) {
+    return "Advanced AI/ML";
+  }
+
+  if (title.includes("Product Management Fellowship")) {
+    return "Product Fellowship";
+  }
+
+  if (title.includes("Bachelor of Engineering")) {
+    return "Computer Science & Engineering";
+  }
+
+  return title;
+}
+
+function slugifyHistoryValue(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function getExperienceAnalyticsSlug(entry: HistoryEntry) {
+  const source = `${entry.organization} ${entry.label} ${entry.experiences
+    .map((experience) => experience.title)
+    .join(" ")}`.toLowerCase();
+
+  if (source.includes("amazon web services") || source.includes("aws")) {
+    return "aws";
+  }
+
+  if (source.includes("azure") || source.includes("microsoft")) {
+    return "azure";
+  }
+
+  return slugifyHistoryValue(entry.organization || entry.label);
+}
+
+function getEducationAnalyticsSlug(entry: HistoryEntry) {
+  const education = entry.experiences[0]?.education;
+
+  if (education?.type === "Masters") {
+    return "mba";
+  }
+
+  if (education?.type === "Fellowship") {
+    return "nextleap";
+  }
+
+  if (education?.type === "Certificate") {
+    return "adv-ai-ml";
+  }
+
+  if (education?.type === "Bachelors") {
+    return "cse";
+  }
+
+  return slugifyHistoryValue(entry.label);
+}
+
+function getHistoryAnalyticsPath(entry: HistoryEntry, section: "experience" | "education") {
+  const slug = section === "experience" ? getExperienceAnalyticsSlug(entry) : getEducationAnalyticsSlug(entry);
+
+  return `${section}/${slug}`;
+}
+
+function HistoryList({
+  entries,
+  section,
+  expandedKey,
+  onToggle
+}: {
+  entries: HistoryEntry[];
+  section: "experience" | "education";
+  expandedKey: string | null;
+  onToggle: (key: string) => void;
+}) {
+  const collapseAndKeepRowInView = (entryKey: string) => {
+    const row = document.getElementById(`${entryKey}-row`);
+    const trigger = document.getElementById(`${entryKey}-trigger`);
+
+    onToggle(entryKey);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        row?.scrollIntoView({ block: "center" });
+
+        if (trigger instanceof HTMLElement) {
+          trigger.focus({ preventScroll: true });
+        }
+      });
+    });
+  };
+
+  const expandAndTrackEntry = (entryKey: string, entry: HistoryEntry) => {
+    const analyticsPath = getHistoryAnalyticsPath(entry, section);
+
+    onToggle(entryKey);
+    trackPortfolioEvent("history.expand.click", {
+      section,
+      path: analyticsPath,
+      label: entry.label,
+      organization: entry.organization
+    });
+    trackPortfolioUtilityRoute(`/${analyticsPath}`);
+  };
+
+  return (
+    <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
+      {entries.map((entry, index) => {
+        const entryKey = `${section}-${entry.id}`;
+        const isExpanded = expandedKey === entryKey;
+
+        return (
+          <div id={`${entryKey}-row`} key={entry.id} className={index === 0 ? "" : "border-t border-line"}>
+            <button
+              id={`${entryKey}-trigger`}
+              type="button"
+              onClick={() =>
+                isExpanded ? collapseAndKeepRowInView(entryKey) : expandAndTrackEntry(entryKey, entry)
+              }
+              className="grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6"
+              aria-expanded={isExpanded}
+              aria-controls={`${entryKey}-details`}
+            >
+              <div className="relative h-14 w-14">
+                <ExperienceLogo organization={entry.organization} />
+                {getExperienceProductLogo(entry.organization) ? (
+                  <div className="absolute -bottom-1 -right-1">
+                    <ExperienceSubLogo organization={entry.organization} />
+                  </div>
+                ) : null}
+              </div>
+              <div className="min-w-0">
+                <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
+                  {entry.label}
+                </h3>
+                <p className="mt-1 text-sm font-bold text-muted">
+                  {section === "education" ? formatEducationHistoryDate(entry) : formatWorkHistoryDate(entry)}
+                </p>
+              </div>
+              <span className="grid h-11 w-11 place-items-center text-coral transition duration-200 [@media(hover:hover)]:hover:text-teal sm:justify-self-end">
+                {isExpanded ? (
+                  <ChevronUp className="h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                )}
+              </span>
+            </button>
+            {isExpanded ? (
+              <div id={`${entryKey}-details`}>
+                <ExpandedHistoryDetails
+                  entry={entry}
+                  section={section}
+                  onCollapse={() => collapseAndKeepRowInView(entryKey)}
+                />
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
 export default function Home() {
+  const [expandedHistoryKey, setExpandedHistoryKey] = useState<string | null>(null);
   const { contact, contactForm, experiences } = portfolio;
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
   const professionalExperiences = experiences.filter((experience) => experience.type === "work");
+  const professionalHistoryEntries = createHistoryEntries(professionalExperiences, "experience");
+  const educationHistoryEntries = createHistoryEntries(educationExperiences, "education");
   const featuredProductTitles = aboutProfile.featuredProducts.map((product) => product.title);
   const featuredProducts = experiences
     .flatMap((experience) =>
@@ -539,6 +859,10 @@ export default function Home() {
                   </p>
                   <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-coral">
                     <CredentialLine text={aboutProfile.context} />
+                  </p>
+                  <p className="mt-3 flex items-center gap-2 text-sm font-bold text-navy">
+                    <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
+                    {portfolio.site.location}
                   </p>
                 </div>
               </div>
@@ -637,30 +961,22 @@ export default function Home() {
 
       <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>Where I&apos;ve Worked</SectionHeading>
-
-        <div className="mt-10 space-y-5">
-          {professionalExperiences.map((experience) => (
-            <ExperienceCard
-              key={`${experience.organization}-${experience.title}`}
-              experience={experience}
-              section="experience"
-            />
-          ))}
-        </div>
+        <HistoryList
+          entries={professionalHistoryEntries}
+          section="experience"
+          expandedKey={expandedHistoryKey}
+          onToggle={(key) => setExpandedHistoryKey((current) => (current === key ? null : key))}
+        />
       </section>
 
       <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>What I&apos;ve Studied</SectionHeading>
-
-        <div className="mt-10 space-y-5">
-          {educationExperiences.map((experience) => (
-            <ExperienceCard
-              key={`${experience.organization}-${experience.title}`}
-              experience={experience}
-              section="education"
-            />
-          ))}
-        </div>
+        <HistoryList
+          entries={educationHistoryEntries}
+          section="education"
+          expandedKey={expandedHistoryKey}
+          onToggle={(key) => setExpandedHistoryKey((current) => (current === key ? null : key))}
+        />
       </section>
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
