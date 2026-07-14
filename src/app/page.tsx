@@ -617,7 +617,7 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
         ? [
             {
               id: `Microsoft-${microsoftRange.from}-${microsoftRange.to}`,
-              label: "Microsoft",
+              label: "Microsoft Azure",
               organization: "Microsoft",
               from: microsoftRange.from,
               to: microsoftRange.to,
@@ -640,11 +640,11 @@ function createHistoryEntries(experiences: Experience[], section: "experience" |
 
 function getEducationHistoryLabel(title: string) {
   if (title.includes("Master of Business Administration")) {
-    return "Master of Business Administration";
+    return "Master of Business Administration (STEM)";
   }
 
   if (title.includes("Advanced AI/ML")) {
-    return "Adv AI/ML";
+    return "Advanced AI/ML";
   }
 
   if (title.includes("Product Management Fellowship")) {
@@ -652,7 +652,7 @@ function getEducationHistoryLabel(title: string) {
   }
 
   if (title.includes("Bachelor of Engineering")) {
-    return "Computer Science and Engineering";
+    return "Computer Science & Engineering";
   }
 
   return title;
