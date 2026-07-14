@@ -668,6 +668,23 @@ function HistoryList({
   expandedKey: string | null;
   onToggle: (key: string) => void;
 }) {
+  const collapseAndKeepRowInView = (entryKey: string) => {
+    const row = document.getElementById(`${entryKey}-row`);
+    const trigger = document.getElementById(`${entryKey}-trigger`);
+
+    onToggle(entryKey);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        row?.scrollIntoView({ block: "center" });
+
+        if (trigger instanceof HTMLElement) {
+          trigger.focus({ preventScroll: true });
+        }
+      });
+    });
+  };
+
   return (
     <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
       {entries.map((entry, index) => {
@@ -675,10 +692,11 @@ function HistoryList({
         const isExpanded = expandedKey === entryKey;
 
         return (
-          <div key={entry.id} className={index === 0 ? "" : "border-t border-line"}>
+          <div id={`${entryKey}-row`} key={entry.id} className={index === 0 ? "" : "border-t border-line"}>
             <button
+              id={`${entryKey}-trigger`}
               type="button"
-              onClick={() => onToggle(entryKey)}
+              onClick={() => (isExpanded ? collapseAndKeepRowInView(entryKey) : onToggle(entryKey))}
               className="grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6"
               aria-expanded={isExpanded}
               aria-controls={`${entryKey}-details`}
@@ -712,7 +730,7 @@ function HistoryList({
                 <ExpandedHistoryDetails
                   entry={entry}
                   section={section}
-                  onCollapse={() => onToggle(entryKey)}
+                  onCollapse={() => collapseAndKeepRowInView(entryKey)}
                 />
               </div>
             ) : null}
