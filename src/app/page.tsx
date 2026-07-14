@@ -690,15 +690,15 @@ function getEducationAnalyticsSlug(entry: HistoryEntry) {
   }
 
   if (education?.type === "Fellowship") {
-    return "product-fellowship";
+    return "nextleap";
   }
 
   if (education?.type === "Certificate") {
-    return slugifyHistoryValue(entry.label);
+    return "adv-ai-ml";
   }
 
   if (education?.type === "Bachelors") {
-    return "computer-science";
+    return "cse";
   }
 
   return slugifyHistoryValue(entry.label);
