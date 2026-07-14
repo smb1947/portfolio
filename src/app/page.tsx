@@ -40,6 +40,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
+import { trackPortfolioEvent, trackPortfolioUtilityRoute } from "@/lib/analytics";
 
 function QuestionWordHighlight({ text }: { text: string }) {
   const match = text.match(/^(Who|What|Where|When|Why|How)(?=\b|['’]s\b)/i);
@@ -657,6 +658,58 @@ function getEducationHistoryLabel(title: string) {
   return title;
 }
 
+function slugifyHistoryValue(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+function getExperienceAnalyticsSlug(entry: HistoryEntry) {
+  const source = `${entry.organization} ${entry.label} ${entry.experiences
+    .map((experience) => experience.title)
+    .join(" ")}`.toLowerCase();
+
+  if (source.includes("amazon web services") || source.includes("aws")) {
+    return "aws";
+  }
+
+  if (source.includes("azure") || source.includes("microsoft")) {
+    return "azure";
+  }
+
+  return slugifyHistoryValue(entry.organization || entry.label);
+}
+
+function getEducationAnalyticsSlug(entry: HistoryEntry) {
+  const education = entry.experiences[0]?.education;
+
+  if (education?.type === "Masters") {
+    return "mba";
+  }
+
+  if (education?.type === "Fellowship") {
+    return "product-fellowship";
+  }
+
+  if (education?.type === "Certificate") {
+    return slugifyHistoryValue(entry.label);
+  }
+
+  if (education?.type === "Bachelors") {
+    return "computer-science";
+  }
+
+  return slugifyHistoryValue(entry.label);
+}
+
+function getHistoryAnalyticsPath(entry: HistoryEntry, section: "experience" | "education") {
+  const slug = section === "experience" ? getExperienceAnalyticsSlug(entry) : getEducationAnalyticsSlug(entry);
+
+  return `${section}/${slug}`;
+}
+
 function HistoryList({
   entries,
   section,
@@ -685,6 +738,19 @@ function HistoryList({
     });
   };
 
+  const expandAndTrackEntry = (entryKey: string, entry: HistoryEntry) => {
+    const analyticsPath = getHistoryAnalyticsPath(entry, section);
+
+    onToggle(entryKey);
+    trackPortfolioEvent("history.expand.click", {
+      section,
+      path: analyticsPath,
+      label: entry.label,
+      organization: entry.organization
+    });
+    trackPortfolioUtilityRoute(`/${analyticsPath}`);
+  };
+
   return (
     <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
       {entries.map((entry, index) => {
@@ -696,7 +762,9 @@ function HistoryList({
             <button
               id={`${entryKey}-trigger`}
               type="button"
-              onClick={() => (isExpanded ? collapseAndKeepRowInView(entryKey) : onToggle(entryKey))}
+              onClick={() =>
+                isExpanded ? collapseAndKeepRowInView(entryKey) : expandAndTrackEntry(entryKey, entry)
+              }
               className="grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6"
               aria-expanded={isExpanded}
               aria-controls={`${entryKey}-details`}
