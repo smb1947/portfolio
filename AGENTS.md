@@ -27,7 +27,7 @@ Guidance for future Codex work on this portfolio.
 ## Workflow
 
 - Continue working on the currently checked-out branch unless the user explicitly asks to switch branches.
-- When the user explicitly asks to "create a new PR," first check whether an open PR already exists for the same work and base. If not, create and switch to a fresh feature branch from `main` before making the requested changes. Keep all related work on that branch, commit and push it, and open the pull request to `main`. Do not switch away from the new branch until the pull request is opened or the user directs otherwise.
+- When the user explicitly asks to "create a new PR," first check whether an open PR already exists for the same work and base. If not, fetch the latest remote state, create and switch to a fresh feature branch from the latest `origin/main` before making the requested changes, and verify that `origin/main` is an ancestor of the new branch. Keep all related work on that branch, commit and push it, and open the pull request to `main`. Do not switch away from the new branch until the pull request is opened or the user directs otherwise.
 - Commit and push completed changes to the remote every time unless the user explicitly says not to.
 - Do not create separate feature branches for normal development work; use them only for the PR packaging step or when the user explicitly asks for one.
 - Run `npm run build` only when necessary for the change, especially for code, dependency, configuration, or user-visible site changes.
