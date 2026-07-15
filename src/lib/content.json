@@ -118,7 +118,7 @@
           ]
         },
         {
-          "title": "StreakFit",
+          "title": "StreakFit AI",
           "skills": [
             "Customer interviews",
             "Needs synthesis",
@@ -667,7 +667,7 @@
     },
     "featuredProducts": [
       {
-        "title": "StreakFit",
+        "title": "StreakFit AI",
         "description": "Discovered 3 student fitness pain points through 6 interviews (hypotheses driven); built a 0-to-1 personalized AI gym buddy MVP in 3 hours at OpenAI Codex Hackathon; currently iterating toward a broader release based on user feedback."
       },
       {

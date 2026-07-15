@@ -28,7 +28,7 @@ Led an 11-member cross-functional team across design, engineering, and business 
 - Code:
 - Demo: https://www.figma.com/slides/mmnamUYxRQnGip7Zax5vio/HeyLily-Pitch---Final?node-id=5073-298&t=3PUqZmh69iUGjvfl-0
 
-### StreakFit
+### StreakFit AI
 
 Building an AI gym buddy product, based on insights from 6 customer interviews, to help students stay consistent with their gym schedules. Demoed at OpenAI Codex Hackathon.
 
