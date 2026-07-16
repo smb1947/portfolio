@@ -129,7 +129,7 @@
             "Figma",
             "Interview notes"
           ],
-          "description": "Discovered 3 student fitness pain points through 6 interviews (hypotheses driven); built a 0-to-1 personalized AI gym buddy MVP in 3 hours at OpenAI Codex Hackathon; currently iterating toward a broader release based on user feedback.",
+          "description": "Discovered 3 student fitness pain points through 6 hypothesis-driven interviews; built a 0-to-1 personalized AI gym buddy MVP in 3 hours at the OpenAI Codex Hackathon; now targeting a broader release and iterating on v3 with AI features including check-ins, a conversational chatbot, and in-app nudges.",
           "from": "Apr 2026",
           "to": "Ongoing",
           "resources": [
@@ -668,7 +668,7 @@
     "featuredProducts": [
       {
         "title": "StreakFit AI",
-        "description": "Discovered 3 student fitness pain points through 6 interviews (hypotheses driven); built a 0-to-1 personalized AI gym buddy MVP in 3 hours at OpenAI Codex Hackathon; currently iterating toward a broader release based on user feedback."
+        "description": "Discovered 3 student fitness pain points through 6 hypothesis-driven interviews; built a 0-to-1 personalized AI gym buddy MVP in 3 hours at the OpenAI Codex Hackathon; now targeting a broader release and iterating on v3 with AI features including check-ins, a conversational chatbot, and in-app nudges."
       },
       {
         "title": "HeyLily AI Scam-Call Assistant",
