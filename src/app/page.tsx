@@ -285,7 +285,7 @@ function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon
   if (title.includes("wslblobnfs")) return { label: "WSLBlobNFS", icon: Code2, className: "bg-[#0078d4] text-white" };
   if (title.includes("blobnfs")) return { label: "Azure Blob NFS", icon: Wrench, className: "bg-[#0078d4] text-white" };
   if (title.includes("hike")) return { label: "AI Hike Researcher", icon: Mountain, className: "bg-[#7c4a2d] text-white" };
-  if (title.includes("streakfit")) return { label: "StreakFit", icon: BadgeCheck, className: "bg-coral text-white" };
+  if (title.includes("streakfit")) return { label: "StreakFit AI", icon: BadgeCheck, className: "bg-coral text-white" };
   if (title.includes("teardown")) return { label: "Product Teardown Series", icon: Search, className: "bg-[#dc2626] text-white" };
   if (title.includes("quantum")) return { label: "Quantum Tech Partners", icon: Target, className: "bg-[#2f4858] text-white" };
   if (title.includes("sbs")) return { label: "SBS Consulting", icon: Landmark, className: "bg-[#6f4e37] text-white" };

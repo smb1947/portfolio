@@ -6,7 +6,7 @@ Reference list for project-level skills and tools. The website currently keeps t
 |---|---|---|
 | AI Hike Researcher | Agentic workflow design; Personalization; Safety-critical research | LLMs; RAG; Research workflows |
 | Spotify MiniMix | Recommendation logic; Experiment design; User relevance evaluation | n8n; LLMs; Dynamic song features |
-| StreakFit | Customer interviews; Needs synthesis; Behavioral psychology | OpenAI Codex; Figma; Interview notes |
+| StreakFit AI | Customer interviews; Needs synthesis; Behavioral psychology | OpenAI Codex; Figma; Interview notes |
 | Asana Sales Strategy and GTM Assessment | Competitive analysis; PLG vs. SLG strategy; Positioning | Market research; GTM scorecard; Strategy deck |
 | HeyLily GenAI Scam-Call Assistant | Cross-functional leadership; User research; B2B2C strategy | Android prototype; Interview synthesis; GTM model |
 | Product Teardown Series | Community building; Product critique; Event marketing | Event programming; Product teardown templates; Luma; Marketing copy |

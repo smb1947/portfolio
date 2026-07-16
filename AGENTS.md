@@ -18,7 +18,7 @@ Guidance for future Codex work on this portfolio.
 ## Technical Rules
 
 - Keep code modular, readable, and aligned with existing component patterns.
-- Git workflow: make requested changes directly on the `dev` branch. When opening a pull request, create a separate feature branch from `main` that contains only the new changes from `dev`, then open the pull request from that feature branch to `main`.
+- Git workflow: stay on the currently checked-out branch unless the user explicitly requests a branch change or asks to create a new pull request. Follow the new-PR workflow below when that request is made.
 - Use Tailwind utilities, but keep class usage understandable.
 - Do not add external services, a CMS, analytics, or paid dependencies unless requested.
 - Prefer existing components and data patterns over introducing new abstractions.
@@ -26,8 +26,8 @@ Guidance for future Codex work on this portfolio.
 
 ## Workflow
 
-- Work directly on the `dev` branch unless the user explicitly asks for another branch.
-- When asked to publish or open a PR, first check whether an open PR already exists for the same feature branch and base. If not, create a feature branch from `main`, cherry-pick or apply only the new `dev` changes needed for the request, push that branch, and open the pull request to `main`.
+- Continue working on the currently checked-out branch unless the user explicitly asks to switch branches.
+- When the user explicitly asks to "create a new PR," first check whether an open PR already exists for the same work and base. If not, fetch the latest remote state, create and switch to a fresh feature branch from the latest `origin/main` before making the requested changes, and verify that `origin/main` is an ancestor of the new branch. Keep all related work on that branch, commit and push it, and open the pull request to `main`. Do not switch away from the new branch until the pull request is opened or the user directs otherwise.
 - Commit and push completed changes to the remote every time unless the user explicitly says not to.
 - Do not create separate feature branches for normal development work; use them only for the PR packaging step or when the user explicitly asks for one.
 - Run `npm run build` only when necessary for the change, especially for code, dependency, configuration, or user-visible site changes.
