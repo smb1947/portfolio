@@ -5,6 +5,7 @@ import { Sparkles } from "lucide-react";
 import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import type { AboutProfileItem } from "@/lib/data";
+import { useAttentionSpotlight } from "@/hooks/useAttentionSpotlight";
 
 type SegmentConfig = {
   title: string;
@@ -75,9 +76,13 @@ export function CapabilityWheel({
 }) {
   const [activeTitle, setActiveTitle] = useState<string | null>(null);
   const activeItem = items.find((item) => item.title === activeTitle) ?? null;
+  const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
+    activeAttribute: "data-visual-spotlight",
+    targetSelector: "[data-visual-spotlight-target]"
+  });
 
   return (
-    <div className="capability-wheel-layout mt-6">
+    <div ref={spotlightRef} className="capability-wheel-layout mt-6">
       <div className="relative aspect-square w-full max-w-[40rem]" role="group" aria-label="Product capabilities">
         <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 100" aria-hidden="true">
           {segments.map((segment) => {
@@ -128,6 +133,7 @@ export function CapabilityWheel({
                 onBlur={() => setActiveTitle(null)}
               />
               <span
+                data-visual-spotlight-target
                 className={`pointer-events-none absolute z-20 flex w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 text-center transition-colors duration-200 ${
                   isActive ? "text-white" : "text-navy"
                 }`}
@@ -143,7 +149,7 @@ export function CapabilityWheel({
                 >
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
-                <span className="font-serif text-[clamp(0.52rem,1.4vw,1.05rem)] font-semibold leading-tight">
+                <span className="visual-spotlight-label font-serif text-[clamp(0.52rem,1.4vw,1.05rem)] font-semibold leading-tight">
                   {item.title}
                 </span>
               </span>

@@ -5,6 +5,7 @@ import { BadgeCheck } from "lucide-react";
 import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import type { AboutProfileItem } from "@/lib/data";
+import { useAttentionSpotlight } from "@/hooks/useAttentionSpotlight";
 
 type NodeConfig = {
   title: string;
@@ -34,9 +35,13 @@ export function OperatingTriangle({
   const leftEdgeActive = activeTitle === "Agency" || activeTitle === "Human-Centered";
   const rightEdgeActive = activeTitle === "Agency" || activeTitle === "Thoughtful";
   const bottomEdgeActive = activeTitle === "Human-Centered" || activeTitle === "Thoughtful";
+  const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
+    activeAttribute: "data-visual-spotlight",
+    targetSelector: "[data-visual-spotlight-target]"
+  });
 
   return (
-    <div className="operating-triangle-layout mt-6">
+    <div ref={spotlightRef} className="operating-triangle-layout mt-6">
       <div
         className="relative mx-auto aspect-[25/17] w-full max-w-[30rem]"
         role="group"
@@ -125,8 +130,9 @@ export function OperatingTriangle({
           <button
             key={item.title}
             type="button"
+            data-visual-spotlight-target
+            className="operating-node absolute z-20 grid -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-2xl px-2 py-1 text-center outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
             aria-label={`${item.title}: ${item.description}`}
-            className="absolute z-20 grid -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-2xl px-2 py-1 text-center outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
             style={node.position}
             onMouseEnter={() => setActiveTitle(item.title)}
             onMouseLeave={() => setActiveTitle(null)}
@@ -154,7 +160,7 @@ export function OperatingTriangle({
               />
             </span>
             <span
-              className={`absolute whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
+              className={`visual-spotlight-label absolute whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
                 node.labelPosition === "above" ? "bottom-full mb-2" : "top-full mt-2"
               } ${
                 isActive ? "text-teal" : "text-navy"

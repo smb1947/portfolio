@@ -178,6 +178,26 @@ button {
   box-shadow: var(--visual-shadow);
 }
 
+[data-visual-spotlight="true"] .visual-icon-medallion,
+.operating-node[data-visual-spotlight="true"] .visual-node-surface {
+  border-color: color-mix(in srgb, var(--teal) 40%, transparent) !important;
+  background: var(--teal) !important;
+  animation: project-resource-wiggle 680ms ease-in-out;
+}
+
+[data-visual-spotlight="true"] .visual-icon-medallion svg,
+.operating-node[data-visual-spotlight="true"] .visual-node-surface svg {
+  color: #fffdf8 !important;
+}
+
+.operating-node[data-visual-spotlight="true"] .visual-node-surface > span {
+  border-color: #fffdf8 !important;
+}
+
+[data-visual-spotlight="true"] .visual-spotlight-label {
+  color: var(--teal) !important;
+}
+
 .capability-wheel-detail,
 .operating-triangle-detail {
   display: none;
@@ -367,6 +387,11 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .project-resource-button[data-resource-spotlight="true"] {
+    animation: none;
+  }
+
+  [data-visual-spotlight="true"] .visual-icon-medallion,
+  .operating-node[data-visual-spotlight="true"] .visual-node-surface {
     animation: none;
   }
 
