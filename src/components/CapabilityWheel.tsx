@@ -75,7 +75,6 @@ export function CapabilityWheel({
 }) {
   const [activeTitle, setActiveTitle] = useState<string | null>(null);
   const activeItem = items.find((item) => item.title === activeTitle) ?? null;
-  const ActiveIcon = activeItem ? iconMap[activeItem.title] ?? Sparkles : Sparkles;
 
   return (
     <div className="capability-wheel-layout mt-6">
@@ -168,22 +167,15 @@ export function CapabilityWheel({
       </div>
 
       <aside
-        className={`capability-wheel-detail relative min-h-[19rem] overflow-hidden rounded-2xl border border-line bg-card p-8 shadow-soft transition-opacity duration-200 ${
+        className={`capability-wheel-detail relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border border-line bg-card px-6 py-5 shadow-soft transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
       >
         {activeItem ? (
           <>
-            <span className="absolute left-0 top-10 h-36 w-1 bg-coral" aria-hidden="true" />
-            <div className="flex items-center gap-4">
-              <span className="grid h-14 w-14 flex-none place-items-center rounded-full border border-line bg-background text-coral">
-                <ActiveIcon className="h-7 w-7" aria-hidden="true" />
-              </span>
-              <h4 className="font-serif text-xl font-semibold leading-tight text-navy">{activeItem.title}</h4>
-            </div>
-            <div className="my-6 h-px bg-coral" aria-hidden="true" />
-            <p className="font-serif text-lg leading-8 text-muted">{activeItem.description}</p>
+            <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
+            <p className="font-serif text-base leading-7 text-muted md:text-lg">{activeItem.description}</p>
           </>
         ) : null}
       </aside>

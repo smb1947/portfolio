@@ -119,15 +119,10 @@ button {
   animation: coffee-cue-wiggle 5s ease-in-out infinite;
 }
 
-.about-visual-section {
-  background-image: radial-gradient(var(--dot-color) 0.8px, transparent 0.8px);
-  background-position: 0 0;
-  background-size: 18px 18px;
-}
-
 .capability-wheel-layout {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .capability-wheel-detail,
@@ -135,16 +130,15 @@ button {
   display: none;
 }
 
-@media (min-width: 900px) and (hover: hover) {
-  .capability-wheel-layout {
-    grid-template-columns: minmax(0, 40rem) minmax(16rem, 1fr);
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  .capability-wheel-detail,
-  .operating-triangle-detail {
+@media (hover: hover) {
+  .capability-wheel-detail {
     display: block;
+  }
+}
+
+@media (min-width: 900px) and (hover: hover) {
+  .operating-triangle-detail {
+    display: flex;
   }
 }
 

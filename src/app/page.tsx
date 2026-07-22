@@ -922,14 +922,14 @@ export default function Home() {
           </div>
         </ProjectResourceSpotlight>
 
-        <div className="about-visual-section mt-12">
+        <div className="mt-12">
           <h3 className="font-serif text-4xl font-semibold text-navy md:text-5xl">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
-        <div className="about-visual-section mt-12">
+        <div className="mt-12">
           <h3 className="font-serif text-4xl font-semibold text-navy md:text-5xl">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
