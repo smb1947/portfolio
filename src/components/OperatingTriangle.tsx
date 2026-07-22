@@ -50,7 +50,7 @@ export function OperatingTriangle({
       >
         <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 80" aria-hidden="true">
           <path
-            d="M50 1 L99 79 L1 79 Z"
+            d="M50 1.5 Q51.5 1.5 52.5 3 L98 75.2 Q100 79 95.5 79 L4.5 79 Q0 79 2 75.2 L47.5 3 Q48.5 1.5 50 1.5 Z"
             fill="var(--card)"
             stroke="var(--border)"
             strokeWidth="1.5"
