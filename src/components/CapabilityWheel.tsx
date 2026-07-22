@@ -20,10 +20,47 @@ type SegmentConfig = {
   activeTransform: string;
 };
 
+const polarPoint = (angle: number, radius: number) => {
+  const radians = (angle * Math.PI) / 180;
+
+  return {
+    x: 50 + radius * Math.cos(radians),
+    y: 50 + radius * Math.sin(radians)
+  };
+};
+
+const point = ({ x, y }: { x: number; y: number }) => `${x.toFixed(2)} ${y.toFixed(2)}`;
+
+const roundedSegmentPath = (startAngle: number, endAngle: number) => {
+  const outerRadius = 48;
+  const cornerInset = 1.6;
+  const angleInset = 2;
+  const innerRadius = 2.25;
+  const startCorner = polarPoint(startAngle, outerRadius);
+  const endCorner = polarPoint(endAngle, outerRadius);
+  const startRadial = polarPoint(startAngle, outerRadius - cornerInset);
+  const endRadial = polarPoint(endAngle, outerRadius - cornerInset);
+  const arcStart = polarPoint(startAngle + angleInset, outerRadius);
+  const arcEnd = polarPoint(endAngle - angleInset, outerRadius);
+  const innerEnd = polarPoint(endAngle, innerRadius);
+  const innerStart = polarPoint(startAngle, innerRadius);
+
+  return [
+    `M ${point(innerStart)}`,
+    `L ${point(startRadial)}`,
+    `Q ${point(startCorner)} ${point(arcStart)}`,
+    `A ${outerRadius} ${outerRadius} 0 0 1 ${point(arcEnd)}`,
+    `Q ${point(endCorner)} ${point(endRadial)}`,
+    `L ${point(innerEnd)}`,
+    `Q 50 50 ${point(innerStart)}`,
+    "Z"
+  ].join(" ");
+};
+
 const segments: SegmentConfig[] = [
   {
     title: "AI-First Product Building",
-    path: "M50 50 L50 2 A48 48 0 0 1 91.57 26 Z",
+    path: roundedSegmentPath(-90, -30),
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
     labelPosition: { left: "69%", top: "23%" },
     edgeTitleOffset: "9.3rem",
@@ -35,7 +72,7 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Strategic Business Acumen",
-    path: "M50 50 L91.57 26 A48 48 0 0 1 91.57 74 Z",
+    path: roundedSegmentPath(-30, 30),
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
     labelPosition: { left: "75%", top: "50%" },
     edgeTitleOffset: "7.5rem",
@@ -47,7 +84,7 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Technical Depth",
-    path: "M50 50 L91.57 74 A48 48 0 0 1 50 98 Z",
+    path: roundedSegmentPath(30, 90),
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
     labelPosition: { left: "68%", top: "77%" },
     edgeTitleOffset: "9.6rem",
@@ -59,7 +96,7 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Cross-Functional Collaboration",
-    path: "M50 50 L50 98 A48 48 0 0 1 8.43 74 Z",
+    path: roundedSegmentPath(90, 150),
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
     labelPosition: { left: "32%", top: "77%" },
     edgeTitleOffset: "-9.6rem",
@@ -71,7 +108,7 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Data-Driven Product Judgment",
-    path: "M50 50 L8.43 74 A48 48 0 0 1 8.43 26 Z",
+    path: roundedSegmentPath(150, 210),
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
     labelPosition: { left: "25%", top: "50%" },
     edgeTitleOffset: "-7.5rem",
@@ -83,7 +120,7 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Customer & Behavioral Psychology",
-    path: "M50 50 L8.43 26 A48 48 0 0 1 50 2 Z",
+    path: roundedSegmentPath(210, 270),
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
     labelPosition: { left: "31%", top: "23%" },
     edgeTitleOffset: "-9.3rem",
@@ -135,6 +172,8 @@ export function CapabilityWheel({
                   }}
                   stroke={isActive ? "var(--teal)" : "var(--visual-wheel-border)"}
                   strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
             );
