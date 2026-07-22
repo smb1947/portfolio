@@ -49,6 +49,15 @@ export function OperatingTriangle({
         aria-label="Operating principles"
       >
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 68" aria-hidden="true">
+        <path
+          d="M50 8.5 L86 59 L14 59 Z"
+          fill="var(--visual-surface)"
+          stroke="var(--visual-border)"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
+          style={{ filter: "var(--visual-svg-filter)" }}
+        />
         <line
           x1="49.2"
           y1="8.5"
