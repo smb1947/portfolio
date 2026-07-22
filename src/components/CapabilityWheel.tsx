@@ -12,6 +12,7 @@ type SegmentConfig = {
   path: string;
   clipPath: string;
   labelPosition: CSSProperties;
+  edgeLabelPosition: { left: string; top: string };
   restingTransform: string;
   activeTransform: string;
 };
@@ -22,6 +23,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L50 2 A48 48 0 0 1 91.57 26 Z",
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
     labelPosition: { left: "69%", top: "23%" },
+    edgeLabelPosition: { left: "100%", top: "23%" },
     restingTransform: "translate(0.5px, -0.5px) scale(0.965)",
     activeTransform: "translate(1.4px, -1.4px) scale(0.975)"
   },
@@ -30,6 +32,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L91.57 26 A48 48 0 0 1 91.57 74 Z",
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
     labelPosition: { left: "75%", top: "50%" },
+    edgeLabelPosition: { left: "100%", top: "50%" },
     restingTransform: "translate(0.7px, 0) scale(0.965)",
     activeTransform: "translate(1.8px, 0) scale(0.975)"
   },
@@ -38,6 +41,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L91.57 74 A48 48 0 0 1 50 98 Z",
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
     labelPosition: { left: "68%", top: "77%" },
+    edgeLabelPosition: { left: "100%", top: "77%" },
     restingTransform: "translate(0.5px, 0.5px) scale(0.965)",
     activeTransform: "translate(1.4px, 1.4px) scale(0.975)"
   },
@@ -46,6 +50,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L50 98 A48 48 0 0 1 8.43 74 Z",
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
     labelPosition: { left: "32%", top: "77%" },
+    edgeLabelPosition: { left: "0%", top: "77%" },
     restingTransform: "translate(-0.5px, 0.5px) scale(0.965)",
     activeTransform: "translate(-1.4px, 1.4px) scale(0.975)"
   },
@@ -54,6 +59,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L8.43 74 A48 48 0 0 1 8.43 26 Z",
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
     labelPosition: { left: "25%", top: "50%" },
+    edgeLabelPosition: { left: "0%", top: "50%" },
     restingTransform: "translate(-0.7px, 0) scale(0.965)",
     activeTransform: "translate(-1.8px, 0) scale(0.975)"
   },
@@ -62,6 +68,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L8.43 26 A48 48 0 0 1 50 2 Z",
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
     labelPosition: { left: "31%", top: "23%" },
+    edgeLabelPosition: { left: "0%", top: "23%" },
     restingTransform: "translate(-0.5px, -0.5px) scale(0.965)",
     activeTransform: "translate(-1.4px, -1.4px) scale(0.975)"
   }
@@ -85,7 +92,7 @@ export function CapabilityWheel({
 
   return (
     <div ref={spotlightRef} className="capability-wheel-layout mt-6">
-      <div className="relative aspect-square w-full max-w-[40rem]" role="group" aria-label="Product capabilities">
+      <div className="capability-wheel-frame relative aspect-square w-full" role="group" aria-label="Product capabilities">
         <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 100" aria-hidden="true">
           {segments.map((segment) => {
             const isActive = activeTitle === segment.title;
@@ -139,10 +146,17 @@ export function CapabilityWheel({
               <span
                 data-visual-spotlight-target
                 data-spotlight-title={item.title}
-                className={`pointer-events-none absolute z-20 flex w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 text-center transition-colors duration-200 ${
+                data-active={isActive ? "true" : undefined}
+                className={`capability-wheel-label pointer-events-none absolute z-20 flex -translate-x-1/2 -translate-y-1/2 items-center text-center transition-all duration-200 ${
                   isActive ? "text-white" : "text-navy"
                 }`}
-                style={segment.labelPosition}
+                style={
+                  {
+                    ...segment.labelPosition,
+                    "--edge-left": segment.edgeLabelPosition.left,
+                    "--edge-top": segment.edgeLabelPosition.top
+                  } as CSSProperties
+                }
                 aria-hidden="true"
               >
                 <span
@@ -154,7 +168,7 @@ export function CapabilityWheel({
                 >
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
-                <span className="font-serif text-[clamp(0.52rem,1.4vw,1.05rem)] font-semibold leading-tight">
+                <span className="capability-wheel-title font-serif font-semibold leading-tight">
                   {item.title}
                 </span>
               </span>
@@ -170,19 +184,24 @@ export function CapabilityWheel({
         </span>
       </div>
 
-      <aside
-        className={`capability-wheel-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
+      <div
+        className={`capability-wheel-detail mt-6 w-full max-w-5xl transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
       >
-        {activeItem ? (
-          <>
-            <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
-            <p className="font-serif text-base leading-7 text-muted md:text-lg">{activeItem.description}</p>
-          </>
-        ) : null}
-      </aside>
+        <p className="mb-3 min-h-7 font-serif text-xl font-semibold text-navy md:hidden">
+          {activeItem?.title ?? "\u00A0"}
+        </p>
+        <aside className="visual-description-card relative min-h-20 overflow-hidden rounded-2xl border px-6 py-5">
+          {activeItem ? (
+            <>
+              <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
+              <p className="font-serif text-base leading-7 text-muted md:text-lg">{activeItem.description}</p>
+            </>
+          ) : null}
+        </aside>
+      </div>
     </div>
   );
 }

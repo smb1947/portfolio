@@ -155,6 +155,67 @@ button {
   align-items: center;
 }
 
+.capability-wheel-frame {
+  max-width: 24rem;
+}
+
+.capability-wheel-label {
+  width: auto;
+}
+
+.capability-wheel-title {
+  display: none;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .capability-wheel-frame {
+    max-width: 30rem;
+  }
+
+  .capability-wheel-label {
+    left: var(--edge-left) !important;
+    top: var(--edge-top) !important;
+    width: 11rem;
+    min-height: 4.25rem;
+    flex-direction: row;
+    gap: 0.625rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--card);
+    box-shadow: var(--shadow-soft);
+    padding: 0.625rem 0.75rem;
+    text-align: left;
+  }
+
+  .capability-wheel-label[data-active="true"] .capability-wheel-title {
+    color: var(--teal);
+  }
+
+  .capability-wheel-title {
+    display: block;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 1280px) {
+  .capability-wheel-frame {
+    max-width: 40rem;
+  }
+
+  .capability-wheel-label {
+    width: 27%;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .capability-wheel-title {
+    display: block;
+    font-size: 1rem;
+  }
+}
+
 .operating-triangle-layout {
   display: flex;
   flex-direction: column;
