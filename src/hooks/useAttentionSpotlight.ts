@@ -4,14 +4,23 @@ import { useEffect, useRef } from "react";
 
 type AttentionSpotlightOptions = {
   activeAttribute: string;
+  onActiveTargetChange?: (target: HTMLElement | null) => void;
+  pauseSelector?: string;
   targetSelector: string;
 };
 
 export function useAttentionSpotlight<T extends HTMLElement>({
   activeAttribute,
-  targetSelector
+  onActiveTargetChange,
+  targetSelector,
+  pauseSelector = targetSelector
 }: AttentionSpotlightOptions) {
   const containerRef = useRef<T>(null);
+  const onActiveTargetChangeRef = useRef(onActiveTargetChange);
+
+  useEffect(() => {
+    onActiveTargetChangeRef.current = onActiveTargetChange;
+  }, [onActiveTargetChange]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -25,11 +34,14 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     let activeTarget: HTMLElement | null = null;
     let spotlightTimeout: number | null = null;
     let clearTargetTimeout: number | null = null;
+    let isPointerInteracting = false;
+    let isFocusInteracting = false;
 
     const clearActiveTarget = () => {
       if (activeTarget) {
         activeTarget.removeAttribute(activeAttribute);
         activeTarget = null;
+        onActiveTargetChangeRef.current?.(null);
       }
     };
 
@@ -55,7 +67,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       });
 
     function spotlightRandomTarget() {
-      if (!isInView || reduceMotionQuery.matches) {
+      if (!isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
         clearActiveTarget();
         return;
       }
@@ -71,6 +83,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       clearActiveTarget();
       activeTarget = nextTarget;
       activeTarget.setAttribute(activeAttribute, "true");
+      onActiveTargetChangeRef.current?.(activeTarget);
 
       clearTargetTimeout = window.setTimeout(() => {
         if (activeTarget === nextTarget) {
@@ -83,7 +96,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     const scheduleSpotlight = (delay = 10000) => {
       clearScheduleTimer();
 
-      if (!isInView || reduceMotionQuery.matches) {
+      if (!isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
         return;
       }
 
@@ -98,9 +111,60 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       clearSpotlightTimer();
       clearActiveTarget();
 
-      if (!reduceMotionQuery.matches) {
+      if (!isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
         scheduleSpotlight(1000);
       }
+    };
+
+    const pauseSpotlight = () => {
+      clearScheduleTimer();
+      clearSpotlightTimer();
+      clearActiveTarget();
+    };
+
+    const resumeSpotlight = () => {
+      if (isInView && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
+        scheduleSpotlight();
+      }
+    };
+
+    const isPauseTarget = (target: EventTarget | null) =>
+      target instanceof Element && Boolean(target.closest(pauseSelector));
+
+    const handlePointerOver = (event: PointerEvent) => {
+      if ((event.pointerType === "mouse" || event.pointerType === "pen") && isPauseTarget(event.target)) {
+        isPointerInteracting = true;
+        pauseSpotlight();
+      }
+    };
+
+    const handlePointerOut = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse" && event.pointerType !== "pen") {
+        return;
+      }
+
+      if (isPauseTarget(event.relatedTarget)) {
+        return;
+      }
+
+      isPointerInteracting = false;
+      resumeSpotlight();
+    };
+
+    const handleFocusIn = (event: FocusEvent) => {
+      if (isPauseTarget(event.target)) {
+        isFocusInteracting = true;
+        pauseSpotlight();
+      }
+    };
+
+    const handleFocusOut = (event: FocusEvent) => {
+      if (isPauseTarget(event.relatedTarget)) {
+        return;
+      }
+
+      isFocusInteracting = false;
+      resumeSpotlight();
     };
 
     const handleMotionPreferenceChange = () => {
@@ -135,16 +199,24 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     );
 
     observer.observe(container);
+    container.addEventListener("pointerover", handlePointerOver);
+    container.addEventListener("pointerout", handlePointerOut);
+    container.addEventListener("focusin", handleFocusIn);
+    container.addEventListener("focusout", handleFocusOut);
     reduceMotionQuery.addEventListener("change", handleMotionPreferenceChange);
 
     return () => {
       observer.disconnect();
+      container.removeEventListener("pointerover", handlePointerOver);
+      container.removeEventListener("pointerout", handlePointerOut);
+      container.removeEventListener("focusin", handleFocusIn);
+      container.removeEventListener("focusout", handleFocusOut);
       reduceMotionQuery.removeEventListener("change", handleMotionPreferenceChange);
       clearScheduleTimer();
       clearSpotlightTimer();
       clearActiveTarget();
     };
-  }, [activeAttribute, targetSelector]);
+  }, [activeAttribute, pauseSelector, targetSelector]);
 
   return containerRef;
 }

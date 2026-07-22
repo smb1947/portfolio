@@ -78,6 +78,8 @@ export function CapabilityWheel({
   const activeItem = items.find((item) => item.title === activeTitle) ?? null;
   const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
     activeAttribute: "data-visual-spotlight",
+    onActiveTargetChange: (target) => setActiveTitle(target?.dataset.spotlightTitle ?? null),
+    pauseSelector: "[data-visual-interaction-target]",
     targetSelector: "[data-visual-spotlight-target]"
   });
 
@@ -124,6 +126,7 @@ export function CapabilityWheel({
             <div key={item.title}>
               <button
                 type="button"
+                data-visual-interaction-target
                 aria-label={`${item.title}: ${item.description}`}
                 className="absolute inset-0 z-10 cursor-pointer outline-none"
                 style={{ clipPath: segment.clipPath }}
@@ -135,6 +138,7 @@ export function CapabilityWheel({
               />
               <span
                 data-visual-spotlight-target
+                data-spotlight-title={item.title}
                 className={`pointer-events-none absolute z-20 flex w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 text-center transition-colors duration-200 ${
                   isActive ? "text-white" : "text-navy"
                 }`}

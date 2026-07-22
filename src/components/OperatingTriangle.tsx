@@ -37,6 +37,7 @@ export function OperatingTriangle({
   const bottomEdgeActive = activeTitle === "Human-Centered" || activeTitle === "Thoughtful";
   const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
     activeAttribute: "data-visual-spotlight",
+    onActiveTargetChange: (target) => setActiveTitle(target?.dataset.spotlightTitle ?? null),
     targetSelector: "[data-visual-spotlight-target]"
   });
 
@@ -131,6 +132,7 @@ export function OperatingTriangle({
             key={item.title}
             type="button"
             data-visual-spotlight-target
+            data-spotlight-title={item.title}
             className="operating-node absolute z-20 grid -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-2xl px-2 py-1 text-center outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
             aria-label={`${item.title}: ${item.description}`}
             style={node.position}
@@ -175,7 +177,7 @@ export function OperatingTriangle({
       </div>
 
       <aside
-        className={`operating-triangle-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
+        className={`operating-triangle-detail visual-description-card relative mt-12 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
