@@ -174,7 +174,7 @@ function ManagerNoteCard({
           rel="noreferrer"
           aria-label="Open LinkedIn comment"
           title="LinkedIn Comment"
-          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-teal bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
         >
           <Linkedin className="h-5 w-5" aria-hidden="true" />
         </a>
