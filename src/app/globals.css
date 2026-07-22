@@ -798,6 +798,10 @@ button {
     color: var(--navy) !important;
   }
 
+  .operating-node-title {
+    display: block !important;
+  }
+
   .capability-wheel-detail,
   .operating-triangle-detail {
     display: none !important;
