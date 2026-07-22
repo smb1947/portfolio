@@ -30,14 +30,16 @@ export function OperatingTriangle({
   items: AboutProfileItem[];
   iconMap: Record<string, LucideIcon>;
 }) {
-  const [activeTitle, setActiveTitle] = useState<string | null>(null);
+  const [interactionTitle, setInteractionTitle] = useState<string | null>(null);
+  const [spotlightTitle, setSpotlightTitle] = useState<string | null>(null);
+  const activeTitle = interactionTitle ?? spotlightTitle;
   const activeItem = items.find((item) => item.title === activeTitle) ?? null;
   const leftEdgeActive = activeTitle === "Agency" || activeTitle === "Human-Centered";
   const rightEdgeActive = activeTitle === "Agency" || activeTitle === "Thoughtful";
   const bottomEdgeActive = activeTitle === "Human-Centered" || activeTitle === "Thoughtful";
   const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
     activeAttribute: "data-visual-spotlight",
-    onActiveTargetChange: (target) => setActiveTitle(target?.dataset.spotlightTitle ?? null),
+    onActiveTargetChange: (target) => setSpotlightTitle(target?.dataset.spotlightTitle ?? null),
     targetSelector: "[data-visual-spotlight-target]"
   });
 
@@ -152,11 +154,11 @@ export function OperatingTriangle({
             className="operating-node absolute z-20 grid -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-2xl px-2 py-1 text-center outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
             aria-label={`${item.title}: ${item.description}`}
             style={node.position}
-            onMouseEnter={() => setActiveTitle(item.title)}
-            onMouseLeave={() => setActiveTitle(null)}
-            onFocus={() => setActiveTitle(item.title)}
-            onBlur={() => setActiveTitle(null)}
-            onClick={() => setActiveTitle(item.title)}
+            onMouseEnter={() => setInteractionTitle(item.title)}
+            onMouseLeave={() => setInteractionTitle(null)}
+            onFocus={() => setInteractionTitle(item.title)}
+            onBlur={() => setInteractionTitle(null)}
+            onClick={() => setInteractionTitle(item.title)}
           >
             <span
               className="visual-node-surface relative grid h-[3.25rem] w-[3.25rem] place-items-center rounded-full border transition-all duration-200"
