@@ -21,7 +21,7 @@
   --visual-medallion: var(--card);
   --visual-panel: var(--card);
   --visual-border: var(--border);
-  --visual-line: #cfbea7;
+  --visual-line: #ad9170;
   --visual-wheel-border: var(--border);
   --visual-shadow: var(--shadow-soft);
   --visual-svg-filter: drop-shadow(0 7px 8px rgba(20, 36, 50, 0.13));
@@ -50,7 +50,7 @@
   --visual-medallion: #10161b;
   --visual-panel: #171e24;
   --visual-border: var(--border);
-  --visual-line: #48545d;
+  --visual-line: #64727c;
   --visual-wheel-border: var(--visual-line);
   --visual-shadow: var(--shadow-soft);
   --visual-svg-filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.30));
@@ -77,7 +77,7 @@
   --visual-medallion: #101915;
   --visual-panel: #18231f;
   --visual-border: var(--border);
-  --visual-line: #53645d;
+  --visual-line: #6b7f75;
   --visual-wheel-border: var(--visual-line);
   --visual-shadow: var(--shadow-soft);
   --visual-svg-filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.30));

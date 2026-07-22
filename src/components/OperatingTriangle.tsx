@@ -9,12 +9,13 @@ import type { AboutProfileItem } from "@/lib/data";
 type NodeConfig = {
   title: string;
   position: CSSProperties;
+  labelPosition: "above" | "below";
 };
 
 const nodes: NodeConfig[] = [
-  { title: "Agency", position: { left: "50%", top: "11%" } },
-  { title: "Human-Centered", position: { left: "14%", top: "87%" } },
-  { title: "Thoughtful", position: { left: "86%", top: "87%" } }
+  { title: "Agency", position: { left: "50%", top: "11%" }, labelPosition: "above" },
+  { title: "Human-Centered", position: { left: "14%", top: "87%" }, labelPosition: "below" },
+  { title: "Thoughtful", position: { left: "86%", top: "87%" }, labelPosition: "below" }
 ];
 
 const activeEdgeStyle: CSSProperties = {
@@ -51,7 +52,7 @@ export function OperatingTriangle({
           className="transition-colors duration-200"
           stroke={leftEdgeActive ? "var(--teal)" : "var(--visual-line)"}
           style={leftEdgeActive ? activeEdgeStyle : undefined}
-          strokeWidth="0.65"
+          strokeWidth="1"
         />
         <line
           x1="50.8"
@@ -62,7 +63,7 @@ export function OperatingTriangle({
           className="transition-colors duration-200"
           stroke={leftEdgeActive ? "var(--teal)" : "var(--visual-line)"}
           style={leftEdgeActive ? activeEdgeStyle : undefined}
-          strokeWidth="0.65"
+          strokeWidth="1"
         />
         <line
           x1="49.2"
@@ -73,7 +74,7 @@ export function OperatingTriangle({
           className="transition-colors duration-200"
           stroke={rightEdgeActive ? "var(--teal)" : "var(--visual-line)"}
           style={rightEdgeActive ? activeEdgeStyle : undefined}
-          strokeWidth="0.65"
+          strokeWidth="1"
         />
         <line
           x1="50.8"
@@ -84,7 +85,7 @@ export function OperatingTriangle({
           className="transition-colors duration-200"
           stroke={rightEdgeActive ? "var(--teal)" : "var(--visual-line)"}
           style={rightEdgeActive ? activeEdgeStyle : undefined}
-          strokeWidth="0.65"
+          strokeWidth="1"
         />
         <line
           x1="14"
@@ -95,7 +96,7 @@ export function OperatingTriangle({
           className="transition-colors duration-200"
           stroke={bottomEdgeActive ? "var(--teal)" : "var(--visual-line)"}
           style={bottomEdgeActive ? activeEdgeStyle : undefined}
-          strokeWidth="0.65"
+          strokeWidth="1"
         />
         <line
           x1="14"
@@ -106,7 +107,7 @@ export function OperatingTriangle({
           className="transition-colors duration-200"
           stroke={bottomEdgeActive ? "var(--teal)" : "var(--visual-line)"}
           style={bottomEdgeActive ? activeEdgeStyle : undefined}
-          strokeWidth="0.65"
+          strokeWidth="1"
         />
         </svg>
 
@@ -125,7 +126,7 @@ export function OperatingTriangle({
             key={item.title}
             type="button"
             aria-label={`${item.title}: ${item.description}`}
-            className="absolute z-20 flex -translate-x-1/2 -translate-y-1/2 cursor-pointer flex-col items-center gap-2 rounded-2xl px-2 py-1 text-center outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
+            className="absolute z-20 grid -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-2xl px-2 py-1 text-center outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
             style={node.position}
             onMouseEnter={() => setActiveTitle(item.title)}
             onMouseLeave={() => setActiveTitle(null)}
@@ -153,7 +154,9 @@ export function OperatingTriangle({
               />
             </span>
             <span
-              className={`whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
+              className={`absolute whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
+                node.labelPosition === "above" ? "bottom-full mb-2" : "top-full mt-2"
+              } ${
                 isActive ? "text-teal" : "text-navy"
               }`}
             >
