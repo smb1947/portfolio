@@ -67,6 +67,19 @@ function QuestionWordHighlight({ text }: { text: string }) {
   );
 }
 
+function LeadingPhraseHighlight({ text, phrase }: { text: string; phrase: string }) {
+  if (!text.startsWith(phrase)) {
+    return <>{text}</>;
+  }
+
+  return (
+    <>
+      <span className="text-teal">{phrase}</span>
+      {text.slice(phrase.length)}
+    </>
+  );
+}
+
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
@@ -909,16 +922,16 @@ export default function Home() {
           </div>
         </ProjectResourceSpotlight>
 
-        <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+        <div className="about-visual-section mt-12">
+          <h3 className="font-serif text-4xl font-semibold text-navy md:text-5xl">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
-        <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
-            <QuestionWordHighlight text={aboutProfile.operatingModelHeading} />
+        <div className="about-visual-section mt-12">
+          <h3 className="font-serif text-4xl font-semibold text-navy md:text-5xl">
+            <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
           <ManagerNoteCard {...aboutProfile.managerNote} />
