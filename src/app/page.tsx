@@ -3,7 +3,10 @@
 import { useState } from "react";
 import {
   BadgeCheck,
+  BicepsFlexed,
+  Blocks,
   Brain,
+  BriefcaseBusiness,
   Building2,
   ChevronDown,
   ChevronUp,
@@ -15,15 +18,17 @@ import {
   Linkedin,
   MapPin,
   Mountain,
+  MountainSnow,
+  Music4,
   PlayCircle,
   Puzzle,
-  Radio,
   School,
   Search,
   ShieldCheck,
   Spade,
   Sparkles,
   Target,
+  TrendingUpDown,
   Users,
   Wrench,
   Zap
@@ -39,6 +44,7 @@ import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
+import { RoseIcon } from "@/components/icons/RoseIcon";
 import { SectionRouteSync } from "@/components/SectionRouteSync";
 import { trackPortfolioEvent, trackPortfolioUtilityRoute } from "@/lib/analytics";
 
@@ -74,8 +80,8 @@ function SectionHeading({ children }: { children: string }) {
 const capabilityIconMap: Record<string, LucideIcon> = {
   "Customer & Behavioral Psychology": Brain,
   "AI-First Product Building": Sparkles,
-  "Data-Driven Product Judgment": Target,
-  "Strategic Business Acumen": Landmark,
+  "Data-Driven Product Judgment": TrendingUpDown,
+  "Strategic Business Acumen": BriefcaseBusiness,
   "Technical Depth": Code2,
   "Cross-Functional Collaboration": Users
 };
@@ -274,19 +280,19 @@ function ExperienceSubLogo({ organization }: { organization: string }) {
 function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon; className: string; mark?: string } {
   const title = projectTitle.toLowerCase();
 
-  if (title.includes("spotify")) return { label: "Spotify", icon: Radio, className: "bg-[#1db954] text-white" };
+  if (title.includes("spotify")) return { label: "Spotify", icon: Music4, className: "bg-[#1db954] text-white" };
   if (title.includes("asana")) return { label: "Asana", icon: Puzzle, className: "bg-[#fc636b] text-white" };
   if (title.includes("heylily")) return { label: "HeyLily", icon: ShieldCheck, className: "bg-teal text-white" };
   if (title.includes("roblox")) return { label: "Roblox", icon: Building2, className: "bg-[#111111] text-white" };
   if (title.includes("copilot")) return { label: "Microsoft 365 Copilot", icon: Sparkles, className: "bg-[#2563eb] text-white" };
   if (title.includes("netflix")) return { label: "Netflix", icon: PlayCircle, className: "bg-[#e50914] text-white", mark: "N" };
   if (title.includes("figma")) return { label: "Figma", icon: Puzzle, className: "bg-[#a259ff] text-white", mark: "F" };
-  if (title.includes("bumble")) return { label: "Bumble", icon: Users, className: "bg-[#ffcb37] text-navy", mark: "B" };
+  if (title.includes("bumble")) return { label: "Bumble", icon: RoseIcon, className: "bg-[#ffcb37] text-navy" };
   if (title.includes("wslblobnfs")) return { label: "WSLBlobNFS", icon: Code2, className: "bg-[#0078d4] text-white" };
   if (title.includes("blobnfs")) return { label: "Azure Blob NFS", icon: Wrench, className: "bg-[#0078d4] text-white" };
-  if (title.includes("hike")) return { label: "AI Hike Researcher", icon: Mountain, className: "bg-[#7c4a2d] text-white" };
-  if (title.includes("streakfit")) return { label: "StreakFit AI", icon: BadgeCheck, className: "bg-coral text-white" };
-  if (title.includes("teardown")) return { label: "Product Teardown Series", icon: Search, className: "bg-[#dc2626] text-white" };
+  if (title.includes("hike")) return { label: "AI Hike Researcher", icon: MountainSnow, className: "bg-[#7c4a2d] text-white" };
+  if (title.includes("streakfit")) return { label: "StreakFit AI", icon: BicepsFlexed, className: "bg-coral text-white" };
+  if (title.includes("teardown")) return { label: "Product Teardown Series", icon: Blocks, className: "bg-[#dc2626] text-white" };
   if (title.includes("quantum")) return { label: "Quantum Tech Partners", icon: Target, className: "bg-[#2f4858] text-white" };
   if (title.includes("sbs")) return { label: "SBS Consulting", icon: Landmark, className: "bg-[#6f4e37] text-white" };
   if (title.includes("tech club")) return { label: "Foster Tech Club", icon: School, className: "bg-[#4b2e83] text-[#b7a57a]" };
