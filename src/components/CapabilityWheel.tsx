@@ -218,6 +218,9 @@ export function CapabilityWheel({
           {activeItem ? (
             <>
               <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
+              <h3 className="mb-1 font-serif text-lg font-semibold leading-tight text-navy xl:hidden">
+                {activeItem.title}
+              </h3>
               <p className="font-serif text-base leading-7 text-muted md:text-lg">{activeItem.description}</p>
             </>
           ) : null}
