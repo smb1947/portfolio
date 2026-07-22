@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import {
-  BadgeCheck,
   BicepsFlexed,
   Blocks,
   Brain,
@@ -38,10 +37,12 @@ import {
   aboutProfile,
   portfolio
 } from "@/lib/data";
-import type { AboutProfileItem, Experience, Project } from "@/lib/data";
+import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
+import { CapabilityWheel } from "@/components/CapabilityWheel";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { OperatingTriangle } from "@/components/OperatingTriangle";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
 import { RoseIcon } from "@/components/icons/RoseIcon";
@@ -110,37 +111,6 @@ function CardIcon({ icon: Icon }: { icon: LucideIcon }) {
 
 function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
   return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
-}
-
-function AboutProfileCard({
-  item,
-  icon,
-  layout
-}: {
-  item: AboutProfileItem;
-  icon: LucideIcon;
-  layout: "capability" | "principle";
-}) {
-  const contentHeight = layout === "capability" ? "md:min-h-[7.5rem]" : "md:min-h-[9.5rem]";
-
-  return (
-    <article
-      tabIndex={0}
-      className="group rounded-2xl border border-line bg-card p-5 shadow-soft outline-none transition-shadow duration-200 focus-visible:ring-4 focus-visible:ring-teal/20"
-    >
-      <div className={`flex items-center gap-4 ${contentHeight}`}>
-        <CardIcon icon={icon} />
-        <div className={`min-w-0 flex-1 ${contentHeight} [@media(hover:hover)]:relative`}>
-          <h4 className="font-serif text-xl font-semibold leading-tight text-navy transition-all duration-300 [@media(hover:hover)]:absolute [@media(hover:hover)]:left-0 [@media(hover:hover)]:top-1/2 [@media(hover:hover)]:-translate-y-1/2 [@media(hover:hover)]:group-hover:top-0 [@media(hover:hover)]:group-hover:translate-y-0 group-focus-visible:top-0 group-focus-visible:translate-y-0 print:!static print:!translate-y-0">
-            {item.title}
-          </h4>
-          <p className="mt-3 text-sm leading-7 text-muted transition-all duration-300 [@media(hover:hover)]:absolute [@media(hover:hover)]:left-0 [@media(hover:hover)]:top-9 [@media(hover:hover)]:mt-0 [@media(hover:hover)]:translate-y-2 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 print:!static print:!mt-3 print:!translate-y-0 print:!opacity-100">
-            {item.description}
-          </p>
-        </div>
-      </div>
-    </article>
-  );
 }
 
 function QuoteIcon() {
@@ -943,32 +913,14 @@ export default function Home() {
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
-            {aboutProfile.capabilities.map((capability) => (
-              <AboutProfileCard
-                key={capability.title}
-                item={capability}
-                icon={capabilityIconMap[capability.title] ?? Sparkles}
-                layout="capability"
-              />
-            ))}
-          </div>
+          <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="mt-12">
           <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.operatingModelHeading} />
           </h3>
-          <div className="mt-6 grid gap-5 md:grid-cols-3 print:grid-cols-3">
-            {aboutProfile.operatingModel.map((principle) => (
-              <AboutProfileCard
-                key={principle.title}
-                item={principle}
-                icon={operatingModelIconMap[principle.title] ?? BadgeCheck}
-                layout="principle"
-              />
-            ))}
-          </div>
+          <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
           <ManagerNoteCard {...aboutProfile.managerNote} />
         </div>
 

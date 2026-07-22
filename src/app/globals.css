@@ -119,6 +119,29 @@ button {
   animation: coffee-cue-wiggle 5s ease-in-out infinite;
 }
 
+.capability-wheel-layout {
+  display: grid;
+  place-items: center;
+}
+
+.capability-wheel-detail,
+.operating-triangle-detail {
+  display: none;
+}
+
+@media (min-width: 900px) and (hover: hover) {
+  .capability-wheel-layout {
+    grid-template-columns: minmax(0, 40rem) minmax(16rem, 1fr);
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .capability-wheel-detail,
+  .operating-triangle-detail {
+    display: block;
+  }
+}
+
 .nav-afterimage-stack {
   position: absolute;
   inset: 0;
