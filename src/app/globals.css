@@ -20,9 +20,10 @@
   --visual-surface: var(--card);
   --visual-medallion: var(--card);
   --visual-panel: var(--card);
-  --visual-border: #cfbea7;
+  --visual-border: var(--border);
+  --visual-line: #cfbea7;
   --visual-wheel-border: var(--border);
-  --visual-shadow: 0 18px 46px rgba(20, 36, 50, 0.14), 0 2px 8px rgba(20, 36, 50, 0.06);
+  --visual-shadow: var(--shadow-soft);
   --visual-svg-filter: drop-shadow(0 7px 8px rgba(20, 36, 50, 0.13));
   --visual-active-surface: var(--teal);
   --visual-active-filter: drop-shadow(0 0 6px color-mix(in srgb, var(--teal) 36%, transparent));
@@ -48,8 +49,9 @@
   --visual-surface: #171e24;
   --visual-medallion: #10161b;
   --visual-panel: #171e24;
-  --visual-border: #48545d;
-  --visual-wheel-border: var(--visual-border);
+  --visual-border: var(--border);
+  --visual-line: #48545d;
+  --visual-wheel-border: var(--visual-line);
   --visual-shadow: var(--shadow-soft);
   --visual-svg-filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.30));
   --visual-active-surface: var(--teal);
@@ -74,8 +76,9 @@
   --visual-surface: #18231f;
   --visual-medallion: #101915;
   --visual-panel: #18231f;
-  --visual-border: #53645d;
-  --visual-wheel-border: var(--visual-border);
+  --visual-border: var(--border);
+  --visual-line: #53645d;
+  --visual-wheel-border: var(--visual-line);
   --visual-shadow: var(--shadow-soft);
   --visual-svg-filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.30));
   --visual-active-surface: var(--teal);
