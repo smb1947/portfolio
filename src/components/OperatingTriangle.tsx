@@ -43,21 +43,13 @@ export function OperatingTriangle({
 
   return (
     <div ref={spotlightRef} className="operating-triangle-layout mt-6">
-      <div
-        className="relative mx-auto mt-8 aspect-[25/17] w-full max-w-[30rem]"
-        role="group"
-        aria-label="Operating principles"
-      >
+      <div className="w-full max-w-[36rem] rounded-[1.35rem] border border-line bg-card px-6 py-14 shadow-soft sm:px-12">
+        <div
+          className="relative mx-auto aspect-[25/17] w-full max-w-[30rem]"
+          role="group"
+          aria-label="Operating principles"
+        >
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 68" aria-hidden="true">
-        <path
-          d="M50 8.5 L86 59 L14 59 Z"
-          fill="var(--visual-surface)"
-          stroke="var(--visual-border)"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-          vectorEffect="non-scaling-stroke"
-          style={{ filter: "var(--visual-svg-filter)" }}
-        />
         <line
           x1="49.2"
           y1="8.5"
@@ -154,7 +146,7 @@ export function OperatingTriangle({
             <span
               className="visual-node-surface relative grid h-14 w-14 place-items-center rounded-full border transition-all duration-200 sm:h-16 sm:w-16"
               style={{
-                background: isActive ? "var(--teal)" : "var(--visual-surface)",
+                background: isActive ? "var(--teal)" : "var(--background)",
                 borderColor: isActive ? "var(--teal)" : "var(--visual-border)",
                 boxShadow: isActive
                   ? "0 0 0 5px color-mix(in srgb, var(--teal) 16%, transparent), 0 18px 48px color-mix(in srgb, var(--teal) 22%, transparent)"
@@ -183,10 +175,11 @@ export function OperatingTriangle({
           </button>
         );
         })}
+        </div>
       </div>
 
       <aside
-        className={`operating-triangle-detail visual-description-card relative mt-12 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
+        className={`operating-triangle-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
