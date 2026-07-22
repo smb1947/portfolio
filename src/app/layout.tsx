@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PrintShortcutAnalytics } from "@/components/PrintShortcutAnalytics";
 import { site } from "@/lib/data";
 import "./globals.css";
 
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Analytics />
         <SpeedInsights />
         <CloudflareWebAnalytics />
+        <PrintShortcutAnalytics />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { Code, ExternalLink, FileText, MonitorPlay, Newspaper, Presentation } from "lucide-react";
+import { CirclePlay, Code, ExternalLink, FileText, Newspaper, Presentation } from "lucide-react";
 import { trackPortfolioEvent } from "@/lib/analytics";
 import type { ProjectResource } from "@/lib/data";
 
@@ -25,7 +25,7 @@ function getActionDestination(href: string) {
 const actionIconMap: Record<ProjectResource["type"], LucideIcon> = {
   article: Newspaper,
   code: Code,
-  demo: MonitorPlay,
+  demo: CirclePlay,
   doc: FileText,
   other: ExternalLink,
   slides: Presentation
