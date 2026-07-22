@@ -17,6 +17,15 @@
   --dot-color: rgba(20, 36, 50, 0.16);
   --shadow-soft: 0 18px 60px rgba(20, 36, 50, 0.10);
   --shadow-lift: 0 22px 70px rgba(20, 36, 50, 0.16);
+  --visual-surface: #fff8ed;
+  --visual-medallion: #fffdf8;
+  --visual-panel: #fffefb;
+  --visual-border: #cfbea7;
+  --visual-border-strong: #9c8972;
+  --visual-shadow: 0 18px 46px rgba(20, 36, 50, 0.14), 0 2px 8px rgba(20, 36, 50, 0.06);
+  --visual-svg-filter: drop-shadow(0 7px 8px rgba(20, 36, 50, 0.13));
+  --visual-active-surface: color-mix(in srgb, var(--teal) 18%, #fffdf8);
+  --visual-active-filter: drop-shadow(0 0 6px color-mix(in srgb, var(--teal) 36%, transparent));
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
 }
@@ -36,6 +45,15 @@
   --dot-color: rgba(246, 240, 232, 0.08);
   --shadow-soft: 0 18px 58px rgba(0, 0, 0, 0.34), 0 1px 0 rgba(255, 255, 255, 0.035);
   --shadow-lift: 0 24px 78px rgba(0, 0, 0, 0.44), 0 1px 0 rgba(255, 255, 255, 0.05);
+  --visual-surface: #171e24;
+  --visual-medallion: #10161b;
+  --visual-panel: #171e24;
+  --visual-border: #48545d;
+  --visual-border-strong: #65717a;
+  --visual-shadow: var(--shadow-soft);
+  --visual-svg-filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.30));
+  --visual-active-surface: color-mix(in srgb, var(--teal) 24%, var(--card));
+  --visual-active-filter: drop-shadow(0 0 5px color-mix(in srgb, var(--teal) 42%, transparent));
 }
 
 :root[data-theme="classic"] {
@@ -53,6 +71,15 @@
   --dot-color: rgba(247, 241, 231, 0.10);
   --shadow-soft: 0 18px 58px rgba(0, 0, 0, 0.34), 0 1px 0 rgba(255, 255, 255, 0.035);
   --shadow-lift: 0 24px 78px rgba(0, 0, 0, 0.44), 0 1px 0 rgba(255, 255, 255, 0.05);
+  --visual-surface: #18231f;
+  --visual-medallion: #101915;
+  --visual-panel: #18231f;
+  --visual-border: #53645d;
+  --visual-border-strong: #71827a;
+  --visual-shadow: var(--shadow-soft);
+  --visual-svg-filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.30));
+  --visual-active-surface: color-mix(in srgb, var(--teal) 24%, var(--card));
+  --visual-active-filter: drop-shadow(0 0 5px color-mix(in srgb, var(--teal) 42%, transparent));
 }
 
 * {
@@ -125,20 +152,38 @@ button {
   align-items: center;
 }
 
+.operating-triangle-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.visual-icon-medallion {
+  background: var(--visual-medallion);
+}
+
+.visual-hub,
+.visual-node-surface {
+  border-color: var(--visual-border);
+  background: var(--visual-surface);
+  box-shadow: var(--visual-shadow);
+}
+
+.visual-description-card {
+  border-color: var(--visual-border);
+  background: var(--visual-panel);
+  box-shadow: var(--visual-shadow);
+}
+
 .capability-wheel-detail,
 .operating-triangle-detail {
   display: none;
 }
 
 @media (hover: hover) {
-  .capability-wheel-detail {
-    display: block;
-  }
-}
-
-@media (min-width: 900px) and (hover: hover) {
+  .capability-wheel-detail,
   .operating-triangle-detail {
-    display: flex;
+    display: block;
   }
 }
 

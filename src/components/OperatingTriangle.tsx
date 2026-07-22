@@ -35,19 +35,21 @@ export function OperatingTriangle({
   const bottomEdgeActive = activeTitle === "Human-Centered" || activeTitle === "Thoughtful";
 
   return (
-    <div
-      className="relative mx-auto mt-6 aspect-[4/3] w-full max-w-[56rem]"
-      role="group"
-      aria-label="Operating principles"
-    >
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 75" aria-hidden="true">
+    <div className="operating-triangle-layout mt-6">
+      <div
+        className="relative mx-auto aspect-[4/3] w-full max-w-[56rem]"
+        role="group"
+        aria-label="Operating principles"
+      >
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 75" aria-hidden="true">
         <line
           x1="49.2"
           y1="8.5"
           x2="13.2"
           y2="59"
           vectorEffect="non-scaling-stroke"
-          className={`transition-colors duration-200 ${leftEdgeActive ? "stroke-teal" : "stroke-line"}`}
+          className="transition-colors duration-200"
+          stroke={leftEdgeActive ? "var(--teal)" : "var(--visual-border)"}
           style={leftEdgeActive ? activeEdgeStyle : undefined}
           strokeWidth="0.65"
         />
@@ -57,7 +59,8 @@ export function OperatingTriangle({
           x2="14.8"
           y2="59"
           vectorEffect="non-scaling-stroke"
-          className={`transition-colors duration-200 ${leftEdgeActive ? "stroke-teal" : "stroke-line"}`}
+          className="transition-colors duration-200"
+          stroke={leftEdgeActive ? "var(--teal)" : "var(--visual-border)"}
           style={leftEdgeActive ? activeEdgeStyle : undefined}
           strokeWidth="0.65"
         />
@@ -67,7 +70,8 @@ export function OperatingTriangle({
           x2="85.2"
           y2="59"
           vectorEffect="non-scaling-stroke"
-          className={`transition-colors duration-200 ${rightEdgeActive ? "stroke-teal" : "stroke-line"}`}
+          className="transition-colors duration-200"
+          stroke={rightEdgeActive ? "var(--teal)" : "var(--visual-border)"}
           style={rightEdgeActive ? activeEdgeStyle : undefined}
           strokeWidth="0.65"
         />
@@ -77,7 +81,8 @@ export function OperatingTriangle({
           x2="86.8"
           y2="59"
           vectorEffect="non-scaling-stroke"
-          className={`transition-colors duration-200 ${rightEdgeActive ? "stroke-teal" : "stroke-line"}`}
+          className="transition-colors duration-200"
+          stroke={rightEdgeActive ? "var(--teal)" : "var(--visual-border)"}
           style={rightEdgeActive ? activeEdgeStyle : undefined}
           strokeWidth="0.65"
         />
@@ -87,7 +92,8 @@ export function OperatingTriangle({
           x2="86"
           y2="58.4"
           vectorEffect="non-scaling-stroke"
-          className={`transition-colors duration-200 ${bottomEdgeActive ? "stroke-teal" : "stroke-line"}`}
+          className="transition-colors duration-200"
+          stroke={bottomEdgeActive ? "var(--teal)" : "var(--visual-border)"}
           style={bottomEdgeActive ? activeEdgeStyle : undefined}
           strokeWidth="0.65"
         />
@@ -97,7 +103,8 @@ export function OperatingTriangle({
           x2="86"
           y2="59.6"
           vectorEffect="non-scaling-stroke"
-          className={`transition-colors duration-200 ${bottomEdgeActive ? "stroke-teal" : "stroke-line"}`}
+          className="transition-colors duration-200"
+          stroke={bottomEdgeActive ? "var(--teal)" : "var(--visual-border)"}
           style={bottomEdgeActive ? activeEdgeStyle : undefined}
           strokeWidth="0.65"
         />
@@ -113,14 +120,14 @@ export function OperatingTriangle({
             cy={junction.cy}
             r="0.75"
             fill="var(--background)"
-            stroke={junction.active ? "var(--teal)" : "var(--border)"}
+            stroke={junction.active ? "var(--teal)" : "var(--visual-border)"}
             strokeWidth="0.45"
             vectorEffect="non-scaling-stroke"
           />
         ))}
-      </svg>
+        </svg>
 
-      {nodes.map((node) => {
+        {nodes.map((node) => {
         const item = items.find((candidate) => candidate.title === node.title);
 
         if (!item) {
@@ -143,17 +150,17 @@ export function OperatingTriangle({
             onBlur={() => setActiveTitle(null)}
           >
             <span
-              className={`relative grid h-16 w-16 place-items-center rounded-full border bg-card shadow-soft transition-all duration-200 sm:h-24 sm:w-24 ${
-                isActive ? "border-teal text-teal" : "border-line text-coral"
-              }`}
+              className="visual-node-surface relative grid h-16 w-16 place-items-center rounded-full border text-coral transition-all duration-200 sm:h-24 sm:w-24"
               style={{
+                borderColor: isActive ? "var(--teal)" : "var(--visual-border)",
                 boxShadow: isActive
                   ? "0 0 0 5px color-mix(in srgb, var(--teal) 16%, transparent), 0 18px 48px color-mix(in srgb, var(--teal) 22%, transparent)"
-                  : "var(--shadow-soft)"
+                  : "var(--visual-shadow)"
               }}
             >
               <span
-                className={`pointer-events-none absolute inset-1.5 rounded-full border ${isActive ? "border-teal" : "border-line"}`}
+                className="pointer-events-none absolute inset-1.5 rounded-full border"
+                style={{ borderColor: isActive ? "var(--teal)" : "var(--visual-border)" }}
                 aria-hidden="true"
               />
               <Icon className="relative h-7 w-7 text-coral sm:h-10 sm:w-10" aria-hidden="true" />
@@ -163,19 +170,19 @@ export function OperatingTriangle({
             </span>
           </button>
         );
-      })}
+        })}
+      </div>
 
       <aside
-        className={`operating-triangle-detail absolute left-1/2 top-[48%] z-10 flex min-h-64 w-[38%] -translate-x-1/2 -translate-y-1/2 flex-col justify-center rounded-2xl border border-line bg-card p-6 text-center shadow-soft transition-opacity duration-200 ${
+        className={`operating-triangle-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
       >
         {activeItem ? (
           <>
-            <h4 className="font-serif text-2xl font-semibold text-teal">{activeItem.title}</h4>
-            <div className="mx-auto my-4 h-px w-4/5 bg-coral" aria-hidden="true" />
-            <p className="font-serif text-base leading-8 text-muted sm:text-lg">{activeItem.description}</p>
+            <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
+            <p className="font-serif text-base leading-7 text-muted md:text-lg">{activeItem.description}</p>
           </>
         ) : null}
       </aside>

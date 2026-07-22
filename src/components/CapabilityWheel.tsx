@@ -94,21 +94,17 @@ export function CapabilityWheel({
                   d={segment.path}
                   vectorEffect="non-scaling-stroke"
                   style={{
-                    fill: isActive
-                      ? "color-mix(in srgb, var(--teal) 24%, var(--card))"
-                      : "var(--card)",
-                    filter: isActive
-                      ? "drop-shadow(0 0 5px color-mix(in srgb, var(--teal) 42%, transparent))"
-                      : "drop-shadow(0 5px 7px color-mix(in srgb, var(--foreground) 10%, transparent))"
+                    fill: isActive ? "var(--visual-active-surface)" : "var(--visual-surface)",
+                    filter: isActive ? "var(--visual-active-filter)" : "var(--visual-svg-filter)"
                   }}
-                  stroke="var(--border)"
+                  stroke="var(--visual-border)"
                   strokeWidth="2.4"
                 />
                 <path
                   d={segment.path}
                   vectorEffect="non-scaling-stroke"
                   fill="none"
-                  stroke={isActive ? "var(--teal)" : "color-mix(in srgb, var(--border) 72%, var(--navy))"}
+                  stroke={isActive ? "var(--teal)" : "var(--visual-border-strong)"}
                   strokeWidth="0.75"
                 />
               </g>
@@ -144,9 +140,8 @@ export function CapabilityWheel({
                 aria-hidden="true"
               >
                 <span
-                  className={`grid h-[clamp(1.85rem,4.6vw,3.25rem)] w-[clamp(1.85rem,4.6vw,3.25rem)] place-items-center rounded-full border bg-background transition-colors duration-200 ${
-                    isActive ? "border-teal" : "border-line"
-                  }`}
+                  className="visual-icon-medallion grid h-[clamp(1.85rem,4.6vw,3.25rem)] w-[clamp(1.85rem,4.6vw,3.25rem)] place-items-center rounded-full border transition-colors duration-200"
+                  style={{ borderColor: isActive ? "var(--teal)" : "var(--visual-border)" }}
                 >
                   <Icon className="h-[48%] w-[48%] text-coral" />
                 </span>
@@ -159,7 +154,7 @@ export function CapabilityWheel({
         })}
 
         <span
-          className="pointer-events-none absolute left-1/2 top-1/2 z-30 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-line bg-card shadow-soft sm:h-14 sm:w-14"
+          className="visual-hub pointer-events-none absolute left-1/2 top-1/2 z-30 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border sm:h-14 sm:w-14"
           aria-hidden="true"
         >
           <Sparkles className="h-4 w-4 text-coral sm:h-5 sm:w-5" />
@@ -167,7 +162,7 @@ export function CapabilityWheel({
       </div>
 
       <aside
-        className={`capability-wheel-detail relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border border-line bg-card px-6 py-5 shadow-soft transition-opacity duration-200 ${
+        className={`capability-wheel-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
