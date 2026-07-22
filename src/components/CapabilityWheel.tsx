@@ -131,6 +131,7 @@ export function CapabilityWheel({
                 onMouseLeave={() => setActiveTitle(null)}
                 onFocus={() => setActiveTitle(item.title)}
                 onBlur={() => setActiveTitle(null)}
+                onClick={() => setActiveTitle(item.title)}
               />
               <span
                 data-visual-spotlight-target

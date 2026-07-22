@@ -43,7 +43,7 @@ export function OperatingTriangle({
   return (
     <div ref={spotlightRef} className="operating-triangle-layout mt-6">
       <div
-        className="relative mx-auto aspect-[25/17] w-full max-w-[30rem]"
+        className="relative mx-auto mt-8 aspect-[25/17] w-full max-w-[30rem]"
         role="group"
         aria-label="Operating principles"
       >
@@ -138,6 +138,7 @@ export function OperatingTriangle({
             onMouseLeave={() => setActiveTitle(null)}
             onFocus={() => setActiveTitle(item.title)}
             onBlur={() => setActiveTitle(null)}
+            onClick={() => setActiveTitle(item.title)}
           >
             <span
               className="visual-node-surface relative grid h-14 w-14 place-items-center rounded-full border transition-all duration-200 sm:h-16 sm:w-16"

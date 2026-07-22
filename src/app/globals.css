@@ -198,18 +198,6 @@ button {
   color: var(--teal) !important;
 }
 
-.capability-wheel-detail,
-.operating-triangle-detail {
-  display: none;
-}
-
-@media (hover: hover) {
-  .capability-wheel-detail,
-  .operating-triangle-detail {
-    display: block;
-  }
-}
-
 .nav-afterimage-stack {
   position: absolute;
   inset: 0;
