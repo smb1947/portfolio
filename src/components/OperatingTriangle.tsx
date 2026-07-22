@@ -12,9 +12,9 @@ type NodeConfig = {
 };
 
 const nodes: NodeConfig[] = [
-  { title: "Agency", position: { left: "50%", top: "10%" } },
-  { title: "Human-Centered", position: { left: "14%", top: "78%" } },
-  { title: "Thoughtful", position: { left: "86%", top: "78%" } }
+  { title: "Agency", position: { left: "50%", top: "11%" } },
+  { title: "Human-Centered", position: { left: "14%", top: "87%" } },
+  { title: "Thoughtful", position: { left: "86%", top: "87%" } }
 ];
 
 const activeEdgeStyle: CSSProperties = {
@@ -37,11 +37,11 @@ export function OperatingTriangle({
   return (
     <div className="operating-triangle-layout mt-6">
       <div
-        className="relative mx-auto aspect-[4/3] w-full max-w-[56rem]"
+        className="relative mx-auto aspect-[25/17] w-full max-w-[44rem]"
         role="group"
         aria-label="Operating principles"
       >
-        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 75" aria-hidden="true">
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 68" aria-hidden="true">
         <line
           x1="49.2"
           y1="8.5"
@@ -174,7 +174,7 @@ export function OperatingTriangle({
       </div>
 
       <aside
-        className={`operating-triangle-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
+        className={`operating-triangle-detail visual-description-card relative mt-3 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}

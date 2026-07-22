@@ -17,9 +17,9 @@
   --dot-color: rgba(20, 36, 50, 0.16);
   --shadow-soft: 0 18px 60px rgba(20, 36, 50, 0.10);
   --shadow-lift: 0 22px 70px rgba(20, 36, 50, 0.16);
-  --visual-surface: #fff8ed;
-  --visual-medallion: #fffdf8;
-  --visual-panel: #fffefb;
+  --visual-surface: var(--card);
+  --visual-medallion: var(--card);
+  --visual-panel: var(--card);
   --visual-border: #cfbea7;
   --visual-border-strong: #9c8972;
   --visual-shadow: 0 18px 46px rgba(20, 36, 50, 0.14), 0 2px 8px rgba(20, 36, 50, 0.06);
