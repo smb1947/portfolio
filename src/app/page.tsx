@@ -794,7 +794,7 @@ function HistoryList({
               </span>
             </button>
             {isExpanded ? (
-              <div id={`${entryKey}-details`}>
+              <div id={`${entryKey}-details`} className="print:hidden">
                 <ExpandedHistoryDetails
                   entry={entry}
                   section={section}
