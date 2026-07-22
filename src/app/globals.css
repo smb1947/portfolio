@@ -174,28 +174,30 @@ button {
   }
 
   .capability-wheel-label {
-    left: var(--edge-left) !important;
-    top: var(--edge-top) !important;
+    width: auto;
+  }
+
+  .capability-wheel-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
     width: 11rem;
     min-height: 4.25rem;
-    flex-direction: row;
-    gap: 0.625rem;
+    transform: translate(calc(-50% + var(--edge-title-offset)), -50%);
     border: 1px solid var(--border);
     border-radius: 1rem;
     background: var(--card);
     box-shadow: var(--shadow-soft);
     padding: 0.625rem 0.75rem;
+    align-items: center;
     text-align: left;
+    font-size: 1rem;
+    line-height: 1.2;
   }
 
   .capability-wheel-label[data-active="true"] .capability-wheel-title {
     color: var(--teal);
-  }
-
-  .capability-wheel-title {
-    display: block;
-    font-size: 1rem;
-    line-height: 1.2;
   }
 }
 
@@ -211,7 +213,17 @@ button {
   }
 
   .capability-wheel-title {
+    position: static;
     display: block;
+    width: auto;
+    min-height: 0;
+    transform: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    text-align: center;
     font-size: 1rem;
   }
 }

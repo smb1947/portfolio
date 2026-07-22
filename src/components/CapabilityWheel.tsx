@@ -12,7 +12,7 @@ type SegmentConfig = {
   path: string;
   clipPath: string;
   labelPosition: CSSProperties;
-  edgeLabelPosition: { left: string; top: string };
+  edgeTitleOffset: string;
   restingTransform: string;
   activeTransform: string;
 };
@@ -23,7 +23,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L50 2 A48 48 0 0 1 91.57 26 Z",
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
     labelPosition: { left: "69%", top: "23%" },
-    edgeLabelPosition: { left: "100%", top: "23%" },
+    edgeTitleOffset: "9.3rem",
     restingTransform: "translate(0.5px, -0.5px) scale(0.965)",
     activeTransform: "translate(1.4px, -1.4px) scale(0.975)"
   },
@@ -32,7 +32,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L91.57 26 A48 48 0 0 1 91.57 74 Z",
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
     labelPosition: { left: "75%", top: "50%" },
-    edgeLabelPosition: { left: "100%", top: "50%" },
+    edgeTitleOffset: "7.5rem",
     restingTransform: "translate(0.7px, 0) scale(0.965)",
     activeTransform: "translate(1.8px, 0) scale(0.975)"
   },
@@ -41,7 +41,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L91.57 74 A48 48 0 0 1 50 98 Z",
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
     labelPosition: { left: "68%", top: "77%" },
-    edgeLabelPosition: { left: "100%", top: "77%" },
+    edgeTitleOffset: "9.6rem",
     restingTransform: "translate(0.5px, 0.5px) scale(0.965)",
     activeTransform: "translate(1.4px, 1.4px) scale(0.975)"
   },
@@ -50,7 +50,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L50 98 A48 48 0 0 1 8.43 74 Z",
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
     labelPosition: { left: "32%", top: "77%" },
-    edgeLabelPosition: { left: "0%", top: "77%" },
+    edgeTitleOffset: "-9.6rem",
     restingTransform: "translate(-0.5px, 0.5px) scale(0.965)",
     activeTransform: "translate(-1.4px, 1.4px) scale(0.975)"
   },
@@ -59,7 +59,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L8.43 74 A48 48 0 0 1 8.43 26 Z",
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
     labelPosition: { left: "25%", top: "50%" },
-    edgeLabelPosition: { left: "0%", top: "50%" },
+    edgeTitleOffset: "-7.5rem",
     restingTransform: "translate(-0.7px, 0) scale(0.965)",
     activeTransform: "translate(-1.8px, 0) scale(0.975)"
   },
@@ -68,7 +68,7 @@ const segments: SegmentConfig[] = [
     path: "M50 50 L8.43 26 A48 48 0 0 1 50 2 Z",
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
     labelPosition: { left: "31%", top: "23%" },
-    edgeLabelPosition: { left: "0%", top: "23%" },
+    edgeTitleOffset: "-9.3rem",
     restingTransform: "translate(-0.5px, -0.5px) scale(0.965)",
     activeTransform: "translate(-1.4px, -1.4px) scale(0.975)"
   }
@@ -153,14 +153,13 @@ export function CapabilityWheel({
                 style={
                   {
                     ...segment.labelPosition,
-                    "--edge-left": segment.edgeLabelPosition.left,
-                    "--edge-top": segment.edgeLabelPosition.top
+                    "--edge-title-offset": segment.edgeTitleOffset
                   } as CSSProperties
                 }
                 aria-hidden="true"
               >
                 <span
-                  className="visual-icon-medallion grid h-[clamp(1.85rem,4.6vw,3.25rem)] w-[clamp(1.85rem,4.6vw,3.25rem)] place-items-center rounded-full border transition-colors duration-200"
+                  className="visual-icon-medallion grid h-[3.25rem] w-[3.25rem] flex-none place-items-center rounded-full border transition-colors duration-200"
                   style={{
                     background: isActive ? "var(--teal)" : "var(--visual-medallion)",
                     borderColor: isActive ? "#fffdf8" : "var(--visual-border)"
