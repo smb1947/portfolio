@@ -97,15 +97,8 @@ export function CapabilityWheel({
                     fill: isActive ? "var(--visual-active-surface)" : "var(--visual-surface)",
                     filter: isActive ? "var(--visual-active-filter)" : "var(--visual-svg-filter)"
                   }}
-                  stroke="var(--visual-border)"
-                  strokeWidth="2.4"
-                />
-                <path
-                  d={segment.path}
-                  vectorEffect="non-scaling-stroke"
-                  fill="none"
-                  stroke={isActive ? "var(--teal)" : "var(--visual-border-strong)"}
-                  strokeWidth="0.75"
+                  stroke={isActive ? "var(--teal)" : "var(--visual-wheel-border)"}
+                  strokeWidth="1.5"
                 />
               </g>
             );
@@ -135,15 +128,20 @@ export function CapabilityWheel({
                 onBlur={() => setActiveTitle(null)}
               />
               <span
-                className="pointer-events-none absolute z-20 flex w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 text-center text-navy"
+                className={`pointer-events-none absolute z-20 flex w-[27%] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 text-center transition-colors duration-200 ${
+                  isActive ? "text-white" : "text-navy"
+                }`}
                 style={segment.labelPosition}
                 aria-hidden="true"
               >
                 <span
                   className="visual-icon-medallion grid h-[clamp(1.85rem,4.6vw,3.25rem)] w-[clamp(1.85rem,4.6vw,3.25rem)] place-items-center rounded-full border transition-colors duration-200"
-                  style={{ borderColor: isActive ? "var(--teal)" : "var(--visual-border)" }}
+                  style={{
+                    background: isActive ? "var(--teal)" : "var(--visual-medallion)",
+                    borderColor: isActive ? "#fffdf8" : "var(--visual-border)"
+                  }}
                 >
-                  <Icon className="h-[48%] w-[48%] text-coral" />
+                  <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
                 <span className="font-serif text-[clamp(0.52rem,1.4vw,1.05rem)] font-semibold leading-tight">
                   {item.title}

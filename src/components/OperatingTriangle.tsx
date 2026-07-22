@@ -37,7 +37,7 @@ export function OperatingTriangle({
   return (
     <div className="operating-triangle-layout mt-6">
       <div
-        className="relative mx-auto aspect-[25/17] w-full max-w-[44rem]"
+        className="relative mx-auto aspect-[25/17] w-full max-w-[36rem]"
         role="group"
         aria-label="Operating principles"
       >
@@ -150,7 +150,7 @@ export function OperatingTriangle({
             onBlur={() => setActiveTitle(null)}
           >
             <span
-              className="visual-node-surface relative grid h-16 w-16 place-items-center rounded-full border text-coral transition-all duration-200 sm:h-24 sm:w-24"
+              className="visual-node-surface relative grid h-14 w-14 place-items-center rounded-full border text-coral transition-all duration-200 sm:h-20 sm:w-20"
               style={{
                 borderColor: isActive ? "var(--teal)" : "var(--visual-border)",
                 boxShadow: isActive
@@ -163,9 +163,9 @@ export function OperatingTriangle({
                 style={{ borderColor: isActive ? "var(--teal)" : "var(--visual-border)" }}
                 aria-hidden="true"
               />
-              <Icon className="relative h-7 w-7 text-coral sm:h-10 sm:w-10" aria-hidden="true" />
+              <Icon className="relative h-6 w-6 text-coral sm:h-8 sm:w-8" aria-hidden="true" />
             </span>
-            <span className="whitespace-nowrap font-serif text-sm font-semibold text-navy sm:text-2xl">
+            <span className="whitespace-nowrap font-serif text-xs font-semibold text-navy sm:text-lg">
               {item.title}
             </span>
           </button>
@@ -174,7 +174,7 @@ export function OperatingTriangle({
       </div>
 
       <aside
-        className={`operating-triangle-detail visual-description-card relative mt-3 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
+        className={`operating-triangle-detail visual-description-card relative mt-6 min-h-20 w-full max-w-5xl overflow-hidden rounded-2xl border px-6 py-5 transition-opacity duration-200 ${
           activeItem ? "opacity-100" : "invisible opacity-0"
         }`}
         aria-hidden={!activeItem}
