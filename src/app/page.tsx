@@ -174,7 +174,7 @@ function ManagerNoteCard({
           rel="noreferrer"
           aria-label="Open LinkedIn comment"
           title="LinkedIn Comment"
-          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-teal bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
         >
           <Linkedin className="h-5 w-5" aria-hidden="true" />
         </a>
@@ -287,7 +287,7 @@ function getProjectLogo(projectTitle: string): { label: string; icon: LucideIcon
   if (title.includes("copilot")) return { label: "Microsoft 365 Copilot", icon: Sparkles, className: "bg-[#2563eb] text-white" };
   if (title.includes("netflix")) return { label: "Netflix", icon: PlayCircle, className: "bg-[#e50914] text-white", mark: "N" };
   if (title.includes("figma")) return { label: "Figma", icon: Puzzle, className: "bg-[#a259ff] text-white", mark: "F" };
-  if (title.includes("bumble")) return { label: "Bumble", icon: RoseIcon, className: "bg-[#ffcb37] text-navy" };
+  if (title.includes("bumble")) return { label: "Bumble", icon: RoseIcon, className: "bg-[#ffcb37] text-[#142432]" };
   if (title.includes("wslblobnfs")) return { label: "WSLBlobNFS", icon: Code2, className: "bg-[#0078d4] text-white" };
   if (title.includes("blobnfs")) return { label: "Azure Blob NFS", icon: Wrench, className: "bg-[#0078d4] text-white" };
   if (title.includes("hike")) return { label: "AI Hike Researcher", icon: MountainSnow, className: "bg-[#7c4a2d] text-white" };
