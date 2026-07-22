@@ -773,6 +773,82 @@ button {
     row-gap: 1rem !important;
   }
 
+  .capability-wheel-frame {
+    max-width: 40rem !important;
+    margin-top: 0 !important;
+  }
+
+  .capability-wheel-label {
+    width: 27% !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+    color: var(--navy) !important;
+  }
+
+  .capability-wheel-title,
+  .capability-wheel-label[data-side="right"] .capability-wheel-title,
+  .capability-wheel-label[data-side="left"] .capability-wheel-title {
+    position: static !important;
+    display: block !important;
+    width: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: var(--navy) !important;
+    font-size: 1rem !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+  }
+
+  .capability-wheel-frame path {
+    fill: var(--visual-surface) !important;
+    stroke: var(--visual-wheel-border) !important;
+    filter: var(--visual-svg-filter) !important;
+  }
+
+  .capability-wheel-label .visual-icon-medallion {
+    border-color: var(--visual-border) !important;
+    background: var(--visual-medallion) !important;
+    animation: none !important;
+  }
+
+  .capability-wheel-label .visual-icon-medallion svg,
+  .operating-node .visual-node-surface svg {
+    color: var(--coral) !important;
+  }
+
+  .operating-triangle-layout line {
+    stroke: var(--visual-line) !important;
+    filter: none !important;
+  }
+
+  .operating-node {
+    color: var(--navy) !important;
+  }
+
+  .operating-node .visual-node-surface {
+    border-color: var(--visual-border) !important;
+    background: var(--background) !important;
+    animation: none !important;
+  }
+
+  .operating-node .visual-node-surface > span {
+    border-color: var(--visual-border) !important;
+  }
+
+  .operating-node > span:last-child {
+    color: var(--navy) !important;
+  }
+
+  .capability-wheel-detail,
+  .operating-triangle-detail {
+    display: none !important;
+  }
+
   footer {
     break-before: avoid;
     page-break-before: avoid;
