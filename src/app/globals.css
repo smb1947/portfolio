@@ -156,7 +156,8 @@ button {
 }
 
 .capability-wheel-frame {
-  max-width: 24rem;
+  max-width: min(15rem, calc(100vw - 8.5rem));
+  margin-top: 1rem;
 }
 
 .capability-wheel-label {
@@ -164,13 +165,47 @@ button {
 }
 
 .capability-wheel-title {
-  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  width: 8.5rem;
+  min-height: 4.5rem;
+  transform: translate(
+    calc(-50% + var(--mobile-title-offset)),
+    calc(-50% + var(--mobile-title-y-offset))
+  );
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 0.875rem;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  padding: 0.5rem 0.625rem;
   font-size: 1rem;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.capability-wheel-label[data-side="right"] .capability-wheel-title {
+  padding-left: 2rem;
+}
+
+.capability-wheel-label[data-side="left"] .capability-wheel-title {
+  padding-right: 2rem;
+}
+
+.capability-wheel-label[data-active="true"] .capability-wheel-title {
+  color: var(--teal);
+}
+
+.capability-wheel-detail {
+  margin-top: 2.5rem;
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .capability-wheel-frame {
     max-width: 30rem;
+    margin-top: 0;
   }
 
   .capability-wheel-label {
@@ -196,6 +231,16 @@ button {
     line-height: 1.2;
   }
 
+  .capability-wheel-label[data-side="right"] .capability-wheel-title,
+  .capability-wheel-label[data-side="left"] .capability-wheel-title {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .capability-wheel-detail {
+    margin-top: 1.5rem;
+  }
+
   .capability-wheel-label[data-active="true"] .capability-wheel-title {
     color: var(--teal);
   }
@@ -204,6 +249,7 @@ button {
 @media (min-width: 1280px) {
   .capability-wheel-frame {
     max-width: 40rem;
+    margin-top: 0;
   }
 
   .capability-wheel-label {
@@ -226,6 +272,15 @@ button {
     text-align: center;
     font-size: 1rem;
   }
+
+  .capability-wheel-label[data-side="right"] .capability-wheel-title,
+  .capability-wheel-label[data-side="left"] .capability-wheel-title {
+    padding: 0;
+  }
+
+  .capability-wheel-detail {
+    margin-top: 1.5rem;
+  }
 }
 
 .operating-triangle-layout {
@@ -235,6 +290,8 @@ button {
 }
 
 .visual-icon-medallion {
+  position: relative;
+  z-index: 2;
   background: var(--visual-medallion);
 }
 

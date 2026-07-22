@@ -13,6 +13,9 @@ type SegmentConfig = {
   clipPath: string;
   labelPosition: CSSProperties;
   edgeTitleOffset: string;
+  mobileTitleOffset: string;
+  mobileTitleYOffset: string;
+  side: "left" | "right";
   restingTransform: string;
   activeTransform: string;
 };
@@ -24,6 +27,9 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
     labelPosition: { left: "69%", top: "23%" },
     edgeTitleOffset: "9.3rem",
+    mobileTitleOffset: "4.65rem",
+    mobileTitleYOffset: "-1.5rem",
+    side: "right",
     restingTransform: "translate(0.5px, -0.5px) scale(0.965)",
     activeTransform: "translate(1.4px, -1.4px) scale(0.975)"
   },
@@ -33,6 +39,9 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
     labelPosition: { left: "75%", top: "50%" },
     edgeTitleOffset: "7.5rem",
+    mobileTitleOffset: "3.75rem",
+    mobileTitleYOffset: "0rem",
+    side: "right",
     restingTransform: "translate(0.7px, 0) scale(0.965)",
     activeTransform: "translate(1.8px, 0) scale(0.975)"
   },
@@ -42,6 +51,9 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
     labelPosition: { left: "68%", top: "77%" },
     edgeTitleOffset: "9.6rem",
+    mobileTitleOffset: "4.8rem",
+    mobileTitleYOffset: "1.5rem",
+    side: "right",
     restingTransform: "translate(0.5px, 0.5px) scale(0.965)",
     activeTransform: "translate(1.4px, 1.4px) scale(0.975)"
   },
@@ -51,6 +63,9 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
     labelPosition: { left: "32%", top: "77%" },
     edgeTitleOffset: "-9.6rem",
+    mobileTitleOffset: "-4.8rem",
+    mobileTitleYOffset: "1.5rem",
+    side: "left",
     restingTransform: "translate(-0.5px, 0.5px) scale(0.965)",
     activeTransform: "translate(-1.4px, 1.4px) scale(0.975)"
   },
@@ -60,6 +75,9 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
     labelPosition: { left: "25%", top: "50%" },
     edgeTitleOffset: "-7.5rem",
+    mobileTitleOffset: "-3.75rem",
+    mobileTitleYOffset: "0rem",
+    side: "left",
     restingTransform: "translate(-0.7px, 0) scale(0.965)",
     activeTransform: "translate(-1.8px, 0) scale(0.975)"
   },
@@ -69,6 +87,9 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
     labelPosition: { left: "31%", top: "23%" },
     edgeTitleOffset: "-9.3rem",
+    mobileTitleOffset: "-4.65rem",
+    mobileTitleYOffset: "-1.5rem",
+    side: "left",
     restingTransform: "translate(-0.5px, -0.5px) scale(0.965)",
     activeTransform: "translate(-1.4px, -1.4px) scale(0.975)"
   }
@@ -147,13 +168,16 @@ export function CapabilityWheel({
                 data-visual-spotlight-target
                 data-spotlight-title={item.title}
                 data-active={isActive ? "true" : undefined}
+                data-side={segment.side}
                 className={`capability-wheel-label pointer-events-none absolute z-20 flex -translate-x-1/2 -translate-y-1/2 items-center text-center transition-all duration-200 ${
                   isActive ? "text-white" : "text-navy"
                 }`}
                 style={
                   {
                     ...segment.labelPosition,
-                    "--edge-title-offset": segment.edgeTitleOffset
+                    "--edge-title-offset": segment.edgeTitleOffset,
+                    "--mobile-title-offset": segment.mobileTitleOffset,
+                    "--mobile-title-y-offset": segment.mobileTitleYOffset
                   } as CSSProperties
                 }
                 aria-hidden="true"
@@ -189,9 +213,6 @@ export function CapabilityWheel({
         }`}
         aria-hidden={!activeItem}
       >
-        <p className="mb-3 min-h-7 font-serif text-xl font-semibold text-navy md:hidden">
-          {activeItem?.title ?? "\u00A0"}
-        </p>
         <aside className="visual-description-card relative min-h-20 overflow-hidden rounded-2xl border px-6 py-5">
           {activeItem ? (
             <>
