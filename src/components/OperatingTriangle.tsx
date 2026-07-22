@@ -158,7 +158,7 @@ export function OperatingTriangle({
             onClick={() => setActiveTitle(item.title)}
           >
             <span
-              className="visual-node-surface relative grid h-14 w-14 place-items-center rounded-full border transition-all duration-200 sm:h-16 sm:w-16"
+              className="visual-node-surface relative grid h-[3.25rem] w-[3.25rem] place-items-center rounded-full border transition-all duration-200"
               style={{
                 background: isActive ? "var(--teal)" : "var(--background)",
                 borderColor: isActive ? "var(--teal)" : "var(--visual-border)",
@@ -173,12 +173,12 @@ export function OperatingTriangle({
                 aria-hidden="true"
               />
               <Icon
-                className={`relative h-6 w-6 sm:h-7 sm:w-7 ${isActive ? "text-white" : "text-coral"}`}
+                className={`relative h-6 w-6 ${isActive ? "text-white" : "text-coral"}`}
                 aria-hidden="true"
               />
             </span>
             <span
-              className={`absolute whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
+              className={`absolute whitespace-nowrap font-serif text-sm font-semibold transition-colors duration-200 md:text-base ${
                 node.labelPosition === "above" ? "bottom-full mb-2" : "top-full mt-2"
               } ${
                 isActive ? "text-teal" : "text-navy"

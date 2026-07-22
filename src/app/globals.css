@@ -181,7 +181,7 @@ button {
   background: var(--card);
   box-shadow: var(--shadow-soft);
   padding: 0.5rem 0.625rem;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.15;
   text-align: left;
 }
