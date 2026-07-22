@@ -36,13 +36,15 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     let clearTargetTimeout: number | null = null;
     let isPointerInteracting = false;
     let isFocusInteracting = false;
+    let isPrinting = false;
 
     const clearActiveTarget = () => {
       if (activeTarget) {
         activeTarget.removeAttribute(activeAttribute);
         activeTarget = null;
-        onActiveTargetChangeRef.current?.(null);
       }
+
+      onActiveTargetChangeRef.current?.(null);
     };
 
     const clearScheduleTimer = () => {
@@ -67,7 +69,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       });
 
     function spotlightRandomTarget() {
-      if (!isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
+      if (isPrinting || !isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
         clearActiveTarget();
         return;
       }
@@ -96,7 +98,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     const scheduleSpotlight = (delay = 10000) => {
       clearScheduleTimer();
 
-      if (!isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
+      if (isPrinting || !isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
         return;
       }
 
@@ -111,7 +113,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       clearSpotlightTimer();
       clearActiveTarget();
 
-      if (!isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
+      if (!isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
         scheduleSpotlight(1000);
       }
     };
@@ -123,9 +125,19 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     };
 
     const resumeSpotlight = () => {
-      if (isInView && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
+      if (isInView && !isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
         scheduleSpotlight();
       }
+    };
+
+    const handleBeforePrint = () => {
+      isPrinting = true;
+      pauseSpotlight();
+    };
+
+    const handleAfterPrint = () => {
+      isPrinting = false;
+      resumeSpotlight();
     };
 
     const isPauseTarget = (target: EventTarget | null) =>
@@ -204,6 +216,8 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     container.addEventListener("focusin", handleFocusIn);
     container.addEventListener("focusout", handleFocusOut);
     reduceMotionQuery.addEventListener("change", handleMotionPreferenceChange);
+    window.addEventListener("beforeprint", handleBeforePrint);
+    window.addEventListener("afterprint", handleAfterPrint);
 
     return () => {
       observer.disconnect();
@@ -212,6 +226,8 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       container.removeEventListener("focusin", handleFocusIn);
       container.removeEventListener("focusout", handleFocusOut);
       reduceMotionQuery.removeEventListener("change", handleMotionPreferenceChange);
+      window.removeEventListener("beforeprint", handleBeforePrint);
+      window.removeEventListener("afterprint", handleAfterPrint);
       clearScheduleTimer();
       clearSpotlightTimer();
       clearActiveTarget();

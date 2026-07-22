@@ -278,6 +278,10 @@ button {
     padding: 0;
   }
 
+  .capability-wheel-label[data-active="true"] .capability-wheel-title {
+    color: #fffdf8;
+  }
+
   .capability-wheel-detail {
     margin-top: 1.5rem;
   }
@@ -613,13 +617,6 @@ button {
     print-color-adjust: exact;
   }
 
-  *,
-  *::before,
-  *::after {
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
   body > div {
     padding-top: 96px !important;
     padding-bottom: 48px !important;
@@ -804,10 +801,10 @@ button {
     text-align: center !important;
   }
 
-  .capability-wheel-frame path {
+  .capability-wheel-segment {
     fill: var(--visual-surface) !important;
     stroke: var(--visual-wheel-border) !important;
-    filter: var(--visual-svg-filter) !important;
+    filter: none !important;
   }
 
   .capability-wheel-label .visual-icon-medallion {
@@ -821,7 +818,11 @@ button {
     color: var(--coral) !important;
   }
 
-  .operating-triangle-layout line {
+  .operating-triangle-card {
+    filter: none !important;
+  }
+
+  .operating-triangle-edges line {
     stroke: var(--visual-line) !important;
     filter: none !important;
   }

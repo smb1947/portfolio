@@ -126,6 +126,7 @@ export function CapabilityWheel({
                 style={{ transform, transformBox: "fill-box", transformOrigin: "center" }}
               >
                 <path
+                  className="capability-wheel-segment"
                   d={segment.path}
                   vectorEffect="non-scaling-stroke"
                   style={{
