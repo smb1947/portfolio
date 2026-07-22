@@ -172,7 +172,7 @@ export function OperatingTriangle({
               />
             </span>
             <span
-              className={`visual-spotlight-label absolute whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
+              className={`absolute whitespace-nowrap font-serif text-xs font-semibold transition-colors duration-200 sm:text-base ${
                 node.labelPosition === "above" ? "bottom-full mb-2" : "top-full mt-2"
               } ${
                 isActive ? "text-teal" : "text-navy"

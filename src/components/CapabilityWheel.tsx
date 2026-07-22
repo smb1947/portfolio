@@ -154,7 +154,7 @@ export function CapabilityWheel({
                 >
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
-                <span className="visual-spotlight-label font-serif text-[clamp(0.52rem,1.4vw,1.05rem)] font-semibold leading-tight">
+                <span className="font-serif text-[clamp(0.52rem,1.4vw,1.05rem)] font-semibold leading-tight">
                   {item.title}
                 </span>
               </span>

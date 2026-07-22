@@ -194,10 +194,6 @@ button {
   border-color: #fffdf8 !important;
 }
 
-[data-visual-spotlight="true"] .visual-spotlight-label {
-  color: var(--teal) !important;
-}
-
 .nav-afterimage-stack {
   position: absolute;
   inset: 0;
