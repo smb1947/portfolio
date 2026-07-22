@@ -43,11 +43,25 @@ export function OperatingTriangle({
 
   return (
     <div ref={spotlightRef} className="operating-triangle-layout mt-6">
-      <div className="w-full max-w-[36rem] rounded-[1.35rem] border border-line bg-card px-6 py-14 shadow-soft sm:px-12">
+      <div
+        className="relative aspect-[5/4] w-full max-w-[36rem]"
+        role="group"
+        aria-label="Operating principles"
+      >
+        <svg className="absolute inset-0 h-full w-full overflow-visible" viewBox="0 0 100 80" aria-hidden="true">
+          <path
+            d="M50 1 L99 79 L1 79 Z"
+            fill="var(--card)"
+            stroke="var(--border)"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+            style={{ filter: "var(--visual-svg-filter)" }}
+          />
+        </svg>
+
         <div
-          className="relative mx-auto aspect-[25/17] w-full max-w-[30rem]"
-          role="group"
-          aria-label="Operating principles"
+          className="absolute left-1/2 top-[20%] aspect-[25/17] w-[76%] -translate-x-1/2"
         >
         <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 68" aria-hidden="true">
         <line
