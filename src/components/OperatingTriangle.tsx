@@ -199,15 +199,27 @@ export function OperatingTriangle({
         }`}
         aria-hidden={!activeItem}
       >
-        {activeItem ? (
-          <>
-            <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
-            <h3 className="mb-1 font-serif text-lg font-semibold leading-tight text-navy xl:hidden">
-              {activeItem.title}
-            </h3>
-            <p className="font-serif text-base leading-7 text-muted md:text-lg">{activeItem.description}</p>
-          </>
-        ) : null}
+        <span className="absolute inset-y-3 left-0 w-1 bg-coral" aria-hidden="true" />
+        <div className="grid">
+          {items.map((item) => {
+            const isActive = item.title === activeTitle;
+
+            return (
+              <div
+                key={item.title}
+                className={`col-start-1 row-start-1 transition-opacity duration-200 ${
+                  isActive ? "visible opacity-100" : "invisible opacity-0"
+                }`}
+                aria-hidden={!isActive}
+              >
+                <h3 className="mb-1 font-serif text-lg font-semibold leading-tight text-navy xl:hidden">
+                  {item.title}
+                </h3>
+                <p className="font-serif text-base leading-7 text-muted md:text-lg">{item.description}</p>
+              </div>
+            );
+          })}
+        </div>
       </aside>
     </div>
   );
