@@ -862,14 +862,26 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
-              <Image
-                src={publicAsset("/images/uw-cover.jpg")}
-                alt="Shankar with classmates and faculty at the University of Washington"
-                fill
-                priority
-                sizes="(min-width: 1280px) 1152px, (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
-                className="object-cover object-[center_35%]"
-              />
+              <picture>
+                <source
+                  media="(max-width: 639px)"
+                  srcSet={publicAsset("/images/uw-cover-800.jpg")}
+                />
+                <source
+                  media="(min-width: 640px)"
+                  srcSet={publicAsset("/images/uw-cover-1600.jpg")}
+                />
+                <img
+                  src={publicAsset("/images/uw-cover-1600.jpg")}
+                  alt="Shankar with classmates and faculty at the University of Washington"
+                  width={1600}
+                  height={1200}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+                />
+              </picture>
               <div
                 className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/15 via-[35%] to-transparent"
                 aria-hidden="true"
