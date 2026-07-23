@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Blend, Sparkles } from "lucide-react";
 import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import type { AboutProfileItem } from "@/lib/data";
@@ -247,7 +247,7 @@ export function CapabilityWheel({
           className="visual-hub pointer-events-none absolute left-1/2 top-1/2 z-30 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border sm:h-14 sm:w-14"
           aria-hidden="true"
         >
-          <Sparkles className="h-4 w-4 text-coral sm:h-5 sm:w-5" />
+          <Blend className="h-4 w-4 text-coral sm:h-5 sm:w-5" />
         </span>
       </div>
 
