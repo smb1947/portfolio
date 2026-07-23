@@ -98,15 +98,17 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       activeTarget.setAttribute(activeAttribute, "true");
       onActiveTargetChangeRef.current?.(activeTarget);
 
-      clearTargetTimeout = window.setTimeout(() => {
-        if (activeTarget === nextTarget) {
-          clearActiveTarget();
-        }
-        clearTargetTimeout = null;
-      }, 1900);
+      if (selectionMode === "random") {
+        clearTargetTimeout = window.setTimeout(() => {
+          if (activeTarget === nextTarget) {
+            clearActiveTarget();
+          }
+          clearTargetTimeout = null;
+        }, 1900);
+      }
     }
 
-    const scheduleSpotlight = (delay = 10000) => {
+    const scheduleSpotlight = (delay = selectionMode === "sequential" ? 5000 : 10000) => {
       clearScheduleTimer();
 
       if (isPrinting || !isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
@@ -126,7 +128,12 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       nextTargetIndex = 0;
 
       if (!isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
-        scheduleSpotlight(1000);
+        if (selectionMode === "sequential") {
+          spotlightTarget();
+          scheduleSpotlight();
+        } else {
+          scheduleSpotlight(1000);
+        }
       }
     };
 
@@ -138,7 +145,12 @@ export function useAttentionSpotlight<T extends HTMLElement>({
 
     const resumeSpotlight = () => {
       if (isInView && !isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
-        scheduleSpotlight();
+        if (selectionMode === "sequential") {
+          spotlightTarget();
+          scheduleSpotlight();
+        } else {
+          scheduleSpotlight();
+        }
       }
     };
 

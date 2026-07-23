@@ -139,11 +139,14 @@ export function CapabilityWheel({
   items: AboutProfileItem[];
   iconMap: Record<string, LucideIcon>;
 }) {
-  const [activeTitle, setActiveTitle] = useState<string | null>(null);
+  const [interactionTitle, setInteractionTitle] = useState<string | null>(null);
+  const [spotlightTitle, setSpotlightTitle] = useState<string | null>(null);
+  const firstTitle = segments.find((segment) => items.some((item) => item.title === segment.title))?.title ?? null;
+  const activeTitle = interactionTitle ?? spotlightTitle ?? firstTitle;
   const activeItem = items.find((item) => item.title === activeTitle) ?? null;
   const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
     activeAttribute: "data-visual-spotlight",
-    onActiveTargetChange: (target) => setActiveTitle(target?.dataset.spotlightTitle ?? null),
+    onActiveTargetChange: (target) => setSpotlightTitle(target?.dataset.spotlightTitle ?? null),
     pauseSelector: "[data-visual-interaction-target]",
     selectionMode: "sequential",
     targetSelector: "[data-visual-spotlight-target]"
@@ -199,11 +202,11 @@ export function CapabilityWheel({
                 aria-label={`${item.title}: ${item.description}`}
                 className="absolute inset-0 z-10 cursor-pointer outline-none"
                 style={{ clipPath: segment.clipPath }}
-                onMouseEnter={() => setActiveTitle(item.title)}
-                onMouseLeave={() => setActiveTitle(null)}
-                onFocus={() => setActiveTitle(item.title)}
-                onBlur={() => setActiveTitle(null)}
-                onClick={() => setActiveTitle(item.title)}
+                onMouseEnter={() => setInteractionTitle(item.title)}
+                onMouseLeave={() => setInteractionTitle(null)}
+                onFocus={() => setInteractionTitle(item.title)}
+                onBlur={() => setInteractionTitle(null)}
+                onClick={() => setInteractionTitle(item.title)}
               />
               <span
                 data-visual-spotlight-target

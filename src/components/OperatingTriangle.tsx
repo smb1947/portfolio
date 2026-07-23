@@ -32,7 +32,8 @@ export function OperatingTriangle({
 }) {
   const [interactionTitle, setInteractionTitle] = useState<string | null>(null);
   const [spotlightTitle, setSpotlightTitle] = useState<string | null>(null);
-  const activeTitle = interactionTitle ?? spotlightTitle;
+  const firstTitle = nodes.find((node) => items.some((item) => item.title === node.title))?.title ?? null;
+  const activeTitle = interactionTitle ?? spotlightTitle ?? firstTitle;
   const activeItem = items.find((item) => item.title === activeTitle) ?? null;
   const leftEdgeActive = activeTitle === "Agency" || activeTitle === "Human-Centered";
   const rightEdgeActive = activeTitle === "Agency" || activeTitle === "Thoughtful";
