@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   BicepsFlexed,
   Blocks,
@@ -859,28 +860,54 @@ export default function Home() {
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
-          <div className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
-            <div className="hero-banner h-44 bg-[linear-gradient(135deg,rgba(14,151,160,0.28),rgba(244,126,96,0.18)),radial-gradient(circle_at_25%_25%,rgba(20,36,50,0.18),transparent_28rem)] md:h-64" />
-            <div className="px-6 pb-8 md:px-10 md:pb-10">
-              <div className="-mt-16 flex flex-col gap-6 md:-mt-20 md:flex-row md:items-end md:justify-between">
-                <div className="aspect-square h-32 w-32 overflow-hidden rounded-[2rem] border-4 border-card bg-[#162531] shadow-lift md:h-40 md:w-40">
-                  <img
-                    src={publicAsset("/images/headshot.jpg")}
-                    alt="Shankar Binjawadgi"
-                    className="h-full w-full object-cover"
-                  />
+          <div className="relative">
+            <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
+              <Image
+                src={publicAsset("/images/uw-cover.jpg")}
+                alt="Shankar with classmates and faculty at the University of Washington"
+                fill
+                priority
+                sizes="(min-width: 1280px) 1152px, (min-width: 640px) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+                className="object-cover object-[center_35%]"
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/15 via-[35%] to-transparent"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 md:px-8 lg:px-10">
+                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-8">
+                  <div aria-hidden="true" />
+                  <div className="flex h-16 min-w-0 flex-col justify-between sm:h-20 md:h-28 lg:h-32">
+                    <h1 className="font-serif text-3xl font-semibold leading-[1.02] text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-7xl">
+                      Shankar Binjawadgi
+                    </h1>
+                    <p className="font-serif text-sm font-semibold leading-tight text-white drop-shadow-sm sm:text-lg md:text-2xl lg:text-3xl">
+                      {aboutProfile.title}
+                    </p>
+                  </div>
                 </div>
-                <div className="max-w-3xl">
-                  <h1 className="font-serif text-5xl font-semibold leading-[1.02] text-navy sm:text-6xl lg:text-7xl">
-                    Shankar Binjawadgi
-                  </h1>
-                  <p className="mt-5 font-serif text-2xl font-semibold leading-tight text-navy md:text-3xl">
-                    {aboutProfile.title}
-                  </p>
-                  <p className="mt-3 text-sm font-bold uppercase tracking-[0.14em] text-coral">
+              </div>
+            </div>
+
+            <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
+              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-8">
+                <div className="relative h-16 sm:h-20 md:h-28 lg:h-32">
+                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-56 md:w-56 md:rounded-[2rem] lg:h-64 lg:w-64">
+                    <Image
+                      src={publicAsset("/images/headshot.jpg")}
+                      alt="Shankar Binjawadgi"
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 256px, (min-width: 768px) 224px, (min-width: 640px) 160px, 128px"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="flex h-16 min-w-0 flex-col justify-between sm:h-20 md:h-28 lg:h-32">
+                  <p className="text-[0.65rem] font-bold uppercase tracking-[0.1em] text-coral sm:text-xs sm:tracking-[0.12em] md:text-sm md:tracking-[0.14em]">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="mt-3 flex items-center gap-2 text-sm font-bold text-navy">
+                  <p className="flex items-center gap-2 text-xs font-bold text-navy sm:text-sm">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
