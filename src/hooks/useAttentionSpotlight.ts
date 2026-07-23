@@ -146,6 +146,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     const resumeSpotlight = () => {
       if (isInView && !isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
         if (selectionMode === "sequential") {
+          nextTargetIndex = 0;
           spotlightTarget();
           scheduleSpotlight();
         } else {
