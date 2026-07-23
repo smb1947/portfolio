@@ -6,6 +6,7 @@ type AttentionSpotlightOptions = {
   activeAttribute: string;
   onActiveTargetChange?: (target: HTMLElement | null) => void;
   pauseSelector?: string;
+  selectionMode?: "random" | "sequential";
   targetSelector: string;
 };
 
@@ -13,7 +14,8 @@ export function useAttentionSpotlight<T extends HTMLElement>({
   activeAttribute,
   onActiveTargetChange,
   targetSelector,
-  pauseSelector = targetSelector
+  pauseSelector = targetSelector,
+  selectionMode = "random"
 }: AttentionSpotlightOptions) {
   const containerRef = useRef<T>(null);
   const onActiveTargetChangeRef = useRef(onActiveTargetChange);
@@ -37,6 +39,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
     let isPointerInteracting = false;
     let isFocusInteracting = false;
     let isPrinting = false;
+    let nextTargetIndex = 0;
 
     const clearActiveTarget = () => {
       if (activeTarget) {
@@ -68,7 +71,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
         return rect.bottom > 0 && rect.right > 0 && rect.top < window.innerHeight && rect.left < window.innerWidth;
       });
 
-    function spotlightRandomTarget() {
+    function spotlightTarget() {
       if (isPrinting || !isInView || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
         clearActiveTarget();
         return;
@@ -81,7 +84,15 @@ export function useAttentionSpotlight<T extends HTMLElement>({
         return;
       }
 
-      const nextTarget = targets[Math.floor(Math.random() * targets.length)];
+      const nextTarget =
+        selectionMode === "sequential"
+          ? targets[nextTargetIndex % targets.length]
+          : targets[Math.floor(Math.random() * targets.length)];
+
+      if (selectionMode === "sequential") {
+        nextTargetIndex = (nextTargetIndex + 1) % targets.length;
+      }
+
       clearActiveTarget();
       activeTarget = nextTarget;
       activeTarget.setAttribute(activeAttribute, "true");
@@ -103,7 +114,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       }
 
       spotlightTimeout = window.setTimeout(() => {
-        spotlightRandomTarget();
+        spotlightTarget();
         scheduleSpotlight();
       }, delay);
     };
@@ -112,6 +123,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       clearScheduleTimer();
       clearSpotlightTimer();
       clearActiveTarget();
+      nextTargetIndex = 0;
 
       if (!isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
         scheduleSpotlight(1000);
@@ -232,7 +244,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       clearSpotlightTimer();
       clearActiveTarget();
     };
-  }, [activeAttribute, pauseSelector, targetSelector]);
+  }, [activeAttribute, pauseSelector, selectionMode, targetSelector]);
 
   return containerRef;
 }

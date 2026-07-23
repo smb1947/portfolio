@@ -15,8 +15,8 @@ type NodeConfig = {
 
 const nodes: NodeConfig[] = [
   { title: "Agency", position: { left: "50%", top: "11%" }, labelPosition: "above" },
-  { title: "Human-Centered", position: { left: "14%", top: "87%" }, labelPosition: "below" },
-  { title: "Thoughtful", position: { left: "86%", top: "87%" }, labelPosition: "below" }
+  { title: "Thoughtful", position: { left: "86%", top: "87%" }, labelPosition: "below" },
+  { title: "Human-Centered", position: { left: "14%", top: "87%" }, labelPosition: "below" }
 ];
 
 const activeEdgeStyle: CSSProperties = {
@@ -40,6 +40,7 @@ export function OperatingTriangle({
   const spotlightRef = useAttentionSpotlight<HTMLDivElement>({
     activeAttribute: "data-visual-spotlight",
     onActiveTargetChange: (target) => setSpotlightTitle(target?.dataset.spotlightTitle ?? null),
+    selectionMode: "sequential",
     targetSelector: "[data-visual-spotlight-target]"
   });
 

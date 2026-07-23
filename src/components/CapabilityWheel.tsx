@@ -145,6 +145,7 @@ export function CapabilityWheel({
     activeAttribute: "data-visual-spotlight",
     onActiveTargetChange: (target) => setActiveTitle(target?.dataset.spotlightTitle ?? null),
     pauseSelector: "[data-visual-interaction-target]",
+    selectionMode: "sequential",
     targetSelector: "[data-visual-spotlight-target]"
   });
 
