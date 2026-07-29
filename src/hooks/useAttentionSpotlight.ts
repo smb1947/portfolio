@@ -65,7 +65,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
 
     const getTargets = () => Array.from(container.querySelectorAll<HTMLElement>(targetSelector));
 
-    const rememberSequentialTarget = (target: EventTarget | null) => {
+    const activateSequentialTarget = (target: EventTarget | null) => {
       if (selectionMode !== "sequential" || !(target instanceof Element)) {
         return;
       }
@@ -76,12 +76,17 @@ export function useAttentionSpotlight<T extends HTMLElement>({
         return;
       }
 
-      const targetIndex = getTargets().findIndex(
+      const targets = getTargets();
+      const targetIndex = targets.findIndex(
         (candidate) => candidate.dataset.spotlightTitle === title
       );
 
       if (targetIndex >= 0) {
-        nextTargetIndex = targetIndex;
+        clearActiveTarget();
+        activeTarget = targets[targetIndex];
+        activeTarget.setAttribute(activeAttribute, "true");
+        onActiveTargetChangeRef.current?.(activeTarget);
+        nextTargetIndex = (targetIndex + 1) % targets.length;
       }
     };
 
@@ -151,16 +156,21 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       }
     };
 
-    const pauseSpotlight = () => {
+    const pauseSpotlight = (preserveActiveTarget = false) => {
       clearScheduleTimer();
       clearSpotlightTimer();
-      clearActiveTarget();
+
+      if (!preserveActiveTarget) {
+        clearActiveTarget();
+      }
     };
 
     const resumeSpotlight = () => {
       if (!isPrinting && !isPointerInteracting && !isFocusInteracting && !reduceMotionQuery.matches) {
         if (selectionMode === "sequential") {
-          spotlightTarget();
+          if (!activeTarget) {
+            spotlightTarget();
+          }
           scheduleSpotlight();
         } else {
           scheduleSpotlight();
@@ -183,14 +193,18 @@ export function useAttentionSpotlight<T extends HTMLElement>({
 
     const handlePointerOver = (event: PointerEvent) => {
       if ((event.pointerType === "mouse" || event.pointerType === "pen") && isPauseTarget(event.target)) {
-        rememberSequentialTarget(event.target);
         isPointerInteracting = true;
-        pauseSpotlight();
+        pauseSpotlight(selectionMode === "sequential");
+        activateSequentialTarget(event.target);
       }
     };
 
     const handlePointerOut = (event: PointerEvent) => {
       if (event.pointerType !== "mouse" && event.pointerType !== "pen") {
+        return;
+      }
+
+      if (!isPauseTarget(event.target)) {
         return;
       }
 
@@ -204,13 +218,17 @@ export function useAttentionSpotlight<T extends HTMLElement>({
 
     const handleFocusIn = (event: FocusEvent) => {
       if (isPauseTarget(event.target)) {
-        rememberSequentialTarget(event.target);
         isFocusInteracting = true;
-        pauseSpotlight();
+        pauseSpotlight(selectionMode === "sequential");
+        activateSequentialTarget(event.target);
       }
     };
 
     const handleFocusOut = (event: FocusEvent) => {
+      if (!isPauseTarget(event.target)) {
+        return;
+      }
+
       if (isPauseTarget(event.relatedTarget)) {
         return;
       }
