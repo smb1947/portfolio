@@ -199,6 +199,7 @@ export function CapabilityWheel({
               <button
                 type="button"
                 data-visual-interaction-target
+                data-spotlight-title={item.title}
                 aria-label={`${item.title}: ${item.description}`}
                 className="absolute inset-0 z-10 cursor-pointer outline-none"
                 style={{ clipPath: segment.clipPath }}
