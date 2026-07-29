@@ -567,7 +567,9 @@ function ExpandedHistoryDetails({
   onCollapse: () => void;
 }) {
   const projectItems = entry.experiences.flatMap((experience) =>
-    experience.projects.map((project) => ({ experience, project }))
+    experience.organization === "Microsoft"
+      ? []
+      : experience.projects.map((project) => ({ experience, project }))
   );
 
   return (
