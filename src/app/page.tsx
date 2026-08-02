@@ -1044,9 +1044,7 @@ export default function Home() {
           </p>
           <div
             id="featured-project-grid"
-            className={`relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2 ${
-              showAllFeaturedProducts ? "mb-6" : ""
-            }`}
+            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2"
           >
             {showAllFeaturedProducts ? (
               featuredProducts.map(({ project, experience, section }) => (
@@ -1094,24 +1092,24 @@ export default function Home() {
                 ))}
               </>
             )}
-            {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
-              <div className="absolute inset-x-0 bottom-0 z-20 flex translate-y-1/2 justify-center print:hidden">
-                <button
-                  type="button"
-                  aria-controls="featured-project-grid"
-                  aria-expanded="true"
-                  aria-label="Collapse featured projects"
-                  className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
-                  onClick={collapseFeaturedProducts}
-                >
-                  <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
-                  <span className="card-collapse-label whitespace-nowrap text-sm font-bold">
-                    Collapse
-                  </span>
-                </button>
-              </div>
-            ) : null}
           </div>
+          {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+            <div className="mt-5 flex justify-center print:hidden">
+              <button
+                type="button"
+                aria-controls="featured-project-grid"
+                aria-expanded="true"
+                aria-label="Collapse featured projects"
+                className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
+                onClick={collapseFeaturedProducts}
+              >
+                <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
+                <span className="card-collapse-label whitespace-nowrap text-sm font-bold">
+                  Collapse
+                </span>
+              </button>
+            </div>
+          ) : null}
         </ProjectResourceSpotlight>
 
         <div className="mt-12">
