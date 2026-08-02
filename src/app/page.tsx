@@ -450,6 +450,7 @@ function CompactFeaturedProjects({
       aria-label="Additional featured projects"
     >
       <button
+        id="featured-project-summary-trigger"
         type="button"
         aria-controls="featured-project-grid"
         aria-expanded="false"
@@ -1067,6 +1068,30 @@ export default function Home() {
                   </div>
                 ))
               : null}
+            {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+              <div className="flex justify-center md:col-span-2 print:hidden">
+                <button
+                  type="button"
+                  aria-controls="featured-project-grid"
+                  aria-expanded="true"
+                  aria-label="Collapse featured projects"
+                  className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+                  onClick={() => {
+                    setShowAllFeaturedProducts(false);
+                    trackPortfolioEvent("about.featured_projects.collapse.click", {
+                      hiddenProjects: additionalFeaturedProducts.length,
+                      totalProjects: featuredProducts.length,
+                      source: "featured_projects_footer"
+                    });
+                    window.requestAnimationFrame(() => {
+                      document.getElementById("featured-project-summary-trigger")?.focus();
+                    });
+                  }}
+                >
+                  <ChevronUp className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </div>
+            ) : null}
           </div>
         </ProjectResourceSpotlight>
 
