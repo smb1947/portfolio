@@ -993,7 +993,7 @@ export default function Home() {
             </div>
 
             <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
-              <div className="sm:grid sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
+              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
                 <div className="relative h-16 sm:h-20 md:h-24 lg:h-[6.5rem]">
                   <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-52 lg:w-52">
                     <Image
@@ -1006,18 +1006,27 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="mt-4 min-w-0 space-y-2 sm:mt-0 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="font-serif text-lg font-semibold leading-tight text-navy md:text-2xl lg:text-3xl">
+                <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
+                  <p className="font-serif text-base font-semibold leading-tight text-navy sm:text-lg md:text-2xl lg:text-3xl">
                     {aboutProfile.title}
                   </p>
-                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-coral sm:tracking-[0.12em] md:text-sm md:tracking-[0.14em]">
+                  <p className="hidden text-xs font-bold uppercase tracking-[0.12em] text-coral sm:block md:text-sm md:tracking-[0.14em]">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="flex items-center gap-2 text-sm font-bold text-navy">
+                  <p className="hidden items-center gap-2 text-sm font-bold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
+              </div>
+              <div className="mt-4 space-y-3 sm:hidden">
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-coral">
+                  <CredentialLine text={aboutProfile.context} />
+                </p>
+                <p className="flex items-center gap-2 text-sm font-bold text-navy">
+                  <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
+                  {portfolio.site.location}
+                </p>
               </div>
             </div>
           </div>
