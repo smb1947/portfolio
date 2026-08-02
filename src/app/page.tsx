@@ -629,7 +629,7 @@ function ExpandedHistoryDetails({
   );
 
   return (
-    <div className="relative border-t border-line bg-background/25 px-4 pb-6 pt-5 md:px-6 md:pt-6">
+    <div className="relative rounded-b-[1.35rem] border-t border-line bg-background/25 px-4 pb-6 pt-5 md:px-6 md:pt-6">
       <div className="px-1 md:px-2">
         <div className="space-y-5">
           {entry.experiences.map((experience) => (
@@ -830,20 +830,26 @@ function HistoryList({
   };
 
   return (
-    <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
-      {entries.map((entry, index) => {
+    <div className="mt-10 space-y-10">
+      {entries.map((entry) => {
         const entryKey = `${section}-${entry.id}`;
         const isExpanded = expandedKey === entryKey;
 
         return (
-          <div id={`${entryKey}-row`} key={entry.id} className={index === 0 ? "" : "border-t border-line"}>
+          <div
+            id={`${entryKey}-row`}
+            key={entry.id}
+            className="relative rounded-[1.35rem] border border-line bg-card shadow-soft"
+          >
             <button
               id={`${entryKey}-trigger`}
               type="button"
               onClick={() =>
                 isExpanded ? collapseAndKeepRowInView(entryKey) : expandAndTrackEntry(entryKey, entry)
               }
-              className="grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6"
+              className={`grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6 ${
+                isExpanded ? "rounded-t-[1.35rem]" : "rounded-[1.35rem]"
+              }`}
               aria-expanded={isExpanded}
               aria-controls={`${entryKey}-details`}
             >
