@@ -397,11 +397,10 @@ export function Header() {
         ) : null}
       </div>
       <nav
-        className="desktop-nav-rail group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-stretch xl:rounded-[1.25rem]"
+        className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-center xl:overflow-visible xl:rounded-[1.25rem]"
         aria-label="Primary navigation"
-        data-expanded={isThemeMenuOpen ? "true" : undefined}
       >
-        <div className="desktop-nav-primary flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-stretch xl:justify-center xl:gap-1">
+        <div className="flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-center xl:justify-center xl:gap-1">
           {navItems.map((link) => {
             const sectionId = getSectionId(link.href);
             const Icon = navIconMap[link.label] ?? UserRound;
@@ -454,7 +453,7 @@ export function Header() {
                     <Icon className="relative z-10 h-5 w-5" aria-hidden="true" />
                   )}
                 </span>
-                <span className="desktop-nav-label hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0">
+                <span className="desktop-nav-label hidden whitespace-nowrap text-left">
                   {link.label}
                 </span>
               </Link>
@@ -545,7 +544,7 @@ export function Header() {
         </button>
       </nav>
       {isThemePickerEnabled && isThemeMenuOpen ? (
-        <div className="desktop-theme-picker absolute bottom-full right-4 mb-3 w-56 rounded-2xl border border-line bg-card p-2 shadow-lift xl:bottom-auto xl:left-20 xl:right-auto xl:top-1/2 xl:mb-0 xl:-translate-y-1/2">
+        <div className="absolute bottom-full right-4 mb-3 w-56 rounded-2xl border border-line bg-card p-2 shadow-lift xl:bottom-auto xl:left-20 xl:right-auto xl:top-1/2 xl:mb-0 xl:-translate-y-1/2">
           <div className="space-y-1" role="radiogroup" aria-label="Theme picker">
             {themeOptions.map((option) => {
               const isSelected = option.value === theme;
