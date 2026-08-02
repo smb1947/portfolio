@@ -84,10 +84,10 @@ function LeadingPhraseHighlight({ text, phrase }: { text: string; phrase: string
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">
+      <h2 className="font-serif text-3xl font-semibold leading-tight text-navy sm:text-4xl md:text-5xl">
         <QuestionWordHighlight text={children} />
-      </p>
-      <div className="mt-5 h-1.5 w-16 rounded-full bg-coral" aria-hidden="true" />
+      </h2>
+      <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
     </div>
   );
 }
@@ -179,7 +179,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="mt-3 font-serif text-xl font-semibold leading-snug text-navy md:text-2xl">
+          <blockquote className="mt-3 font-serif text-lg font-semibold leading-snug text-navy sm:text-xl md:text-2xl">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
         </div>
@@ -410,7 +410,7 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
+          <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
             {project.title}
           </h4>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
@@ -597,7 +597,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
+        <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
           {heading}
         </h4>
       </div>
@@ -645,7 +645,7 @@ function ExpandedHistoryDetails({
         {projectItems.length ? (
           <div className="mt-7 border-t border-line pt-6">
             <div className="mb-4">
-              <h4 className="font-serif text-xl font-semibold text-navy md:text-2xl">Projects</h4>
+              <h4 className="font-serif text-lg font-semibold text-navy sm:text-xl md:text-2xl">Projects</h4>
             </div>
             <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
               {projectItems.map(({ experience, project }) => (
@@ -867,7 +867,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
+                <h3 className="font-serif text-xl font-semibold leading-tight text-navy sm:text-2xl">
                   {entry.label}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-muted">
@@ -953,7 +953,7 @@ export default function Home() {
       <SectionRouteSync />
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
+        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:py-16 md:py-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
               <picture>
@@ -984,7 +984,7 @@ export default function Home() {
                 <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
                   <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-[6.5rem]">
-                    <h1 className="font-serif text-3xl font-semibold leading-[1.02] text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-7xl">
+                    <h1 className="font-serif text-[2rem] font-semibold leading-[1.02] text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-7xl">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -993,7 +993,7 @@ export default function Home() {
             </div>
 
             <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
-              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
+              <div className="sm:grid sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
                 <div className="relative h-16 sm:h-20 md:h-24 lg:h-[6.5rem]">
                   <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-52 lg:w-52">
                     <Image
@@ -1006,14 +1006,14 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="min-w-0 space-y-1.5 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="font-serif text-sm font-semibold leading-tight text-navy sm:text-lg md:text-2xl lg:text-3xl">
+                <div className="mt-4 min-w-0 space-y-2 sm:mt-0 sm:pt-2 lg:space-y-3 lg:pt-1">
+                  <p className="font-serif text-lg font-semibold leading-tight text-navy md:text-2xl lg:text-3xl">
                     {aboutProfile.title}
                   </p>
-                  <p className="text-[0.6rem] font-bold uppercase tracking-[0.08em] text-coral sm:text-xs sm:tracking-[0.12em] md:text-sm md:tracking-[0.14em]">
+                  <p className="text-xs font-bold uppercase tracking-[0.1em] text-coral sm:tracking-[0.12em] md:text-sm md:tracking-[0.14em]">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="flex items-center gap-2 text-xs font-bold text-navy sm:text-sm">
+                  <p className="flex items-center gap-2 text-sm font-bold text-navy">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
@@ -1024,11 +1024,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-12 sm:px-8 md:py-20">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
-          <div className="space-y-5 text-base leading-8 text-muted md:text-lg">
+          <div className="space-y-5 text-base leading-7 text-muted md:text-lg md:leading-8">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -1036,7 +1036,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
@@ -1113,14 +1113,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1128,7 +1128,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
@@ -1167,7 +1167,7 @@ export default function Home() {
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
-        <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
+        <p className="mt-6 max-w-5xl text-base leading-7 text-muted md:text-lg md:leading-8">
           {contactIntroText}{" "}
           <span
             className="coffee-cue inline-block text-3xl leading-none align-[-0.16em] md:text-4xl"
