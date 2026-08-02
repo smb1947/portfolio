@@ -430,13 +430,6 @@ type FeaturedProjectItem = {
   section: ProjectSection;
 };
 
-const compactFeaturedProjectBorderClasses = [
-  "border-b border-line sm:border-r sm:pr-5",
-  "border-b border-line sm:pl-5",
-  "border-b border-line sm:border-b-0 sm:border-r sm:pr-5",
-  "sm:pl-5"
-];
-
 function CompactFeaturedProjects({
   projects,
   onExpand
@@ -446,37 +439,33 @@ function CompactFeaturedProjects({
 }) {
   return (
     <section
-      className="featured-projects-summary relative cursor-pointer rounded-2xl border border-line bg-card px-5 py-4 shadow-soft print:hidden md:px-6"
+      className="featured-projects-summary relative cursor-pointer rounded-2xl border border-line bg-card px-5 pb-5 pt-3 shadow-soft print:hidden sm:pb-3 md:px-6"
       aria-label="Additional featured projects"
     >
       <button
-        id="featured-project-summary-trigger"
         type="button"
         aria-controls="featured-project-grid"
         aria-expanded="false"
         aria-label="Expand featured projects"
-        className="absolute inset-0 z-10 rounded-2xl focus:outline-none focus:ring-4 focus:ring-inset focus:ring-coral/20"
+        data-featured-project-summary-trigger
+        className="absolute inset-x-0 -bottom-6 top-0 z-10 rounded-2xl focus:outline-none focus:ring-4 focus:ring-inset focus:ring-coral/20"
         onClick={onExpand}
       />
-      <ul className="grid sm:grid-cols-2">
-        {projects.map(({ project }, index) => {
-          const borderClassName = compactFeaturedProjectBorderClasses[index];
-
-          return (
-            <li
-              key={project.title}
-              className={`flex min-w-0 items-center gap-4 py-4 ${borderClassName ?? ""}`}
-            >
-              <ProjectLogo title={project.title} />
-              <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
-                {project.title}
-              </p>
-            </li>
-          );
-        })}
+      <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
+        {projects.map(({ project }) => (
+          <li
+            key={project.title}
+            className="compact-featured-project-item flex min-w-0 items-center gap-4 py-4"
+          >
+            <ProjectLogo title={project.title} />
+            <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+              {project.title}
+            </p>
+          </li>
+        ))}
       </ul>
 
-      <div className="mt-3 flex justify-center">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-1/2 justify-center">
         <span
           className="featured-projects-expand-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft"
           aria-hidden="true"
@@ -640,7 +629,7 @@ function ExpandedHistoryDetails({
   );
 
   return (
-    <div className="border-t border-line bg-background/25 px-4 pb-8 pt-5 md:px-6 md:pb-10 md:pt-6">
+    <div className="relative border-t border-line bg-background/25 px-4 pb-6 pt-5 md:px-6 md:pt-6">
       <div className="px-1 md:px-2">
         <div className="space-y-5">
           {entry.experiences.map((experience) => (
@@ -673,13 +662,12 @@ function ExpandedHistoryDetails({
         ) : null}
       </div>
 
-      <div className="mt-6 flex justify-center">
+      <div className="absolute inset-x-0 bottom-0 z-10 flex translate-y-1/2 justify-center">
         <button
           type="button"
           aria-label={`Collapse ${entry.label} details`}
-          title="Collapse details"
           onClick={onCollapse}
-          className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-transparent text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-coral [@media(hover:hover)]:hover:bg-coral [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+          className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
         >
           <ChevronUp className="h-5 w-5" aria-hidden="true" />
         </button>
@@ -884,7 +872,7 @@ function HistoryList({
               </span>
             </button>
             {isExpanded ? (
-              <div id={`${entryKey}-details`} className="print:hidden">
+              <div id={`${entryKey}-details`} className="pb-6 print:hidden">
                 <ExpandedHistoryDetails
                   entry={entry}
                   section={section}
@@ -925,6 +913,29 @@ export default function Home() {
   const primaryFeaturedProducts = featuredProducts.slice(0, 2);
   const additionalFeaturedProducts = featuredProducts.slice(2);
   const contactIntroText = aboutProfile.contactIntro.replace(/\s*☕\s*$/, "");
+  const expandFeaturedProducts = () => {
+    setShowAllFeaturedProducts(true);
+    trackPortfolioEvent("about.featured_projects.expand.click", {
+      hiddenProjects: additionalFeaturedProducts.length,
+      totalProjects: featuredProducts.length,
+      source: "featured_projects_summary"
+    });
+  };
+  const collapseFeaturedProducts = () => {
+    setShowAllFeaturedProducts(false);
+    trackPortfolioEvent("about.featured_projects.collapse.click", {
+      hiddenProjects: additionalFeaturedProducts.length,
+      totalProjects: featuredProducts.length,
+      source: "featured_projects_footer"
+    });
+    window.requestAnimationFrame(() => {
+      const visibleTrigger = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-featured-project-summary-trigger]")
+      ).find((trigger) => trigger.offsetParent !== null);
+
+      visibleTrigger?.focus();
+    });
+  };
 
   return (
     <>
@@ -1020,44 +1031,47 @@ export default function Home() {
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
           </p>
-          <div id="featured-project-grid" className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
-            {primaryFeaturedProducts.map(({ project, experience, section }) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                experience={experience}
-                section={section}
-                surface="card"
-              />
-            ))}
-            {showAllFeaturedProducts
-              ? additionalFeaturedProducts.map(({ project, experience, section }) => (
-                  <ProjectCard
-                    key={project.title}
-                    project={project}
-                    experience={experience}
-                    section={section}
-                    surface="card"
-                  />
-                ))
-              : null}
-            {!showAllFeaturedProducts && additionalFeaturedProducts.length ? (
-              <div className="md:col-span-2 print:hidden">
-                <CompactFeaturedProjects
-                  projects={additionalFeaturedProducts}
-                  onExpand={() => {
-                    setShowAllFeaturedProducts(true);
-                    trackPortfolioEvent("about.featured_projects.expand.click", {
-                      hiddenProjects: additionalFeaturedProducts.length,
-                      totalProjects: featuredProducts.length,
-                      source: "featured_projects_summary"
-                    });
-                  }}
+          <div
+            id="featured-project-grid"
+            className={`relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2 ${
+              showAllFeaturedProducts ? "mb-6" : ""
+            }`}
+          >
+            {showAllFeaturedProducts ? (
+              featuredProducts.map(({ project, experience, section }) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  experience={experience}
+                  section={section}
+                  surface="card"
                 />
-              </div>
-            ) : null}
-            {!showAllFeaturedProducts
-              ? additionalFeaturedProducts.map(({ project, experience, section }) => (
+              ))
+            ) : (
+              <>
+                {primaryFeaturedProducts.map(({ project, experience, section }) => (
+                  <div key={project.title} className="hidden lg:block print:hidden">
+                    <ProjectCard
+                      project={project}
+                      experience={experience}
+                      section={section}
+                      surface="card"
+                    />
+                  </div>
+                ))}
+                <div className="pb-6 lg:hidden print:hidden">
+                  <CompactFeaturedProjects
+                    projects={featuredProducts}
+                    onExpand={expandFeaturedProducts}
+                  />
+                </div>
+                <div className="hidden pb-6 lg:col-span-2 lg:block print:hidden">
+                  <CompactFeaturedProjects
+                    projects={additionalFeaturedProducts}
+                    onExpand={expandFeaturedProducts}
+                  />
+                </div>
+                {featuredProducts.map(({ project, experience, section }) => (
                   <div key={`print-${project.title}`} className="hidden print:block">
                     <ProjectCard
                       project={project}
@@ -1066,31 +1080,20 @@ export default function Home() {
                       surface="card"
                     />
                   </div>
-                ))
-              : null}
+                ))}
+              </>
+            )}
             {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
-              <div className="flex justify-center md:col-span-2 print:hidden">
-                <button
-                  type="button"
-                  aria-controls="featured-project-grid"
-                  aria-expanded="true"
-                  aria-label="Collapse featured projects"
-                  className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
-                  onClick={() => {
-                    setShowAllFeaturedProducts(false);
-                    trackPortfolioEvent("about.featured_projects.collapse.click", {
-                      hiddenProjects: additionalFeaturedProducts.length,
-                      totalProjects: featuredProducts.length,
-                      source: "featured_projects_footer"
-                    });
-                    window.requestAnimationFrame(() => {
-                      document.getElementById("featured-project-summary-trigger")?.focus();
-                    });
-                  }}
-                >
-                  <ChevronUp className="h-5 w-5" aria-hidden="true" />
-                </button>
-              </div>
+              <button
+                type="button"
+                aria-controls="featured-project-grid"
+                aria-expanded="true"
+                aria-label="Collapse featured projects"
+                className="absolute bottom-0 left-1/2 z-20 grid h-12 w-12 -translate-x-1/2 translate-y-1/2 place-items-center rounded-full border border-coral/40 bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:scale-105 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20 print:hidden"
+                onClick={collapseFeaturedProducts}
+              >
+                <ChevronUp className="h-5 w-5" aria-hidden="true" />
+              </button>
             ) : null}
           </div>
         </ProjectResourceSpotlight>
