@@ -667,9 +667,12 @@ function ExpandedHistoryDetails({
           type="button"
           aria-label={`Collapse ${entry.label} details`}
           onClick={onCollapse}
-          className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+          className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
         >
-          <ChevronUp className="h-5 w-5" aria-hidden="true" />
+          <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
+          <span className="card-collapse-label whitespace-nowrap text-sm font-bold">
+            Collapse
+          </span>
         </button>
       </div>
     </div>
@@ -830,7 +833,7 @@ function HistoryList({
   };
 
   return (
-    <div className="mt-10 space-y-10">
+    <div className="mt-10 flex flex-col gap-5">
       {entries.map((entry) => {
         const entryKey = `${section}-${entry.id}`;
         const isExpanded = expandedKey === entryKey;
@@ -839,7 +842,9 @@ function HistoryList({
           <div
             id={`${entryKey}-row`}
             key={entry.id}
-            className="relative rounded-[1.35rem] border border-line bg-card shadow-soft"
+            className={`relative rounded-[1.35rem] border border-line bg-card shadow-soft ${
+              isExpanded ? "mb-6" : ""
+            }`}
           >
             <button
               id={`${entryKey}-trigger`}
@@ -878,7 +883,7 @@ function HistoryList({
               </span>
             </button>
             {isExpanded ? (
-              <div id={`${entryKey}-details`} className="pb-6 print:hidden">
+              <div id={`${entryKey}-details`} className="print:hidden">
                 <ExpandedHistoryDetails
                   entry={entry}
                   section={section}
@@ -1039,7 +1044,9 @@ export default function Home() {
           </p>
           <div
             id="featured-project-grid"
-            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2"
+            className={`relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2 ${
+              showAllFeaturedProducts ? "mb-6" : ""
+            }`}
           >
             {showAllFeaturedProducts ? (
               featuredProducts.map(({ project, experience, section }) => (
@@ -1087,24 +1094,24 @@ export default function Home() {
                 ))}
               </>
             )}
+            {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+              <div className="absolute inset-x-0 bottom-0 z-20 flex translate-y-1/2 justify-center print:hidden">
+                <button
+                  type="button"
+                  aria-controls="featured-project-grid"
+                  aria-expanded="true"
+                  aria-label="Collapse featured projects"
+                  className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
+                  onClick={collapseFeaturedProducts}
+                >
+                  <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
+                  <span className="card-collapse-label whitespace-nowrap text-sm font-bold">
+                    Collapse
+                  </span>
+                </button>
+              </div>
+            ) : null}
           </div>
-          {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
-            <div className="mt-5 flex justify-center print:hidden">
-              <button
-                type="button"
-                aria-controls="featured-project-grid"
-                aria-expanded="true"
-                aria-label="Collapse featured projects"
-                className="featured-projects-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
-                onClick={collapseFeaturedProducts}
-              >
-                <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
-                <span className="featured-projects-collapse-label whitespace-nowrap text-sm font-bold">
-                  Collapse
-                </span>
-              </button>
-            </div>
-          ) : null}
         </ProjectResourceSpotlight>
 
         <div className="mt-12">
