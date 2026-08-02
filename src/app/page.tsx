@@ -439,7 +439,7 @@ function CompactFeaturedProjects({
 }) {
   return (
     <section
-      className="featured-projects-summary relative cursor-pointer rounded-2xl border border-line bg-card px-5 pb-5 pt-3 shadow-soft print:hidden sm:pb-3 md:px-6"
+      className="featured-projects-summary relative cursor-pointer rounded-2xl border border-line bg-card px-6 pb-6 pt-4 shadow-soft print:hidden sm:pb-4 md:px-8"
       aria-label="Additional featured projects"
     >
       <button
@@ -455,7 +455,7 @@ function CompactFeaturedProjects({
         {projects.map(({ project }) => (
           <li
             key={project.title}
-            className="compact-featured-project-item flex min-w-0 items-center gap-4 py-4"
+            className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
           >
             <ProjectLogo title={project.title} />
             <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
