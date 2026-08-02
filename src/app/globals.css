@@ -517,6 +517,16 @@ button {
     transform 180ms ease;
 }
 
+.featured-projects-collapse-button {
+  width: 3rem;
+  transition:
+    width 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
 .compact-featured-project-item {
   border-color: var(--border);
 }
@@ -556,6 +566,32 @@ button {
     transform 180ms ease;
 }
 
+.featured-projects-collapse-label {
+  max-width: 0;
+  margin-left: 0;
+  opacity: 0;
+  transform: translateX(-0.2rem);
+  transition:
+    max-width 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    margin-left 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 140ms ease,
+    transform 180ms ease;
+}
+
+.featured-projects-collapse-button:focus-visible {
+  width: 7.5rem;
+  border-color: color-mix(in srgb, var(--teal) 40%, transparent);
+  background: var(--teal);
+  color: #fffdf8;
+}
+
+.featured-projects-collapse-button:focus-visible .featured-projects-collapse-label {
+  max-width: 5rem;
+  margin-left: 0.45rem;
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .featured-projects-summary:focus-within .featured-projects-expand-button {
   width: 7rem;
   border-color: color-mix(in srgb, var(--teal) 40%, transparent);
@@ -571,6 +607,21 @@ button {
 }
 
 @media (hover: hover) {
+  .featured-projects-collapse-button:hover {
+    width: 7.5rem;
+    border-color: color-mix(in srgb, var(--teal) 40%, transparent);
+    background: var(--teal);
+    color: #fffdf8;
+    transform: translateY(-0.125rem);
+  }
+
+  .featured-projects-collapse-button:hover .featured-projects-collapse-label {
+    max-width: 5rem;
+    margin-left: 0.45rem;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   .featured-projects-summary:hover .featured-projects-expand-button {
     width: 7rem;
     border-color: color-mix(in srgb, var(--teal) 40%, transparent);

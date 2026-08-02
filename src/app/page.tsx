@@ -448,7 +448,7 @@ function CompactFeaturedProjects({
         aria-expanded="false"
         aria-label="Expand featured projects"
         data-featured-project-summary-trigger
-        className="absolute inset-x-0 -bottom-6 top-0 z-10 rounded-2xl focus:outline-none focus:ring-4 focus:ring-inset focus:ring-coral/20"
+        className="absolute inset-x-0 -bottom-6 top-0 z-10 rounded-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-coral/20"
         onClick={onExpand}
       />
       <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
@@ -1039,9 +1039,7 @@ export default function Home() {
           </p>
           <div
             id="featured-project-grid"
-            className={`relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2 ${
-              showAllFeaturedProducts ? "mb-6" : ""
-            }`}
+            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2"
           >
             {showAllFeaturedProducts ? (
               featuredProducts.map(({ project, experience, section }) => (
@@ -1089,19 +1087,24 @@ export default function Home() {
                 ))}
               </>
             )}
-            {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+          </div>
+          {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+            <div className="mt-5 flex justify-center print:hidden">
               <button
                 type="button"
                 aria-controls="featured-project-grid"
                 aria-expanded="true"
                 aria-label="Collapse featured projects"
-                className="absolute bottom-0 left-1/2 z-20 grid h-12 w-12 -translate-x-1/2 translate-y-1/2 place-items-center rounded-full border border-coral/40 bg-card text-coral shadow-soft transition [@media(hover:hover)]:hover:scale-105 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20 print:hidden"
+                className="featured-projects-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
                 onClick={collapseFeaturedProducts}
               >
-                <ChevronUp className="h-5 w-5" aria-hidden="true" />
+                <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
+                <span className="featured-projects-collapse-label whitespace-nowrap text-sm font-bold">
+                  Collapse
+                </span>
               </button>
-            ) : null}
-          </div>
+            </div>
+          ) : null}
         </ProjectResourceSpotlight>
 
         <div className="mt-12">
