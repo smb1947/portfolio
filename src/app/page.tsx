@@ -424,6 +424,68 @@ function ProjectCard({
   );
 }
 
+type FeaturedProjectItem = {
+  experience: Experience;
+  project: Project;
+  section: ProjectSection;
+};
+
+const compactFeaturedProjectBorderClasses = [
+  "border-b border-line sm:border-r sm:pr-5",
+  "border-b border-line sm:pl-5",
+  "border-b border-line sm:border-b-0 sm:border-r sm:pr-5",
+  "sm:pl-5"
+];
+
+function CompactFeaturedProjects({
+  projects,
+  onExpand
+}: {
+  projects: FeaturedProjectItem[];
+  onExpand: () => void;
+}) {
+  return (
+    <section
+      className="featured-projects-summary rounded-2xl border border-line bg-card px-5 py-4 shadow-soft print:hidden md:px-6"
+      aria-label="Additional featured projects"
+    >
+      <ul className="grid sm:grid-cols-2">
+        {projects.map(({ project }, index) => {
+          const borderClassName = compactFeaturedProjectBorderClasses[index];
+
+          return (
+            <li
+              key={project.title}
+              className={`flex min-w-0 items-center gap-4 py-4 ${borderClassName ?? ""}`}
+            >
+              <ProjectLogo title={project.title} />
+              <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+                {project.title}
+              </p>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div className="mt-3 flex justify-center">
+        <button
+          type="button"
+          aria-controls="featured-project-grid"
+          aria-expanded="false"
+          aria-label="Expand featured projects"
+          className="featured-projects-expand-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus:ring-4 focus:ring-coral/20"
+          onClick={onExpand}
+        >
+          <ChevronDown className="h-5 w-5 flex-none" aria-hidden="true" />
+          <span className="featured-projects-expand-label whitespace-nowrap text-sm font-bold">
+            Expand
+          </span>
+        </button>
+      </div>
+    </section>
+  );
+}
+
 type HistoryEntry = {
   id: string;
   label: string;
@@ -834,6 +896,7 @@ function HistoryList({
 
 export default function Home() {
   const [expandedHistoryKey, setExpandedHistoryKey] = useState<string | null>(null);
+  const [showAllFeaturedProducts, setShowAllFeaturedProducts] = useState(false);
   const { contact, contactForm, experiences } = portfolio;
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
@@ -854,6 +917,8 @@ export default function Home() {
       (a, b) =>
         featuredProductTitles.indexOf(a.project.title) - featuredProductTitles.indexOf(b.project.title)
     );
+  const primaryFeaturedProducts = featuredProducts.slice(0, 2);
+  const additionalFeaturedProducts = featuredProducts.slice(2);
   const contactIntroText = aboutProfile.contactIntro.replace(/\s*☕\s*$/, "");
 
   return (
@@ -950,8 +1015,8 @@ export default function Home() {
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
           </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
-            {featuredProducts.map(({ project, experience, section }) => (
+          <div id="featured-project-grid" className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
+            {primaryFeaturedProducts.map(({ project, experience, section }) => (
               <ProjectCard
                 key={project.title}
                 project={project}
@@ -960,6 +1025,44 @@ export default function Home() {
                 surface="card"
               />
             ))}
+            {showAllFeaturedProducts
+              ? additionalFeaturedProducts.map(({ project, experience, section }) => (
+                  <ProjectCard
+                    key={project.title}
+                    project={project}
+                    experience={experience}
+                    section={section}
+                    surface="card"
+                  />
+                ))
+              : null}
+            {!showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+              <div className="md:col-span-2 print:hidden">
+                <CompactFeaturedProjects
+                  projects={additionalFeaturedProducts}
+                  onExpand={() => {
+                    setShowAllFeaturedProducts(true);
+                    trackPortfolioEvent("about.featured_projects.expand.click", {
+                      hiddenProjects: additionalFeaturedProducts.length,
+                      totalProjects: featuredProducts.length,
+                      source: "featured_projects_summary"
+                    });
+                  }}
+                />
+              </div>
+            ) : null}
+            {!showAllFeaturedProducts
+              ? additionalFeaturedProducts.map(({ project, experience, section }) => (
+                  <div key={`print-${project.title}`} className="hidden print:block">
+                    <ProjectCard
+                      project={project}
+                      experience={experience}
+                      section={section}
+                      surface="card"
+                    />
+                  </div>
+                ))
+              : null}
           </div>
         </ProjectResourceSpotlight>
 
