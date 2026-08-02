@@ -446,9 +446,17 @@ function CompactFeaturedProjects({
 }) {
   return (
     <section
-      className="featured-projects-summary rounded-2xl border border-line bg-card px-5 py-4 shadow-soft print:hidden md:px-6"
+      className="featured-projects-summary relative cursor-pointer rounded-2xl border border-line bg-card px-5 py-4 shadow-soft print:hidden md:px-6"
       aria-label="Additional featured projects"
     >
+      <button
+        type="button"
+        aria-controls="featured-project-grid"
+        aria-expanded="false"
+        aria-label="Expand featured projects"
+        className="absolute inset-0 z-10 rounded-2xl focus:outline-none focus:ring-4 focus:ring-inset focus:ring-coral/20"
+        onClick={onExpand}
+      />
       <ul className="grid sm:grid-cols-2">
         {projects.map(({ project }, index) => {
           const borderClassName = compactFeaturedProjectBorderClasses[index];
@@ -468,19 +476,15 @@ function CompactFeaturedProjects({
       </ul>
 
       <div className="mt-3 flex justify-center">
-        <button
-          type="button"
-          aria-controls="featured-project-grid"
-          aria-expanded="false"
-          aria-label="Expand featured projects"
-          className="featured-projects-expand-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus:ring-4 focus:ring-coral/20"
-          onClick={onExpand}
+        <span
+          className="featured-projects-expand-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft"
+          aria-hidden="true"
         >
           <ChevronDown className="h-5 w-5 flex-none" aria-hidden="true" />
           <span className="featured-projects-expand-label whitespace-nowrap text-sm font-bold">
             Expand
           </span>
-        </button>
+        </span>
       </div>
     </section>
   );
