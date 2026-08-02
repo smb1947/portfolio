@@ -13,5 +13,4 @@ My personal portfolio website: [smb007.me](https://smb007.me)
 ## Deployment Channels
 
 - Vercel
-- GitHub Pages
 - Cloudflare

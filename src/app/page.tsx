@@ -84,10 +84,10 @@ function LeadingPhraseHighlight({ text, phrase }: { text: string; phrase: string
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <p className="font-serif text-4xl font-semibold text-navy md:text-5xl">
+      <h2 className="font-serif text-3xl font-semibold leading-tight text-navy sm:text-4xl md:text-5xl">
         <QuestionWordHighlight text={children} />
-      </p>
-      <div className="mt-5 h-1.5 w-16 rounded-full bg-coral" aria-hidden="true" />
+      </h2>
+      <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
     </div>
   );
 }
@@ -179,7 +179,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="mt-3 font-serif text-xl font-semibold leading-snug text-navy md:text-2xl">
+          <blockquote className="mt-3 font-serif text-lg font-semibold leading-snug text-navy sm:text-xl md:text-2xl">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
         </div>
@@ -410,7 +410,7 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
+          <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
             {project.title}
           </h4>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
@@ -420,6 +420,62 @@ function ProjectCard({
       </div>
       <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
       <ProjectResourceActions project={project} experience={experience} section={section} />
+    </section>
+  );
+}
+
+type FeaturedProjectItem = {
+  experience: Experience;
+  project: Project;
+  section: ProjectSection;
+};
+
+function CompactFeaturedProjects({
+  projects,
+  onExpand
+}: {
+  projects: FeaturedProjectItem[];
+  onExpand: () => void;
+}) {
+  return (
+    <section
+      className="featured-projects-summary relative cursor-pointer rounded-2xl border border-line bg-card px-6 pb-6 pt-4 shadow-soft print:hidden sm:pb-4 md:px-8"
+      aria-label="Additional featured projects"
+    >
+      <button
+        type="button"
+        aria-controls="featured-project-grid"
+        aria-expanded="false"
+        aria-label="Expand featured projects"
+        data-featured-project-summary-trigger
+        className="absolute inset-x-0 -bottom-6 top-0 z-10 rounded-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-coral/20"
+        onClick={onExpand}
+      />
+      <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
+        {projects.map(({ project }) => (
+          <li
+            key={project.title}
+            className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
+          >
+            <ProjectLogo title={project.title} />
+            <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+              {project.title}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-1/2 justify-center">
+        <span
+          className="featured-projects-expand-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft"
+          aria-hidden="true"
+        >
+          <ChevronDown className="h-5 w-5 flex-none" aria-hidden="true" />
+          <span className="featured-projects-expand-label whitespace-nowrap text-sm font-bold">
+            Expand
+          </span>
+        </span>
+      </div>
     </section>
   );
 }
@@ -541,7 +597,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="font-serif text-xl font-semibold leading-tight text-navy md:text-2xl">
+        <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
           {heading}
         </h4>
       </div>
@@ -573,7 +629,7 @@ function ExpandedHistoryDetails({
   );
 
   return (
-    <div className="border-t border-line bg-background/25 px-4 pb-8 pt-5 md:px-6 md:pb-10 md:pt-6">
+    <div className="relative rounded-b-[1.35rem] border-t border-line bg-background/25 px-4 pb-6 pt-5 md:px-6 md:pt-6">
       <div className="px-1 md:px-2">
         <div className="space-y-5">
           {entry.experiences.map((experience) => (
@@ -589,7 +645,7 @@ function ExpandedHistoryDetails({
         {projectItems.length ? (
           <div className="mt-7 border-t border-line pt-6">
             <div className="mb-4">
-              <h4 className="font-serif text-xl font-semibold text-navy md:text-2xl">Projects</h4>
+              <h4 className="font-serif text-lg font-semibold text-navy sm:text-xl md:text-2xl">Projects</h4>
             </div>
             <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
               {projectItems.map(({ experience, project }) => (
@@ -606,15 +662,17 @@ function ExpandedHistoryDetails({
         ) : null}
       </div>
 
-      <div className="mt-6 flex justify-center">
+      <div className="absolute inset-x-0 bottom-0 z-10 flex translate-y-1/2 justify-center">
         <button
           type="button"
           aria-label={`Collapse ${entry.label} details`}
-          title="Collapse details"
           onClick={onCollapse}
-          className="grid h-12 w-12 place-items-center rounded-full border border-coral/40 bg-transparent text-coral shadow-soft transition [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-coral [@media(hover:hover)]:hover:bg-coral [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-coral/20"
+          className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
         >
-          <ChevronUp className="h-5 w-5" aria-hidden="true" />
+          <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
+          <span className="card-collapse-label whitespace-nowrap text-sm font-bold">
+            Collapse
+          </span>
         </button>
       </div>
     </div>
@@ -775,20 +833,28 @@ function HistoryList({
   };
 
   return (
-    <div className="mt-10 overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft">
-      {entries.map((entry, index) => {
+    <div className="mt-10 flex flex-col">
+      {entries.map((entry) => {
         const entryKey = `${section}-${entry.id}`;
         const isExpanded = expandedKey === entryKey;
 
         return (
-          <div id={`${entryKey}-row`} key={entry.id} className={index === 0 ? "" : "border-t border-line"}>
+          <div
+            id={`${entryKey}-row`}
+            key={entry.id}
+            className={`relative rounded-[1.35rem] border border-line bg-card shadow-soft ${
+              isExpanded ? "mb-6" : ""
+            }`}
+          >
             <button
               id={`${entryKey}-trigger`}
               type="button"
               onClick={() =>
                 isExpanded ? collapseAndKeepRowInView(entryKey) : expandAndTrackEntry(entryKey, entry)
               }
-              className="grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6"
+              className={`grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6 ${
+                isExpanded ? "rounded-t-[1.35rem]" : "rounded-[1.35rem]"
+              }`}
               aria-expanded={isExpanded}
               aria-controls={`${entryKey}-details`}
             >
@@ -801,7 +867,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="font-serif text-2xl font-semibold leading-tight text-navy">
+                <h3 className="font-serif text-xl font-semibold leading-tight text-navy sm:text-2xl">
                   {entry.label}
                 </h3>
                 <p className="mt-1 text-sm font-bold text-muted">
@@ -834,6 +900,7 @@ function HistoryList({
 
 export default function Home() {
   const [expandedHistoryKey, setExpandedHistoryKey] = useState<string | null>(null);
+  const [showAllFeaturedProducts, setShowAllFeaturedProducts] = useState(false);
   const { contact, contactForm, experiences } = portfolio;
   const hasContactForm = Boolean(contactForm.embedUrl);
   const educationExperiences = experiences.filter((experience) => experience.type === "education");
@@ -854,14 +921,39 @@ export default function Home() {
       (a, b) =>
         featuredProductTitles.indexOf(a.project.title) - featuredProductTitles.indexOf(b.project.title)
     );
+  const primaryFeaturedProducts = featuredProducts.slice(0, 2);
+  const additionalFeaturedProducts = featuredProducts.slice(2);
   const contactIntroText = aboutProfile.contactIntro.replace(/\s*☕\s*$/, "");
+  const expandFeaturedProducts = () => {
+    setShowAllFeaturedProducts(true);
+    trackPortfolioEvent("about.featured_projects.expand.click", {
+      hiddenProjects: additionalFeaturedProducts.length,
+      totalProjects: featuredProducts.length,
+      source: "featured_projects_summary"
+    });
+  };
+  const collapseFeaturedProducts = () => {
+    setShowAllFeaturedProducts(false);
+    trackPortfolioEvent("about.featured_projects.collapse.click", {
+      hiddenProjects: additionalFeaturedProducts.length,
+      totalProjects: featuredProducts.length,
+      source: "featured_projects_footer"
+    });
+    window.requestAnimationFrame(() => {
+      const visibleTrigger = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-featured-project-summary-trigger]")
+      ).find((trigger) => trigger.offsetParent !== null);
+
+      visibleTrigger?.focus();
+    });
+  };
 
   return (
     <>
       <SectionRouteSync />
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 py-14 sm:px-8 md:py-20">
+        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:py-16 md:py-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
               <picture>
@@ -892,7 +984,7 @@ export default function Home() {
                 <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
                   <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-[6.5rem]">
-                    <h1 className="font-serif text-3xl font-semibold leading-[1.02] text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-7xl">
+                    <h1 className="font-serif text-[2rem] font-semibold leading-[1.02] text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-7xl">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -914,29 +1006,38 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <div className="min-w-0 space-y-1.5 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="font-serif text-sm font-semibold leading-tight text-navy sm:text-lg md:text-2xl lg:text-3xl">
+                <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
+                  <p className="font-serif text-base font-semibold leading-tight text-navy sm:text-lg md:text-2xl lg:text-3xl">
                     {aboutProfile.title}
                   </p>
-                  <p className="text-[0.6rem] font-bold uppercase tracking-[0.08em] text-coral sm:text-xs sm:tracking-[0.12em] md:text-sm md:tracking-[0.14em]">
+                  <p className="hidden text-xs font-bold uppercase tracking-[0.12em] text-coral sm:block md:text-sm md:tracking-[0.14em]">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="flex items-center gap-2 text-xs font-bold text-navy sm:text-sm">
+                  <p className="hidden items-center gap-2 text-sm font-bold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
+              </div>
+              <div className="mt-4 space-y-3 sm:hidden">
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-coral">
+                  <CredentialLine text={aboutProfile.context} />
+                </p>
+                <p className="flex items-center gap-2 text-sm font-bold text-navy">
+                  <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
+                  {portfolio.site.location}
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-12 sm:px-8 md:py-20">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
-          <div className="space-y-5 text-base leading-8 text-muted md:text-lg">
+          <div className="space-y-5 text-base leading-7 text-muted md:text-lg md:leading-8">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -944,34 +1045,91 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
             {aboutProfile.featuredProductsIntro}
           </p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2 print:grid-cols-2">
-            {featuredProducts.map(({ project, experience, section }) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                experience={experience}
-                section={section}
-                surface="card"
-              />
-            ))}
+          <div
+            id="featured-project-grid"
+            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2"
+          >
+            {showAllFeaturedProducts ? (
+              featuredProducts.map(({ project, experience, section }) => (
+                <ProjectCard
+                  key={project.title}
+                  project={project}
+                  experience={experience}
+                  section={section}
+                  surface="card"
+                />
+              ))
+            ) : (
+              <>
+                {primaryFeaturedProducts.map(({ project, experience, section }) => (
+                  <div key={project.title} className="hidden lg:block print:hidden">
+                    <ProjectCard
+                      project={project}
+                      experience={experience}
+                      section={section}
+                      surface="card"
+                    />
+                  </div>
+                ))}
+                <div className="pb-6 lg:hidden print:hidden">
+                  <CompactFeaturedProjects
+                    projects={featuredProducts}
+                    onExpand={expandFeaturedProducts}
+                  />
+                </div>
+                <div className="hidden pb-6 lg:col-span-2 lg:block print:hidden">
+                  <CompactFeaturedProjects
+                    projects={additionalFeaturedProducts}
+                    onExpand={expandFeaturedProducts}
+                  />
+                </div>
+                {featuredProducts.map(({ project, experience, section }) => (
+                  <div key={`print-${project.title}`} className="hidden print:block">
+                    <ProjectCard
+                      project={project}
+                      experience={experience}
+                      section={section}
+                      surface="card"
+                    />
+                  </div>
+                ))}
+              </>
+            )}
           </div>
+          {showAllFeaturedProducts && additionalFeaturedProducts.length ? (
+            <div className="mt-5 flex justify-center print:hidden">
+              <button
+                type="button"
+                aria-controls="featured-project-grid"
+                aria-expanded="true"
+                aria-label="Collapse featured projects"
+                className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
+                onClick={collapseFeaturedProducts}
+              >
+                <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
+                <span className="card-collapse-label whitespace-nowrap text-sm font-bold">
+                  Collapse
+                </span>
+              </button>
+            </div>
+          ) : null}
         </ProjectResourceSpotlight>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -979,7 +1137,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
+          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
@@ -1018,7 +1176,7 @@ export default function Home() {
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
-        <p className="mt-6 max-w-5xl text-base leading-8 text-muted md:text-lg">
+        <p className="mt-6 max-w-5xl text-base leading-7 text-muted md:text-lg md:leading-8">
           {contactIntroText}{" "}
           <span
             className="coffee-cue inline-block text-3xl leading-none align-[-0.16em] md:text-4xl"
