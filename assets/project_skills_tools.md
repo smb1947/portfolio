@@ -8,7 +8,7 @@ Reference list for project-level skills and tools. The website currently keeps t
 | Spotify MiniMix | Recommendation logic; Experiment design; User relevance evaluation | n8n; LLMs; Dynamic song features |
 | StreakFit AI | Customer interviews; Needs synthesis; Behavioral psychology | OpenAI Codex; Figma; Interview notes |
 | Asana Sales Strategy and GTM Assessment | Competitive analysis; PLG vs. SLG strategy; Positioning | Market research; GTM scorecard; Strategy deck |
-| HeyLily GenAI Scam-Call Assistant | Cross-functional leadership; User research; B2B2C strategy | Android prototype; Interview synthesis; GTM model |
+| HeyLily GenAI Scam-Call Defender | Cross-functional leadership; User research; B2B2C strategy | Android prototype; Interview synthesis; GTM model |
 | Product Teardown Series | Community building; Product critique; Event marketing | Event programming; Product teardown templates; Luma; Marketing copy |
 | Roblox Foster Case | M&A strategy; Valuation; Synergy analysis | Market research; Financial analysis; Case deck |
 | Microsoft 365 Copilot GTM Strategy | Go-to-market strategy; Market sizing; Positioning | Strategy deck; Market analysis; Value model |
