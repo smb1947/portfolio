@@ -876,6 +876,11 @@ button {
     page-break-inside: avoid;
   }
 
+  .featured-projects-print-grid > * {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   #experience summary,
   #education summary,
   #experience article > div,

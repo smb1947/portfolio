@@ -1053,7 +1053,7 @@ export default function Home() {
           </p>
           <div
             id="featured-project-grid"
-            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2"
+            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:hidden"
           >
             {showAllFeaturedProducts ? (
               featuredProducts.map(({ project, experience, section }) => (
@@ -1089,16 +1089,6 @@ export default function Home() {
                     onExpand={expandFeaturedProducts}
                   />
                 </div>
-                {featuredProducts.map(({ project, experience, section }) => (
-                  <div key={`print-${project.title}`} className="hidden print:block">
-                    <ProjectCard
-                      project={project}
-                      experience={experience}
-                      section={section}
-                      surface="card"
-                    />
-                  </div>
-                ))}
               </>
             )}
           </div>
@@ -1119,6 +1109,17 @@ export default function Home() {
               </button>
             </div>
           ) : null}
+          <div className="featured-projects-print-grid mt-6 hidden grid-cols-2 gap-5 print:grid">
+            {featuredProducts.map(({ project, experience, section }) => (
+              <ProjectCard
+                key={`print-${project.title}`}
+                project={project}
+                experience={experience}
+                section={section}
+                surface="card"
+              />
+            ))}
+          </div>
         </ProjectResourceSpotlight>
 
         <div className="mt-12">
