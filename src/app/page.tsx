@@ -430,6 +430,24 @@ type FeaturedProjectItem = {
   section: ProjectSection;
 };
 
+function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectItem[] }) {
+  return (
+    <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
+      {projects.map(({ project }) => (
+        <li
+          key={project.title}
+          className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
+        >
+          <ProjectLogo title={project.title} />
+          <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+            {project.title}
+          </p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function CompactFeaturedProjects({
   projects,
   onExpand
@@ -451,19 +469,7 @@ function CompactFeaturedProjects({
         className="absolute inset-x-0 -bottom-6 top-0 z-10 rounded-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-coral/20"
         onClick={onExpand}
       />
-      <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
-        {projects.map(({ project }) => (
-          <li
-            key={project.title}
-            className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
-          >
-            <ProjectLogo title={project.title} />
-            <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
-              {project.title}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <CompactFeaturedProjectList projects={projects} />
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-1/2 justify-center">
         <span
@@ -1033,7 +1039,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-12 sm:px-8 md:py-20">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
@@ -1053,7 +1059,7 @@ export default function Home() {
           </p>
           <div
             id="featured-project-grid"
-            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:grid-cols-2"
+            className="relative mt-6 grid gap-5 lg:grid-cols-2 print:hidden"
           >
             {showAllFeaturedProducts ? (
               featuredProducts.map(({ project, experience, section }) => (
@@ -1089,16 +1095,6 @@ export default function Home() {
                     onExpand={expandFeaturedProducts}
                   />
                 </div>
-                {featuredProducts.map(({ project, experience, section }) => (
-                  <div key={`print-${project.title}`} className="hidden print:block">
-                    <ProjectCard
-                      project={project}
-                      experience={experience}
-                      section={section}
-                      surface="card"
-                    />
-                  </div>
-                ))}
               </>
             )}
           </div>
@@ -1119,16 +1115,32 @@ export default function Home() {
               </button>
             </div>
           ) : null}
+          <div className="mt-6 hidden print:block">
+            <div className="featured-projects-print-grid grid grid-cols-2 gap-5">
+              {primaryFeaturedProducts.map(({ project, experience, section }) => (
+                <ProjectCard
+                  key={`print-expanded-${project.title}`}
+                  project={project}
+                  experience={experience}
+                  section={section}
+                  surface="card"
+                />
+              ))}
+            </div>
+            <div className="mt-5 rounded-2xl border border-line bg-card px-8 py-4 shadow-soft">
+              <CompactFeaturedProjectList projects={additionalFeaturedProducts} />
+            </div>
+          </div>
         </ProjectResourceSpotlight>
 
-        <div className="mt-12">
+        <div className="capabilities-print-section mt-12">
           <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
-        <div className="mt-12">
+        <div className="operating-model-print-section mt-12">
           <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
@@ -1154,7 +1166,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>Where I&apos;ve Worked</SectionHeading>
         <HistoryList
           entries={professionalHistoryEntries}
@@ -1164,7 +1176,7 @@ export default function Home() {
         />
       </section>
 
-      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>What I&apos;ve Studied</SectionHeading>
         <HistoryList
           entries={educationHistoryEntries}
@@ -1174,7 +1186,7 @@ export default function Home() {
         />
       </section>
 
-      <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
         <p className="mt-6 max-w-5xl text-base leading-7 text-muted md:text-lg md:leading-8">
           {contactIntroText}{" "}
