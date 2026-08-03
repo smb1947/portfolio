@@ -893,6 +893,22 @@ button {
     padding-bottom: 2.25rem !important;
   }
 
+  #home > div:last-child {
+    padding-bottom: 0 !important;
+  }
+
+  .capabilities-print-section,
+  .operating-model-print-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-top: 2rem !important;
+  }
+
+  .capability-wheel-layout,
+  .operating-triangle-layout {
+    margin-top: 1rem !important;
+  }
+
   #contact > div:last-child {
     margin-top: 1.5rem !important;
   }
@@ -911,7 +927,7 @@ button {
   }
 
   .capability-wheel-frame {
-    max-width: 40rem !important;
+    max-width: 32rem !important;
     margin-top: 0 !important;
   }
 
