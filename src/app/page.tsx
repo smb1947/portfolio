@@ -430,6 +430,24 @@ type FeaturedProjectItem = {
   section: ProjectSection;
 };
 
+function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectItem[] }) {
+  return (
+    <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
+      {projects.map(({ project }) => (
+        <li
+          key={project.title}
+          className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
+        >
+          <ProjectLogo title={project.title} />
+          <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+            {project.title}
+          </p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function CompactFeaturedProjects({
   projects,
   onExpand
@@ -451,19 +469,7 @@ function CompactFeaturedProjects({
         className="absolute inset-x-0 -bottom-6 top-0 z-10 rounded-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-coral/20"
         onClick={onExpand}
       />
-      <ul className="compact-featured-projects-grid grid sm:grid-cols-2">
-        {projects.map(({ project }) => (
-          <li
-            key={project.title}
-            className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
-          >
-            <ProjectLogo title={project.title} />
-            <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
-              {project.title}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <CompactFeaturedProjectList projects={projects} />
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex translate-y-1/2 justify-center">
         <span
@@ -1109,16 +1115,21 @@ export default function Home() {
               </button>
             </div>
           ) : null}
-          <div className="featured-projects-print-grid mt-6 hidden grid-cols-2 gap-5 print:grid">
-            {featuredProducts.map(({ project, experience, section }) => (
-              <ProjectCard
-                key={`print-${project.title}`}
-                project={project}
-                experience={experience}
-                section={section}
-                surface="card"
-              />
-            ))}
+          <div className="mt-6 hidden print:block">
+            <div className="featured-projects-print-grid grid grid-cols-2 gap-5">
+              {primaryFeaturedProducts.map(({ project, experience, section }) => (
+                <ProjectCard
+                  key={`print-expanded-${project.title}`}
+                  project={project}
+                  experience={experience}
+                  section={section}
+                  surface="card"
+                />
+              ))}
+            </div>
+            <div className="mt-5 rounded-2xl border border-line bg-card px-8 py-4 shadow-soft">
+              <CompactFeaturedProjectList projects={additionalFeaturedProducts} />
+            </div>
           </div>
         </ProjectResourceSpotlight>
 
