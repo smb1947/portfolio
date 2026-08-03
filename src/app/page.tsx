@@ -1039,7 +1039,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-12 sm:px-8 md:py-20">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
@@ -1166,7 +1166,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="experience" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>Where I&apos;ve Worked</SectionHeading>
         <HistoryList
           entries={professionalHistoryEntries}
@@ -1176,7 +1176,7 @@ export default function Home() {
         />
       </section>
 
-      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="education" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>What I&apos;ve Studied</SectionHeading>
         <HistoryList
           entries={educationHistoryEntries}
@@ -1186,7 +1186,7 @@ export default function Home() {
         />
       </section>
 
-      <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-14 sm:px-8 md:py-20">
+      <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
         <p className="mt-6 max-w-5xl text-base leading-7 text-muted md:text-lg md:leading-8">
           {contactIntroText}{" "}
