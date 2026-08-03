@@ -734,8 +734,19 @@ button {
     width: 1440px;
     min-height: 100vh;
     position: relative;
+    z-index: 0;
     background: var(--background);
     color: var(--foreground);
+  }
+
+  /* Fixed print elements are repeated on every physical page. This backdrop
+     keeps Chrome from exposing its white page canvas below the final content. */
+  body::before {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background: var(--background);
+    content: "";
   }
 
   .dot-grid {
