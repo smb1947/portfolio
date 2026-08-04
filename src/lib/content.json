@@ -135,8 +135,13 @@
           "resources": [
             {
               "type": "demo",
-              "label": "Live demo",
+              "label": "V3 Live Demo",
               "url": "https://streakfit-v2-preview.vercel.app/"
+            },
+            {
+              "type": "demo",
+              "label": "V1 Demo",
+              "url": "https://drive.google.com/file/d/1rd8DRheXYJzFjwflZ8Kk6C21j7o9kA99/view?usp=sharing"
             }
           ]
         },
