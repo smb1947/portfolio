@@ -81,6 +81,27 @@ function LeadingPhraseHighlight({ text, phrase }: { text: string; phrase: string
   );
 }
 
+function HighlightedIntro({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <strong
+            key={`${part}-${index}`}
+            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
+          >
+            {part.slice(2, -2)}
+          </strong>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
@@ -1045,7 +1066,9 @@ export default function Home() {
         <div className="mt-8 max-w-5xl space-y-5">
           <div className="space-y-5 text-base leading-7 text-muted md:text-lg md:leading-8">
             {aboutProfile.intro.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}>
+                <HighlightedIntro text={paragraph} />
+              </p>
             ))}
           </div>
         </div>
