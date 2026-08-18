@@ -445,7 +445,13 @@ function ProjectCard({
           </p>
         </div>
       </div>
-      <p className="type-detail mt-4 text-muted">{project.description}</p>
+      <p
+        className={`project-description type-detail mt-4 text-muted ${
+          project.resources.length ? "mb-5" : ""
+        }`}
+      >
+        {project.description}
+      </p>
       <ProjectResourceActions project={project} experience={experience} section={section} />
     </section>
   );

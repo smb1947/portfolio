@@ -22,6 +22,8 @@ The scale has two responsive states:
 
 Each size is written as `font size / line height`.
 
+Project descriptions use the `D` font size with a relaxed line height of 22px on mobile and 24px on desktop because they are longer than typical secondary details.
+
 The hero role uses the `S` scale. The credentials and location use the `D` scale. All three use Inter sans-serif, semibold weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
 ## Information Flow
