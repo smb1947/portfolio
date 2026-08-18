@@ -111,6 +111,15 @@ export type AboutProfile = {
   contactIntro: string;
 };
 
+export type AboutIntroVersion = {
+  version: number;
+  paragraphs: string[];
+};
+
+type AboutProfileContent = Omit<AboutProfile, "intro"> & {
+  introVersions: AboutIntroVersion[];
+};
+
 export type PortfolioContent = {
   site: {
     name: string;
@@ -125,7 +134,33 @@ export type PortfolioContent = {
   experiences: Experience[];
 };
 
-export const portfolio = content as PortfolioContent;
+type VersionedPortfolioContent = Omit<PortfolioContent, "aboutProfile"> & {
+  aboutProfile: AboutProfileContent;
+};
+
+function getLatestAboutIntro(versions: AboutIntroVersion[]) {
+  if (versions.length === 0) {
+    throw new Error("At least one about intro version is required.");
+  }
+
+  return versions.reduce((latest, candidate) =>
+    candidate.version > latest.version ? candidate : latest
+  );
+}
+
+const versionedPortfolio = content as VersionedPortfolioContent;
+const { introVersions, ...aboutProfileContent } = versionedPortfolio.aboutProfile;
+
+export const aboutProfile: AboutProfile = {
+  ...aboutProfileContent,
+  intro: getLatestAboutIntro(introVersions).paragraphs
+};
+
+export const portfolio: PortfolioContent = {
+  ...versionedPortfolio,
+  aboutProfile
+};
+
 export const site = {
   ...portfolio.site,
   email: portfolio.contact.find((item) => item.type === "email")?.value ?? ""
@@ -137,8 +172,6 @@ export const navLinks = [
   { label: "Education", href: "/education" },
   { label: "Contact", href: "/contact" }
 ];
-
-export const aboutProfile = portfolio.aboutProfile;
 
 export const contactIconMap = {
   email: Mail,

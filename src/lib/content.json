@@ -614,10 +614,24 @@
   "aboutProfile": {
     "title": "AI-First Technical Product Builder",
     "context": "AWS PMT-ES ✦ Microsoft Azure ✦ UW Foster STEM MBA",
-    "intro": [
-      "Hi 👋, I’m Shankar, an AI-first Technical Product Builder. I’ve spent years solving **complex platform problems** at Microsoft and Amazon.",
-      "I enjoy taking **messy customer problems**, figuring out what matters, and **aligning stakeholders** around a clear path forward. From discovery through launch, I navigate constraints, make tradeoffs, and keep things moving. I care deeply about **how users think and behave** to build thoughtful products that feel seamless and intuitive.",
-      "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
+    "introVersions": [
+      {
+        "version": 1,
+        "paragraphs": [
+          "Hi 👋, I’m Shankar, an AI-first Technical Product Builder. I’ve spent years solving **complex platform problems** at Microsoft and Amazon.",
+          "I enjoy taking **messy customer problems**, figuring out what matters, and **aligning stakeholders** around a clear path forward. From discovery through launch, I navigate constraints, make tradeoffs, and keep things moving. I care deeply about **how users think and behave** to build thoughtful products that feel seamless and intuitive.",
+          "Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
+        ]
+      },
+      {
+        "version": 2,
+        "paragraphs": [
+          "Hi 👋, I’m Shankar, an AI-first Technical Product Builder who turns messy customer problems into clear direction and products people adopt and trust. I’ve spent years solving complex platform product problems at Microsoft and Amazon.",
+          "The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** I want to take on next. When an idea keeps returning, I ask **WHY** I can’t let it go. Once the reason feels strong enough, I seek out different perspectives, weigh the trade-offs, work out **HOW** to make it real, and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** my progress and **ITERATE** on my approach until what I imagined becomes real.",
+          "Through that journey, I build the skills, resilience, and perspective the challenge demands. What I learn and who I become define my **NEXT WHAT**.",
+          "This approach to growth has guided me from an engineering college in India to Microsoft Azure, the Foster MBA, and AWS."
+        ]
+      }
     ],
     "featuredProductsHeading": "What I’ve Been Building",
     "featuredProductsIntro": "A snapshot of a few products and prototypes I’ve built, tested, and shaped across AI, consumer, and community experiences.",
