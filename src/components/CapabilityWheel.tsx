@@ -12,7 +12,8 @@ type SegmentConfig = {
   titleLines: string[];
   path: string;
   clipPath: string;
-  labelPosition: CSSProperties;
+  mobileLabelPosition: CSSProperties;
+  desktopTitlePosition: CSSProperties;
   desktopIconOffsetX: string;
   desktopIconOffsetY: string;
   edgeTitleOffset: string;
@@ -66,9 +67,10 @@ const segments: SegmentConfig[] = [
     titleLines: ["AI-First", "Product", "Building"],
     path: roundedSegmentPath(-90, -30),
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
-    labelPosition: { left: "69%", top: "23%" },
-    desktopIconOffsetX: "-4.4rem",
-    desktopIconOffsetY: "6rem",
+    mobileLabelPosition: { left: "69%", top: "23%" },
+    desktopTitlePosition: { left: "74%", top: "15%" },
+    desktopIconOffsetX: "-6.4rem",
+    desktopIconOffsetY: "9.2rem",
     edgeTitleOffset: "9.3rem",
     mobileTitleOffset: "4.65rem",
     mobileTitleYOffset: "-1.5rem",
@@ -81,8 +83,9 @@ const segments: SegmentConfig[] = [
     titleLines: ["Strategic", "Business", "Acumen"],
     path: roundedSegmentPath(-30, 30),
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
-    labelPosition: { left: "75%", top: "50%" },
-    desktopIconOffsetX: "-5.6rem",
+    mobileLabelPosition: { left: "75%", top: "50%" },
+    desktopTitlePosition: { left: "83%", top: "50%" },
+    desktopIconOffsetX: "-8.8rem",
     desktopIconOffsetY: "0rem",
     edgeTitleOffset: "7.5rem",
     mobileTitleOffset: "3.75rem",
@@ -96,9 +99,10 @@ const segments: SegmentConfig[] = [
     titleLines: ["Technical", "Depth"],
     path: roundedSegmentPath(30, 90),
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
-    labelPosition: { left: "68%", top: "77%" },
-    desktopIconOffsetX: "-4rem",
-    desktopIconOffsetY: "-5.6rem",
+    mobileLabelPosition: { left: "68%", top: "77%" },
+    desktopTitlePosition: { left: "74%", top: "85%" },
+    desktopIconOffsetX: "-6.4rem",
+    desktopIconOffsetY: "-8.8rem",
     edgeTitleOffset: "9.6rem",
     mobileTitleOffset: "4.8rem",
     mobileTitleYOffset: "1.5rem",
@@ -111,9 +115,10 @@ const segments: SegmentConfig[] = [
     titleLines: ["Cross-Functional", "Collaboration"],
     path: roundedSegmentPath(90, 150),
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
-    labelPosition: { left: "32%", top: "77%" },
-    desktopIconOffsetX: "4rem",
-    desktopIconOffsetY: "-5.6rem",
+    mobileLabelPosition: { left: "32%", top: "77%" },
+    desktopTitlePosition: { left: "26%", top: "85%" },
+    desktopIconOffsetX: "6.4rem",
+    desktopIconOffsetY: "-8.8rem",
     edgeTitleOffset: "-9.6rem",
     mobileTitleOffset: "-4.8rem",
     mobileTitleYOffset: "1.5rem",
@@ -126,8 +131,9 @@ const segments: SegmentConfig[] = [
     titleLines: ["Data-Driven", "Product", "Judgment"],
     path: roundedSegmentPath(150, 210),
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
-    labelPosition: { left: "25%", top: "50%" },
-    desktopIconOffsetX: "5.6rem",
+    mobileLabelPosition: { left: "25%", top: "50%" },
+    desktopTitlePosition: { left: "17%", top: "50%" },
+    desktopIconOffsetX: "8.8rem",
     desktopIconOffsetY: "0rem",
     edgeTitleOffset: "-7.5rem",
     mobileTitleOffset: "-3.75rem",
@@ -141,9 +147,10 @@ const segments: SegmentConfig[] = [
     titleLines: ["Customer &", "Behavioral", "Psychology"],
     path: roundedSegmentPath(210, 270),
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
-    labelPosition: { left: "31%", top: "23%" },
-    desktopIconOffsetX: "4.4rem",
-    desktopIconOffsetY: "6rem",
+    mobileLabelPosition: { left: "31%", top: "23%" },
+    desktopTitlePosition: { left: "26%", top: "15%" },
+    desktopIconOffsetX: "6.4rem",
+    desktopIconOffsetY: "9.2rem",
     edgeTitleOffset: "-9.3rem",
     mobileTitleOffset: "-4.65rem",
     mobileTitleYOffset: "-1.5rem",
@@ -235,12 +242,15 @@ export function CapabilityWheel({
                 data-spotlight-title={item.title}
                 data-active={isActive ? "true" : undefined}
                 data-side={segment.side}
-                className={`capability-wheel-label pointer-events-none absolute z-20 flex -translate-x-1/2 -translate-y-1/2 items-center text-center transition-all duration-200 ${
+                className={`capability-wheel-label pointer-events-none absolute z-20 flex items-center text-center transition-all duration-200 ${
                   isActive ? "text-white" : "text-navy"
                 }`}
                 style={
                   {
-                    ...segment.labelPosition,
+                    "--mobile-label-left": segment.mobileLabelPosition.left,
+                    "--mobile-label-top": segment.mobileLabelPosition.top,
+                    "--desktop-title-left": segment.desktopTitlePosition.left,
+                    "--desktop-title-top": segment.desktopTitlePosition.top,
                     "--desktop-icon-offset-x": segment.desktopIconOffsetX,
                     "--desktop-icon-offset-y": segment.desktopIconOffsetY,
                     "--edge-title-offset": segment.edgeTitleOffset,
