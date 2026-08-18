@@ -14,6 +14,7 @@ type SegmentConfig = {
   clipPath: string;
   mobileLabelPosition: CSSProperties;
   desktopTitlePosition: CSSProperties;
+  desktopTitleWidth: string;
   desktopIconOffsetX: string;
   desktopIconOffsetY: string;
   edgeTitleOffset: string;
@@ -69,6 +70,7 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
     mobileLabelPosition: { left: "69%", top: "23%" },
     desktopTitlePosition: { left: "67%", top: "21%" },
+    desktopTitleWidth: "10rem",
     desktopIconOffsetX: "-2.8rem",
     desktopIconOffsetY: "4.8rem",
     edgeTitleOffset: "9.3rem",
@@ -84,8 +86,9 @@ const segments: SegmentConfig[] = [
     path: roundedSegmentPath(-30, 30),
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
     mobileLabelPosition: { left: "75%", top: "50%" },
-    desktopTitlePosition: { left: "79%", top: "50%" },
-    desktopIconOffsetX: "-3.6rem",
+    desktopTitlePosition: { left: "86%", top: "50%" },
+    desktopTitleWidth: "9rem",
+    desktopIconOffsetX: "-6.4rem",
     desktopIconOffsetY: "0rem",
     edgeTitleOffset: "7.5rem",
     mobileTitleOffset: "3.75rem",
@@ -101,6 +104,7 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
     mobileLabelPosition: { left: "68%", top: "77%" },
     desktopTitlePosition: { left: "67%", top: "79%" },
+    desktopTitleWidth: "10rem",
     desktopIconOffsetX: "-2.8rem",
     desktopIconOffsetY: "-4.8rem",
     edgeTitleOffset: "9.6rem",
@@ -117,6 +121,7 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
     mobileLabelPosition: { left: "32%", top: "77%" },
     desktopTitlePosition: { left: "33%", top: "79%" },
+    desktopTitleWidth: "10rem",
     desktopIconOffsetX: "2.8rem",
     desktopIconOffsetY: "-4.8rem",
     edgeTitleOffset: "-9.6rem",
@@ -132,8 +137,9 @@ const segments: SegmentConfig[] = [
     path: roundedSegmentPath(150, 210),
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
     mobileLabelPosition: { left: "25%", top: "50%" },
-    desktopTitlePosition: { left: "21%", top: "50%" },
-    desktopIconOffsetX: "3.6rem",
+    desktopTitlePosition: { left: "14%", top: "50%" },
+    desktopTitleWidth: "9rem",
+    desktopIconOffsetX: "6.4rem",
     desktopIconOffsetY: "0rem",
     edgeTitleOffset: "-7.5rem",
     mobileTitleOffset: "-3.75rem",
@@ -149,6 +155,7 @@ const segments: SegmentConfig[] = [
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
     mobileLabelPosition: { left: "31%", top: "23%" },
     desktopTitlePosition: { left: "33%", top: "21%" },
+    desktopTitleWidth: "10rem",
     desktopIconOffsetX: "2.8rem",
     desktopIconOffsetY: "4.8rem",
     edgeTitleOffset: "-9.3rem",
@@ -251,6 +258,7 @@ export function CapabilityWheel({
                     "--mobile-label-top": segment.mobileLabelPosition.top,
                     "--desktop-title-left": segment.desktopTitlePosition.left,
                     "--desktop-title-top": segment.desktopTitlePosition.top,
+                    "--desktop-title-width": segment.desktopTitleWidth,
                     "--desktop-icon-offset-x": segment.desktopIconOffsetX,
                     "--desktop-icon-offset-y": segment.desktopIconOffsetY,
                     "--edge-title-offset": segment.edgeTitleOffset,

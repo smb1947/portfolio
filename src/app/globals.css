@@ -298,8 +298,8 @@ button {
     display: block;
     left: var(--desktop-title-left);
     top: var(--desktop-title-top);
-    width: 25%;
-    max-width: 10rem;
+    width: var(--desktop-title-width);
+    max-width: none;
   }
 
   .capability-wheel-title {
