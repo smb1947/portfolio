@@ -292,7 +292,8 @@ button {
   }
 
   .capability-wheel-label {
-    width: 27%;
+    width: 38%;
+    max-width: 15rem;
     flex-direction: column;
     gap: 0.25rem;
   }
@@ -309,7 +310,7 @@ button {
     background: transparent;
     box-shadow: none;
     padding: 0;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
     text-align: center;
     text-wrap: balance;
   }
