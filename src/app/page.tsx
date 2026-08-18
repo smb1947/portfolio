@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="font-serif text-3xl font-semibold leading-tight text-navy sm:text-4xl md:text-5xl">
+      <h2 className="type-h2 font-serif font-semibold text-navy">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
@@ -199,8 +199,8 @@ function ManagerNoteCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-4 md:gap-x-5">
         <QuoteIcon />
         <div className="min-w-0">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="mt-3 font-serif text-lg font-semibold leading-snug text-navy sm:text-xl md:text-2xl">
+          <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
+          <blockquote className="type-body mt-3 font-serif font-semibold text-navy">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
         </div>
@@ -215,9 +215,9 @@ function ManagerNoteCard({
           <Linkedin className="h-5 w-5" aria-hidden="true" />
         </a>
         <div className="min-w-0 self-center">
-          <p className="text-sm font-bold text-navy">{name}</p>
-          <p className="mt-1 text-sm leading-6 text-muted">{title}</p>
-          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+          <p className="type-detail font-bold text-navy">{name}</p>
+          <p className="type-detail mt-1 text-muted">{title}</p>
+          <p className="type-meta mt-2 font-bold uppercase tracking-[0.12em] text-coral">
             {context}
           </p>
         </div>
@@ -431,15 +431,27 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
-            {project.title}
-          </h4>
-          <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
+          {surface === "card" ? (
+            <h4 className="type-h4 font-serif font-semibold text-navy">
+              {project.title}
+            </h4>
+          ) : (
+            <h5 className="type-h4 font-serif font-semibold text-navy">
+              {project.title}
+            </h5>
+          )}
+          <p className="type-meta mt-2 font-bold uppercase tracking-[0.12em] text-coral">
             {formatProjectDateRange(project)}
           </p>
         </div>
       </div>
-      <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
+      <p
+        className={`project-description type-detail mt-4 text-muted ${
+          project.resources.length ? "mb-5" : ""
+        }`}
+      >
+        {project.description}
+      </p>
       <ProjectResourceActions project={project} experience={experience} section={section} />
     </section>
   );
@@ -460,7 +472,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
           className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
         >
           <ProjectLogo title={project.title} />
-          <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+          <p className="type-h4 min-w-0 font-serif font-semibold text-navy">
             {project.title}
           </p>
         </li>
@@ -624,18 +636,18 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
+        <h4 className="type-h3 font-serif font-semibold text-navy">
           {heading}
         </h4>
       </div>
       {compact && section === "experience" ? (
-        <p className="mt-1 text-sm font-bold text-muted">{formatRoleHistoryDate(experience)}</p>
+        <p className="type-meta mt-1 font-bold text-muted">{formatRoleHistoryDate(experience)}</p>
       ) : null}
-      <p className="mt-2 flex items-center gap-2 text-sm text-muted">
+      <p className="type-detail mt-2 flex items-center gap-2 text-muted">
         <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
         {experience.location}
       </p>
-      <p className="mt-4 max-w-4xl text-sm leading-7 text-muted md:text-base">{experience.summary}</p>
+      <p className="type-body mt-4 max-w-4xl text-muted">{experience.summary}</p>
     </article>
   );
 }
@@ -671,9 +683,6 @@ function ExpandedHistoryDetails({
 
         {projectItems.length ? (
           <div className="mt-7 border-t border-line pt-6">
-            <div className="mb-4">
-              <h4 className="font-serif text-lg font-semibold text-navy sm:text-xl md:text-2xl">Projects</h4>
-            </div>
             <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
               {projectItems.map(({ experience, project }) => (
                 <ProjectCard
@@ -894,10 +903,10 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="font-serif text-xl font-semibold leading-tight text-navy sm:text-2xl">
+                <h3 className="type-h3 font-serif font-semibold text-navy">
                   {entry.label}
                 </h3>
-                <p className="mt-1 text-sm font-bold text-muted">
+                <p className="type-meta mt-1 font-bold text-muted">
                   {section === "education" ? formatEducationHistoryDate(entry) : formatWorkHistoryDate(entry)}
                 </p>
               </div>
@@ -1011,7 +1020,7 @@ export default function Home() {
                 <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
                   <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-[6.5rem]">
-                    <h1 className="font-serif text-[2rem] font-semibold leading-[1.02] text-white drop-shadow-sm sm:text-4xl md:text-5xl lg:text-7xl">
+                    <h1 className="type-h1 font-serif font-semibold text-white drop-shadow-sm">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -1034,23 +1043,23 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="font-serif text-base font-semibold leading-tight text-navy sm:text-lg md:text-2xl lg:text-3xl">
+                  <p className="type-supporting font-semibold text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="hidden text-xs font-bold uppercase tracking-[0.12em] text-coral sm:block md:text-sm md:tracking-[0.14em]">
+                  <p className="type-detail hidden font-semibold text-coral sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="hidden items-center gap-2 text-sm font-bold text-navy sm:flex">
+                  <p className="type-detail hidden items-center gap-2 font-semibold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="text-xs font-bold uppercase tracking-[0.1em] text-coral">
+                <p className="type-detail font-semibold text-coral">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="flex items-center gap-2 text-sm font-bold text-navy">
+                <p className="type-detail flex items-center gap-2 font-semibold text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
@@ -1064,7 +1073,7 @@ export default function Home() {
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
-          <div className="space-y-5 text-base leading-7 text-muted md:text-lg md:leading-8">
+          <div className="type-body space-y-5 text-muted">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>
                 <HighlightedIntro text={paragraph} />
@@ -1074,10 +1083,10 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
+          <h3 className="type-h3 font-serif font-semibold text-navy">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
-          <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
+          <p className="type-body mt-3 max-w-5xl text-muted">
             {aboutProfile.featuredProductsIntro}
           </p>
           <div
@@ -1157,14 +1166,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="capabilities-print-section mt-12">
-          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
+          <h3 className="type-h3 font-serif font-semibold text-navy">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="operating-model-print-section mt-12">
-          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
+          <h3 className="type-h3 font-serif font-semibold text-navy">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1172,14 +1181,14 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
+          <h3 className="type-h3 font-serif font-semibold text-navy">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm font-bold text-navy/80"
+                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-semibold text-navy/80"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}
@@ -1211,7 +1220,7 @@ export default function Home() {
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
-        <p className="mt-6 max-w-5xl text-base leading-7 text-muted md:text-lg md:leading-8">
+        <p className="type-body mt-6 max-w-5xl text-muted">
           {contactIntroText}{" "}
           <span
             className="coffee-cue inline-block text-3xl leading-none align-[-0.16em] md:text-4xl"

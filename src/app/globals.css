@@ -104,6 +104,100 @@ body {
   transition: background-color 180ms ease, color 180ms ease;
 }
 
+/*
+ * Portfolio type scale
+ * Keep these tokens aligned with resources/type-scale.md.
+ */
+.type-h1 {
+  font-size: 2rem;
+  line-height: 2.125rem;
+}
+
+.type-h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.type-h3 {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+}
+
+.type-h4 {
+  font-size: 1.0625rem;
+  line-height: 1.4375rem;
+}
+
+.type-body {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.type-supporting {
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
+.type-detail {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.type-meta {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.project-description {
+  line-height: 1.375rem;
+}
+
+@media (min-width: 768px) {
+  .type-h1 {
+    font-size: 3rem;
+    line-height: 3.125rem;
+  }
+
+  .type-h2 {
+    font-size: 2.25rem;
+    line-height: 2.625rem;
+  }
+
+  .type-h3 {
+    font-size: 1.5rem;
+    line-height: 1.875rem;
+  }
+
+  .type-h4 {
+    font-size: 1.125rem;
+    line-height: 1.4375rem;
+  }
+
+  .type-body {
+    font-size: 1.0625rem;
+    line-height: 1.8125rem;
+  }
+
+  .type-supporting {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .type-detail {
+    font-size: 0.9375rem;
+    line-height: 1.3125rem;
+  }
+
+  .type-meta {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+  }
+
+  .project-description {
+    line-height: 1.5rem;
+  }
+}
+
 a,
 button {
   -webkit-tap-highlight-color: transparent;
@@ -161,6 +255,9 @@ button {
 }
 
 .capability-wheel-label {
+  left: var(--mobile-label-left);
+  top: var(--mobile-label-top);
+  transform: translate(-50%, -50%);
   width: auto;
 }
 
@@ -206,15 +303,18 @@ button {
   }
 
   .capability-wheel-label {
-    width: 27%;
-    flex-direction: column;
-    gap: 0.25rem;
+    display: block;
+    left: var(--desktop-title-left);
+    top: var(--desktop-title-top);
+    width: var(--desktop-title-width);
+    max-width: none;
   }
 
   .capability-wheel-title {
     position: static;
     display: block;
-    width: auto;
+    width: 100%;
+    min-width: 0;
     min-height: 0;
     transform: none;
     border: 0;
@@ -223,7 +323,18 @@ button {
     box-shadow: none;
     padding: 0;
     text-align: center;
-    font-size: 1rem;
+  }
+
+  .capability-wheel-label .visual-icon-medallion {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+      translate(var(--desktop-icon-offset-x), var(--desktop-icon-offset-y));
+  }
+
+  .capability-wheel-label[data-visual-spotlight="true"] .visual-icon-medallion {
+    animation: none;
   }
 
   .capability-wheel-label[data-side="right"] .capability-wheel-title,

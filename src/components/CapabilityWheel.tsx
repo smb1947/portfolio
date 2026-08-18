@@ -9,9 +9,14 @@ import { useAttentionSpotlight } from "@/hooks/useAttentionSpotlight";
 
 type SegmentConfig = {
   title: string;
+  titleLines: string[];
   path: string;
   clipPath: string;
-  labelPosition: CSSProperties;
+  mobileLabelPosition: CSSProperties;
+  desktopTitlePosition: CSSProperties;
+  desktopTitleWidth: string;
+  desktopIconOffsetX: string;
+  desktopIconOffsetY: string;
   edgeTitleOffset: string;
   mobileTitleOffset: string;
   mobileTitleYOffset: string;
@@ -60,9 +65,14 @@ const roundedSegmentPath = (startAngle: number, endAngle: number) => {
 const segments: SegmentConfig[] = [
   {
     title: "AI-First Product Building",
+    titleLines: ["AI-First", "Product", "Building"],
     path: roundedSegmentPath(-90, -30),
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
-    labelPosition: { left: "69%", top: "23%" },
+    mobileLabelPosition: { left: "69%", top: "23%" },
+    desktopTitlePosition: { left: "67%", top: "21%" },
+    desktopTitleWidth: "10rem",
+    desktopIconOffsetX: "-2.8rem",
+    desktopIconOffsetY: "4.8rem",
     edgeTitleOffset: "9.3rem",
     mobileTitleOffset: "4.65rem",
     mobileTitleYOffset: "-1.5rem",
@@ -72,9 +82,14 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Strategic Business Acumen",
+    titleLines: ["Strategic", "Business", "Acumen"],
     path: roundedSegmentPath(-30, 30),
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
-    labelPosition: { left: "75%", top: "50%" },
+    mobileLabelPosition: { left: "75%", top: "50%" },
+    desktopTitlePosition: { left: "86%", top: "50%" },
+    desktopTitleWidth: "9rem",
+    desktopIconOffsetX: "-6.4rem",
+    desktopIconOffsetY: "0rem",
     edgeTitleOffset: "7.5rem",
     mobileTitleOffset: "3.75rem",
     mobileTitleYOffset: "0rem",
@@ -84,9 +99,14 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Technical Depth",
+    titleLines: ["Technical", "Depth"],
     path: roundedSegmentPath(30, 90),
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
-    labelPosition: { left: "68%", top: "77%" },
+    mobileLabelPosition: { left: "68%", top: "77%" },
+    desktopTitlePosition: { left: "67%", top: "79%" },
+    desktopTitleWidth: "10rem",
+    desktopIconOffsetX: "-2.8rem",
+    desktopIconOffsetY: "-4.8rem",
     edgeTitleOffset: "9.6rem",
     mobileTitleOffset: "4.8rem",
     mobileTitleYOffset: "1.5rem",
@@ -96,9 +116,14 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Cross-Functional Collaboration",
+    titleLines: ["Cross-Functional", "Collaboration"],
     path: roundedSegmentPath(90, 150),
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
-    labelPosition: { left: "32%", top: "77%" },
+    mobileLabelPosition: { left: "32%", top: "77%" },
+    desktopTitlePosition: { left: "33%", top: "79%" },
+    desktopTitleWidth: "10rem",
+    desktopIconOffsetX: "2.8rem",
+    desktopIconOffsetY: "-4.8rem",
     edgeTitleOffset: "-9.6rem",
     mobileTitleOffset: "-4.8rem",
     mobileTitleYOffset: "1.5rem",
@@ -108,9 +133,14 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Data-Driven Product Judgment",
+    titleLines: ["Data-Driven", "Product", "Judgment"],
     path: roundedSegmentPath(150, 210),
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
-    labelPosition: { left: "25%", top: "50%" },
+    mobileLabelPosition: { left: "25%", top: "50%" },
+    desktopTitlePosition: { left: "14%", top: "50%" },
+    desktopTitleWidth: "9rem",
+    desktopIconOffsetX: "6.4rem",
+    desktopIconOffsetY: "0rem",
     edgeTitleOffset: "-7.5rem",
     mobileTitleOffset: "-3.75rem",
     mobileTitleYOffset: "0rem",
@@ -120,9 +150,14 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Customer & Behavioral Psychology",
+    titleLines: ["Customer &", "Behavioral", "Psychology"],
     path: roundedSegmentPath(210, 270),
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
-    labelPosition: { left: "31%", top: "23%" },
+    mobileLabelPosition: { left: "31%", top: "23%" },
+    desktopTitlePosition: { left: "33%", top: "21%" },
+    desktopTitleWidth: "10rem",
+    desktopIconOffsetX: "2.8rem",
+    desktopIconOffsetY: "4.8rem",
     edgeTitleOffset: "-9.3rem",
     mobileTitleOffset: "-4.65rem",
     mobileTitleYOffset: "-1.5rem",
@@ -214,12 +249,18 @@ export function CapabilityWheel({
                 data-spotlight-title={item.title}
                 data-active={isActive ? "true" : undefined}
                 data-side={segment.side}
-                className={`capability-wheel-label pointer-events-none absolute z-20 flex -translate-x-1/2 -translate-y-1/2 items-center text-center transition-all duration-200 ${
+                className={`capability-wheel-label pointer-events-none absolute z-20 flex items-center text-center transition-all duration-200 ${
                   isActive ? "text-white" : "text-navy"
                 }`}
                 style={
                   {
-                    ...segment.labelPosition,
+                    "--mobile-label-left": segment.mobileLabelPosition.left,
+                    "--mobile-label-top": segment.mobileLabelPosition.top,
+                    "--desktop-title-left": segment.desktopTitlePosition.left,
+                    "--desktop-title-top": segment.desktopTitlePosition.top,
+                    "--desktop-title-width": segment.desktopTitleWidth,
+                    "--desktop-icon-offset-x": segment.desktopIconOffsetX,
+                    "--desktop-icon-offset-y": segment.desktopIconOffsetY,
                     "--edge-title-offset": segment.edgeTitleOffset,
                     "--mobile-title-offset": segment.mobileTitleOffset,
                     "--mobile-title-y-offset": segment.mobileTitleYOffset
@@ -236,8 +277,12 @@ export function CapabilityWheel({
                 >
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
-                <span className="capability-wheel-title font-serif font-semibold leading-tight">
-                  {item.title}
+                <span className="capability-wheel-title type-h4 font-serif font-semibold">
+                  {segment.titleLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </span>
               </span>
             </div>
@@ -272,10 +317,10 @@ export function CapabilityWheel({
                   }`}
                   aria-hidden={!isActive}
                 >
-                  <h3 className="mb-1 font-serif text-lg font-semibold leading-tight text-navy xl:hidden">
+                  <h3 className="type-h4 mb-1 font-serif font-semibold text-navy xl:hidden">
                     {item.title}
                   </h3>
-                  <p className="font-serif text-base leading-7 text-muted md:text-lg">{item.description}</p>
+                  <p className="type-body font-serif text-muted">{item.description}</p>
                 </div>
               );
             })}
