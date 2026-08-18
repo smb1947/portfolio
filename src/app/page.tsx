@@ -436,7 +436,7 @@ function ProjectCard({
               {project.title}
             </h4>
           ) : (
-            <h5 className="type-h5 font-serif font-semibold text-navy">
+            <h5 className="type-h4 font-serif font-semibold text-navy">
               {project.title}
             </h5>
           )}
@@ -630,7 +630,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="type-h4 font-serif font-semibold text-navy">
+        <h4 className="type-h3 font-serif font-semibold text-navy">
           {heading}
         </h4>
       </div>
