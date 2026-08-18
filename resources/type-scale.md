@@ -60,7 +60,7 @@ PORTFOLIO
 │       └── M: AWS internship context
 │
 ├── H3: What I Geek Out On
-│   └── B: Behavioral psychology · Hiking · Gym · Poker · Anime
+│   └── H4: Behavioral psychology · Hiking · Gym · Poker · Anime
 │
 ├── H2: Where I’ve Worked
 │   └── WORK EXPERIENCE
