@@ -22,7 +22,7 @@ The scale has two responsive states:
 
 Each size is written as `font size / line height`.
 
-The three hero-supporting lines use one complete treatment: the `S` scale, Inter sans-serif, semibold weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
+The hero role uses the `S` scale. The credentials and location use the `D` scale. All three use Inter sans-serif, semibold weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
 ## Information Flow
 
@@ -32,8 +32,8 @@ PORTFOLIO
 ├── HERO
 │   ├── H1: Shankar Binjawadgi
 │   ├── S: AI-First Technical Product Builder
-│   ├── S: AWS · Microsoft Azure · Foster
-│   └── S: Seattle, WA
+│   ├── D: AWS · Microsoft Azure · Foster
+│   └── D: Seattle, WA
 │
 ├── H2: Who I Am
 │   ├── B: Intro copy

@@ -1040,20 +1040,20 @@ export default function Home() {
                   <p className="type-supporting font-semibold text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="type-supporting hidden font-semibold text-coral sm:block">
+                  <p className="type-detail hidden font-semibold text-coral sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="type-supporting hidden items-center gap-2 font-semibold text-navy sm:flex">
+                  <p className="type-detail hidden items-center gap-2 font-semibold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="type-supporting font-semibold text-coral">
+                <p className="type-detail font-semibold text-coral">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="type-supporting flex items-center gap-2 font-semibold text-navy">
+                <p className="type-detail flex items-center gap-2 font-semibold text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
