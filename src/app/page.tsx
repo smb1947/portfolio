@@ -1179,7 +1179,7 @@ export default function Home() {
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="type-supporting inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-bold text-navy/80"
+                className="type-body inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-bold text-navy/80"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}
