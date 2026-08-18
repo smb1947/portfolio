@@ -37,31 +37,31 @@ PORTFOLIO
 │   └── S: Seattle, WA
 │
 ├── H2: Who I Am
-│   └── B: Intro copy
-│
-├── H3: What I’ve Been Building
-│   ├── B: A snapshot of a few products...
-│   └── PROJECT
-│       ├── H4: StreakFit AI
-│       ├── M: 2026 · ONGOING
-│       └── B: Discovered 3 student fitness pain points...
-│
-├── H3: What I Bring to the Table
-│   └── CAPABILITY
-│       ├── H4: AI-First Product Building
-│       └── B: Using AI to rethink workflows...
-│
-├── H3: What Is My Modus Operandi
-│   ├── OPERATING PRINCIPLE
-│   │   ├── H4: Agency
-│   │   └── B: Taking ownership and moving ideas forward...
-│   └── MANAGER NOTE
-│       ├── B: It was a lot of fun having...
-│       ├── D: Manager name and title
-│       └── M: AWS internship context
-│
-├── H3: What I Geek Out On
-│   └── H4: Behavioral psychology · Hiking · Gym · Poker · Anime
+│   ├── B: Intro copy
+│   │
+│   ├── H3: What I’ve Been Building
+│   │   ├── B: A snapshot of a few products...
+│   │   └── PROJECT
+│   │       ├── H4: StreakFit AI
+│   │       ├── M: 2026 · ONGOING
+│   │       └── B: Discovered 3 student fitness pain points...
+│   │
+│   ├── H3: What I Bring to the Table
+│   │   └── CAPABILITY
+│   │       ├── H4: AI-First Product Building
+│   │       └── B: Using AI to rethink workflows...
+│   │
+│   ├── H3: What Is My Modus Operandi
+│   │   ├── OPERATING PRINCIPLE
+│   │   │   ├── H4: Agency
+│   │   │   └── B: Taking ownership and moving ideas forward...
+│   │   └── MANAGER NOTE
+│   │       ├── B: It was a lot of fun having...
+│   │       ├── D: Manager name and title
+│   │       └── M: AWS internship context
+│   │
+│   └── H3: What I Geek Out On
+│       └── H4: Behavioral psychology · Hiking · Gym · Poker · Anime
 │
 ├── H2: Where I’ve Worked
 │   └── WORK EXPERIENCE
