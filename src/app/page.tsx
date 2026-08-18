@@ -431,9 +431,15 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="type-h4 font-serif font-semibold text-navy">
-            {project.title}
-          </h4>
+          {surface === "card" ? (
+            <h4 className="type-h4 font-serif font-semibold text-navy">
+              {project.title}
+            </h4>
+          ) : (
+            <h5 className="type-h5 font-serif font-semibold text-navy">
+              {project.title}
+            </h5>
+          )}
           <p className="type-meta mt-2 font-bold uppercase tracking-[0.12em] text-coral">
             {formatProjectDateRange(project)}
           </p>
@@ -671,9 +677,6 @@ function ExpandedHistoryDetails({
 
         {projectItems.length ? (
           <div className="mt-7 border-t border-line pt-6">
-            <div className="mb-4">
-              <h4 className="type-h4 font-serif font-semibold text-navy">Projects</h4>
-            </div>
             <div className="grid gap-5 lg:grid-cols-2 print:grid-cols-2">
               {projectItems.map(({ experience, project }) => (
                 <ProjectCard
@@ -894,7 +897,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="type-h4 font-serif font-semibold text-navy">
+                <h3 className="type-h3 font-serif font-semibold text-navy">
                   {entry.label}
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">

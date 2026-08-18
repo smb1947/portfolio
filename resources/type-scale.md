@@ -100,7 +100,7 @@ H1 → .type-h1
 H2 → .type-h2
 H3 → .type-h3
 H4 → .type-h4
-H5 → .type-h5 (planned; not yet implemented)
+H5 → .type-h5
 B  → .type-body
 S  → .type-supporting
 D  → .type-detail
