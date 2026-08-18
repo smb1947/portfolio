@@ -9,9 +9,12 @@ import { useAttentionSpotlight } from "@/hooks/useAttentionSpotlight";
 
 type SegmentConfig = {
   title: string;
+  titleLines: string[];
   path: string;
   clipPath: string;
   labelPosition: CSSProperties;
+  desktopIconOffsetX: string;
+  desktopIconOffsetY: string;
   edgeTitleOffset: string;
   mobileTitleOffset: string;
   mobileTitleYOffset: string;
@@ -60,9 +63,12 @@ const roundedSegmentPath = (startAngle: number, endAngle: number) => {
 const segments: SegmentConfig[] = [
   {
     title: "AI-First Product Building",
+    titleLines: ["AI-First", "Product", "Building"],
     path: roundedSegmentPath(-90, -30),
     clipPath: "polygon(50% 50%, 50% 0%, 75% 6.7%, 93.3% 25%)",
     labelPosition: { left: "69%", top: "23%" },
+    desktopIconOffsetX: "-4.4rem",
+    desktopIconOffsetY: "6rem",
     edgeTitleOffset: "9.3rem",
     mobileTitleOffset: "4.65rem",
     mobileTitleYOffset: "-1.5rem",
@@ -72,9 +78,12 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Strategic Business Acumen",
+    titleLines: ["Strategic", "Business", "Acumen"],
     path: roundedSegmentPath(-30, 30),
     clipPath: "polygon(50% 50%, 93.3% 25%, 100% 50%, 93.3% 75%)",
     labelPosition: { left: "75%", top: "50%" },
+    desktopIconOffsetX: "-5.6rem",
+    desktopIconOffsetY: "0rem",
     edgeTitleOffset: "7.5rem",
     mobileTitleOffset: "3.75rem",
     mobileTitleYOffset: "0rem",
@@ -84,9 +93,12 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Technical Depth",
+    titleLines: ["Technical", "Depth"],
     path: roundedSegmentPath(30, 90),
     clipPath: "polygon(50% 50%, 93.3% 75%, 75% 93.3%, 50% 100%)",
     labelPosition: { left: "68%", top: "77%" },
+    desktopIconOffsetX: "-4rem",
+    desktopIconOffsetY: "-5.6rem",
     edgeTitleOffset: "9.6rem",
     mobileTitleOffset: "4.8rem",
     mobileTitleYOffset: "1.5rem",
@@ -96,9 +108,12 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Cross-Functional Collaboration",
+    titleLines: ["Cross-Functional", "Collaboration"],
     path: roundedSegmentPath(90, 150),
     clipPath: "polygon(50% 50%, 50% 100%, 25% 93.3%, 6.7% 75%)",
     labelPosition: { left: "32%", top: "77%" },
+    desktopIconOffsetX: "4rem",
+    desktopIconOffsetY: "-5.6rem",
     edgeTitleOffset: "-9.6rem",
     mobileTitleOffset: "-4.8rem",
     mobileTitleYOffset: "1.5rem",
@@ -108,9 +123,12 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Data-Driven Product Judgment",
+    titleLines: ["Data-Driven", "Product", "Judgment"],
     path: roundedSegmentPath(150, 210),
     clipPath: "polygon(50% 50%, 6.7% 75%, 0% 50%, 6.7% 25%)",
     labelPosition: { left: "25%", top: "50%" },
+    desktopIconOffsetX: "5.6rem",
+    desktopIconOffsetY: "0rem",
     edgeTitleOffset: "-7.5rem",
     mobileTitleOffset: "-3.75rem",
     mobileTitleYOffset: "0rem",
@@ -120,9 +138,12 @@ const segments: SegmentConfig[] = [
   },
   {
     title: "Customer & Behavioral Psychology",
+    titleLines: ["Customer &", "Behavioral", "Psychology"],
     path: roundedSegmentPath(210, 270),
     clipPath: "polygon(50% 50%, 6.7% 25%, 25% 6.7%, 50% 0%)",
     labelPosition: { left: "31%", top: "23%" },
+    desktopIconOffsetX: "4.4rem",
+    desktopIconOffsetY: "6rem",
     edgeTitleOffset: "-9.3rem",
     mobileTitleOffset: "-4.65rem",
     mobileTitleYOffset: "-1.5rem",
@@ -220,6 +241,8 @@ export function CapabilityWheel({
                 style={
                   {
                     ...segment.labelPosition,
+                    "--desktop-icon-offset-x": segment.desktopIconOffsetX,
+                    "--desktop-icon-offset-y": segment.desktopIconOffsetY,
                     "--edge-title-offset": segment.edgeTitleOffset,
                     "--mobile-title-offset": segment.mobileTitleOffset,
                     "--mobile-title-y-offset": segment.mobileTitleYOffset
@@ -237,7 +260,11 @@ export function CapabilityWheel({
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
                 <span className="capability-wheel-title type-h4 font-serif font-semibold">
-                  {item.title}
+                  {segment.titleLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
                 </span>
               </span>
             </div>

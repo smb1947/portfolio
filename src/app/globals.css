@@ -292,10 +292,9 @@ button {
   }
 
   .capability-wheel-label {
-    width: 38%;
-    max-width: 15rem;
-    flex-direction: column;
-    gap: 0.25rem;
+    display: block;
+    width: 30%;
+    max-width: 12rem;
   }
 
   .capability-wheel-title {
@@ -310,9 +309,15 @@ button {
     background: transparent;
     box-shadow: none;
     padding: 0;
-    overflow-wrap: normal;
     text-align: center;
-    text-wrap: balance;
+  }
+
+  .capability-wheel-label .visual-icon-medallion {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%)
+      translate(var(--desktop-icon-offset-x), var(--desktop-icon-offset-y));
   }
 
   .capability-wheel-label[data-side="right"] .capability-wheel-title,
