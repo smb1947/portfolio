@@ -14,7 +14,7 @@ The scale has two responsive states:
 | `H1` | Page title | 32px / 34px | 48px / 50px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or primary entry heading | 20px / 26px | 24px / 30px | Major groups and the primary identity of work or education entries |
-| `H4` | Nested group or detail heading | 17px / 23px | 18px / 23px | Capabilities, principles, expanded roles or schools, and project groups |
+| `H4` | Nested detail heading | 17px / 23px | 18px / 23px | Capabilities, principles, expanded roles, and schools |
 | `H5` | Nested project title | 16px / 22px | 17px / 23px | Individual projects inside work or education entries |
 | `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
 | `S` | Supporting copy | 16px / 22px | 18px / 24px | Short, prominent context supporting a heading |
@@ -70,11 +70,10 @@ PORTFOLIO
 │       ├── H4: Senior Product Manager Technical, AWS FinOps
 │       ├── D: Seattle, WA
 │       ├── B: Worked on AWS FinOps cost optimization...
-│       └── H4: Projects
-│           └── PROJECT
-│               ├── H5: Project title
-│               ├── M: Project date
-│               └── B: Project description
+│       └── PROJECT
+│           ├── H5: Project title
+│           ├── M: Project date
+│           └── B: Project description
 │
 ├── H2: What I’ve Studied
 │   └── EDUCATION
@@ -83,11 +82,10 @@ PORTFOLIO
 │       ├── H4: Foster School of Business
 │       ├── D: Seattle, WA
 │       ├── B: Education summary
-│       └── H4: Projects
-│           └── PROJECT
-│               ├── H5: Project title
-│               ├── M: Project date
-│               └── B: Project description
+│       └── PROJECT
+│           ├── H5: Project title
+│           ├── M: Project date
+│           └── B: Project description
 │
 └── H2: How to Connect
     └── B: Liked my work? Let’s connect...
