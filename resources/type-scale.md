@@ -23,7 +23,7 @@ The scale has two responsive states:
 
 Each size is written as `font size / line height`.
 
-The three hero-supporting lines use the Inter sans-serif family so the role, credentials, and location share one font. Weight, capitalization, tracking, and color may still distinguish their functions.
+The three hero-supporting lines use one complete treatment: the `S` scale, Inter sans-serif, semibold weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
 ## Information Flow
 
