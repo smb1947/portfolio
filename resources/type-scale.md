@@ -14,7 +14,7 @@ The scale has two responsive states:
 | `H1` | Page title | 32px / 34px | 48px / 50px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection heading | 20px / 26px | 24px / 30px | Major groups inside a section |
-| `H4` | Named item title | 18px / 23px | 20px / 26px | Projects, capabilities, principles, organizations, roles, and degrees |
+| `H4` | Named item title | 17px / 23px | 18px / 23px | Projects, capabilities, principles, organizations, roles, and degrees |
 | `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
 | `S` | Supporting copy | 16px / 22px | 18px / 24px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
