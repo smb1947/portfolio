@@ -200,7 +200,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="mt-3 font-serif text-lg font-semibold leading-snug text-navy sm:text-xl md:text-2xl">
+          <blockquote className="mt-3 font-serif text-base font-semibold leading-7 text-navy md:text-lg md:leading-8">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
         </div>
@@ -439,7 +439,7 @@ function ProjectCard({
           </p>
         </div>
       </div>
-      <p className="mt-4 text-sm leading-7 text-muted">{project.description}</p>
+      <p className="mt-4 text-base leading-7 text-muted md:text-lg md:leading-8">{project.description}</p>
       <ProjectResourceActions project={project} experience={experience} section={section} />
     </section>
   );
@@ -635,7 +635,7 @@ function HistoryDetailSummary({
         <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
         {experience.location}
       </p>
-      <p className="mt-4 max-w-4xl text-sm leading-7 text-muted md:text-base">{experience.summary}</p>
+      <p className="mt-4 max-w-4xl text-base leading-7 text-muted md:text-lg md:leading-8">{experience.summary}</p>
     </article>
   );
 }
@@ -1077,7 +1077,7 @@ export default function Home() {
           <h3 className="font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
-          <p className="mt-3 max-w-5xl text-sm leading-7 text-muted md:text-base">
+          <p className="mt-3 max-w-5xl text-base leading-7 text-muted md:text-lg md:leading-8">
             {aboutProfile.featuredProductsIntro}
           </p>
           <div
@@ -1179,7 +1179,7 @@ export default function Home() {
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-sm font-bold text-navy/80"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 text-base font-bold text-navy/80 md:text-lg"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}
