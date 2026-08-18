@@ -1034,7 +1034,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="type-supporting font-serif font-semibold text-navy">
+                  <p className="type-supporting font-semibold text-navy">
                     {aboutProfile.title}
                   </p>
                   <p className="type-supporting hidden font-bold uppercase tracking-[0.12em] text-coral sm:block md:tracking-[0.14em]">
