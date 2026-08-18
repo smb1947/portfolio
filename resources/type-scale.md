@@ -13,8 +13,9 @@ The scale has two responsive states:
 | --- | --- | ---: | ---: | --- |
 | `H1` | Page title | 32px / 34px | 48px / 50px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
-| `H3` | Subsection heading | 20px / 26px | 24px / 30px | Major groups inside a section |
-| `H4` | Named item title | 17px / 23px | 18px / 23px | Projects, capabilities, principles, organizations, roles, and degrees |
+| `H3` | Subsection or primary entry heading | 20px / 26px | 24px / 30px | Major groups and the primary identity of work or education entries |
+| `H4` | Nested group or detail heading | 17px / 23px | 18px / 23px | Capabilities, principles, expanded roles or schools, and project groups |
+| `H5` | Nested project title | 16px / 22px | 17px / 23px | Individual projects inside work or education entries |
 | `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
 | `S` | Supporting copy | 16px / 22px | 18px / 24px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
@@ -64,27 +65,29 @@ PORTFOLIO
 │
 ├── H2: Where I’ve Worked
 │   └── WORK EXPERIENCE
-│       ├── H4: AWS
+│       ├── H3: AWS
 │       ├── M: Employment dates
 │       ├── H4: Senior Product Manager Technical, AWS FinOps
 │       ├── D: Seattle, WA
 │       ├── B: Worked on AWS FinOps cost optimization...
-│       └── PROJECT
-│           ├── H4: Project title
-│           ├── M: Project date
-│           └── B: Project description
+│       └── H4: Projects
+│           └── PROJECT
+│               ├── H5: Project title
+│               ├── M: Project date
+│               └── B: Project description
 │
 ├── H2: What I’ve Studied
 │   └── EDUCATION
-│       ├── H4: Foster School of Business
+│       ├── H3: Master of Business Administration
 │       ├── M: Graduation year
-│       ├── H4: Master of Business Administration
+│       ├── H4: Foster School of Business
 │       ├── D: Seattle, WA
 │       ├── B: Education summary
-│       └── PROJECT
-│           ├── H4: Project title
-│           ├── M: Project date
-│           └── B: Project description
+│       └── H4: Projects
+│           └── PROJECT
+│               ├── H5: Project title
+│               ├── M: Project date
+│               └── B: Project description
 │
 └── H2: How to Connect
     └── B: Liked my work? Let’s connect...
@@ -99,6 +102,7 @@ H1 → .type-h1
 H2 → .type-h2
 H3 → .type-h3
 H4 → .type-h4
+H5 → .type-h5 (planned; not yet implemented)
 B  → .type-body
 S  → .type-supporting
 D  → .type-detail
