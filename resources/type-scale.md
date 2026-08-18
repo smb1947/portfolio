@@ -43,7 +43,7 @@ PORTFOLIO
 │   │   └── PROJECT
 │   │       ├── H4: StreakFit AI
 │   │       ├── M: 2026 · ONGOING
-│   │       └── B: Discovered 3 student fitness pain points...
+│   │       └── D: Discovered 3 student fitness pain points...
 │   │
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
@@ -72,7 +72,7 @@ PORTFOLIO
 │       └── PROJECT
 │           ├── H4: Project title
 │           ├── M: Project date
-│           └── B: Project description
+│           └── D: Project description
 │
 ├── H2: What I’ve Studied
 │   └── EDUCATION
@@ -84,7 +84,7 @@ PORTFOLIO
 │       └── PROJECT
 │           ├── H4: Project title
 │           ├── M: Project date
-│           └── B: Project description
+│           └── D: Project description
 │
 └── H2: How to Connect
     └── B: Liked my work? Let’s connect...
