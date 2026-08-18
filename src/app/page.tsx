@@ -431,7 +431,7 @@ function ProjectCard({
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
-          <h4 className="font-serif text-lg font-semibold leading-tight text-navy sm:text-xl md:text-2xl">
+          <h4 className="font-serif text-lg font-semibold leading-tight text-navy">
             {project.title}
           </h4>
           <p className="mt-2 text-xs font-bold uppercase tracking-[0.12em] text-coral">
@@ -460,7 +460,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
           className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
         >
           <ProjectLogo title={project.title} />
-          <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy md:text-xl">
+          <p className="min-w-0 font-serif text-lg font-semibold leading-tight text-navy">
             {project.title}
           </p>
         </li>
