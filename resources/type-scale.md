@@ -7,6 +7,15 @@ The scale has two responsive states:
 - Mobile: below 768px
 - Desktop: 768px and above
 
+## Font Types
+
+| Font type | Primary family | CSS token | Tailwind utility | Usage |
+| --- | --- | --- | --- | --- |
+| Display serif | Playfair Display | `--font-serif` | `font-serif` | `H1` through `H4`, quotes, and other prominent display text |
+| Sans serif | Inter | `--font-sans` | `font-sans` | `B`, `S`, `D`, `M`, navigation, controls, and interface copy |
+
+The type-scale classes define font size and line height. Font-family utilities are applied separately so a component can intentionally vary its visual treatment when needed.
+
 ## Legend
 
 | Token | Meaning | Mobile | Desktop | Usage |
