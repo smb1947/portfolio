@@ -11,7 +11,7 @@ export function Timeline() {
               <Icon className="h-5 w-5" aria-hidden="true" />
             </div>
             <h3 className="mt-6 font-serif text-2xl font-semibold text-navy">{title}</h3>
-            <p className="mt-3 text-sm leading-7 text-muted">{description}</p>
+            <p className="mt-3 font-serif text-sm leading-7 text-muted">{description}</p>
           </article>
         ))}
       </div>

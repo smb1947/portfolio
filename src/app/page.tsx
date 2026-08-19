@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-serif font-semibold text-navy">
+      <h2 className="type-h2 font-section font-normal text-navy">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
@@ -200,7 +200,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-serif font-semibold text-navy">
+          <blockquote className="type-body mt-3 font-serif font-normal italic text-navy">
             &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
           </blockquote>
         </div>
@@ -1020,7 +1020,7 @@ export default function Home() {
                 <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
                   <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-[6.5rem]">
-                    <h1 className="type-h1 font-serif font-semibold text-white drop-shadow-sm">
+                    <h1 className="type-h1 font-name font-normal text-white drop-shadow-sm">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -1043,23 +1043,23 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="type-supporting font-semibold text-navy">
+                  <p className="type-supporting font-hero font-normal text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="type-detail hidden font-semibold text-coral sm:block">
+                  <p className="type-detail hidden font-hero font-normal text-coral sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="type-detail hidden items-center gap-2 font-semibold text-navy sm:flex">
+                  <p className="type-detail hidden items-center gap-2 font-hero font-normal text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="type-detail font-semibold text-coral">
+                <p className="type-detail font-hero font-normal text-coral">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="type-detail flex items-center gap-2 font-semibold text-navy">
+                <p className="type-detail flex items-center gap-2 font-hero font-normal text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
@@ -1083,7 +1083,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-subtitle font-normal text-navy">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="type-body mt-3 max-w-5xl text-muted">
@@ -1166,14 +1166,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="capabilities-print-section mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-subtitle font-normal text-navy">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="operating-model-print-section mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-subtitle font-normal text-navy">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1181,7 +1181,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-subtitle font-normal text-navy">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">

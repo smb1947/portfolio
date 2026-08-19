@@ -23,9 +23,9 @@ export function ExplorationCard({ exploration, detailed = false }: ExplorationCa
           </h3>
           <ArrowUpRight className="mt-1 h-5 w-5 flex-none text-teal transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </div>
-        <p className="mt-3 text-sm leading-7 text-muted">{exploration.subtitle}</p>
+        <p className="mt-3 font-serif text-sm leading-7 text-muted">{exploration.subtitle}</p>
         {detailed ? (
-          <p className="mt-4 border-l-2 border-coral/60 pl-4 text-sm leading-7 text-navy/80">
+          <p className="mt-4 border-l-2 border-coral/60 pl-4 font-serif text-sm leading-7 text-navy/80">
             {exploration.problemStatement}
           </p>
         ) : null}
