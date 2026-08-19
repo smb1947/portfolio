@@ -7,14 +7,28 @@ The scale has two responsive states:
 - Mobile: below 768px
 - Desktop: 768px and above
 
-## Font Types
+## Complete Typography Map
 
-| Font type | Primary family | CSS token | Tailwind utility | Usage |
-| --- | --- | --- | --- | --- |
-| Display serif | Playfair Display | `--font-serif` | `font-serif` | `H1` through `H4`, quotes, and other prominent display text |
-| Sans serif | Inter | `--font-sans` | `font-sans` | `B`, `S`, `D`, `M`, navigation, controls, and interface copy |
+| Portfolio element | Font | Scale | Treatment |
+| --- | --- | --- | --- |
+| Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular weight and title case |
+| Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and `D` | Regular weight and normal capitalization; use size and color to preserve hierarchy |
+| Main section titles | [Oregano](https://fonts.google.com/specimen/Oregano) | `H2` | Regular weight and title case |
+| Expressive section subtitles | [Rancho](https://fonts.google.com/specimen/Rancho) | `H3` | Regular weight and title case |
+| Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Semibold weight |
+| Project, capability, principle, and interest titles | Playfair Display | `H4` | Semibold weight |
+| Body copy and project descriptions | Playfair Display | `B` and `D` | Regular weight with the defined generous line height |
+| Quotes and highlighted prose | Playfair Display | `B` | Regular italic |
+| Dates, non-hero locations, eyebrow text, and status labels | [Inter](https://fonts.google.com/specimen/Inter) | `D` and `M` | Semibold or bold; uppercase only for compact labels |
+| Navigation and footer links | Inter | Component-specific | Medium or semibold |
+| Buttons and calls to action | Inter | Component-specific | Semibold |
+| Form labels, inputs, validation, and helper text | Inter | Component-specific | Regular through semibold according to hierarchy |
+| Interactive diagram labels | Inter or Playfair Display | `D` or `H4` | Inter for small functional labels; Playfair Display for prominent titles |
+| Tooltips and accessibility instructions | Inter | `D` or `M` | Regular or medium |
 
-The type-scale classes define font size and line height. Font-family utilities are applied separately so a component can intentionally vary its visual treatment when needed.
+This map defines the intended typography system; the site implementation may not yet match it. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
+
+Keep Oregano and Rancho at `H2` or `H3` sizes and use title case so their expressive letterforms remain readable. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
 
 ## Legend
 
@@ -33,7 +47,7 @@ Each size is written as `font size / line height`.
 
 Project descriptions use the `D` font size with a relaxed line height of 22px on mobile and 24px on desktop because they are longer than typical secondary details.
 
-The hero role uses the `S` scale. The credentials and location use the `D` scale. All three use Inter sans-serif, semibold weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
+The hero role uses the `S` scale. The credentials and location use the `D` scale. All three use Oranienbaum at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
 ## Information Flow
 
