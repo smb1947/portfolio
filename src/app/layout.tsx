@@ -57,12 +57,11 @@ const themeScript = `
 (() => {
   try {
     const params = new URLSearchParams(window.location.search);
-    const normalizeTheme = (theme) => theme === "graphite" ? "dark" : theme;
+    const normalizeTheme = (theme) => theme === "graphite" || theme === "classic" ? "dark" : theme;
     const requestedTheme = normalizeTheme(params.get("theme"));
-    const pickerEnabled = params.get("themePicker") === "1" || requestedTheme === "dark" || requestedTheme === "classic";
     const storedTheme = window.localStorage.getItem("portfolio-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const allowedThemes = pickerEnabled ? ["light", "dark", "classic"] : ["light", "dark"];
+    const allowedThemes = ["light", "dark"];
     const storedThemeValue = normalizeTheme(storedTheme);
     const theme = allowedThemes.includes(requestedTheme)
       ? requestedTheme
@@ -72,9 +71,6 @@ const themeScript = `
           ? "dark"
           : "light";
     document.documentElement.dataset.theme = theme;
-    if (pickerEnabled) {
-      document.documentElement.dataset.themePicker = "true";
-    }
   } catch {
     document.documentElement.dataset.theme = "light";
   }
@@ -104,7 +100,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
-        <div className="pb-24 xl:pb-0">
+        <div className="pb-24 pt-16 xl:pb-0">
           <main>{children}</main>
           <Footer />
         </div>
