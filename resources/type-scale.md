@@ -12,16 +12,16 @@ The scale has two responsive states:
 | Portfolio element | Font | Scale | Treatment |
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular `400` with a subtle optical stroke; title case |
-| Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Semibold `600`; neutral navy text with coral and teal credential separators |
-| Footer signature | Cormorant Garamond | Component-specific | Semibold `600`; neutral navy text with coral and teal separators; 16px / 24px on mobile and 18px / 28px from 640px |
-| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Custom `500` on mobile / `450` on desktop; italic; title case |
-| Expressive subsection titles | Playfair Display | `H3` | Custom `500` on mobile / `450` on desktop; italic; title case |
-| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `500` on mobile / `450` on desktop |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `500` on mobile / `450` on desktop; subtly tightened tracking with the original layout widths |
-| Manager testimonial | Playfair Display | `B` | Custom `500` on mobile / `450` on desktop with a standalone quote icon and no added quotation marks |
+| Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Bold `700` at every breakpoint; neutral navy text with coral and teal credential separators |
+| Footer signature | Cormorant Garamond | Component-specific | Bold `700` at every breakpoint; neutral navy text with coral and teal separators; 16px / 24px on mobile and 18px / 28px from 640px |
+| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Custom `550` on mobile / `450` on desktop; italic; title case |
+| Expressive subsection titles | Playfair Display | `H3` | Custom `550` on mobile / `450` on desktop; italic; title case |
+| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `550` on mobile / `450` on desktop |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `550` on mobile / `450` on desktop; subtly tightened tracking with the original layout widths |
+| Manager testimonial | Playfair Display | `B` | Custom `550` on mobile / `450` on desktop with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Playfair Display uses `500` as the readable mobile baseline and `450` from the desktop breakpoint upward. The mobile increase offsets its smaller optical size and improves stroke contrast; the softer desktop baseline preserves the intended hierarchy for long-form reading. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
+Playfair Display uses `550` as the readable mobile baseline and `450` from the desktop breakpoint upward. The mobile increase offsets its smaller optical size and improves stroke contrast; the softer desktop baseline preserves the intended hierarchy for long-form reading. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
 ## Legend
 
@@ -42,7 +42,7 @@ Project descriptions use 15px / 24px on mobile and 16px / 26px on desktop becaus
 
 Long-form Playfair Display prose should use `-0.01em` letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
 
-The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Cormorant Garamond at semibold weight, normal capitalization, and normal letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
+The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
 
 ## Information Flow
 
@@ -51,7 +51,7 @@ PORTFOLIO
 │
 ├── HERO
 │   ├── H1: Shankar Binjawadgi
-│   ├── S: AI-First Technical Product Builder
+│   ├── S: AI-First Technical Product Builder (Cormorant Garamond 700)
 │   ├── D: AWS · Microsoft Azure · Foster
 │   └── D: Seattle, WA
 │
@@ -68,14 +68,14 @@ PORTFOLIO
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
 │   │       ├── H4: AI-First Product Building
-│   │       └── B: Using AI to rethink workflows... (Playfair Display 500 mobile / 450 desktop)
+│   │       └── B: Using AI to rethink workflows... (Playfair Display 550 mobile / 450 desktop)
 │   │
 │   ├── H3: What Is My Modus Operandi
 │   │   ├── OPERATING PRINCIPLE
 │   │   │   ├── H4: Agency
 │   │   │   └── B: Taking ownership and moving ideas forward...
 │   │   └── MANAGER NOTE
-│   │       ├── B: It was a lot of fun having... (Playfair Display 500 mobile / 450 desktop; standalone quote icon, no quotation marks)
+│   │       ├── B: It was a lot of fun having... (Playfair Display 550 mobile / 450 desktop; standalone quote icon, no quotation marks)
 │   │       ├── D: Manager name and title
 │   │       └── M: AWS internship context
 │   │

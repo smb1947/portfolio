@@ -1045,23 +1045,23 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="type-supporting font-hero font-semibold text-navy">
+                  <p className="type-supporting font-hero font-bold text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="hero-detail hidden font-hero font-semibold text-navy sm:block">
+                  <p className="hero-detail hidden font-hero font-bold text-navy sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="hero-detail hidden items-center gap-2 font-hero font-semibold text-navy sm:flex">
+                  <p className="hero-detail hidden items-center gap-2 font-hero font-bold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="hero-detail font-hero font-semibold text-navy">
+                <p className="hero-detail font-hero font-bold text-navy">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="hero-detail flex items-center gap-2 font-hero font-semibold text-navy">
+                <p className="hero-detail flex items-center gap-2 font-hero font-bold text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
