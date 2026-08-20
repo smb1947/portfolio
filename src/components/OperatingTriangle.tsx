@@ -6,6 +6,7 @@ import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import type { AboutProfileItem } from "@/lib/data";
 import { useAttentionSpotlight } from "@/hooks/useAttentionSpotlight";
+import { DisplayAmpersand } from "@/components/DisplayAmpersand";
 
 type NodeConfig = {
   title: string;
@@ -189,7 +190,7 @@ export function OperatingTriangle({
                 isActive ? "text-teal" : "text-navy"
               }`}
             >
-              {item.title}
+              <DisplayAmpersand text={item.title} />
             </span>
           </button>
         );
@@ -217,7 +218,7 @@ export function OperatingTriangle({
                 aria-hidden={!isActive}
               >
                 <h3 className="type-h4 mb-1 font-serif font-[400] text-navy max-md:font-[450] xl:hidden">
-                  {item.title}
+                  <DisplayAmpersand text={item.title} />
                 </h3>
                 <p className="type-body font-serif text-muted">{item.description}</p>
               </div>

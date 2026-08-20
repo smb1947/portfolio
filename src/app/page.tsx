@@ -43,6 +43,7 @@ import { publicAsset } from "@/lib/assets";
 import { CapabilityWheel } from "@/components/CapabilityWheel";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { DisplayAmpersand } from "@/components/DisplayAmpersand";
 import { OperatingTriangle } from "@/components/OperatingTriangle";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
@@ -435,11 +436,11 @@ function ProjectCard({
         <div className="min-w-0">
           {surface === "card" ? (
             <h4 className="type-h4 font-serif font-[400] text-navy max-md:font-[450]">
-              {project.title}
+              <DisplayAmpersand text={project.title} />
             </h4>
           ) : (
             <h5 className="type-h4 font-serif font-[400] text-navy max-md:font-[450]">
-              {project.title}
+              <DisplayAmpersand text={project.title} />
             </h5>
           )}
           <p className="type-meta mt-2 font-bold uppercase tracking-[0.12em] text-coral">
@@ -475,7 +476,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
         >
           <ProjectLogo title={project.title} />
           <p className="type-h4 min-w-0 font-serif font-[400] text-navy max-md:font-[450]">
-            {project.title}
+            <DisplayAmpersand text={project.title} />
           </p>
         </li>
       ))}
@@ -639,7 +640,7 @@ function HistoryDetailSummary({
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
         <h4 className="type-h3 font-serif font-[400] text-navy max-md:font-[450]">
-          {heading}
+          <DisplayAmpersand text={heading} />
         </h4>
       </div>
       {compact && section === "experience" ? (
@@ -906,7 +907,7 @@ function HistoryList({
               </div>
               <div className="min-w-0">
                 <h3 className="type-h3 font-serif font-[400] text-navy max-md:font-[450]">
-                  {entry.label}
+                  <DisplayAmpersand text={entry.label} />
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">
                   {section === "education" ? formatEducationHistoryDate(entry) : formatWorkHistoryDate(entry)}

@@ -23,6 +23,8 @@ The scale has two responsive states:
 
 Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0.006em` tracking and compact leading for comfortable reading. Playfair remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy; its optical-size axis adapts the design to each heading size. Avoid semibold, bold, or black Playfair beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses medium `500`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
+Use Playfair Display only for ampersands in display titles, retaining Playfair for the surrounding title text.
+
 ## Legend
 
 | Token | Meaning | Mobile | Desktop | Usage |

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alex_Brush, Cormorant_Garamond, Inter, Playfair } from "next/font/google";
+import { Alex_Brush, Cormorant_Garamond, Inter, Playfair, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -21,6 +21,13 @@ const playfair = Playfair({
   style: ["normal", "italic"],
   axes: ["opsz"],
   variable: "--font-playfair"
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+  variable: "--font-playfair-display"
 });
 
 const alexBrush = Alex_Brush({
@@ -118,7 +125,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${cormorantGaramond.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${playfairDisplay.variable} ${alexBrush.variable} ${cormorantGaramond.variable}`}
       suppressHydrationWarning
     >
       <body>
