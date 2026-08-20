@@ -40,7 +40,7 @@ Each size is written as `font size / line height`.
 
 Project descriptions use the `B` scale, matching the rest of the portfolio's paragraph copy.
 
-Long-form Times New Roman prose should use `-0.006em` letter spacing. Playfair `H3` and `H4` titles use `-0.012em` tracking to maintain compact, confident named-item labels. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
+Long-form Times New Roman prose should use `-0.006em` letter spacing. Playfair `H3` and `H4` titles use `-0.012em` tracking to maintain compact, confident named-item labels. About and featured-project introduction copy inherits its `max-w-6xl` section width, aligning with the hero cover image; experience summaries remain `max-w-4xl`.
 
 The hero role, credentials, and location use the `S` scale. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. The profile image measures 144px, 176px, 208px, and 240px across the responsive breakpoints. It is positioned with 35% overlapping the cover image and 65% extending below it; the hero layout derives its reserved height from that 65% overhang, keeping the mobile content clear of the image at every size. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
 

@@ -1073,7 +1073,7 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:pb-12 md:pt-12">
         <SectionHeading>Who I Am</SectionHeading>
 
-        <div className="mt-8 max-w-5xl space-y-5">
+        <div className="mt-8 space-y-5">
           <div className="type-body space-y-5 text-muted">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>
@@ -1087,7 +1087,7 @@ export default function Home() {
           <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
-          <p className="type-body mt-3 max-w-5xl text-muted">
+          <p className="type-body mt-3 text-muted">
             {aboutProfile.featuredProductsIntro}
           </p>
           <div
