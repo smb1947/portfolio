@@ -177,6 +177,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Smaller optical sizes need more stroke contrast for comfortable reading. */
+@media (max-width: 767px) {
+  body {
+    font-weight: 500;
+  }
+
+  .type-body,
+  .type-detail,
+  .type-meta,
+  .project-description {
+    font-weight: 500;
+  }
+}
+
 @media (min-width: 768px) {
   .type-h1 {
     font-size: 3.75rem;
