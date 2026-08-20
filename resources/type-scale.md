@@ -17,11 +17,11 @@ The scale has two responsive states:
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Regular `450` on mobile / `400` on desktop |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` and contextual detail | Regular `400` with normal tracking; body copy is sized for comfortable reading while project descriptions remain slightly more compact |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` and contextual detail | Regular `400` with subtly tightened `-0.006em` tracking; body copy is sized for comfortable reading while project descriptions remain slightly more compact |
 | Manager testimonial | Times New Roman | `B` | Regular `400` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Times New Roman is reserved for paragraph copy at regular `400`, with normal tracking and generous leading for comfortable reading. Playfair Display remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
+Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0.006em` tracking and generous leading for comfortable reading. Playfair Display remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
 ## Legend
 
@@ -40,7 +40,7 @@ Each size is written as `font size / line height`.
 
 Project descriptions use 16px / 25px on mobile and 17px / 27px on desktop because they are longer than typical secondary details.
 
-Long-form Times New Roman prose should use normal letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
+Long-form Times New Roman prose should use `-0.006em` letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
 
 The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 18px / 24px on mobile and 20px / 26px on desktop. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. The profile image measures 144px, 176px, 208px, and 240px across the responsive breakpoints. It is positioned with 35% overlapping the cover image and 65% extending below it; the hero layout derives its reserved height from that 65% overhang, keeping the mobile content clear of the image at every size. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
 
