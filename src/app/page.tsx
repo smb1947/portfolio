@@ -1057,7 +1057,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="mt-4 space-y-3 sm:hidden">
+              <div className="mt-8 space-y-3 sm:hidden">
                 <p className="hero-detail font-hero font-bold text-navy">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
