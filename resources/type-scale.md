@@ -17,7 +17,7 @@ The scale has two responsive states:
 | Main section titles | [Playfair](https://fonts.google.com/specimen/Playfair) | `H2` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Expressive subsection titles | Playfair | `H3` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair | `H3` and `H4` | Regular `450` on mobile / `400` on desktop |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` | Regular `400` with subtly tightened `-0.006em` tracking; body copy is sized for comfortable reading while project descriptions remain slightly more compact |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` | Regular `400` with subtly tightened `-0.006em` tracking and a shared, comfortable reading scale |
 | Manager testimonial | Times New Roman | `B` | Regular `400` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, manager attribution, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Non-hero locations use `M`; manager attribution uses `D`; other functional text uses the appropriate token |
 
@@ -31,7 +31,7 @@ Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or entry heading | 24px / 30px | 26px / 32px | Major groups, companies, degrees, roles, and schools |
 | `H4` | Named item title | 21px / 27px | 23px / 29px | Capabilities, principles, interests, and project titles |
-| `B` | Body copy | 18px / 29px | 19px / 30px | Descriptive prose, summaries, and project descriptions |
+| `B` | Body copy | 18px / 29px | 20px / 30px | Descriptive prose, summaries, and project descriptions |
 | `S` | Supporting copy | 20px / 26px | 28px / 32px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 16px / 22px | 15px / 21px | Manager name, title, and contextual attribution |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, non-hero locations, eyebrow labels, and compact context |
