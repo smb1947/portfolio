@@ -634,8 +634,7 @@ button {
   }
 }
 
-.history-trigger:focus-visible .history-expand-icon,
-.history-trigger[data-expanded="true"] .history-expand-icon {
+.history-trigger:focus-visible .history-expand-icon {
   border-color: var(--teal);
   background: var(--teal);
   color: #fffdf8;

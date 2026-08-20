@@ -885,7 +885,6 @@ function HistoryList({
             <button
               id={`${entryKey}-trigger`}
               type="button"
-              data-expanded={isExpanded}
               onClick={() =>
                 isExpanded ? collapseAndKeepRowInView(entryKey) : expandAndTrackEntry(entryKey, entry)
               }
