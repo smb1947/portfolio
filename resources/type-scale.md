@@ -17,11 +17,11 @@ The scale has two responsive states:
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Regular `450` on mobile / `400` on desktop |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `500` on mobile / `450` on desktop; subtly tightened tracking with the original layout widths |
-| Manager testimonial | Playfair Display | `B` | Custom `500` on mobile / `450` on desktop with a standalone quote icon and no added quotation marks |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` and contextual detail | Regular `400` with normal tracking; body copy is sized for comfortable reading while project descriptions remain slightly more compact |
+| Manager testimonial | Times New Roman | `B` | Regular `400` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Playfair Display uses `500` as the readable mobile baseline and `450` from the desktop breakpoint upward for prose. Display styles use a lighter regular `450` on mobile / `400` on desktop because their larger sizes already establish hierarchy. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
+Times New Roman is reserved for paragraph copy at regular `400`, with normal tracking and generous leading for comfortable reading. Playfair Display remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
 ## Legend
 
@@ -31,16 +31,16 @@ Playfair Display uses `500` as the readable mobile baseline and `450` from the d
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
 | `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
-| `B` | Body copy | 17px / 29px | 18px / 30px | Descriptive prose and summaries |
+| `B` | Body copy | 18px / 30px | 19px / 32px | Descriptive prose and summaries |
 | `S` | Supporting copy | 20px / 26px | 28px / 32px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context; hero detail uses 18px / 24px on mobile and 20px / 26px on desktop |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
 
-Project descriptions use 15px / 24px on mobile and 16px / 26px on desktop because they are longer than typical secondary details.
+Project descriptions use 16px / 25px on mobile and 17px / 27px on desktop because they are longer than typical secondary details.
 
-Long-form Playfair Display prose should use `-0.01em` letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
+Long-form Times New Roman prose should use normal letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
 
 The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 18px / 24px on mobile and 20px / 26px on desktop. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. The profile image measures 144px, 176px, 208px, and 240px across the responsive breakpoints. It is positioned with 35% overlapping the cover image and 65% extending below it; the hero layout derives its reserved height from that 65% overhang, keeping the mobile content clear of the image at every size. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
 
@@ -68,14 +68,14 @@ PORTFOLIO
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
 │   │       ├── H4: AI-First Product Building
-│   │       └── B: Using AI to rethink workflows... (Playfair Display 500 mobile / 450 desktop)
+│   │       └── B: Using AI to rethink workflows... (Times New Roman 400)
 │   │
 │   ├── H3: What Is My Modus Operandi
 │   │   ├── OPERATING PRINCIPLE
 │   │   │   ├── H4: Agency
-│   │   │   └── B: Taking ownership and moving ideas forward...
+│   │   │   └── B: Taking ownership and moving ideas forward... (Times New Roman 400)
 │   │   └── MANAGER NOTE
-│   │       ├── B: It was a lot of fun having... (Playfair Display 500 mobile / 450 desktop; standalone quote icon, no quotation marks)
+│   │       ├── B: It was a lot of fun having... (Times New Roman 400; standalone quote icon, no quotation marks)
 │   │       ├── D: Manager name and title
 │   │       └── M: AWS internship context
 │   │

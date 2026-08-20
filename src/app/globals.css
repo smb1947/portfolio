@@ -31,6 +31,7 @@
   --font-serif: var(--font-playfair), "Playfair Display", var(--font-sans), Georgia, "Times New Roman", serif;
   --font-name: var(--font-alex-brush), var(--font-serif), cursive;
   --font-hero: var(--font-cormorant-garamond), var(--font-serif);
+  --font-copy: "Times New Roman", Times, serif;
 }
 
 :root[data-theme="dark"] {
@@ -136,11 +137,11 @@ body {
 }
 
 .type-body {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  line-height: 1.8125rem;
-  font-weight: 450;
-  letter-spacing: -0.01em;
+  font-family: var(--font-copy);
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  font-weight: 400;
+  letter-spacing: normal;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
 }
@@ -168,25 +169,20 @@ body {
 }
 
 .project-description {
-  font-family: var(--font-serif);
-  font-size: 0.9375rem;
-  line-height: 1.5rem;
-  font-weight: 450;
-  letter-spacing: -0.01em;
+  font-family: var(--font-copy);
+  font-size: 1rem;
+  line-height: 1.5625rem;
+  font-weight: 400;
+  letter-spacing: normal;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
 }
 
-/* Smaller optical sizes need more stroke contrast for comfortable reading. */
+/* Preserve optical weight for smaller non-copy UI text on mobile. */
 @media (max-width: 767px) {
-  body {
-    font-weight: 500;
-  }
-
-  .type-body,
+  body,
   .type-detail,
-  .type-meta,
-  .project-description {
+  .type-meta {
     font-weight: 500;
   }
 }
@@ -213,8 +209,8 @@ body {
   }
 
   .type-body {
-    font-size: 1.125rem;
-    line-height: 1.875rem;
+    font-size: 1.1875rem;
+    line-height: 2rem;
   }
 
   .type-supporting {
@@ -238,8 +234,8 @@ body {
   }
 
   .project-description {
-    font-size: 1rem;
-    line-height: 1.625rem;
+    font-size: 1.0625rem;
+    line-height: 1.6875rem;
   }
 }
 
