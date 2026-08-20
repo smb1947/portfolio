@@ -15,8 +15,8 @@ The scale has two responsive states:
 | Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular weight and normal capitalization; use size and color to preserve hierarchy |
 | Main section titles | [Charm](https://fonts.google.com/specimen/Charm) | `H2` | Regular weight and title case |
 | Expressive section subtitles | Charm | `H3` | Regular weight and title case |
-| Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Semibold weight |
-| Project, capability, principle, and interest titles | Playfair Display | `H4` | Semibold weight |
+| Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Medium weight |
+| Project, capability, principle, and interest titles | Playfair Display | `H4` | Medium weight |
 | Body copy and project descriptions | Playfair Display | `B` and `D` | Regular weight with the defined generous line height |
 | Quotes and highlighted prose | Playfair Display | `B` | Regular italic |
 | Dates, non-hero locations, eyebrow text, and status labels | [Inter](https://fonts.google.com/specimen/Inter) | `D` and `M` | Semibold or bold; uppercase only for compact labels |

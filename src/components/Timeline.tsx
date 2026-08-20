@@ -10,7 +10,7 @@ export function Timeline() {
             <div className="grid h-12 w-12 place-items-center rounded-full border border-teal/20 bg-teal/10 text-teal">
               <Icon className="h-5 w-5" aria-hidden="true" />
             </div>
-            <h3 className="mt-6 font-serif text-2xl font-semibold text-navy">{title}</h3>
+            <h3 className="mt-6 font-serif text-2xl font-medium text-navy">{title}</h3>
             <p className="mt-3 font-serif text-sm leading-7 text-muted">{description}</p>
           </article>
         ))}

@@ -90,7 +90,7 @@ function HighlightedIntro({ text }: { text: string }) {
         part.startsWith("**") && part.endsWith("**") ? (
           <strong
             key={`${part}-${index}`}
-            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
+            className="rounded-sm bg-coral/15 px-0.5 font-medium text-navy"
           >
             {part.slice(2, -2)}
           </strong>
@@ -347,7 +347,7 @@ function ProjectLogo({ title }: { title: string }) {
       aria-label={`${logo.label} logo`}
       title={logo.label}
     >
-      {logo.mark ? <span className="font-serif text-2xl font-black">{logo.mark}</span> : <Icon className="h-6 w-6" aria-hidden="true" />}
+      {logo.mark ? <span className="font-serif text-2xl font-medium">{logo.mark}</span> : <Icon className="h-6 w-6" aria-hidden="true" />}
     </div>
   );
 }
@@ -432,11 +432,11 @@ function ProjectCard({
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
           {surface === "card" ? (
-            <h4 className="type-h4 font-serif font-semibold text-navy">
+            <h4 className="type-h4 font-serif font-medium text-navy">
               {project.title}
             </h4>
           ) : (
-            <h5 className="type-h4 font-serif font-semibold text-navy">
+            <h5 className="type-h4 font-serif font-medium text-navy">
               {project.title}
             </h5>
           )}
@@ -472,7 +472,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
           className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
         >
           <ProjectLogo title={project.title} />
-          <p className="type-h4 min-w-0 font-serif font-semibold text-navy">
+          <p className="type-h4 min-w-0 font-serif font-medium text-navy">
             {project.title}
           </p>
         </li>
@@ -636,7 +636,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="type-h3 font-serif font-semibold text-navy">
+        <h4 className="type-h3 font-serif font-medium text-navy">
           {heading}
         </h4>
       </div>
@@ -903,7 +903,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="type-h3 font-serif font-semibold text-navy">
+                <h3 className="type-h3 font-serif font-medium text-navy">
                   {entry.label}
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">
@@ -1188,7 +1188,7 @@ export default function Home() {
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-semibold text-navy/80"
+                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-medium text-navy/80"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}

@@ -17,7 +17,7 @@ export function PageHero({ eyebrow, title, description, tags }: PageHeroProps) {
             {eyebrow}
           </p>
         ) : null}
-        <h1 className="max-w-4xl font-serif text-5xl font-semibold leading-[1.03] text-navy md:text-7xl">
+        <h1 className="max-w-4xl font-serif text-5xl font-medium leading-[1.03] text-navy md:text-7xl">
           {title}
         </h1>
         <p className="mt-6 max-w-3xl font-serif text-lg leading-8 text-muted md:text-xl">{description}</p>
