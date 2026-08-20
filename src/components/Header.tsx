@@ -453,7 +453,7 @@ export function Header() {
                     <Icon className="relative z-10 h-5 w-5" aria-hidden="true" />
                   )}
                 </span>
-                <span className="desktop-nav-label hidden whitespace-nowrap text-left">
+                <span className="desktop-nav-label hidden whitespace-nowrap text-left font-section font-normal">
                   {link.label}
                 </span>
               </Link>

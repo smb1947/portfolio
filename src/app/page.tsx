@@ -885,10 +885,11 @@ function HistoryList({
             <button
               id={`${entryKey}-trigger`}
               type="button"
+              data-expanded={isExpanded}
               onClick={() =>
                 isExpanded ? collapseAndKeepRowInView(entryKey) : expandAndTrackEntry(entryKey, entry)
               }
-              className={`grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6 ${
+              className={`history-trigger grid w-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 text-left transition duration-200 hover:bg-background/60 focus:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-teal/20 md:px-6 ${
                 isExpanded ? "rounded-t-[1.35rem]" : "rounded-[1.35rem]"
               }`}
               aria-expanded={isExpanded}
@@ -910,7 +911,7 @@ function HistoryList({
                   {section === "education" ? formatEducationHistoryDate(entry) : formatWorkHistoryDate(entry)}
                 </p>
               </div>
-              <span className="grid h-11 w-11 place-items-center text-coral transition duration-200 [@media(hover:hover)]:hover:text-teal sm:justify-self-end">
+              <span className="history-expand-icon grid h-11 w-11 place-items-center rounded-full border border-transparent bg-transparent text-coral transition duration-200 sm:justify-self-end">
                 {isExpanded ? (
                   <ChevronUp className="h-5 w-5" aria-hidden="true" />
                 ) : (

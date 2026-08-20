@@ -634,6 +634,23 @@ button {
   }
 }
 
+.history-trigger:focus-visible .history-expand-icon,
+.history-trigger[data-expanded="true"] .history-expand-icon {
+  border-color: color-mix(in srgb, var(--coral) 55%, transparent);
+  background: color-mix(in srgb, var(--coral) 14%, transparent);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--coral) 18%, transparent);
+  transform: scale(1.05);
+}
+
+@media (hover: hover) {
+  .history-trigger:hover .history-expand-icon {
+    border-color: color-mix(in srgb, var(--coral) 55%, transparent);
+    background: color-mix(in srgb, var(--coral) 14%, transparent);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--coral) 18%, transparent);
+    transform: scale(1.05);
+  }
+}
+
 .featured-projects-expand-button {
   width: 3rem;
   transition:
