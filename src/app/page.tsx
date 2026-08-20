@@ -22,7 +22,6 @@ import {
   Music4,
   PlayCircle,
   Puzzle,
-  Quote,
   School,
   Search,
   ShieldCheck,
@@ -149,6 +148,17 @@ function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
   return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
 }
 
+function QuoteIcon() {
+  return (
+    <span
+      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-[2rem] leading-none text-coral"
+      aria-hidden="true"
+    >
+      <span className="translate-y-1">&ldquo;</span>
+    </span>
+  );
+}
+
 function HighlightedManagerQuote({ quote }: { quote: string }) {
   const highlightPattern = /(fun|ownership|bias for action)/gi;
   const exactHighlightPattern = /^(fun|ownership|bias for action)$/i;
@@ -187,15 +197,10 @@ function ManagerNoteCard({
   return (
     <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-4 md:gap-x-5">
-        <div
-          className="grid h-12 w-12 place-items-center rounded-xl border border-line bg-background text-coral shadow-sm md:h-14 md:w-14"
-          aria-hidden="true"
-        >
-          <Quote className="h-5 w-5" />
-        </div>
+        <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-normal text-navy">
+          <blockquote className="type-body mt-3 font-serif font-semibold text-navy">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
