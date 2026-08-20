@@ -1020,7 +1020,7 @@ export default function Home() {
               <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 md:px-8 lg:px-10">
                 <div className="grid grid-cols-[9rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
-                  <div className="flex h-16 min-w-0 items-center sm:h-20 md:h-24 lg:h-28">
+                  <div className="flex h-16 min-w-0 items-end pb-1 sm:h-20 md:h-24 lg:h-28">
                     <h1 className="hero-name type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
                       Shankar Binjawadgi
                     </h1>
