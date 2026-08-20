@@ -17,9 +17,9 @@ The scale has two responsive states:
 | Main section titles | [Playfair](https://fonts.google.com/specimen/Playfair) | `H2` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Expressive subsection titles | Playfair | `H3` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair | `H3` and `H4` | Regular `450` on mobile / `400` on desktop |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` and contextual detail | Regular `400` with subtly tightened `-0.006em` tracking; body copy is sized for comfortable reading while project descriptions remain slightly more compact |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Times New Roman | `B` | Regular `400` with subtly tightened `-0.006em` tracking; body copy is sized for comfortable reading while project descriptions remain slightly more compact |
 | Manager testimonial | Times New Roman | `B` | Regular `400` with a standalone quote icon and no added quotation marks |
-| Dates, non-hero locations, manager attribution, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Non-hero locations and manager attribution use `M`; other functional text uses the appropriate token |
+| Dates, non-hero locations, manager attribution, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `M` or component-specific | Non-hero locations and manager attribution use `M`; other functional text uses the appropriate token |
 
 Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0.006em` tracking and generous leading for comfortable reading. Playfair remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy; its optical-size axis adapts the design to each heading size. Avoid semibold, bold, or black Playfair beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
@@ -33,7 +33,6 @@ Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0
 | `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
 | `B` | Body copy | 18px / 30px | 19px / 32px | Descriptive prose and summaries |
 | `S` | Supporting copy | 20px / 26px | 28px / 32px | Short, prominent context supporting a heading |
-| `D` | Secondary detail | 14px / 20px | 15px / 21px | Project descriptions and secondary contextual detail |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, non-hero locations, manager attribution, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
@@ -63,7 +62,7 @@ PORTFOLIO
 │   │   └── PROJECT
 │   │       ├── H4: StreakFit AI
 │   │       ├── M: 2026 · ONGOING
-│   │       └── D: Discovered 3 student fitness pain points...
+│   │       └── B: Discovered 3 student fitness pain points...
 │   │
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
@@ -92,7 +91,7 @@ PORTFOLIO
 │       └── PROJECT
 │           ├── H4: Project title
 │           ├── M: Project date
-│           └── D: Project description
+│           └── B: Project description
 │
 ├── H2: What I’ve Studied
 │   └── EDUCATION
@@ -104,7 +103,7 @@ PORTFOLIO
 │       └── PROJECT
 │           ├── H4: Project title
 │           ├── M: Project date
-│           └── D: Project description
+│           └── B: Project description
 │
 └── H2: How to Connect
     └── B: Liked my work? Let’s connect...
@@ -121,7 +120,6 @@ H3 → .type-h3
 H4 → .type-h4
 B  → .type-body
 S  → .type-supporting
-D  → .type-detail
 M  → .type-meta
 Hero detail → .hero-detail
 ```
