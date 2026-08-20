@@ -29,11 +29,11 @@ Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0
 | --- | --- | ---: | ---: | --- |
 | `H1` | Page title | 34px / 38px | 60px / 64px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
-| `H3` | Subsection or entry heading | 22px / 28px | 26px / 32px | Major groups, companies, degrees, roles, and schools |
-| `H4` | Named item title | 19px / 25px | 21px / 27px | Capabilities, principles, interests, and project titles |
+| `H3` | Subsection or entry heading | 24px / 30px | 26px / 32px | Major groups, companies, degrees, roles, and schools |
+| `H4` | Named item title | 21px / 27px | 23px / 29px | Capabilities, principles, interests, and project titles |
 | `B` | Body copy | 18px / 29px | 19px / 30px | Descriptive prose, summaries, and project descriptions |
 | `S` | Supporting copy | 20px / 26px | 28px / 32px | Short, prominent context supporting a heading |
-| `D` | Secondary detail | 14px / 20px | 15px / 21px | Manager name, title, and contextual attribution |
+| `D` | Secondary detail | 16px / 22px | 15px / 21px | Manager name, title, and contextual attribution |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, non-hero locations, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
