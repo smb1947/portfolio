@@ -13,7 +13,7 @@ The scale has two responsive states:
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular `400` with a subtle optical stroke; title case |
 | Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Bold `700` at every breakpoint; neutral navy text with coral and teal credential separators |
-| Footer signature | Cormorant Garamond | Component-specific | Bold `700` at every breakpoint; neutral navy text with coral and teal separators; 16px / 24px on mobile and 18px / 28px from 640px |
+| Footer signature | Cormorant Garamond | Component-specific | Bold `700` at every breakpoint; neutral navy text with coral and teal separators; 18px / 24px on mobile and 20px / 26px from 640px |
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `450` on mobile / `400` on desktop; italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Regular `450` on mobile / `400` on desktop |
