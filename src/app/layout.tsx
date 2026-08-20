@@ -4,8 +4,7 @@ import {
   Inter,
   Oregano,
   Oranienbaum,
-  Playfair_Display,
-  Rancho
+  Playfair_Display
 } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
@@ -48,13 +47,6 @@ const oregano = Oregano({
   weight: "400",
   display: "swap",
   variable: "--font-oregano"
-});
-
-const rancho = Rancho({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-rancho"
 });
 
 export const metadata: Metadata = {
@@ -138,7 +130,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable} ${oregano.variable} ${rancho.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable} ${oregano.variable}`}
       suppressHydrationWarning
     >
       <body>

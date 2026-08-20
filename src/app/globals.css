@@ -32,7 +32,7 @@
   --font-name: var(--font-alex-brush), var(--font-serif), cursive;
   --font-hero: var(--font-oranienbaum), var(--font-serif);
   --font-section: var(--font-oregano), var(--font-serif), cursive;
-  --font-subtitle: var(--font-rancho), var(--font-serif), cursive;
+  --font-subtitle: var(--font-oregano), var(--font-serif), cursive;
 }
 
 :root[data-theme="dark"] {
