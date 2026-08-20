@@ -25,6 +25,7 @@ const playfair = Playfair({
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
+  axes: ["opsz", "wdth"],
   variable: "--font-playfair"
 });
 
