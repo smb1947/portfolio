@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alex_Brush, Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
+import { Alex_Brush, Cormorant_Garamond, Inter, Playfair } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -15,10 +15,11 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
-const playfair = Playfair_Display({
+const playfair = Playfair({
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--font-playfair"
 });
 
