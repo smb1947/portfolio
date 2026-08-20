@@ -21,7 +21,7 @@ The scale has two responsive states:
 | Manager testimonial | Playfair Display | `B` | Custom `450` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Playfair Display uses `450` as the readable baseline for headings and prose. This preserves the softer hierarchy while adding enough stroke contrast for long-form reading. Avoid medium, semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
+Playfair Display uses `450` as the readable baseline for headings and prose. This preserves the softer hierarchy while adding enough stroke contrast for long-form reading. Avoid medium, semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
 ## Legend
 

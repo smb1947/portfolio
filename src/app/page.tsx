@@ -90,7 +90,7 @@ function HighlightedIntro({ text }: { text: string }) {
         part.startsWith("**") && part.endsWith("**") ? (
           <strong
             key={`${part}-${index}`}
-            className="rounded-sm bg-coral/15 px-0.5 font-medium text-navy"
+            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
           >
             {part.slice(2, -2)}
           </strong>
