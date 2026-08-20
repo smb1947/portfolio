@@ -17,7 +17,7 @@ The scale has two responsive states:
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Medium `500` italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `400` italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Medium `500` |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400`; subtly tightened tracking and a controlled reading measure |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400`; subtly tightened tracking with the original layout widths |
 | Manager testimonial | Playfair Display | `B` | Regular `400` italic without quotation marks or a quote icon |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
@@ -40,7 +40,7 @@ Each size is written as `font size / line height`.
 
 Project descriptions use 15px / 24px on mobile and 16px / 26px on desktop because they are longer than typical secondary details.
 
-Long-form Playfair Display prose should use `-0.01em` letter spacing and a maximum measure of approximately `72ch`. The slightly larger size compensates for Playfair Display's lower x-height, while the tighter tracking and shorter line length keep letters grouped into recognizable words and reduce horizontal scanning effort.
+Long-form Playfair Display prose should use `-0.01em` letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
 
 The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Cormorant Garamond at medium weight, normal capitalization, and normal letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment.
 
@@ -124,5 +124,4 @@ S  → .type-supporting
 D  → .type-detail
 M  → .type-meta
 Hero detail → .hero-detail
-Long-form measure → .reading-copy
 ```
