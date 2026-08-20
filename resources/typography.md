@@ -21,7 +21,7 @@ The scale has two responsive states:
 | Quotes and highlighted prose | Playfair Display | `B` | Regular italic |
 | Dates, non-hero locations, eyebrow text, and status labels | [Inter](https://fonts.google.com/specimen/Inter) | `D` and `M` | Semibold or bold; uppercase only for compact labels |
 | Navigation links | Inter | Component-specific | Medium or semibold |
-| Footer signature | Oranienbaum | Component-specific | Regular weight |
+| Footer signature | Oranienbaum | Component-specific | Regular weight; 16px / 24px on mobile and 18px / 28px from 640px |
 | Buttons and calls to action | Inter | Component-specific | Semibold |
 | Form labels, inputs, validation, and helper text | Inter | Component-specific | Regular through semibold according to hierarchy |
 | Interactive diagram labels | Inter or Playfair Display | `D` or `H4` | Inter for small functional labels; Playfair Display for prominent titles |
