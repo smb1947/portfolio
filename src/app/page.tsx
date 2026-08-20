@@ -635,7 +635,7 @@ function HistoryDetailSummary({
         <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
         {experience.location}
       </p>
-      <p className="type-body mt-4 max-w-4xl text-muted">{experience.summary}</p>
+      <p className="reading-copy type-body mt-4 text-muted">{experience.summary}</p>
     </article>
   );
 }
@@ -1060,7 +1060,7 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>Who I Am</SectionHeading>
 
-        <div className="mt-8 max-w-5xl space-y-5">
+        <div className="reading-copy mt-8 space-y-5">
           <div className="type-body space-y-5 text-muted">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>
@@ -1074,7 +1074,7 @@ export default function Home() {
           <h3 className="type-h3 font-serif font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
-          <p className="type-body mt-3 max-w-5xl text-muted">
+          <p className="reading-copy type-body mt-3 text-muted">
             {aboutProfile.featuredProductsIntro}
           </p>
           <div
@@ -1208,7 +1208,7 @@ export default function Home() {
 
       <section id="contact" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
         <SectionHeading>{aboutProfile.contactHeading}</SectionHeading>
-        <p className="type-body mt-6 max-w-5xl text-muted">
+        <p className="reading-copy type-body mt-6 text-muted">
           {contactIntroText}{" "}
           <span
             className="coffee-cue inline-block text-3xl leading-none align-[-0.16em] md:text-4xl"

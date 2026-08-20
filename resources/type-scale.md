@@ -17,7 +17,7 @@ The scale has two responsive states:
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Medium `500`; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `400` italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Medium `500` |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400` with the defined generous line height |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400`; subtly tightened tracking and a controlled reading measure |
 | Manager testimonial | Playfair Display | `B` | Regular `400` italic without quotation marks or a quote icon |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
@@ -31,14 +31,16 @@ Playfair Display should use weight sparingly: `500` establishes headings, while 
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
 | `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
-| `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
+| `B` | Body copy | 17px / 29px | 18px / 30px | Descriptive prose and summaries |
 | `S` | Supporting copy | 18px / 24px | 24px / 30px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
 
-Project descriptions use the `D` font size with a relaxed line height of 22px on mobile and 24px on desktop because they are longer than typical secondary details.
+Project descriptions use 15px / 24px on mobile and 16px / 26px on desktop because they are longer than typical secondary details.
+
+Long-form Playfair Display prose should use `-0.01em` letter spacing and a maximum measure of approximately `72ch`. The slightly larger size compensates for Playfair Display's lower x-height, while the tighter tracking and shorter line length keep letters grouped into recognizable words and reduce horizontal scanning effort.
 
 The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Oranienbaum at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
@@ -122,4 +124,5 @@ S  → .type-supporting
 D  → .type-detail
 M  → .type-meta
 Hero detail → .hero-detail
+Long-form measure → .reading-copy
 ```

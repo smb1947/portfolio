@@ -132,8 +132,11 @@ body {
 
 .type-body {
   font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 1.8125rem;
+  letter-spacing: -0.01em;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
 
 .type-supporting {
@@ -158,7 +161,15 @@ body {
 
 .project-description {
   font-family: var(--font-serif);
-  line-height: 1.375rem;
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.01em;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+
+.reading-copy {
+  max-width: 72ch;
 }
 
 @media (min-width: 768px) {
@@ -183,8 +194,8 @@ body {
   }
 
   .type-body {
-    font-size: 1.0625rem;
-    line-height: 1.8125rem;
+    font-size: 1.125rem;
+    line-height: 1.875rem;
   }
 
   .type-supporting {
@@ -208,7 +219,8 @@ body {
   }
 
   .project-description {
-    line-height: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 
