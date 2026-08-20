@@ -217,7 +217,7 @@ function ManagerNoteCard({
         <div className="min-w-0 self-center">
           <p className="type-detail font-extrabold text-navy">{name}</p>
           <p className="type-detail mt-1 text-muted">{title}</p>
-          <p className="type-meta mt-2 font-extrabold uppercase tracking-[0.12em] text-coral">
+          <p className="type-meta mt-2 font-extrabold text-coral">
             {context}
           </p>
         </div>
