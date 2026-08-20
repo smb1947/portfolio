@@ -347,21 +347,23 @@ function getProjectSection(experience: Experience): ProjectSection {
 }
 
 function CredentialLine({ text }: { text: string }) {
-  const highlightPattern = /(AWS|Azure|UW Foster)/g;
-  const highlightedTerms = new Set(["AWS", "Azure", "UW Foster"]);
-  const parts = text.split(highlightPattern);
+  const credentials = text.split(/\s*✦\s*/);
 
   return (
     <>
-      {parts.map((part, index) =>
-        highlightedTerms.has(part) ? (
-          <span key={`${part}-${index}`} className="text-teal">
-            {part}
-          </span>
-        ) : (
-          part
-        )
-      )}
+      {credentials.map((credential, index) => (
+        <span key={credential}>
+          {index > 0 ? (
+            <>
+              <span className="sr-only">, </span>
+              <span className={index === 1 ? "text-coral" : "text-teal"} aria-hidden="true">
+                {" ✦ "}
+              </span>
+            </>
+          ) : null}
+          {credential}
+        </span>
+      ))}
     </>
   );
 }
@@ -1034,7 +1036,7 @@ export default function Home() {
                   <p className="type-supporting font-hero font-normal text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="hero-detail hidden font-hero font-normal text-coral sm:block">
+                  <p className="hero-detail hidden font-hero font-normal text-navy sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
                   <p className="hero-detail hidden items-center gap-2 font-hero font-normal text-navy sm:flex">
@@ -1044,7 +1046,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="hero-detail font-hero font-normal text-coral">
+                <p className="hero-detail font-hero font-normal text-navy">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
                 <p className="hero-detail flex items-center gap-2 font-hero font-normal text-navy">

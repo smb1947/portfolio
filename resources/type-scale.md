@@ -12,7 +12,7 @@ The scale has two responsive states:
 | Portfolio element | Font | Scale | Treatment |
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular `400`; title case |
-| Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Regular `400`; normal capitalization and spacing |
+| Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Regular `400`; neutral navy text with coral and teal credential separators |
 | Footer signature | Cormorant Garamond | Component-specific | Regular `400`; 16px / 24px on mobile and 18px / 28px from 640px |
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Medium `500`; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `400` italic; title case |
@@ -42,7 +42,7 @@ Project descriptions use 15px / 24px on mobile and 16px / 26px on desktop becaus
 
 Long-form Playfair Display prose should use `-0.01em` letter spacing and a maximum measure of approximately `72ch`. The slightly larger size compensates for Playfair Display's lower x-height, while the tighter tracking and shorter line length keep letters grouped into recognizable words and reduce horizontal scanning effort.
 
-The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Cormorant Garamond at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
+The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Cormorant Garamond at regular weight, normal capitalization, and normal letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details.
 
 ## Information Flow
 
