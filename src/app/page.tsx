@@ -200,7 +200,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-normal text-navy">
+          <blockquote className="type-body mt-3 font-[450] text-navy">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
@@ -1085,7 +1085,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[450] italic text-navy">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="type-body mt-3 max-w-5xl text-muted">
@@ -1168,14 +1168,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="capabilities-print-section mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[450] italic text-navy">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="operating-model-print-section mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[450] italic text-navy">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1183,7 +1183,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[450] italic text-navy">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
