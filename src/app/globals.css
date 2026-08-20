@@ -141,6 +141,7 @@ body {
 
 .playfair-display-ampersand {
   font-family: var(--font-serif-display);
+  font-size: 0.86em;
 }
 
 .type-body {
