@@ -7,16 +7,32 @@ The scale has two responsive states:
 - Mobile: below 768px
 - Desktop: 768px and above
 
+## Typography Map
+
+| Portfolio element | Font | Scale | Treatment |
+| --- | --- | --- | --- |
+| Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular `400`; title case |
+| Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular `400`; normal capitalization and spacing |
+| Footer signature | Oranienbaum | Component-specific | Regular `400`; 16px / 24px on mobile and 18px / 28px from 640px |
+| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Medium `500`; title case |
+| Expressive subsection titles | Playfair Display | `H3` | Regular `400` italic; title case |
+| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Medium `500` |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400` with the defined generous line height |
+| Manager testimonial | Playfair Display | `B` | Regular `400` italic without quotation marks or a quote icon |
+| Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
+
+Playfair Display should use weight sparingly: `500` establishes headings, while prose remains at `400`. Avoid semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
+
 ## Legend
 
 | Token | Meaning | Mobile | Desktop | Usage |
 | --- | --- | ---: | ---: | --- |
-| `H1` | Page title | 32px / 34px | 48px / 50px | The portfolio owner's name |
+| `H1` | Page title | 34px / 38px | 60px / 64px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
 | `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
 | `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
-| `S` | Supporting copy | 16px / 22px | 18px / 24px | Short, prominent context supporting a heading |
+| `S` | Supporting copy | 18px / 24px | 24px / 30px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, eyebrow labels, and compact context |
 
@@ -24,7 +40,7 @@ Each size is written as `font size / line height`.
 
 Project descriptions use the `D` font size with a relaxed line height of 22px on mobile and 24px on desktop because they are longer than typical secondary details.
 
-The hero role uses the `S` scale. The credentials and location use the `D` scale. All three use Inter sans-serif, semibold weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
+The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Oranienbaum at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
 ## Information Flow
 
@@ -50,14 +66,14 @@ PORTFOLIO
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
 │   │       ├── H4: AI-First Product Building
-│   │       └── B: Using AI to rethink workflows...
+│   │       └── B: Using AI to rethink workflows... (Playfair Display regular)
 │   │
 │   ├── H3: What Is My Modus Operandi
 │   │   ├── OPERATING PRINCIPLE
 │   │   │   ├── H4: Agency
 │   │   │   └── B: Taking ownership and moving ideas forward...
 │   │   └── MANAGER NOTE
-│   │       ├── B: It was a lot of fun having...
+│   │       ├── B: It was a lot of fun having... (Playfair Display regular italic; no quotation marks)
 │   │       ├── D: Manager name and title
 │   │       └── M: AWS internship context
 │   │
@@ -105,4 +121,5 @@ B  → .type-body
 S  → .type-supporting
 D  → .type-detail
 M  → .type-meta
+Hero detail → .hero-detail
 ```

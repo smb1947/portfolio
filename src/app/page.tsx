@@ -90,7 +90,7 @@ function HighlightedIntro({ text }: { text: string }) {
         part.startsWith("**") && part.endsWith("**") ? (
           <strong
             key={`${part}-${index}`}
-            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
+            className="rounded-sm bg-coral/15 px-0.5 font-medium text-navy"
           >
             {part.slice(2, -2)}
           </strong>
@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-serif font-semibold text-navy">
+      <h2 className="type-h2 font-serif font-medium text-navy">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
@@ -148,17 +148,6 @@ function CardIconSmall({ icon: Icon }: { icon: LucideIcon }) {
   return <Icon className="h-4 w-4 flex-none text-coral" aria-hidden="true" />;
 }
 
-function QuoteIcon() {
-  return (
-    <span
-      className="grid h-12 w-12 place-items-center rounded-xl border border-coral/20 bg-coral/10 font-serif text-[2rem] leading-none text-coral"
-      aria-hidden="true"
-    >
-      <span className="translate-y-1">&ldquo;</span>
-    </span>
-  );
-}
-
 function HighlightedManagerQuote({ quote }: { quote: string }) {
   const highlightPattern = /(fun|ownership|bias for action)/gi;
   const exactHighlightPattern = /^(fun|ownership|bias for action)$/i;
@@ -197,11 +186,10 @@ function ManagerNoteCard({
   return (
     <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-4 md:gap-x-5">
-        <QuoteIcon />
-        <div className="min-w-0">
+        <div className="col-span-2 min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-serif font-semibold text-navy">
-            &ldquo;<HighlightedManagerQuote quote={quote} />&rdquo;
+          <blockquote className="type-body mt-3 font-normal italic text-navy">
+            <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
         <a
@@ -347,7 +335,7 @@ function ProjectLogo({ title }: { title: string }) {
       aria-label={`${logo.label} logo`}
       title={logo.label}
     >
-      {logo.mark ? <span className="font-serif text-2xl font-black">{logo.mark}</span> : <Icon className="h-6 w-6" aria-hidden="true" />}
+      {logo.mark ? <span className="font-serif text-2xl font-medium">{logo.mark}</span> : <Icon className="h-6 w-6" aria-hidden="true" />}
     </div>
   );
 }
@@ -432,11 +420,11 @@ function ProjectCard({
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
           {surface === "card" ? (
-            <h4 className="type-h4 font-serif font-semibold text-navy">
+            <h4 className="type-h4 font-serif font-medium text-navy">
               {project.title}
             </h4>
           ) : (
-            <h5 className="type-h4 font-serif font-semibold text-navy">
+            <h5 className="type-h4 font-serif font-medium text-navy">
               {project.title}
             </h5>
           )}
@@ -472,7 +460,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
           className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
         >
           <ProjectLogo title={project.title} />
-          <p className="type-h4 min-w-0 font-serif font-semibold text-navy">
+          <p className="type-h4 min-w-0 font-serif font-medium text-navy">
             {project.title}
           </p>
         </li>
@@ -636,7 +624,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="type-h3 font-serif font-semibold text-navy">
+        <h4 className="type-h3 font-serif font-medium text-navy">
           {heading}
         </h4>
       </div>
@@ -903,7 +891,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="type-h3 font-serif font-semibold text-navy">
+                <h3 className="type-h3 font-serif font-medium text-navy">
                   {entry.label}
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">
@@ -1017,10 +1005,10 @@ export default function Home() {
                 aria-hidden="true"
               />
               <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 md:px-8 lg:px-10">
-                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
+                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
-                  <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-[6.5rem]">
-                    <h1 className="type-h1 font-serif font-semibold text-white drop-shadow-sm">
+                  <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-28">
+                    <h1 className="type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -1029,37 +1017,37 @@ export default function Home() {
             </div>
 
             <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
-              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
-                <div className="relative h-16 sm:h-20 md:h-24 lg:h-[6.5rem]">
-                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-52 lg:w-52">
+              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
+                <div className="relative h-16 sm:h-20 md:h-24 lg:h-28">
+                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-56 lg:w-56">
                     <Image
                       src={publicAsset("/images/headshot.jpg")}
                       alt="Shankar Binjawadgi"
                       fill
                       priority
-                      sizes="(min-width: 1024px) 208px, (min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
+                      sizes="(min-width: 1024px) 224px, (min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
                       className="object-cover"
                     />
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="type-supporting font-semibold text-navy">
+                  <p className="type-supporting font-hero font-normal text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="type-detail hidden font-semibold text-coral sm:block">
+                  <p className="hero-detail hidden font-hero font-normal text-coral sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="type-detail hidden items-center gap-2 font-semibold text-navy sm:flex">
+                  <p className="hero-detail hidden items-center gap-2 font-hero font-normal text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="type-detail font-semibold text-coral">
+                <p className="hero-detail font-hero font-normal text-coral">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="type-detail flex items-center gap-2 font-semibold text-navy">
+                <p className="hero-detail flex items-center gap-2 font-hero font-normal text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
@@ -1083,7 +1071,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-serif font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="type-body mt-3 max-w-5xl text-muted">
@@ -1166,14 +1154,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="capabilities-print-section mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-serif font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="operating-model-print-section mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-serif font-normal italic text-navy">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1181,14 +1169,14 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="type-h3 font-serif font-semibold text-navy">
+          <h3 className="type-h3 font-serif font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-semibold text-navy/80"
+                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-medium text-navy/80"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}

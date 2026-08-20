@@ -31,7 +31,7 @@ export function ContactForm({ title, embedUrl, linkUrl }: ContactFormProps) {
   return (
     <article className="overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft transition duration-200 [@media(hover:hover)]:hover:-translate-y-1 [@media(hover:hover)]:hover:border-teal/30 [@media(hover:hover)]:hover:shadow-lift">
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line p-6 md:p-7">
-        <h3 className="type-h3 font-serif font-semibold text-navy">{title}</h3>
+        <h3 className="type-h3 font-serif font-medium text-navy">{title}</h3>
         {openUrl ? (
           <a
             href={openUrl}

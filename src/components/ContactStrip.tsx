@@ -9,8 +9,8 @@ export function ContactStrip() {
       <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-[1.1fr_0.9fr] md:items-center">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal">Let's connect</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold md:text-5xl">Thoughtful conversations welcome.</h2>
-          <p className="mt-4 max-w-xl text-base leading-8 text-white/70">
+          <h2 className="mt-4 font-serif text-4xl font-medium md:text-5xl">Thoughtful conversations welcome.</h2>
+          <p className="mt-4 max-w-xl font-serif text-base leading-8 text-white/70">
             Always open to thoughtful conversations, collaborations, and new ideas.
           </p>
           <div className="mt-8">
