@@ -636,17 +636,19 @@ button {
 
 .history-trigger:focus-visible .history-expand-icon,
 .history-trigger[data-expanded="true"] .history-expand-icon {
-  border-color: color-mix(in srgb, var(--coral) 55%, transparent);
-  background: color-mix(in srgb, var(--coral) 14%, transparent);
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--coral) 18%, transparent);
+  border-color: var(--teal);
+  background: var(--teal);
+  color: #fffdf8;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--teal) 24%, transparent);
   transform: scale(1.05);
 }
 
 @media (hover: hover) {
   .history-trigger:hover .history-expand-icon {
-    border-color: color-mix(in srgb, var(--coral) 55%, transparent);
-    background: color-mix(in srgb, var(--coral) 14%, transparent);
-    box-shadow: 0 6px 18px color-mix(in srgb, var(--coral) 18%, transparent);
+    border-color: var(--teal);
+    background: var(--teal);
+    color: #fffdf8;
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--teal) 24%, transparent);
     transform: scale(1.05);
   }
 }
