@@ -103,6 +103,7 @@ body {
     var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-weight: 450;
   transition: background-color 180ms ease, color 180ms ease;
 }
 
@@ -113,6 +114,10 @@ body {
 .type-h1 {
   font-size: 2.125rem;
   line-height: 2.375rem;
+}
+
+.hero-name {
+  -webkit-text-stroke: 0.18px currentColor;
 }
 
 .type-h2 {
@@ -134,38 +139,56 @@ body {
   font-family: var(--font-serif);
   font-size: 1.0625rem;
   line-height: 1.8125rem;
+  font-weight: 450;
   letter-spacing: -0.01em;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
 }
 
 .type-supporting {
-  font-size: 1.125rem;
-  line-height: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.625rem;
 }
 
 .type-detail {
   font-size: 0.875rem;
   line-height: 1.25rem;
+  font-weight: 450;
 }
 
 .type-meta {
   font-size: 0.75rem;
   line-height: 1rem;
+  font-weight: 450;
 }
 
 .hero-detail {
-  font-size: 1rem;
-  line-height: 1.375rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 
 .project-description {
   font-family: var(--font-serif);
   font-size: 0.9375rem;
   line-height: 1.5rem;
+  font-weight: 450;
   letter-spacing: -0.01em;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
+}
+
+/* Smaller optical sizes need more stroke contrast for comfortable reading. */
+@media (max-width: 767px) {
+  body {
+    font-weight: 500;
+  }
+
+  .type-body,
+  .type-detail,
+  .type-meta,
+  .project-description {
+    font-weight: 500;
+  }
 }
 
 @media (min-width: 768px) {
@@ -195,8 +218,8 @@ body {
   }
 
   .type-supporting {
-    font-size: 1.5rem;
-    line-height: 1.875rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
   }
 
   .type-detail {
@@ -210,8 +233,8 @@ body {
   }
 
   .hero-detail {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
   }
 
   .project-description {
@@ -581,7 +604,7 @@ button {
     transform: translateY(-50%) rotate(45deg);
   }
 
-  .desktop-nav-item:focus-visible .desktop-nav-label {
+  :is(.desktop-nav-item, .desktop-nav-utility):focus-visible .desktop-nav-label {
     visibility: visible;
     opacity: 1;
     transform: translate(0, -50%);
@@ -632,7 +655,7 @@ button {
 }
 
 @media (min-width: 1280px) and (hover: hover) {
-  .desktop-nav-item:hover .desktop-nav-label {
+  :is(.desktop-nav-item, .desktop-nav-utility):hover .desktop-nav-label {
     visibility: visible;
     opacity: 1;
     transform: translate(0, -50%);

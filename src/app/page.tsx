@@ -90,7 +90,7 @@ function HighlightedIntro({ text }: { text: string }) {
         part.startsWith("**") && part.endsWith("**") ? (
           <strong
             key={`${part}-${index}`}
-            className="rounded-sm bg-coral/15 px-0.5 font-medium text-navy"
+            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
           >
             {part.slice(2, -2)}
           </strong>
@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-serif font-[450] italic text-navy">
+      <h2 className="type-h2 font-serif font-[400] italic text-navy max-md:font-[450]">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
@@ -200,7 +200,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-normal text-navy">
+          <blockquote className="type-body mt-3 font-[450] text-navy max-md:font-[500]">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
@@ -215,9 +215,9 @@ function ManagerNoteCard({
           <Linkedin className="h-5 w-5" aria-hidden="true" />
         </a>
         <div className="min-w-0 self-center">
-          <p className="type-detail font-bold text-navy">{name}</p>
+          <p className="type-detail font-extrabold text-navy">{name}</p>
           <p className="type-detail mt-1 text-muted">{title}</p>
-          <p className="type-meta mt-2 font-bold uppercase tracking-[0.12em] text-coral">
+          <p className="type-meta mt-2 font-extrabold text-coral">
             {context}
           </p>
         </div>
@@ -434,11 +434,11 @@ function ProjectCard({
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
           {surface === "card" ? (
-            <h4 className="type-h4 font-serif font-[450] text-navy">
+            <h4 className="type-h4 font-serif font-[400] text-navy max-md:font-[450]">
               {project.title}
             </h4>
           ) : (
-            <h5 className="type-h4 font-serif font-[450] text-navy">
+            <h5 className="type-h4 font-serif font-[400] text-navy max-md:font-[450]">
               {project.title}
             </h5>
           )}
@@ -474,7 +474,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
           className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
         >
           <ProjectLogo title={project.title} />
-          <p className="type-h4 min-w-0 font-serif font-[450] text-navy">
+          <p className="type-h4 min-w-0 font-serif font-[400] text-navy max-md:font-[450]">
             {project.title}
           </p>
         </li>
@@ -638,7 +638,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="type-h3 font-serif font-[450] text-navy">
+        <h4 className="type-h3 font-serif font-[400] text-navy max-md:font-[450]">
           {heading}
         </h4>
       </div>
@@ -905,7 +905,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="type-h3 font-serif font-[450] text-navy">
+                <h3 className="type-h3 font-serif font-[400] text-navy max-md:font-[450]">
                   {entry.label}
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">
@@ -989,9 +989,8 @@ export default function Home() {
   return (
     <>
       <SectionRouteSync />
-      <section id="home" className="relative scroll-mt-24 overflow-hidden">
-        <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:pb-8 sm:pt-16 md:pb-6 md:pt-20">
+      <section id="home" className="relative scroll-mt-24">
+        <div className="relative mx-auto max-w-6xl px-5 pb-10 pt-14 sm:px-8 sm:pb-10 sm:pt-16 md:pb-12 md:pt-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
               <picture>
@@ -1019,10 +1018,10 @@ export default function Home() {
                 aria-hidden="true"
               />
               <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 md:px-8 lg:px-10">
-                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
+                <div className="grid grid-cols-[9rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
-                  <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-28">
-                    <h1 className="type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
+                  <div className="flex h-16 min-w-0 items-end pb-1 sm:h-20 md:h-24 lg:h-28">
+                    <h1 className="hero-name type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -1030,38 +1029,38 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
-              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
-                <div className="relative h-16 sm:h-20 md:h-24 lg:h-28">
-                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-56 lg:w-56">
+            <div className="relative px-4 [--headshot-size:9rem] sm:px-6 sm:[--headshot-size:11rem] md:px-8 md:[--headshot-size:13rem] lg:px-10 lg:[--headshot-size:15rem]">
+              <div className="grid grid-cols-[9rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-7">
+                <div className="relative h-[calc(var(--headshot-size)*0.65)]">
+                  <div className="absolute left-0 top-0 aspect-square h-[var(--headshot-size)] w-[var(--headshot-size)] -translate-y-[35%] overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift md:rounded-[2rem]">
                     <Image
                       src={publicAsset("/images/headshot.jpg")}
                       alt="Shankar Binjawadgi"
                       fill
                       priority
-                      sizes="(min-width: 1024px) 224px, (min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
+                      sizes="(min-width: 1024px) 240px, (min-width: 768px) 208px, (min-width: 640px) 176px, 144px"
                       className="object-cover"
                     />
                   </div>
                 </div>
-                <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="type-supporting font-hero font-medium text-navy">
+                <div className="min-w-0 pt-1.5 sm:flex sm:h-full sm:flex-col sm:justify-center sm:gap-2 sm:pt-0 lg:gap-3">
+                  <p className="type-supporting font-hero font-bold text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="hero-detail hidden font-hero font-medium text-navy sm:block">
+                  <p className="hero-detail hidden font-hero font-bold text-navy sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="hero-detail hidden items-center gap-2 font-hero font-medium text-navy sm:flex">
+                  <p className="hero-detail hidden items-center gap-2 font-hero font-bold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="hero-detail font-hero font-medium text-navy">
+                <p className="hero-detail font-hero font-bold text-navy">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="hero-detail flex items-center gap-2 font-hero font-medium text-navy">
+                <p className="hero-detail flex items-center gap-2 font-hero font-bold text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
@@ -1071,7 +1070,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:pb-12 md:pt-6">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:pb-12 md:pt-12">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">
@@ -1085,7 +1084,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="type-body mt-3 max-w-5xl text-muted">
@@ -1168,14 +1167,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="capabilities-print-section mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="operating-model-print-section mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1183,14 +1182,14 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="type-h3 font-serif font-normal italic text-navy">
+          <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-[450] text-navy/80"
+                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-[400] text-navy/80 max-md:font-[450]"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}
