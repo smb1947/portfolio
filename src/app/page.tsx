@@ -979,7 +979,7 @@ export default function Home() {
       <SectionRouteSync />
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:py-16 md:py-20">
+        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:pb-8 sm:pt-16 md:pb-6 md:pt-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
               <picture>
@@ -1059,7 +1059,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:pb-12 md:pt-6">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="reading-copy mt-8 space-y-5">
