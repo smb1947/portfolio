@@ -487,7 +487,7 @@ export function Header() {
           aria-label={
             isThemePickerEnabled
               ? `Choose theme, currently ${activeThemeOption.label}`
-              : `Switch to ${theme === "dark" ? "light" : "dark"} mode`
+              : `Switch to ${theme === "dark" ? "light" : "dark"}`
           }
           aria-expanded={isThemePickerEnabled ? isThemeMenuOpen : undefined}
           onClick={handleThemeButtonClick}
@@ -496,7 +496,7 @@ export function Header() {
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="desktop-nav-label hidden whitespace-nowrap text-left">
-            {isThemePickerEnabled ? "Theme" : `${theme === "dark" ? "Light" : "Dark"} mode`}
+            {isThemePickerEnabled ? "Theme" : theme === "dark" ? "Light" : "Dark"}
           </span>
         </button>
         <button
