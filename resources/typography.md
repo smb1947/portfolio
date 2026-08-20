@@ -13,14 +13,15 @@ The scale has two responsive states:
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular weight and title case |
 | Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular weight and normal capitalization; use size and color to preserve hierarchy |
-| Main section titles | [Charm](https://fonts.google.com/specimen/Charm) | `H2` | Bold weight and title case |
+| Main section titles | [Charm](https://fonts.google.com/specimen/Charm) | `H2` | Regular weight and title case |
 | Expressive section subtitles | Charm | `H3` | Regular weight and title case |
 | Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Semibold weight |
 | Project, capability, principle, and interest titles | Playfair Display | `H4` | Semibold weight |
 | Body copy and project descriptions | Playfair Display | `B` and `D` | Regular weight with the defined generous line height |
 | Quotes and highlighted prose | Playfair Display | `B` | Regular italic |
 | Dates, non-hero locations, eyebrow text, and status labels | [Inter](https://fonts.google.com/specimen/Inter) | `D` and `M` | Semibold or bold; uppercase only for compact labels |
-| Navigation and footer links | Inter | Component-specific | Medium or semibold |
+| Navigation links | Inter | Component-specific | Medium or semibold |
+| Footer signature | Oranienbaum | Component-specific | Regular weight |
 | Buttons and calls to action | Inter | Component-specific | Semibold |
 | Form labels, inputs, validation, and helper text | Inter | Component-specific | Regular through semibold according to hierarchy |
 | Interactive diagram labels | Inter or Playfair Display | `D` or `H4` | Inter for small functional labels; Playfair Display for prominent titles |
@@ -28,7 +29,7 @@ The scale has two responsive states:
 
 This map defines the intended typography system and should remain aligned with the site implementation. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
 
-Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterforms remain readable. Use its true bold weight for `H2` and regular weight for `H3`. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
+Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterforms remain readable. Both levels use regular weight, with size and spacing establishing their hierarchy. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
 
 ## Legend
 
