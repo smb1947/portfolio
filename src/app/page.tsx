@@ -43,6 +43,7 @@ import { publicAsset } from "@/lib/assets";
 import { CapabilityWheel } from "@/components/CapabilityWheel";
 import { ContactCard } from "@/components/ContactCard";
 import { ContactForm } from "@/components/ContactForm";
+import { DisplayAmpersand } from "@/components/DisplayAmpersand";
 import { OperatingTriangle } from "@/components/OperatingTriangle";
 import { ProjectActionButton } from "@/components/ProjectActionButton";
 import { ProjectResourceSpotlight } from "@/components/ProjectResourceSpotlight";
@@ -90,7 +91,7 @@ function HighlightedIntro({ text }: { text: string }) {
         part.startsWith("**") && part.endsWith("**") ? (
           <strong
             key={`${part}-${index}`}
-            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
+            className="rounded-sm bg-coral/15 px-0.5 font-medium text-navy"
           >
             {part.slice(2, -2)}
           </strong>
@@ -108,7 +109,7 @@ function SectionHeading({ children }: { children: string }) {
       <h2 className="type-h2 font-serif font-[400] italic text-navy max-md:font-[450]">
         <QuestionWordHighlight text={children} />
       </h2>
-      <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
+      <div className="mt-2 h-1.5 w-14 rounded-full bg-coral sm:mt-2.5 sm:w-16" aria-hidden="true" />
     </div>
   );
 }
@@ -200,7 +201,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-[450] text-navy max-md:font-[500]">
+          <blockquote className="type-body mt-3 text-navy">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
@@ -435,11 +436,11 @@ function ProjectCard({
         <div className="min-w-0">
           {surface === "card" ? (
             <h4 className="type-h4 font-serif font-[400] text-navy max-md:font-[450]">
-              {project.title}
+              <DisplayAmpersand text={project.title} />
             </h4>
           ) : (
             <h5 className="type-h4 font-serif font-[400] text-navy max-md:font-[450]">
-              {project.title}
+              <DisplayAmpersand text={project.title} />
             </h5>
           )}
           <p className="type-meta mt-2 font-bold uppercase tracking-[0.12em] text-coral">
@@ -475,7 +476,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
         >
           <ProjectLogo title={project.title} />
           <p className="type-h4 min-w-0 font-serif font-[400] text-navy max-md:font-[450]">
-            {project.title}
+            <DisplayAmpersand text={project.title} />
           </p>
         </li>
       ))}
@@ -639,7 +640,7 @@ function HistoryDetailSummary({
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
         <h4 className="type-h3 font-serif font-[400] text-navy max-md:font-[450]">
-          {heading}
+          <DisplayAmpersand text={heading} />
         </h4>
       </div>
       {compact && section === "experience" ? (
@@ -906,7 +907,7 @@ function HistoryList({
               </div>
               <div className="min-w-0">
                 <h3 className="type-h3 font-serif font-[400] text-navy max-md:font-[450]">
-                  {entry.label}
+                  <DisplayAmpersand text={entry.label} />
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">
                   {section === "education" ? formatEducationHistoryDate(entry) : formatWorkHistoryDate(entry)}
@@ -1073,7 +1074,7 @@ export default function Home() {
       <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:pb-12 md:pt-12">
         <SectionHeading>Who I Am</SectionHeading>
 
-        <div className="mt-8 max-w-5xl space-y-5">
+        <div className="mt-8 space-y-5">
           <div className="type-body space-y-5 text-muted">
             {aboutProfile.intro.map((paragraph) => (
               <p key={paragraph}>
@@ -1087,7 +1088,7 @@ export default function Home() {
           <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
-          <p className="type-body mt-3 max-w-5xl text-muted">
+          <p className="type-body mt-3 text-muted">
             {aboutProfile.featuredProductsIntro}
           </p>
           <div

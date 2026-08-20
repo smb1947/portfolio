@@ -6,6 +6,7 @@ import type { CSSProperties } from "react";
 import type { LucideIcon } from "lucide-react";
 import type { AboutProfileItem } from "@/lib/data";
 import { useAttentionSpotlight } from "@/hooks/useAttentionSpotlight";
+import { DisplayAmpersand } from "@/components/DisplayAmpersand";
 
 type SegmentConfig = {
   title: string;
@@ -277,10 +278,10 @@ export function CapabilityWheel({
                 >
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
-                <span className="capability-wheel-title type-h4 font-serif font-[450]">
+                <span className="capability-wheel-title type-h4 font-serif font-[400] max-md:font-[450]">
                   {segment.titleLines.map((line) => (
                     <span key={line} className="block">
-                      {line}
+                      <DisplayAmpersand text={line} />
                     </span>
                   ))}
                 </span>
@@ -317,8 +318,8 @@ export function CapabilityWheel({
                   }`}
                   aria-hidden={!isActive}
                 >
-                  <h3 className="type-h4 mb-1 font-serif font-[450] text-navy xl:hidden">
-                    {item.title}
+                  <h3 className="type-h4 mb-1 font-serif font-[400] text-navy max-md:font-[450] xl:hidden">
+                    <DisplayAmpersand text={item.title} />
                   </h3>
                   <p className="type-body font-serif text-muted">{item.description}</p>
                 </div>
