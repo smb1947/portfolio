@@ -24,7 +24,11 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["var(--font-serif)"],
-        sans: ["var(--font-sans)"]
+        sans: ["var(--font-sans)"],
+        name: ["var(--font-name)"],
+        hero: ["var(--font-hero)"],
+        section: ["var(--font-section)"],
+        subtitle: ["var(--font-subtitle)"]
       }
     }
   },

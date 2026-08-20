@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer className="bg-background">
       <div className="mx-auto max-w-6xl px-5 py-8 text-center sm:px-8">
-        <p className="text-sm font-semibold tracking-[0.04em] text-muted">
+        <p className="font-hero text-base font-normal leading-6 tracking-[0.04em] text-muted sm:text-lg sm:leading-7">
           {site.name} ✦ AI Technical Product Builder ✦ Crafted with ❤️ in 🇺🇸
         </p>
         <PrintWebsiteLink />

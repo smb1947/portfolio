@@ -277,7 +277,7 @@ export function CapabilityWheel({
                 >
                   <Icon className={`h-[48%] w-[48%] ${isActive ? "text-white" : "text-coral"}`} />
                 </span>
-                <span className="capability-wheel-title type-h4 font-serif font-semibold">
+                <span className="capability-wheel-title type-h4 font-serif font-medium">
                   {segment.titleLines.map((line) => (
                     <span key={line} className="block">
                       {line}
@@ -317,7 +317,7 @@ export function CapabilityWheel({
                   }`}
                   aria-hidden={!isActive}
                 >
-                  <h3 className="type-h4 mb-1 font-serif font-semibold text-navy xl:hidden">
+                  <h3 className="type-h4 mb-1 font-serif font-medium text-navy xl:hidden">
                     {item.title}
                   </h3>
                   <p className="type-body font-serif text-muted">{item.description}</p>

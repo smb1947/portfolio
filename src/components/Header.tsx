@@ -347,6 +347,10 @@ export function Header() {
   const activeThemeOption = themeOptions.find((option) => option.value === theme) ?? themeOptions[0];
   const ThemeIcon = isThemePickerEnabled ? activeThemeOption.Icon : theme === "dark" ? Sun : Moon;
   const ShareIcon = shareStatus === "copied" ? Check : Share2;
+  const themeButtonLabel = isThemePickerEnabled
+    ? `Choose theme, currently ${activeThemeOption.label}`
+    : `Switch to ${theme === "dark" ? "light" : "dark"} mode`;
+  const shareButtonLabel = shareStatus === "copied" ? "Portfolio link copied" : "Share portfolio";
 
   return (
     <header ref={headerRef} className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
@@ -453,7 +457,7 @@ export function Header() {
                     <Icon className="relative z-10 h-5 w-5" aria-hidden="true" />
                   )}
                 </span>
-                <span className="desktop-nav-label hidden whitespace-nowrap text-left">
+                <span className="desktop-nav-label hidden whitespace-nowrap text-left font-section font-normal">
                   {link.label}
                 </span>
               </Link>
@@ -483,32 +487,22 @@ export function Header() {
         </button>
         <button
           type="button"
-          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
-          aria-label={
-            isThemePickerEnabled
-              ? `Choose theme, currently ${activeThemeOption.label}`
-              : `Switch to ${theme === "dark" ? "light" : "dark"} mode`
-          }
+          className="desktop-nav-item group/item relative hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
+          aria-label={themeButtonLabel}
           aria-expanded={isThemePickerEnabled ? isThemeMenuOpen : undefined}
-          title={
-            isThemePickerEnabled
-              ? `Choose theme, currently ${activeThemeOption.label}`
-              : `Switch to ${theme === "dark" ? "light" : "dark"} mode`
-          }
           onClick={handleThemeButtonClick}
         >
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
-            {isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}
+          <span className="desktop-nav-label hidden whitespace-nowrap text-left font-section font-normal">
+            {themeButtonLabel}
           </span>
         </button>
         <button
           type="button"
-          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
+          className="desktop-nav-item group/item relative hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
           aria-label="Print portfolio"
-          title="Print"
           onClick={(event) => {
             printPortfolio(event.currentTarget);
             if (event.detail > 0) {
@@ -519,15 +513,14 @@ export function Header() {
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white print:!bg-background print:!text-navy">
             <Printer className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
-            Print
+          <span className="desktop-nav-label hidden whitespace-nowrap text-left font-section font-normal">
+            Print portfolio
           </span>
         </button>
         <button
           type="button"
-          className="group/item hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
-          aria-label={shareStatus === "copied" ? "Portfolio link copied" : "Share portfolio"}
-          title={shareStatus === "copied" ? "Copied" : "Share"}
+          className="desktop-nav-item group/item relative hidden min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 print:grid"
+          aria-label={shareButtonLabel}
           onClick={(event) => {
             void sharePortfolio();
             if (event.detail > 0) {
@@ -538,8 +531,8 @@ export function Header() {
           <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
             <ShareIcon className="h-5 w-5" aria-hidden="true" />
           </span>
-          <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
-            {shareStatus === "copied" ? "Copied" : "Share"}
+          <span className="desktop-nav-label hidden whitespace-nowrap text-left font-section font-normal">
+            {shareButtonLabel}
           </span>
         </button>
       </nav>
