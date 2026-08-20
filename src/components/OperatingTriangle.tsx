@@ -183,7 +183,7 @@ export function OperatingTriangle({
               />
             </span>
             <span
-              className={`operating-node-title type-h4 absolute hidden whitespace-nowrap font-serif font-semibold transition-colors duration-200 xl:block ${
+              className={`operating-node-title type-h4 absolute hidden whitespace-nowrap font-serif font-[450] transition-colors duration-200 xl:block ${
                 node.labelPosition === "above" ? "bottom-full mb-2" : "top-full mt-2"
               } ${
                 isActive ? "text-teal" : "text-navy"
@@ -216,7 +216,7 @@ export function OperatingTriangle({
                 }`}
                 aria-hidden={!isActive}
               >
-                <h3 className="type-h4 mb-1 font-serif font-semibold text-navy xl:hidden">
+                <h3 className="type-h4 mb-1 font-serif font-[450] text-navy xl:hidden">
                   {item.title}
                 </h3>
                 <p className="type-body font-serif text-muted">{item.description}</p>
