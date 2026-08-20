@@ -18,7 +18,7 @@ export function ExplorationCard({ exploration, detailed = false }: ExplorationCa
       <ProjectVisual visual={exploration.visual} title={exploration.title} />
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="font-serif text-2xl font-medium leading-tight text-navy">
+          <h3 className="font-serif text-2xl font-[450] leading-tight text-navy">
             {exploration.title}
           </h3>
           <ArrowUpRight className="mt-1 h-5 w-5 flex-none text-teal transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

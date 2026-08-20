@@ -14,14 +14,14 @@ The scale has two responsive states:
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular `400`; title case |
 | Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Medium `500`; neutral navy text with coral and teal credential separators |
 | Footer signature | Cormorant Garamond | Component-specific | Medium `500`; neutral navy text with coral and teal separators; 16px / 24px on mobile and 18px / 28px from 640px |
-| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Medium `500` italic; title case |
+| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Custom `450` italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Regular `400` italic; title case |
-| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Medium `500` |
+| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `450` |
 | Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400`; subtly tightened tracking with the original layout widths |
 | Manager testimonial | Playfair Display | `B` | Regular `400` italic without quotation marks or a quote icon |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Playfair Display should use weight sparingly: `500` establishes headings, while prose remains at `400`. Avoid semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
+Playfair Display should use weight sparingly: `450` establishes headings without making every label feel equally important, while prose remains at `400`. Avoid medium, semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
 
 ## Legend
 

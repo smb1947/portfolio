@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-serif font-medium italic text-navy">
+      <h2 className="type-h2 font-serif font-[450] italic text-navy">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
@@ -422,11 +422,11 @@ function ProjectCard({
         <ProjectLogo title={project.title} />
         <div className="min-w-0">
           {surface === "card" ? (
-            <h4 className="type-h4 font-serif font-medium text-navy">
+            <h4 className="type-h4 font-serif font-[450] text-navy">
               {project.title}
             </h4>
           ) : (
-            <h5 className="type-h4 font-serif font-medium text-navy">
+            <h5 className="type-h4 font-serif font-[450] text-navy">
               {project.title}
             </h5>
           )}
@@ -462,7 +462,7 @@ function CompactFeaturedProjectList({ projects }: { projects: FeaturedProjectIte
           className="compact-featured-project-item flex min-w-0 items-center gap-5 py-5"
         >
           <ProjectLogo title={project.title} />
-          <p className="type-h4 min-w-0 font-serif font-medium text-navy">
+          <p className="type-h4 min-w-0 font-serif font-[450] text-navy">
             {project.title}
           </p>
         </li>
@@ -626,7 +626,7 @@ function HistoryDetailSummary({
   return (
     <article className={compact ? "border-t border-line pt-5 first:border-t-0 first:pt-0" : ""}>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-        <h4 className="type-h3 font-serif font-medium text-navy">
+        <h4 className="type-h3 font-serif font-[450] text-navy">
           {heading}
         </h4>
       </div>
@@ -893,7 +893,7 @@ function HistoryList({
                 ) : null}
               </div>
               <div className="min-w-0">
-                <h3 className="type-h3 font-serif font-medium text-navy">
+                <h3 className="type-h3 font-serif font-[450] text-navy">
                   {entry.label}
                 </h3>
                 <p className="type-meta mt-1 font-bold text-muted">
@@ -1178,7 +1178,7 @@ export default function Home() {
             {aboutProfile.personalSignals.map((signal) => (
               <li
                 key={signal}
-                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-medium text-navy/80"
+                className="type-h4 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-2 font-serif font-[450] text-navy/80"
               >
                 <CardIconSmall icon={personalInterestIconMap[signal] ?? Sparkles} />
                 {signal}
