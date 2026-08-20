@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Alex_Brush, Inter, Oranienbaum, Playfair_Display } from "next/font/google";
+import { Alex_Brush, Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -29,11 +29,11 @@ const alexBrush = Alex_Brush({
   variable: "--font-alex-brush"
 });
 
-const oranienbaum = Oranienbaum({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   weight: "400",
   display: "swap",
-  variable: "--font-oranienbaum"
+  variable: "--font-cormorant-garamond"
 });
 
 export const metadata: Metadata = {
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${cormorantGaramond.variable}`}
       suppressHydrationWarning
     >
       <body>
