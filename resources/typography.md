@@ -13,15 +13,15 @@ The scale has two responsive states:
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular weight and title case |
 | Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular weight and normal capitalization; use size and color to preserve hierarchy |
-| Main section titles | [Charm](https://fonts.google.com/specimen/Charm) | `H2` | Regular weight and title case |
-| Expressive section subtitles | Charm | `H3` | Regular weight and title case |
+| Main section titles | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `H2` | Medium weight and title case |
+| Expressive section subtitles | Cormorant Garamond | `H3` | Regular italic and title case |
 | Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Medium weight |
 | Project, capability, principle, and interest titles | Playfair Display | `H4` | Medium weight |
 | Body copy and project descriptions | Playfair Display | `B` and `D` | Regular weight with the defined generous line height |
 | Quotes and highlighted prose | Playfair Display | `B` | Regular italic |
 | Dates, non-hero locations, eyebrow text, and status labels | [Inter](https://fonts.google.com/specimen/Inter) | `D` and `M` | Semibold or bold; uppercase only for compact labels |
 | Navigation links | Inter | Component-specific | Medium or semibold |
-| Desktop navigation and utility hover labels | Charm | Component-specific | Regular weight |
+| Desktop navigation and utility hover labels | Cormorant Garamond | Component-specific | Regular upright weight |
 | Footer signature | Oranienbaum | Component-specific | Regular weight; 16px / 24px on mobile and 18px / 28px from 640px |
 | Buttons and calls to action | Inter | Component-specific | Semibold |
 | Form labels, inputs, validation, and helper text | Inter | Component-specific | Regular through semibold according to hierarchy |
@@ -30,7 +30,7 @@ The scale has two responsive states:
 
 This map defines the intended typography system and should remain aligned with the site implementation. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
 
-Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterforms remain readable. Both levels use regular weight, with size and spacing establishing their hierarchy. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
+Keep Cormorant Garamond at `H2` or `H3` sizes and use title case so its high-contrast letterforms remain readable. Main section titles use medium weight, while expressive subtitles use regular italic to establish hierarchy without returning to a script style. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
 
 ## Legend
 

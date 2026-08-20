@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
   Alex_Brush,
-  Charm,
+  Cormorant_Garamond,
   Inter,
   Oranienbaum,
   Playfair_Display
@@ -42,11 +42,12 @@ const oranienbaum = Oranienbaum({
   variable: "--font-oranienbaum"
 });
 
-const charm = Charm({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-charm"
+  variable: "--font-cormorant-garamond"
 });
 
 export const metadata: Metadata = {
@@ -130,7 +131,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable} ${charm.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable} ${cormorantGaramond.variable}`}
       suppressHydrationWarning
     >
       <body>

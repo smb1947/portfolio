@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-section font-normal text-navy">
+      <h2 className="type-h2 font-section font-medium text-navy">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
@@ -1083,7 +1083,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="type-h3 font-subtitle font-normal text-navy">
+          <h3 className="type-h3 font-subtitle font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="type-body mt-3 max-w-5xl text-muted">
@@ -1166,14 +1166,14 @@ export default function Home() {
         </ProjectResourceSpotlight>
 
         <div className="capabilities-print-section mt-12">
-          <h3 className="type-h3 font-subtitle font-normal text-navy">
+          <h3 className="type-h3 font-subtitle font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.capabilitiesHeading} />
           </h3>
           <CapabilityWheel items={aboutProfile.capabilities} iconMap={capabilityIconMap} />
         </div>
 
         <div className="operating-model-print-section mt-12">
-          <h3 className="type-h3 font-subtitle font-normal text-navy">
+          <h3 className="type-h3 font-subtitle font-normal italic text-navy">
             <LeadingPhraseHighlight text={aboutProfile.operatingModelHeading} phrase="What Is" />
           </h3>
           <OperatingTriangle items={aboutProfile.operatingModel} iconMap={operatingModelIconMap} />
@@ -1181,7 +1181,7 @@ export default function Home() {
         </div>
 
         <div className="mt-12">
-          <h3 className="type-h3 font-subtitle font-normal text-navy">
+          <h3 className="type-h3 font-subtitle font-normal italic text-navy">
             <QuestionWordHighlight text={aboutProfile.personalSignalsHeading} />
           </h3>
           <ul className="mt-6 flex flex-wrap gap-3">
