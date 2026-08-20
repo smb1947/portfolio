@@ -31,8 +31,8 @@
   --font-serif: var(--font-playfair), "Playfair Display", var(--font-sans), Georgia, "Times New Roman", serif;
   --font-name: var(--font-alex-brush), var(--font-serif), cursive;
   --font-hero: var(--font-oranienbaum), var(--font-serif);
-  --font-section: var(--font-oregano), var(--font-serif), cursive;
-  --font-subtitle: var(--font-oregano), var(--font-serif), cursive;
+  --font-section: var(--font-charm), var(--font-serif), cursive;
+  --font-subtitle: var(--font-charm), var(--font-serif), cursive;
 }
 
 :root[data-theme="dark"] {

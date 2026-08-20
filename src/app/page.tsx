@@ -105,7 +105,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-section font-normal text-navy">
+      <h2 className="type-h2 font-section font-bold text-navy">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />

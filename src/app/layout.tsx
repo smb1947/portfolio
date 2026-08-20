@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import {
   Alex_Brush,
+  Charm,
   Inter,
-  Oregano,
   Oranienbaum,
   Playfair_Display
 } from "next/font/google";
@@ -42,11 +42,11 @@ const oranienbaum = Oranienbaum({
   variable: "--font-oranienbaum"
 });
 
-const oregano = Oregano({
+const charm = Charm({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700"],
   display: "swap",
-  variable: "--font-oregano"
+  variable: "--font-charm"
 });
 
 export const metadata: Metadata = {
@@ -130,7 +130,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable} ${oregano.variable}`}
+      className={`${inter.variable} ${playfair.variable} ${alexBrush.variable} ${oranienbaum.variable} ${charm.variable}`}
       suppressHydrationWarning
     >
       <body>

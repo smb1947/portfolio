@@ -13,8 +13,8 @@ The scale has two responsive states:
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular weight and title case |
 | Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular weight and normal capitalization; use size and color to preserve hierarchy |
-| Main section titles | [Oregano](https://fonts.google.com/specimen/Oregano) | `H2` | Regular weight and title case |
-| Expressive section subtitles | Oregano | `H3` | Regular weight and title case |
+| Main section titles | [Charm](https://fonts.google.com/specimen/Charm) | `H2` | Bold weight and title case |
+| Expressive section subtitles | Charm | `H3` | Regular weight and title case |
 | Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Semibold weight |
 | Project, capability, principle, and interest titles | Playfair Display | `H4` | Semibold weight |
 | Body copy and project descriptions | Playfair Display | `B` and `D` | Regular weight with the defined generous line height |
@@ -28,7 +28,7 @@ The scale has two responsive states:
 
 This map defines the intended typography system and should remain aligned with the site implementation. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
 
-Keep Oregano at `H2` or `H3` sizes and use title case so its expressive letterforms remain readable. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
+Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterforms remain readable. Use its true bold weight for `H2` and regular weight for `H3`. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
 
 ## Legend
 
