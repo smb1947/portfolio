@@ -14,14 +14,14 @@ The scale has two responsive states:
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular `400` with a subtle optical stroke; title case |
 | Hero role, credentials, and location | [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) | `S` and contextual hero detail | Bold `700` at every breakpoint; neutral navy text with coral and teal credential separators |
 | Footer signature | Cormorant Garamond | Component-specific | Bold `700` at every breakpoint; neutral navy text with coral and teal separators; 16px / 24px on mobile and 18px / 28px from 640px |
-| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Custom `550` on mobile / `450` on desktop; italic; title case |
-| Expressive subsection titles | Playfair Display | `H3` | Custom `550` on mobile / `450` on desktop; italic; title case |
-| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `550` on mobile / `450` on desktop |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `550` on mobile / `450` on desktop; subtly tightened tracking with the original layout widths |
-| Manager testimonial | Playfair Display | `B` | Custom `550` on mobile / `450` on desktop with a standalone quote icon and no added quotation marks |
+| Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Regular `450` on mobile / `400` on desktop; italic; title case |
+| Expressive subsection titles | Playfair Display | `H3` | Regular `450` on mobile / `400` on desktop; italic; title case |
+| Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Regular `450` on mobile / `400` on desktop |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `500` on mobile / `450` on desktop; subtly tightened tracking with the original layout widths |
+| Manager testimonial | Playfair Display | `B` | Custom `500` on mobile / `450` on desktop with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Playfair Display uses `550` as the readable mobile baseline and `450` from the desktop breakpoint upward. The mobile increase offsets its smaller optical size and improves stroke contrast; the softer desktop baseline preserves the intended hierarchy for long-form reading. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
+Playfair Display uses `500` as the readable mobile baseline and `450` from the desktop breakpoint upward for prose. Display styles use a lighter regular `450` on mobile / `400` on desktop because their larger sizes already establish hierarchy. Avoid semibold, bold, or black Playfair Display beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
 ## Legend
 
@@ -68,14 +68,14 @@ PORTFOLIO
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
 │   │       ├── H4: AI-First Product Building
-│   │       └── B: Using AI to rethink workflows... (Playfair Display 550 mobile / 450 desktop)
+│   │       └── B: Using AI to rethink workflows... (Playfair Display 500 mobile / 450 desktop)
 │   │
 │   ├── H3: What Is My Modus Operandi
 │   │   ├── OPERATING PRINCIPLE
 │   │   │   ├── H4: Agency
 │   │   │   └── B: Taking ownership and moving ideas forward...
 │   │   └── MANAGER NOTE
-│   │       ├── B: It was a lot of fun having... (Playfair Display 550 mobile / 450 desktop; standalone quote icon, no quotation marks)
+│   │       ├── B: It was a lot of fun having... (Playfair Display 500 mobile / 450 desktop; standalone quote icon, no quotation marks)
 │   │       ├── D: Manager name and title
 │   │       └── M: AWS internship context
 │   │
