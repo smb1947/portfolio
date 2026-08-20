@@ -22,6 +22,7 @@ import {
   Music4,
   PlayCircle,
   Puzzle,
+  Quote,
   School,
   Search,
   ShieldCheck,
@@ -186,9 +187,15 @@ function ManagerNoteCard({
   return (
     <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-x-4 gap-y-4 md:gap-x-5">
-        <div className="col-span-2 min-w-0">
+        <div
+          className="grid h-12 w-12 place-items-center rounded-xl border border-line bg-background text-coral shadow-sm md:h-14 md:w-14"
+          aria-hidden="true"
+        >
+          <Quote className="h-5 w-5" />
+        </div>
+        <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-normal italic text-navy">
+          <blockquote className="type-body mt-3 font-normal text-navy">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
