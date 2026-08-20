@@ -572,15 +572,20 @@ button {
   .desktop-nav-label {
     display: block;
     position: absolute;
-    left: calc(100% + 0.75rem);
+    left: calc(100% + 1rem);
     top: 50%;
     z-index: 20;
+    min-width: 9.5rem;
     visibility: hidden;
-    border: 1px solid var(--border);
-    border-radius: 0.8rem;
+    border: 2px solid var(--border);
+    border-radius: 1rem;
     background: var(--card);
-    padding: 0.6rem 0.85rem;
+    padding: 0.75rem 1rem;
     color: var(--navy);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
     opacity: 0;
     box-shadow: var(--shadow-lift);
     pointer-events: none;
@@ -593,12 +598,12 @@ button {
 
   .desktop-nav-label::before {
     position: absolute;
-    left: -0.32rem;
+    left: -0.48rem;
     top: 50%;
-    height: 0.62rem;
-    width: 0.62rem;
-    border-bottom: 1px solid var(--border);
-    border-left: 1px solid var(--border);
+    height: 0.82rem;
+    width: 0.82rem;
+    border-bottom: 2px solid var(--border);
+    border-left: 2px solid var(--border);
     background: var(--card);
     content: "";
     transform: translateY(-50%) rotate(45deg);
