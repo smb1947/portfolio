@@ -17,11 +17,11 @@ The scale has two responsive states:
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Custom `450` italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Custom `450` italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `450` |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Medium `500`; subtly tightened tracking with the original layout widths |
-| Manager testimonial | Playfair Display | `B` | Medium `500` with a standalone quote icon and no added quotation marks |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `450`; subtly tightened tracking with the original layout widths |
+| Manager testimonial | Playfair Display | `B` | Custom `450` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
-Playfair Display uses `450` for display headings and `500` for readable prose. The additional body weight compensates for Playfair Display's delicate strokes without making the larger headings feel heavy. Avoid semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
+Playfair Display uses `450` as the readable baseline for headings and prose. This preserves the softer hierarchy while adding enough stroke contrast for long-form reading. Avoid medium, semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
 
 ## Legend
 
@@ -68,14 +68,14 @@ PORTFOLIO
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY
 │   │       ├── H4: AI-First Product Building
-│   │       └── B: Using AI to rethink workflows... (Playfair Display 500)
+│   │       └── B: Using AI to rethink workflows... (Playfair Display 450)
 │   │
 │   ├── H3: What Is My Modus Operandi
 │   │   ├── OPERATING PRINCIPLE
 │   │   │   ├── H4: Agency
 │   │   │   └── B: Taking ownership and moving ideas forward...
 │   │   └── MANAGER NOTE
-│   │       ├── B: It was a lot of fun having... (Playfair Display 500; standalone quote icon, no quotation marks)
+│   │       ├── B: It was a lot of fun having... (Playfair Display 450; standalone quote icon, no quotation marks)
 │   │       ├── D: Manager name and title
 │   │       └── M: AWS internship context
 │   │
