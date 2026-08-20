@@ -989,8 +989,7 @@ export default function Home() {
   return (
     <>
       <SectionRouteSync />
-      <section id="home" className="relative scroll-mt-24 overflow-hidden">
-        <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
+      <section id="home" className="relative scroll-mt-24">
         <div className="relative mx-auto max-w-6xl px-5 pb-10 pt-14 sm:px-8 sm:pb-10 sm:pt-16 md:pb-12 md:pt-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
