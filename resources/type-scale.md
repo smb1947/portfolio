@@ -17,7 +17,7 @@ The scale has two responsive states:
 | Main section titles | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H2` | Custom `450` italic; title case |
 | Expressive subsection titles | Playfair Display | `H3` | Custom `450` italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `450` |
-| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `450`; subtly tightened tracking with the original layout widths and deep navy text |
+| Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Custom `450`; subtly tightened tracking with the original layout widths |
 | Manager testimonial | Playfair Display | `B` | Custom `450` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
