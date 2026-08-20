@@ -116,6 +116,10 @@ body {
   line-height: 2.375rem;
 }
 
+.hero-name {
+  -webkit-text-stroke: 0.18px currentColor;
+}
+
 .type-h2 {
   font-size: 1.875rem;
   line-height: 2.25rem;

@@ -31,7 +31,7 @@ const alexBrush = Alex_Brush({
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: "500",
+  weight: "600",
   display: "swap",
   variable: "--font-cormorant-garamond"
 });

@@ -1022,7 +1022,7 @@ export default function Home() {
                 <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
                   <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-28">
-                    <h1 className="type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
+                    <h1 className="hero-name type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -1045,23 +1045,23 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:space-y-2 sm:pt-2 lg:space-y-3 lg:pt-1">
-                  <p className="type-supporting font-hero font-medium text-navy">
+                  <p className="type-supporting font-hero font-semibold text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="hero-detail hidden font-hero font-medium text-navy sm:block">
+                  <p className="hero-detail hidden font-hero font-semibold text-navy sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="hero-detail hidden items-center gap-2 font-hero font-medium text-navy sm:flex">
+                  <p className="hero-detail hidden items-center gap-2 font-hero font-semibold text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="hero-detail font-hero font-medium text-navy">
+                <p className="hero-detail font-hero font-semibold text-navy">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="hero-detail flex items-center gap-2 font-hero font-medium text-navy">
+                <p className="hero-detail flex items-center gap-2 font-hero font-semibold text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
