@@ -1018,7 +1018,7 @@ export default function Home() {
                 aria-hidden="true"
               />
               <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 md:px-8 lg:px-10">
-                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
+                <div className="grid grid-cols-[9rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
                   <div className="flex h-16 min-w-0 items-center sm:h-20 md:h-24 lg:h-28">
                     <h1 className="hero-name type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
@@ -1029,16 +1029,16 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
-              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
-                <div className="relative h-[5.25rem] sm:h-[6.5rem] md:h-[7.875rem] lg:h-[9.125rem]">
-                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-[35%] overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-56 lg:w-56">
+            <div className="relative px-4 [--headshot-size:9rem] sm:px-6 sm:[--headshot-size:11rem] md:px-8 md:[--headshot-size:13rem] lg:px-10 lg:[--headshot-size:15rem]">
+              <div className="grid grid-cols-[9rem_minmax(0,1fr)] gap-4 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-7">
+                <div className="relative h-[calc(var(--headshot-size)*0.65)]">
+                  <div className="absolute left-0 top-0 aspect-square h-[var(--headshot-size)] w-[var(--headshot-size)] -translate-y-[35%] overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift md:rounded-[2rem]">
                     <Image
                       src={publicAsset("/images/headshot.jpg")}
                       alt="Shankar Binjawadgi"
                       fill
                       priority
-                      sizes="(min-width: 1024px) 224px, (min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
+                      sizes="(min-width: 1024px) 240px, (min-width: 768px) 208px, (min-width: 640px) 176px, 144px"
                       className="object-cover"
                     />
                   </div>
