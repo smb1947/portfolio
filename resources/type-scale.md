@@ -21,7 +21,7 @@ The scale has two responsive states:
 | Manager testimonial | Times New Roman | `B` | Regular `400` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, manager attribution, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Non-hero locations use `M`; manager attribution uses `D`; other functional text uses the appropriate token |
 
-Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0.006em` tracking and generous leading for comfortable reading. Playfair remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy; its optical-size axis adapts the design to each heading size. Avoid semibold, bold, or black Playfair beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses semibold `600`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
+Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0.006em` tracking and compact leading for comfortable reading. Playfair remains the display face, using a lighter regular `450` on mobile / `400` on desktop because its larger sizes already establish hierarchy; its optical-size axis adapts the design to each heading size. Avoid semibold, bold, or black Playfair beyond these documented baseline values except where a future design requirement explicitly calls for it. Inline emphasis in long-form copy uses medium `500`, retaining the coral tint so key ideas such as `WHY`, `MONITOR`, and `ITERATE` remain easily scannable without making surrounding paragraphs heavier.
 
 ## Legend
 
@@ -29,18 +29,18 @@ Times New Roman is reserved for paragraph copy at regular `400`, with subtle `-0
 | --- | --- | ---: | ---: | --- |
 | `H1` | Page title | 34px / 38px | 60px / 64px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
-| `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
-| `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
-| `B` | Body copy | 18px / 30px | 19px / 32px | Descriptive prose and summaries |
+| `H3` | Subsection or entry heading | 22px / 28px | 26px / 32px | Major groups, companies, degrees, roles, and schools |
+| `H4` | Named item title | 19px / 25px | 21px / 27px | Capabilities, principles, interests, and project titles |
+| `B` | Body copy | 18px / 29px | 19px / 30px | Descriptive prose, summaries, and project descriptions |
 | `S` | Supporting copy | 20px / 26px | 28px / 32px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Manager name, title, and contextual attribution |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, non-hero locations, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
 
-Project descriptions use 16px / 25px on mobile and 17px / 27px on desktop because they are longer than typical secondary details.
+Project descriptions use the `B` scale, matching the rest of the portfolio's paragraph copy.
 
-Long-form Times New Roman prose should use `-0.006em` letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
+Long-form Times New Roman prose should use `-0.006em` letter spacing. Playfair `H3` and `H4` titles use `-0.012em` tracking to maintain compact, confident named-item labels. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
 
 The hero role, credentials, and location use the `S` scale. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. The profile image measures 144px, 176px, 208px, and 240px across the responsive breakpoints. It is positioned with 35% overlapping the cover image and 65% extending below it; the hero layout derives its reserved height from that 65% overhang, keeping the mobile content clear of the image at every size. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
 

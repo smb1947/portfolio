@@ -90,7 +90,7 @@ function HighlightedIntro({ text }: { text: string }) {
         part.startsWith("**") && part.endsWith("**") ? (
           <strong
             key={`${part}-${index}`}
-            className="rounded-sm bg-coral/15 px-0.5 font-semibold text-navy"
+            className="rounded-sm bg-coral/15 px-0.5 font-medium text-navy"
           >
             {part.slice(2, -2)}
           </strong>
@@ -108,7 +108,7 @@ function SectionHeading({ children }: { children: string }) {
       <h2 className="type-h2 font-serif font-[400] italic text-navy max-md:font-[450]">
         <QuestionWordHighlight text={children} />
       </h2>
-      <div className="mt-4 h-1.5 w-14 rounded-full bg-coral sm:mt-5 sm:w-16" aria-hidden="true" />
+      <div className="mt-2 h-1.5 w-14 rounded-full bg-coral sm:mt-2.5 sm:w-16" aria-hidden="true" />
     </div>
   );
 }
@@ -200,7 +200,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-[450] text-navy max-md:font-[500]">
+          <blockquote className="type-body mt-3 text-navy">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
