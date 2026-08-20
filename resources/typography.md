@@ -15,22 +15,22 @@ The scale has two responsive states:
 | Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular weight and normal capitalization; use size and color to preserve hierarchy |
 | Main section titles | [Charm](https://fonts.google.com/specimen/Charm) | `H2` | Regular weight and title case |
 | Expressive section subtitles | Charm | `H3` | Regular weight and title case |
-| Companies, degrees, roles, and schools | [Playfair](https://fonts.google.com/specimen/Playfair) | `H3` | Medium weight; width axis 87.5 |
-| Project, capability, principle, and interest titles | Playfair | `H4` | Medium weight; width axis 87.5 |
-| Body copy and project descriptions | Playfair | `B` and contextual project detail | Regular weight, width axis 87.5, and the defined generous line height |
-| Quotes and highlighted prose | Playfair | `B` | Regular italic; width axis 87.5 |
+| Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Medium weight |
+| Project, capability, principle, and interest titles | Playfair Display | `H4` | Medium weight |
+| Body copy and project descriptions | Playfair Display | `B` and `D` | Regular weight with the defined generous line height |
+| Quotes and highlighted prose | Playfair Display | `B` | Regular italic |
 | Dates, non-hero locations, eyebrow text, and status labels | [Inter](https://fonts.google.com/specimen/Inter) | `D` and `M` | Semibold or bold; uppercase only for compact labels |
 | Navigation links | Inter | Component-specific | Medium or semibold |
 | Desktop navigation and utility hover labels | Charm | Component-specific | Regular weight |
 | Footer signature | Oranienbaum | Component-specific | Regular weight; 16px / 24px on mobile and 18px / 28px from 640px |
 | Buttons and calls to action | Inter | Component-specific | Semibold |
 | Form labels, inputs, validation, and helper text | Inter | Component-specific | Regular through semibold according to hierarchy |
-| Interactive diagram labels | Inter or Playfair | `D` or `H4` | Inter for small functional labels; Playfair for prominent titles |
+| Interactive diagram labels | Inter or Playfair Display | `D` or `H4` | Inter for small functional labels; Playfair Display for prominent titles |
 | Tooltips and accessibility instructions | Inter | `D` or `M` | Regular or medium |
 
 This map defines the intended typography system and should remain aligned with the site implementation. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
 
-Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterforms remain readable. Both levels use regular weight, with size and spacing establishing their hierarchy. Playfair uses automatic optical sizing and a width axis of 87.5 so words remain cohesive at the larger reading scale; body copy should retain the documented line heights and comfortable paragraph widths.
+Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterforms remain readable. Both levels use regular weight, with size and spacing establishing their hierarchy. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
 
 ## Legend
 
@@ -39,15 +39,15 @@ Keep Charm at `H2` or `H3` sizes and use title case so its formal script letterf
 | `H1` | Page title | 34px / 38px | 60px / 64px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
-| `H4` | Named item title | 18px / 24px | 20px / 26px | Capabilities, principles, interests, and project titles |
-| `B` | Body copy | 18px / 30px | 20px / 32px | Descriptive prose and summaries |
+| `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
+| `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
 | `S` | Supporting copy | 18px / 24px | 24px / 30px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
 
-Project descriptions use a contextual Playfair size of 17px / 28px on mobile and 18px / 30px on desktop because they are longer than typical secondary details.
+Project descriptions use the `D` font size with a relaxed line height of 22px on mobile and 24px on desktop because they are longer than typical secondary details.
 
 The hero role uses the `S` scale. The hero credentials and location use a larger contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Oranienbaum at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
@@ -70,7 +70,7 @@ PORTFOLIO
 │   │   └── PROJECT
 │   │       ├── H4: StreakFit AI
 │   │       ├── M: 2026 · ONGOING
-│   │       └── Project detail: Discovered 3 student fitness pain points...
+│   │       └── D: Discovered 3 student fitness pain points...
 │   │
 │   ├── H3: What I Bring to the Table
 │   │   └── CAPABILITY

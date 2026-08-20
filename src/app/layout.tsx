@@ -4,7 +4,7 @@ import {
   Charm,
   Inter,
   Oranienbaum,
-  Playfair
+  Playfair_Display
 } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
@@ -21,11 +21,10 @@ const inter = Inter({
   variable: "--font-inter"
 });
 
-const playfair = Playfair({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
-  axes: ["opsz", "wdth"],
   variable: "--font-playfair"
 });
 
