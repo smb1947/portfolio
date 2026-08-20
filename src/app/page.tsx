@@ -1033,7 +1033,7 @@ export default function Home() {
             <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
               <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
                 <div className="relative h-16 sm:h-20 md:h-24 lg:h-28">
-                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-56 lg:w-56">
+                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-[35%] overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-56 lg:w-56">
                     <Image
                       src={publicAsset("/images/headshot.jpg")}
                       alt="Shankar Binjawadgi"

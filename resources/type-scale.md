@@ -32,8 +32,8 @@ Playfair Display uses `500` as the readable mobile baseline and `450` from the d
 | `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
 | `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
 | `B` | Body copy | 17px / 29px | 18px / 30px | Descriptive prose and summaries |
-| `S` | Supporting copy | 18px / 24px | 24px / 30px | Short, prominent context supporting a heading |
-| `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
+| `S` | Supporting copy | 20px / 26px | 28px / 32px | Short, prominent context supporting a heading |
+| `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context; hero detail uses 18px / 24px on mobile and 20px / 26px on desktop |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, eyebrow labels, and compact context |
 
 Each size is written as `font size / line height`.
@@ -42,7 +42,7 @@ Project descriptions use 15px / 24px on mobile and 16px / 26px on desktop becaus
 
 Long-form Playfair Display prose should use `-0.01em` letter spacing. Keep the original layout measures: `max-w-5xl` for About and section-introduction copy, and `max-w-4xl` for experience summaries. These widths keep prose slightly narrower than the card grid without constraining it to a narrow editorial column.
 
-The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
+The hero role uses the `S` scale. Hero credentials and location use a contextual detail size of 18px / 24px on mobile and 20px / 26px on desktop. All three use Cormorant Garamond at bold `700`, with normal capitalization and letter spacing. The credential labels remain neutral navy; the first `✦` separator is coral and the second is teal. The coral location icon may still distinguish location from the other hero details. The footer repeats the same neutral-text, coral-first-separator, teal-second-separator treatment at bold `700`. The profile image is positioned with 35% overlapping the cover image and 65% extending below it. Alex Brush provides only one weight, so the hero name uses a subtle optical stroke for equivalent emphasis.
 
 ## Information Flow
 

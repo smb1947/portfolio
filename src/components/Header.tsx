@@ -496,7 +496,7 @@ export function Header() {
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="desktop-nav-label hidden whitespace-nowrap text-left">
-            {isThemePickerEnabled ? "Choose theme" : `Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            {isThemePickerEnabled ? "Theme" : `${theme === "dark" ? "Light" : "Dark"} mode`}
           </span>
         </button>
         <button
@@ -514,7 +514,7 @@ export function Header() {
             <Printer className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="desktop-nav-label hidden whitespace-nowrap text-left">
-            Print portfolio
+            Print
           </span>
         </button>
         <button
@@ -532,7 +532,7 @@ export function Header() {
             <ShareIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="desktop-nav-label hidden whitespace-nowrap text-left">
-            {shareStatus === "copied" ? "Copied" : "Share portfolio"}
+            {shareStatus === "copied" ? "Copied" : "Share"}
           </span>
         </button>
       </nav>
