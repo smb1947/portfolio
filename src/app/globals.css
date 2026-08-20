@@ -110,11 +110,11 @@ body {
 
 /*
  * Portfolio type scale
- * Keep these tokens aligned with resources/type-scale.md.
+ * Keep these tokens aligned with resources/typography.md.
  */
 .type-h1 {
-  font-size: 2rem;
-  line-height: 2.125rem;
+  font-size: 2.125rem;
+  line-height: 2.375rem;
 }
 
 .type-h2 {
@@ -139,8 +139,8 @@ body {
 }
 
 .type-supporting {
-  font-size: 1rem;
-  line-height: 1.375rem;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 
 .type-detail {
@@ -153,6 +153,11 @@ body {
   line-height: 1rem;
 }
 
+.hero-detail {
+  font-size: 1rem;
+  line-height: 1.375rem;
+}
+
 .project-description {
   font-family: var(--font-serif);
   line-height: 1.375rem;
@@ -160,8 +165,8 @@ body {
 
 @media (min-width: 768px) {
   .type-h1 {
-    font-size: 3rem;
-    line-height: 3.125rem;
+    font-size: 3.75rem;
+    line-height: 4rem;
   }
 
   .type-h2 {
@@ -185,8 +190,8 @@ body {
   }
 
   .type-supporting {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
+    font-size: 1.5rem;
+    line-height: 1.875rem;
   }
 
   .type-detail {
@@ -197,6 +202,11 @@ body {
   .type-meta {
     font-size: 0.8125rem;
     line-height: 1.125rem;
+  }
+
+  .hero-detail {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
   }
 
   .project-description {

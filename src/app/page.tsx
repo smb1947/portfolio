@@ -989,7 +989,7 @@ export default function Home() {
       <SectionRouteSync />
       <section id="home" className="relative scroll-mt-24 overflow-hidden">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
-        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:py-16 md:py-20">
+        <div className="relative mx-auto max-w-6xl px-5 pb-6 pt-14 sm:px-8 sm:pb-8 sm:pt-16 md:pb-6 md:pt-20">
           <div className="relative">
             <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
               <picture>
@@ -1017,10 +1017,10 @@ export default function Home() {
                 aria-hidden="true"
               />
               <div className="absolute inset-x-0 bottom-0 px-4 sm:px-6 md:px-8 lg:px-10">
-                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
+                <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
                   <div aria-hidden="true" />
-                  <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-[6.5rem]">
-                    <h1 className="type-h1 font-name font-normal text-white drop-shadow-sm">
+                  <div className="flex h-16 min-w-0 items-end pb-2 sm:h-20 sm:pb-3 md:h-24 lg:h-28">
+                    <h1 className="type-h1 font-name font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.55)]">
                       Shankar Binjawadgi
                     </h1>
                   </div>
@@ -1029,15 +1029,15 @@ export default function Home() {
             </div>
 
             <div className="relative px-4 sm:px-6 md:px-8 lg:px-10">
-              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-7">
-                <div className="relative h-16 sm:h-20 md:h-24 lg:h-[6.5rem]">
-                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-52 lg:w-52">
+              <div className="grid grid-cols-[8rem_minmax(0,1fr)] gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-5 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-6 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-7">
+                <div className="relative h-16 sm:h-20 md:h-24 lg:h-28">
+                  <div className="absolute left-0 top-0 aspect-square h-32 w-32 -translate-y-1/2 overflow-hidden rounded-[1.65rem] border-4 border-card bg-[#162531] shadow-lift sm:h-40 sm:w-40 md:h-48 md:w-48 md:rounded-[2rem] lg:h-56 lg:w-56">
                     <Image
                       src={publicAsset("/images/headshot.jpg")}
                       alt="Shankar Binjawadgi"
                       fill
                       priority
-                      sizes="(min-width: 1024px) 208px, (min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
+                      sizes="(min-width: 1024px) 224px, (min-width: 768px) 192px, (min-width: 640px) 160px, 128px"
                       className="object-cover"
                     />
                   </div>
@@ -1046,20 +1046,20 @@ export default function Home() {
                   <p className="type-supporting font-hero font-normal text-navy">
                     {aboutProfile.title}
                   </p>
-                  <p className="type-detail hidden font-hero font-normal text-coral sm:block">
+                  <p className="hero-detail hidden font-hero font-normal text-coral sm:block">
                     <CredentialLine text={aboutProfile.context} />
                   </p>
-                  <p className="type-detail hidden items-center gap-2 font-hero font-normal text-navy sm:flex">
+                  <p className="hero-detail hidden items-center gap-2 font-hero font-normal text-navy sm:flex">
                     <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                     {portfolio.site.location}
                   </p>
                 </div>
               </div>
               <div className="mt-4 space-y-3 sm:hidden">
-                <p className="type-detail font-hero font-normal text-coral">
+                <p className="hero-detail font-hero font-normal text-coral">
                   <CredentialLine text={aboutProfile.context} />
                 </p>
-                <p className="type-detail flex items-center gap-2 font-hero font-normal text-navy">
+                <p className="hero-detail flex items-center gap-2 font-hero font-normal text-navy">
                   <MapPin className="h-4 w-4 flex-none text-coral" aria-hidden="true" />
                   {portfolio.site.location}
                 </p>
@@ -1069,7 +1069,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-10 sm:px-8 md:py-12">
+      <section id="about" className="mx-auto max-w-6xl scroll-mt-24 px-5 pb-10 pt-8 sm:px-8 md:pb-12 md:pt-8">
         <SectionHeading>Who I Am</SectionHeading>
 
         <div className="mt-8 max-w-5xl space-y-5">

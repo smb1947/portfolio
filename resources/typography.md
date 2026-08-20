@@ -1,4 +1,4 @@
-# Portfolio Type Scale
+# Portfolio Typography
 
 This document defines the portfolio's visual typography system. The labels describe reusable visual styles. Semantic HTML heading tags should still follow the page's document structure for accessibility.
 
@@ -12,7 +12,7 @@ The scale has two responsive states:
 | Portfolio element | Font | Scale | Treatment |
 | --- | --- | --- | --- |
 | Hero name | [Alex Brush](https://fonts.google.com/specimen/Alex+Brush) | `H1` | Regular weight and title case |
-| Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and `D` | Regular weight and normal capitalization; use size and color to preserve hierarchy |
+| Hero role, credentials, and location | [Oranienbaum](https://fonts.google.com/specimen/Oranienbaum) | `S` and contextual hero detail | Regular weight and normal capitalization; use size and color to preserve hierarchy |
 | Main section titles | [Oregano](https://fonts.google.com/specimen/Oregano) | `H2` | Regular weight and title case |
 | Expressive section subtitles | Oregano | `H3` | Regular weight and title case |
 | Companies, degrees, roles, and schools | [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) | `H3` | Semibold weight |
@@ -26,7 +26,7 @@ The scale has two responsive states:
 | Interactive diagram labels | Inter or Playfair Display | `D` or `H4` | Inter for small functional labels; Playfair Display for prominent titles |
 | Tooltips and accessibility instructions | Inter | `D` or `M` | Regular or medium |
 
-This map defines the intended typography system; the site implementation may not yet match it. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
+This map defines the intended typography system and should remain aligned with the site implementation. The type-scale classes define font size and line height, while font families and weights are applied separately according to context.
 
 Keep Oregano at `H2` or `H3` sizes and use title case so its expressive letterforms remain readable. Playfair Display body copy should retain the documented line heights and comfortable paragraph widths.
 
@@ -34,12 +34,12 @@ Keep Oregano at `H2` or `H3` sizes and use title case so its expressive letterfo
 
 | Token | Meaning | Mobile | Desktop | Usage |
 | --- | --- | ---: | ---: | --- |
-| `H1` | Page title | 32px / 34px | 48px / 50px | The portfolio owner's name |
+| `H1` | Page title | 34px / 38px | 60px / 64px | The portfolio owner's name |
 | `H2` | Main section heading | 30px / 36px | 36px / 42px | Primary page sections |
 | `H3` | Subsection or entry heading | 20px / 26px | 24px / 30px | Major groups, companies, degrees, roles, and schools |
 | `H4` | Named item title | 17px / 23px | 18px / 23px | Capabilities, principles, interests, and project titles |
 | `B` | Body copy | 16px / 28px | 17px / 29px | Descriptive prose and summaries |
-| `S` | Supporting copy | 16px / 22px | 18px / 24px | Short, prominent context supporting a heading |
+| `S` | Supporting copy | 18px / 24px | 24px / 30px | Short, prominent context supporting a heading |
 | `D` | Secondary detail | 14px / 20px | 15px / 21px | Locations, bylines, and secondary context |
 | `M` | Metadata | 12px / 16px | 13px / 18px | Dates, eyebrow labels, and compact context |
 
@@ -47,7 +47,7 @@ Each size is written as `font size / line height`.
 
 Project descriptions use the `D` font size with a relaxed line height of 22px on mobile and 24px on desktop because they are longer than typical secondary details.
 
-The hero role uses the `S` scale. The credentials and location use the `D` scale. All three use Oranienbaum at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
+The hero role uses the `S` scale. The hero credentials and location use a larger contextual detail size of 16px / 22px on mobile and 18px / 24px on desktop. All three use Oranienbaum at regular weight, normal capitalization, and normal letter spacing. Color and the location icon may still distinguish their functions.
 
 ## Information Flow
 
@@ -128,4 +128,5 @@ B  → .type-body
 S  → .type-supporting
 D  → .type-detail
 M  → .type-meta
+Hero detail → .hero-detail
 ```
