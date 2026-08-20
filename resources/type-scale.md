@@ -18,7 +18,7 @@ The scale has two responsive states:
 | Expressive subsection titles | Playfair Display | `H3` | Regular `400` italic; title case |
 | Companies, degrees, roles, schools, projects, capabilities, and principles | Playfair Display | `H3` and `H4` | Custom `450` |
 | Body copy, capability descriptions, operating-principle descriptions, and project descriptions | Playfair Display | `B` and contextual detail | Regular `400`; subtly tightened tracking with the original layout widths |
-| Manager testimonial | Playfair Display | `B` | Semibold `600`, non-italic, with the original standalone quote icon and no added quotation marks |
+| Manager testimonial | Playfair Display | `B` | Regular `400` with a standalone quote icon and no added quotation marks |
 | Dates, non-hero locations, eyebrow text, status labels, navigation, buttons, and form UI | [Inter](https://fonts.google.com/specimen/Inter) | `D`, `M`, or component-specific | Regular through bold according to functional hierarchy |
 
 Playfair Display should use weight sparingly: `450` establishes headings without making every label feel equally important, while prose remains at `400`. Avoid medium, semibold, bold, or black Playfair Display except where a future design requirement explicitly calls for it.
@@ -75,7 +75,7 @@ PORTFOLIO
 │   │   │   ├── H4: Agency
 │   │   │   └── B: Taking ownership and moving ideas forward...
 │   │   └── MANAGER NOTE
-│   │       ├── B: It was a lot of fun having... (Playfair Display semibold; original standalone quote icon, no quotation marks)
+│   │       ├── B: It was a lot of fun having... (Playfair Display regular; standalone quote icon, no quotation marks)
 │   │       ├── D: Manager name and title
 │   │       └── M: AWS internship context
 │   │
