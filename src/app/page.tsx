@@ -200,7 +200,7 @@ function ManagerNoteCard({
         <QuoteIcon />
         <div className="min-w-0">
           <p className="type-meta font-bold uppercase tracking-[0.18em] text-teal">{eyebrow}</p>
-          <blockquote className="type-body mt-3 font-[450] text-navy">
+          <blockquote className="type-body mt-3 font-medium text-navy">
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
