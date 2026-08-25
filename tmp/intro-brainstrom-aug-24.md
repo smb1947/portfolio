@@ -1,49 +1,31 @@
-## Older versions
+# Portfolio Intro Versions
 
-### v1
-Hi 👋, I’m Shankar, an  Technical Product Builder. I’ve spent years solving **complex platform problems** at Microsoft and Amazon.",
+## Current Version — Aug 25, 2026
 
-"I enjoy taking **messy customer problems**, figuring out what matters, and **aligning stakeholders** around a clear path forward. From discovery through launch, I navigate constraints, make tradeoffs, and keep things moving. I care deeply about **how users think and behave** to build thoughtful products that feel seamless and intuitive.",
+Hi 👋, I’m Shankar, a Technical Product Builder. I turn a deep understanding of ambiguous customer problems into structured strategies that align stakeholders, and those strategies into intuitive products people trust and adopt.
 
-"Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do."
+Over 6 years at Microsoft Azure and AWS, my work has ranged from scaling Azure Storage to 1Tbps and 200K IOPS to identifying Amazon S3 cost-optimization opportunities with up to 40% savings potential. I’m currently iterating on v3 of StreakFit AI, a personalized gym buddy shaped by insights from 30+ customer interviews.
 
+Outside work, I’m usually training my body and mind at the gym, chasing beautiful trails across the Pacific Northwest, or curious about the forces that shape how people think and act.
 
-### v2
-"Hi 👋, I’m Shankar, an  Technical Product Builder who turns messy customer problems into clear direction and products people adopt and trust. I’ve spent years solving complex platform product problems at Microsoft and Amazon.",
+## Historical Version — Aug 10, 2026
 
-"The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** I want to take on next. When an idea keeps returning, I ask **WHY** I can’t let it go. Once the reason feels strong enough, I seek out different perspectives, weigh the trade-offs, work out **HOW** to make it real, and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** my progress and **ITERATE** on my approach until what I imagined becomes real.",
+Hi 👋, I’m Shankar, an AI-first Technical Product Builder who brings **curiosity**, **technical depth, product taste, and grit** to ambiguous problems.
 
-"Through that journey, I build the skills, resilience, and perspective the challenge demands. What I learn and who I become define my **NEXT WHAT**.",
-"This approach to growth has guided me from an engineering college in India to Microsoft Azure, the Foster MBA, and AWS."
+I’ve spent years solving **complex platform problems** at Microsoft and Amazon. I like taking **messy customer problems**, figuring out **what matters**, and **aligning stakeholders** around a clear path forward.
 
-## Evidence-led revision
-
-Hi 👋, I’m Shankar, an  Technical Product Builder who turns ambigious customer friction into products people trust and adopt. Over 6 years across Microsoft Azure and AWS, I’ve worked on **PLANET-SCALE** cloud platforms where the technical details and customer outcome matter equally.
-
-The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** the next big thing is that I want to take on. When an idea keeps returning, I ask **WHY** I can’t let it go and why it **deserves** my attention now. I seek out **DIFFERENT PERSPECTIVES** and weigh the trade-offs.
-
-Once the reason feels strong enough, I work out **HOW** to make it real and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** the outcome and **ITERATE** on my approach until what I imagined becomes real.
-
-Through that journey, I build the skills, resilience, and perspective the challenge demands. What I learn and who I become define my **NEXT WHAT**.
-
-This approach has shaped work from scaling Azure storage to **1 TBps and 120K IOPS** for enterprise analytics, to opening a Windows segment for Blob NFS that brought **150+ B2B customers and hundreds of petabytes of usage** to the platform, to discovering & defining S3 cost-optimization opportunities with **up to 40% savings potential** for customers.
+From early discovery through launch, I stay involved, navigating **technical and business constraints**, making **tradeoffs**, and keeping the work moving. I care about understanding **how users think and behave** to build thoughtful products that feel **seamless and intuitive**, scale well, and earn customer trust.
 
 Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do.
 
-## Personal-rhythm revision
+## Historical Version — Jul 29, 2026
 
-The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** the next big thing is that I want to take on. When an idea keeps returning, I ask **WHY** I can’t let it go and why it **deserves** my attention now. I seek out **DIFFERENT PERSPECTIVES** and weigh the trade-offs.
+Hi 👋, I’m Shankar, an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I like taking messy customer problems, figuring out what matters, and working with cross-functional teams to ship something useful. I stay involved from early discovery through launch, making tradeoffs, setting direction, and keeping the work moving. I care about building products that are easy to use, scale well, and earn customer trust.
 
-Once the reason feels strong enough, I work out **HOW** to make it real and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** the outcome and **ITERATE** on my approach until what I imagined becomes real.
+Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do.
 
-Through that journey, I build the skills, resilience, and perspective the challenge demands. What I learn and who I become define my **NEXT WHAT**.
+## Earliest Verified Version — Jul 29, 2026
 
+Hi 👋, I’m Shankar, an AI-first Technical Product Manager who brings curiosity, technical depth, product taste, and grit to ambiguous problems. I enjoy product work that starts with a messy human problem, moves through disciplined discovery, and ends in a clear strategy, prototype, or roadmap that helps cross-functional teams build simple, scalable products customers adopt and trust.
 
-## Simple
-Hi 👋, I’m Shankar, a technical product builder who turns complex customer problems into products people trust and adopt. Over 6 years at Microsoft Azure and AWS, I’ve worked across cross functional teams to build planet-scale cloud platforms where performance, reliability, cost, and customer needs rarely align neatly and every technical decision carries a business trade-off.
-
-My work has ranged from scaling Azure Storage to 1 TBps and 120K IOPS, to discovering and defining Amazon S3 cost-optimization opportunities with up to 40% savings potential, to turning six customer interviews into StreakFit AI, a personalized gym buddy.
-
-The way I build products and grow as a person follows a personal rhythm. I pay attention to **WHAT** keeps calling me, explore **WHY** it matters, and seek perspectives that challenge my own. I weigh the trade-offs, commit to a direction, and adapt as I discover **HOW** to move forward. Purpose gets me started, discipline carries me forward, and reflection shapes what I take on next.
-
-Outside work, I’m usually hiking, working out, or curious about what shapes the way people think and act.
+Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do.
