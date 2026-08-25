@@ -67,6 +67,8 @@ const themeOptions: Array<{ label: string; value: Theme; Icon: LucideIcon; swatc
   { label: "Classic dark", value: "classic", Icon: Moon, swatchClassName: "bg-[#0a100e]" }
 ];
 
+const themeStorageKey = "portfolio-theme";
+
 function getCurrentTheme(): Theme {
   const theme = document.documentElement.dataset.theme;
 
@@ -120,6 +122,24 @@ export function Header() {
   useEffect(() => {
     setTheme(getCurrentTheme());
     setIsThemePickerEnabled(document.documentElement.dataset.themePicker === "true");
+
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    const syncSystemTheme = (event: MediaQueryListEvent) => {
+      const hasRequestedTheme = new URLSearchParams(window.location.search).has("theme");
+      const hasStoredTheme = window.localStorage.getItem(themeStorageKey) !== null;
+
+      if (hasRequestedTheme || hasStoredTheme) {
+        return;
+      }
+
+      const nextTheme: Theme = event.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = nextTheme;
+      setTheme(nextTheme);
+    };
+
+    systemTheme.addEventListener("change", syncSystemTheme);
+
+    return () => systemTheme.removeEventListener("change", syncSystemTheme);
   }, []);
 
   useEffect(() => {
@@ -211,14 +231,14 @@ export function Header() {
     const currentTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
     const nextTheme: Theme = currentTheme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem("portfolio-theme", nextTheme);
+    window.localStorage.setItem(themeStorageKey, nextTheme);
     setTheme(nextTheme);
   };
 
   const selectTheme = (nextTheme: Theme) => {
     const fromTheme = getCurrentTheme();
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem("portfolio-theme", nextTheme);
+    window.localStorage.setItem(themeStorageKey, nextTheme);
     setTheme(nextTheme);
     setIsThemeMenuOpen(false);
     setIsMobileMenuOpen(false);
@@ -345,7 +365,9 @@ export function Header() {
   };
 
   const activeThemeOption = themeOptions.find((option) => option.value === theme) ?? themeOptions[0];
-  const ThemeIcon = isThemePickerEnabled ? activeThemeOption.Icon : theme === "dark" ? Sun : Moon;
+  const isDarkTheme = theme === "dark" || theme === "classic";
+  const oppositeThemeLabel = isDarkTheme ? "Light" : "Dark";
+  const ThemeIcon = isThemePickerEnabled ? activeThemeOption.Icon : isDarkTheme ? Sun : Moon;
   const ShareIcon = shareStatus === "copied" ? Check : Share2;
 
   return (
@@ -365,7 +387,7 @@ export function Header() {
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
                   <ThemeIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <span>{isThemePickerEnabled ? activeThemeOption.label : theme === "dark" ? "Light" : "Dark"}</span>
+                <span>{isThemePickerEnabled ? activeThemeOption.label : `Switch to ${oppositeThemeLabel}`}</span>
               </button>
               <button
                 type="button"
@@ -487,7 +509,7 @@ export function Header() {
           aria-label={
             isThemePickerEnabled
               ? `Choose theme, currently ${activeThemeOption.label}`
-              : `Switch to ${theme === "dark" ? "light" : "dark"}`
+              : `Switch to ${oppositeThemeLabel.toLowerCase()} theme`
           }
           aria-expanded={isThemePickerEnabled ? isThemeMenuOpen : undefined}
           onClick={handleThemeButtonClick}
@@ -496,7 +518,7 @@ export function Header() {
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="desktop-nav-label hidden whitespace-nowrap text-left">
-            {isThemePickerEnabled ? "Theme" : theme === "dark" ? "Light" : "Dark"}
+            {isThemePickerEnabled ? "Theme" : `Switch to ${oppositeThemeLabel}`}
           </span>
         </button>
         <button
