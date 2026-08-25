@@ -66,28 +66,29 @@ Outside product work, I’m usually hiking, working out, or trying to understand
 
 ## Rubric
 
-Scores use a 1–5 scale: **1** is weak, **3** is solid, and **5** is exceptional for a Senior Platform PM portfolio.
+The rubric uses a weighted 100-point scale. The scores are directional judgments, not precise measurements. **90–100** is exceptional, **80–89** is strong, **70–79** is promising but needs refinement, **60–69** is serviceable, and anything below **60** needs substantial revision.
 
-| Criterion | What it measures |
-| --- | --- |
-| Positioning clarity | How quickly the reader understands who Shankar is and the value he creates. |
-| Senior PM signal | Judgment, ambiguity management, strategy, stakeholder alignment, trade-offs, and ownership. |
-| Credibility | Evidence supporting the claims, including scale, outcomes, and customer discovery. |
-| Memorability | Distinctive language, personal voice, and ideas likely to stay with the reader. |
-| Concision | Information density, scanability, and freedom from repetition or résumé-like overload. |
-| Cohesion | How naturally the philosophy, evidence, and personal dimension connect. |
+| Criterion | Weight | What it measures |
+| --- | ---: | --- |
+| Positioning and role fit | 25% | Whether a reader can quickly understand who Shankar is, the value he creates, and his fit for Senior Platform PM roles. |
+| Senior product judgment | 25% | Evidence of ambiguity management, strategic thinking, stakeholder alignment, trade-offs, and ownership. |
+| Proof and specificity | 20% | Whether claims are supported by credible scale, outcomes, named examples, and customer evidence. |
+| Clarity and scanability | 20% | Whether the intro can be understood in a quick recruiter scan without rereading or navigating unnecessary density. |
+| Voice and memorability | 10% | Whether the language feels distinctive, personal, and likely to stay with the reader. |
 
 ## Scorecard
 
-| Version | Clarity | Senior PM | Credibility | Memorable | Concise | Cohesive | Total |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Current draft, Aug 25 | 5 | 5 | 5 | 4 | 4 | 4 | **27/30** |
-| Clarity revision, Aug 24 | 5 | 5 | 5 | 4 | 3 | 4 | **26/30** |
-| Personal-rhythm version, Aug 18 | 3 | 4 | 2 | 5 | 2 | 4 | **20/30** |
-| Tightened version, Aug 10 | 4 | 4 | 3 | 3 | 4 | 4 | **22/30** |
-| Highlighted version, Aug 10 | 4 | 5 | 3 | 5 | 3 | 4 | **24/30** |
-| Conversational version, Jul 29 | 4 | 4 | 2 | 3 | 3 | 3 | **19/30** |
-| Earliest verified, Jul 29 | 4 | 4 | 2 | 4 | 5 | 4 | **23/30** |
+| Version | Positioning /25 | Judgment /25 | Proof /20 | Clarity /20 | Voice /10 | Total /100 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Current draft, Aug 25 | 21 | 22 | 19 | 15 | 8 | **85** |
+| Clarity revision, Aug 24 | 20 | 23 | 18 | 12 | 8 | **81** |
+| Highlighted version, Aug 10 | 19 | 20 | 9 | 14 | 9 | **71** |
+| Earliest verified, Jul 29 | 18 | 18 | 7 | 18 | 8 | **69** |
+| Tightened version, Aug 10 | 18 | 17 | 9 | 17 | 6 | **67** |
+| Personal-rhythm version, Aug 18 | 16 | 20 | 8 | 11 | 9 | **64** |
+| Conversational version, Jul 29 | 18 | 18 | 7 | 14 | 6 | **63** |
+
+The ranking is less important than the pattern: the current draft wins on proof and overall balance, while older versions often trade evidence and scanability for personality.
 
 ## Version Evaluations
 
