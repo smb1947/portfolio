@@ -83,17 +83,13 @@ const themeScript = `
     const normalizeTheme = (theme) => theme === "graphite" ? "dark" : theme;
     const requestedTheme = normalizeTheme(params.get("theme"));
     const pickerEnabled = params.get("themePicker") === "1" || requestedTheme === "dark" || requestedTheme === "classic";
-    const storedTheme = window.localStorage.getItem("portfolio-theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const allowedThemes = pickerEnabled ? ["light", "dark", "classic"] : ["light", "dark"];
-    const storedThemeValue = normalizeTheme(storedTheme);
     const theme = allowedThemes.includes(requestedTheme)
       ? requestedTheme
-      : allowedThemes.includes(storedThemeValue)
-        ? storedThemeValue
-        : prefersDark
-          ? "dark"
-          : "light";
+      : prefersDark
+        ? "dark"
+        : "light";
     document.documentElement.dataset.theme = theme;
     if (pickerEnabled) {
       document.documentElement.dataset.themePicker = "true";

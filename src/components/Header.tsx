@@ -67,8 +67,6 @@ const themeOptions: Array<{ label: string; value: Theme; Icon: LucideIcon; swatc
   { label: "Classic dark", value: "classic", Icon: Moon, swatchClassName: "bg-[#0a100e]" }
 ];
 
-const themeStorageKey = "portfolio-theme";
-
 function getCurrentTheme(): Theme {
   const theme = document.documentElement.dataset.theme;
 
@@ -126,9 +124,8 @@ export function Header() {
     const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
     const syncSystemTheme = (event: MediaQueryListEvent) => {
       const hasRequestedTheme = new URLSearchParams(window.location.search).has("theme");
-      const hasStoredTheme = window.localStorage.getItem(themeStorageKey) !== null;
 
-      if (hasRequestedTheme || hasStoredTheme) {
+      if (hasRequestedTheme) {
         return;
       }
 
@@ -231,14 +228,12 @@ export function Header() {
     const currentTheme: Theme = getCurrentTheme() === "dark" ? "dark" : "light";
     const nextTheme: Theme = currentTheme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem(themeStorageKey, nextTheme);
     setTheme(nextTheme);
   };
 
   const selectTheme = (nextTheme: Theme) => {
     const fromTheme = getCurrentTheme();
     document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem(themeStorageKey, nextTheme);
     setTheme(nextTheme);
     setIsThemeMenuOpen(false);
     setIsMobileMenuOpen(false);
