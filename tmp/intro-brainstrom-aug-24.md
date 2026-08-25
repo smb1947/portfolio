@@ -20,58 +20,6 @@ The way I build products and grow as a person follows a personal rhythm. I pay a
 
 Outside work, I’m usually hiking, working out, or exploring what shapes the way people think and act.
 
-## Published — Aug 24, 2026, Evidence and Rhythm Revision
-
-Hi 👋, I’m Shankar, a technical product builder who turns complex customer problems into products people trust and adopt. Over six years at Microsoft Azure and AWS, I’ve worked with cross-functional teams to build planet-scale cloud platforms where performance, reliability, cost, and customer needs rarely align neatly, and every technical decision carries a business trade-off.
-
-My work has ranged from scaling Azure Storage to 1Tbps and 200K IOPS, to discovering and defining Amazon S3 cost-optimization opportunities with up to 40% savings potential, to using insights from six customer interviews to build StreakFit AI, a personalized gym buddy.
-
-The way I build products and grow as a person follows a personal rhythm. I pay attention to **WHAT** keeps calling me, explore **WHY** it matters, and seek perspectives that challenge my own. I weigh the trade-offs, commit to a direction, and adapt as I discover **HOW** to move forward. Purpose gets me started, discipline carries me forward, and reflection shapes what I take on next.
-
-Outside work, I’m usually hiking, working out, or exploring what shapes the way people think and act.
-
-> Earlier commits in this copy family used “1 TBps” before the formatting changed to “1Tbps,” and retained “AI-First” in the separate hero title. The intro paragraphs were otherwise unchanged.
-
-## Published, Then Reverted — Aug 24, 2026
-
-Hi 👋, I’m Shankar, an AI-first Technical Product Builder who turns messy customer problems into clear strategy and scalable products people adopt and trust. I’ve helped shape complex platform products at Microsoft Azure and AWS.
-
-I connect the bigger picture to the work in front of the team, using customer insight, technical depth, and AI to find the right problem, make thoughtful trade-offs, and create momentum through ambiguity. I partner closely with engineering, design, business, and customer stakeholders to align on outcomes and carry an idea from discovery to launch.
-
-I’m most energized by products that make a real difference for customers: simple to use, grounded in how people behave, and built to last.
-
-## Committed Draft — Aug 24, 2026, Evidence-Led Revision
-
-Hi 👋, I’m Shankar, an AI-first Technical Product Builder who turns ambiguous customer friction into products people trust and adopt. Over 6 years across Microsoft Azure and AWS, I’ve worked on **PLANET-SCALE** cloud platforms where the technical details and customer outcomes matter equally.
-
-The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** the next big thing is that I want to take on. When an idea keeps returning, I ask **WHY** I can’t let it go and why it **deserves** my attention now. I seek out **DIFFERENT PERSPECTIVES** and weigh the trade-offs.
-
-Once the reason feels strong enough, I work out **HOW** to make it real and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** the outcome and **ITERATE** on my approach until what I imagined becomes real.
-
-Through that journey, I build the skills, resilience, and perspective the challenge demands. What I learn and who I become define my **NEXT WHAT**.
-
-This approach has shaped work from scaling Azure Storage to **1 TBps and 120K IOPS** for enterprise analytics, to opening a Windows segment for Blob NFS that brought **150+ B2B customers and hundreds of petabytes of usage** to the platform, to discovering and defining S3 cost-optimization opportunities with **up to 40% savings potential** for customers.
-
-Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do.
-
-## Committed Draft — Aug 24, 2026, Simple Revision
-
-Hi 👋, I’m Shankar, a technical product builder who turns complex customer problems into products people trust and adopt. Over six years at Microsoft Azure and AWS, I’ve worked on planet-scale cloud platforms where technical depth and customer outcomes matter equally.
-
-My work has ranged from scaling Azure Storage to 1 TBps and 120K IOPS, to discovering and defining S3 cost-optimization opportunities with up to 40% savings potential.
-
-The way I build products and grow as a person follows a personal rhythm. I notice **WHAT** keeps calling me, understand **WHY** it matters, seek different perspectives, weigh the trade-offs, and commit. I rarely know exactly **HOW** I’ll get there when I begin. Purpose gets me started, discipline carries me forward, and reflection helps me adjust my approach. In the process, I develop the skills, resilience, and perspective that shape what I take on next.
-
-Outside work, I’m usually hiking, working out, or trying to understand why people behave the way they do.
-
-## Committed Excerpt — Aug 24, 2026, Personal-Rhythm Revision
-
-The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** the next big thing is that I want to take on. When an idea keeps returning, I ask **WHY** I can’t let it go and why it **deserves** my attention now. I seek out **DIFFERENT PERSPECTIVES** and weigh the trade-offs.
-
-Once the reason feels strong enough, I work out **HOW** to make it real and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** the outcome and **ITERATE** on my approach until what I imagined becomes real.
-
-Through that journey, I build the skills, resilience, and perspective the challenge demands. What I learn and who I become define my **NEXT WHAT**.
-
 ## Published — Aug 18, 2026, Personal-Rhythm Version
 
 Hi 👋, I’m Shankar, an AI-first Technical Product Builder who turns messy customer problems into clear direction and products people adopt and trust. I’ve spent years solving complex platform product problems at Microsoft and Amazon.
@@ -119,12 +67,6 @@ Outside product work, I’m usually hiking, working out, or trying to understand
 | `9cca563` | Aug 10 | Highlighted Builder version |
 | `894e9b8` | Aug 10 | Tightened version |
 | `c7abe9e` | Aug 18 | Personal-rhythm version |
-| `70a45a3` | Aug 24 | Strategy-focused version, later reverted |
-| `3ab6ed8` | Aug 24 | Evidence-led, simple, and personal-rhythm committed drafts |
-| `26e7a95` | Aug 24 | Evidence and rhythm version published |
-| `a468578` | Aug 24 | Hero title simplified; intro paragraphs unchanged |
-| `987e8cc` | Aug 24 | Remaining “AI-first” copy removed; latest intro unchanged |
-| `6a3458a` | Aug 24 | Throughput formatting changed to 1Tbps |
 | `641e604` | Aug 24 | Clarity revision published |
 | `c756553` | Aug 25 | Current draft archived |
 
@@ -147,16 +89,10 @@ Scores use a 1–5 scale: **1** is weak, **3** is solid, and **5** is exceptiona
 
 ## Scorecard
 
-The personal-rhythm excerpt is not scored because it was never a complete standalone introduction.
-
 | Version | Clarity | Senior PM | Credibility | Memorable | Concise | Cohesive | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Current draft, Aug 25 | 5 | 5 | 5 | 4 | 4 | 4 | **27/30** |
 | Clarity revision, Aug 24 | 5 | 5 | 5 | 4 | 3 | 4 | **26/30** |
-| Evidence and rhythm, Aug 24 | 4 | 5 | 5 | 4 | 3 | 4 | **25/30** |
-| Published then reverted, Aug 24 | 4 | 5 | 2 | 3 | 4 | 4 | **22/30** |
-| Evidence-led draft, Aug 24 | 3 | 5 | 5 | 4 | 2 | 3 | **22/30** |
-| Simple draft, Aug 24 | 4 | 4 | 4 | 4 | 4 | 4 | **24/30** |
 | Personal-rhythm version, Aug 18 | 3 | 4 | 2 | 5 | 2 | 4 | **20/30** |
 | Tightened version, Aug 10 | 4 | 4 | 3 | 3 | 4 | 4 | **22/30** |
 | Highlighted version, Aug 10 | 4 | 5 | 3 | 5 | 3 | 4 | **24/30** |
@@ -169,10 +105,6 @@ The personal-rhythm excerpt is not scored because it was never a complete standa
 | --- | --- | --- |
 | Current draft, Aug 25 | Best balance of philosophy, platform evidence, current AI work, and personality. | “Structured strategies” sounds slightly consulting-oriented; the final sentence lacks grammatical parallelism. |
 | Clarity revision, Aug 24 | Strong platform trade-off framing, measurable evidence, and a memorable personal rhythm. | Long and dense for an opening; product philosophy competes with the metrics. |
-| Evidence and rhythm, Aug 24 | Demonstrates customer orientation, platform judgment, evidence, and reflective execution. | The opening claim is more generic than the later clarity revision, and the full passage is lengthy. |
-| Published then reverted, Aug 24 | Strongest explicit articulation of Senior PM leadership, cross-functional alignment, and ambiguity management. | Almost entirely claim-based; it lacks metrics, named outcomes, and a personal dimension. |
-| Evidence-led draft, Aug 24 | Richest proof of platform scale, customer impact, discipline, and iteration. | Too long, over-emphasized, and framework-heavy; it reads more like a manifesto than an intro. |
-| Simple draft, Aug 24 | Clear structure and a good balance between evidence and the memorable WHAT–WHY–HOW rhythm. | “Technical depth and customer outcomes matter equally” is generic, and the evidence is less differentiated than later versions. |
 | Personal-rhythm version, Aug 18 | Most distinctive philosophy and strongest personal-growth narrative. | Repetitive, abstract, and weakly evidenced; it delays the reader’s understanding of professional impact. |
 | Tightened version, Aug 10 | Approachable, clear, and easy to scan. | Generic and lightly evidenced; it does not establish platform scale or measurable outcomes. |
 | Highlighted version, Aug 10 | Best expression of character through curiosity, product taste, technical depth, and grit. | Too many highlighted concepts compete for attention, and the claims lack proof inside the intro. |
