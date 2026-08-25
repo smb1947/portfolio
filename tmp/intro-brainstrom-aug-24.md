@@ -78,7 +78,7 @@ The rubric uses a weighted 100-point scale. The scores are directional judgments
 
 | Version | Positioning /25 | Judgment /25 | Proof /20 | Clarity /20 | Voice /10 | Total /100 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Current draft, Aug 25 | 21 | 22 | 19 | 15 | 8 | **85** |
+| Current draft, Aug 25 | 22 | 22 | 19 | 16 | 8 | **87** |
 | Clarity revision, Aug 24 | 20 | 23 | 18 | 12 | 8 | **81** |
 | Highlighted version, Aug 10 | 19 | 20 | 9 | 14 | 9 | **71** |
 | Earliest verified, Jul 29 | 18 | 18 | 7 | 18 | 8 | **69** |
