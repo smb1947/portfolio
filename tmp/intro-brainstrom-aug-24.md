@@ -60,16 +60,6 @@ Hi 👋, I’m Shankar, an AI-first Technical Product Manager who brings curiosi
 
 Outside product work, I’m usually hiking, working out, or trying to understand why people behave the way they do.
 
-## Git Provenance
-
-| Commit | Date | Version or change |
-| --- | --- | --- |
-| `9cca563` | Aug 10 | Highlighted Builder version |
-| `894e9b8` | Aug 10 | Tightened version |
-| `c7abe9e` | Aug 18 | Personal-rhythm version |
-| `641e604` | Aug 24 | Clarity revision published |
-| `c756553` | Aug 25 | Current draft archived |
-
 ---
 
 # Evaluation
