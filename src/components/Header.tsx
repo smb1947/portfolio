@@ -382,7 +382,7 @@ export function Header() {
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-background text-navy transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
                   <ThemeIcon className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <span>{isThemePickerEnabled ? activeThemeOption.label : `Switch to ${oppositeThemeLabel}`}</span>
+                <span>{isThemePickerEnabled ? activeThemeOption.label : oppositeThemeLabel}</span>
               </button>
               <button
                 type="button"
@@ -513,7 +513,7 @@ export function Header() {
             <ThemeIcon className="h-5 w-5" aria-hidden="true" />
           </span>
           <span className="desktop-nav-label hidden whitespace-nowrap text-left">
-            {isThemePickerEnabled ? "Theme" : `Switch to ${oppositeThemeLabel}`}
+            {isThemePickerEnabled ? "Theme" : oppositeThemeLabel}
           </span>
         </button>
         <button
