@@ -42,11 +42,8 @@ Through that journey, I build the skills, resilience, and perspective the challe
 ## Simple
 Hi 👋, I’m Shankar, a technical product builder who turns complex customer problems into products people trust and adopt. Over six years at Microsoft Azure and AWS, I’ve worked across cross functional teams to shape planet-scale cloud platforms where technical depth and customer outcomes matter equally.
 
-My work has ranged from scaling Azure Storage to 1 TBps and 120K IOPS, to discovering and defining Amazon S3 cost-optimization opportunities with up to 40% savings potential.
+My work has ranged from scaling Azure Storage to 1 TBps and 120K IOPS, to discovering and defining Amazon S3 cost-optimization opportunities with up to 40% savings potential, to turning six customer interviews into StreakFit AI—a personalized gym buddy MVP built in three hours.
 
 The way I build products and grow as a person follows a personal rhythm. I pay attention to **WHAT** keeps calling me, explore **WHY** it matters, and seek perspectives that challenge my own. I weigh the trade-offs, commit to a direction, and adapt as I discover **HOW** to move forward. Purpose gets me started, discipline carries me forward, and reflection shapes what I take on next.
 
 Outside work, I’m usually hiking, working out, or curious about what shapes the way people think and act.
-
-
-##
