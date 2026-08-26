@@ -78,7 +78,8 @@
             "credits": 4,
             "grade": "3.8"
           }
-        ]
+        ],
+        "gradingScale": "Grades shown on a 4.0 scale."
       },
       "title": "Master of Business Administration (MBA), Management Science (STEM)",
       "organization": "Foster School of Business, University of Washington",
@@ -633,31 +634,37 @@
         },
         "courses": [
           {
+            "code": "14CS341",
             "name": "Cloud Computing",
             "credits": 4,
-            "grade": "A"
+            "grade": "9"
           },
           {
+            "code": "14CS314",
             "name": "Big Data",
             "credits": 4,
-            "grade": "S"
+            "grade": "10"
           },
           {
+            "code": "14CS331",
             "name": "Computer Network Security",
             "credits": 4,
-            "grade": "S"
+            "grade": "10"
           },
           {
+            "code": "14CS403",
             "name": "Machine Learning",
             "credits": 4,
-            "grade": "A"
+            "grade": "9"
           },
           {
+            "code": "14CS453",
             "name": "Introduction to Business",
             "credits": 2,
-            "grade": "A"
+            "grade": "9"
           }
-        ]
+        ],
+        "gradingScale": "Grade points shown on a 10-point scale (S = 10, A = 9)."
       },
       "title": "Bachelor of Engineering, Computer Science",
       "organization": "PES University",

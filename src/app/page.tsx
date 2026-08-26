@@ -14,9 +14,9 @@ import {
   Code2,
   Drama,
   Dumbbell,
-  ExternalLink,
   FileText,
   HeartHandshake,
+  Info,
   Landmark,
   Linkedin,
   MapPin,
@@ -660,11 +660,14 @@ function HistoryDetailSummary({
             href={experience.education.credential.url}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-teal/30 bg-teal/5 px-4 py-2 text-sm font-bold text-teal transition duration-200 hover:border-teal/50 hover:bg-teal/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
+            aria-label={`Open ${experience.education.credential.label}`}
+            title={experience.education.credential.label}
+            className="project-resource-button group/resource inline-flex h-11 max-w-11 items-center overflow-hidden rounded-full border border-line bg-card px-0 text-coral shadow-sm transition-all duration-200 [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:max-w-48 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:px-4 [@media(hover:hover)]:hover:text-white focus:max-w-48 focus:px-4 focus:outline-none focus:ring-4 focus:ring-teal/20"
           >
-            <FileText className="h-4 w-4" aria-hidden="true" />
-            {experience.education.credential.label}
-            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            <FileText className="project-resource-icon mx-[0.8125rem] h-4 w-4 flex-none transition-all duration-200 [@media(hover:hover)]:group-hover/resource:mx-0 group-focus/resource:mx-0" aria-hidden="true" />
+            <span className="project-resource-label ml-0 max-w-0 overflow-hidden whitespace-nowrap text-sm font-bold opacity-0 transition-all duration-200 [@media(hover:hover)]:group-hover/resource:ml-2 [@media(hover:hover)]:group-hover/resource:max-w-32 [@media(hover:hover)]:group-hover/resource:opacity-100 group-focus/resource:ml-2 group-focus/resource:max-w-32 group-focus/resource:opacity-100">
+              {experience.education.credential.label}
+            </span>
           </a>
 
           {experience.education.courses?.length ? (
@@ -691,6 +694,12 @@ function HistoryDetailSummary({
                   </li>
                 ))}
               </ul>
+              {experience.education.gradingScale ? (
+                <p className="mt-3 flex items-start gap-2 text-xs font-semibold text-muted">
+                  <Info className="mt-0.5 h-3.5 w-3.5 flex-none text-teal" aria-hidden="true" />
+                  {experience.education.gradingScale}
+                </p>
+              ) : null}
             </div>
           ) : null}
         </div>

@@ -58,6 +58,7 @@ export type EducationDetails = {
     credits: number;
     grade: string;
   }[];
+  gradingScale?: string;
 };
 
 export type WorkDetails = {
