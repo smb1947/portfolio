@@ -48,6 +48,16 @@ export type ExperienceType = "education" | "work";
 export type EducationDetails = {
   type: "Bachelors" | "Masters" | "Fellowship" | "Certificate";
   name: string;
+  credential: {
+    label: "Certificate" | "Transcript";
+    url: string;
+  };
+  courses?: {
+    code?: string;
+    name: string;
+    credits: number;
+    grade: string;
+  }[];
 };
 
 export type WorkDetails = {

@@ -42,7 +42,43 @@
       "type": "education",
       "education": {
         "type": "Masters",
-        "name": "Master of Business Administration (MBA), Management Science (STEM)"
+        "name": "Master of Business Administration (MBA), Management Science (STEM)",
+        "credential": {
+          "label": "Transcript",
+          "url": "https://drive.google.com/file/d/1K2p0evQszFIskMeMPX3pgrO_d7qE8Uz9/view?usp=sharing"
+        },
+        "courses": [
+          {
+            "code": "MKTG 579",
+            "name": "Cultural-Driven Sales and GTM",
+            "credits": 2,
+            "grade": "3.7"
+          },
+          {
+            "code": "MKTG 554",
+            "name": "Strategic Product Management",
+            "credits": 4,
+            "grade": "3.5"
+          },
+          {
+            "code": "FIN 579",
+            "name": "Behavioral Finance",
+            "credits": 4,
+            "grade": "4.0"
+          },
+          {
+            "code": "ENTRE 532",
+            "name": "Software Entrepreneurship",
+            "credits": 4,
+            "grade": "3.5"
+          },
+          {
+            "code": "MKTG 565",
+            "name": "Business Applications of LLMs",
+            "credits": 4,
+            "grade": "3.8"
+          }
+        ]
       },
       "title": "Master of Business Administration (MBA), Management Science (STEM)",
       "organization": "Foster School of Business, University of Washington",
@@ -333,7 +369,11 @@
       "type": "education",
       "education": {
         "type": "Fellowship",
-        "name": "Product Management Fellowship"
+        "name": "Product Management Fellowship",
+        "credential": {
+          "label": "Certificate",
+          "url": "https://drive.google.com/file/d/1op7yLh8vBJuMJTwj_aTEUr4ujsjE_I_2/view?usp=sharing"
+        }
       },
       "title": "Product Management Fellowship",
       "organization": "NextLeap",
@@ -543,8 +583,12 @@
     {
       "type": "education",
       "education": {
-        "type": "Certification",
-        "name": "Advanced AI/ML Certification (ML & Deep Learning)"
+        "type": "Certificate",
+        "name": "Advanced AI/ML Certification (ML & Deep Learning)",
+        "credential": {
+          "label": "Certificate",
+          "url": "https://drive.google.com/file/d/1WpSKHP7B66AJLpU9PNkxDp7gh6SvziVL/view?usp=sharing"
+        }
       },
       "title": "Advanced AI/ML Certification (ML & Deep Learning)",
       "organization": "IIIT Hyderabad",
@@ -582,7 +626,38 @@
       "type": "education",
       "education": {
         "type": "Bachelors",
-        "name": "Bachelor of Engineering, Computer Science"
+        "name": "Bachelor of Engineering, Computer Science",
+        "credential": {
+          "label": "Transcript",
+          "url": "https://drive.google.com/file/d/1zeSYvUc-lVAuYvJRkZLSVnF0s6g1H61R/view?usp=sharing"
+        },
+        "courses": [
+          {
+            "name": "Cloud Computing",
+            "credits": 4,
+            "grade": "A"
+          },
+          {
+            "name": "Big Data",
+            "credits": 4,
+            "grade": "S"
+          },
+          {
+            "name": "Computer Network Security",
+            "credits": 4,
+            "grade": "S"
+          },
+          {
+            "name": "Machine Learning",
+            "credits": 4,
+            "grade": "A"
+          },
+          {
+            "name": "Introduction to Business",
+            "credits": 2,
+            "grade": "A"
+          }
+        ]
       },
       "title": "Bachelor of Engineering, Computer Science",
       "organization": "PES University",

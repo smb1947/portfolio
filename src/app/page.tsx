@@ -5,6 +5,7 @@ import Image from "next/image";
 import {
   BicepsFlexed,
   Blocks,
+  BookOpen,
   Brain,
   BriefcaseBusiness,
   Building2,
@@ -13,6 +14,8 @@ import {
   Code2,
   Drama,
   Dumbbell,
+  ExternalLink,
+  FileText,
   HeartHandshake,
   Landmark,
   Linkedin,
@@ -651,6 +654,47 @@ function HistoryDetailSummary({
         {experience.location}
       </p>
       <p className="type-body mt-4 max-w-4xl text-muted">{experience.summary}</p>
+      {section === "education" && experience.education ? (
+        <div className="mt-5 max-w-4xl space-y-5">
+          <a
+            href={experience.education.credential.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-teal/30 bg-teal/5 px-4 py-2 text-sm font-bold text-teal transition duration-200 hover:border-teal/50 hover:bg-teal/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-teal/20"
+          >
+            <FileText className="h-4 w-4" aria-hidden="true" />
+            {experience.education.credential.label}
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+          </a>
+
+          {experience.education.courses?.length ? (
+            <div>
+              <div className="flex items-center gap-2">
+                <BookOpen className="h-4 w-4 text-coral" aria-hidden="true" />
+                <h5 className="type-meta font-bold uppercase tracking-[0.12em] text-navy">
+                  Selected coursework
+                </h5>
+              </div>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {experience.education.courses.map((course) => (
+                  <li
+                    key={`${course.code ?? experience.title}-${course.name}`}
+                    className="rounded-xl border border-line bg-background/60 px-4 py-3"
+                  >
+                    <p className="text-sm font-bold leading-snug text-navy">
+                      {course.code ? <span className="text-teal">{course.code} · </span> : null}
+                      {course.name}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold text-muted">
+                      {course.credits} {course.credits === 1 ? "credit" : "credits"} · Grade {course.grade}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </article>
   );
 }
