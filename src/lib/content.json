@@ -50,7 +50,7 @@
         "courses": [
           {
             "code": "MKTG 565",
-            "name": "Building Business Applications of LLMs",
+            "name": "Building Business Applications of LLMs and Generative Models",
             "credits": 4,
             "grade": "3.8"
           },
