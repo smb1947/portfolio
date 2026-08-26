@@ -664,7 +664,7 @@
             "grade": "9"
           }
         ],
-        "gradingScale": "Grade points shown on a 10-point scale (S = 10, A = 9)."
+        "gradingScale": "Grade points shown on a 10-point scale."
       },
       "title": "Bachelor of Engineering, Computer Science",
       "organization": "PES University",
