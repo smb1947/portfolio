@@ -49,14 +49,20 @@
         },
         "courses": [
           {
-            "code": "MKTG 579",
-            "name": "Cultural-Driven Sales and GTM",
-            "credits": 2,
-            "grade": "3.7"
+            "code": "MKTG 565",
+            "name": "Business Applications of LLMs",
+            "credits": 4,
+            "grade": "3.8"
           },
           {
             "code": "MKTG 554",
             "name": "Strategic Product Management",
+            "credits": 4,
+            "grade": "3.5"
+          },
+          {
+            "code": "ENTRE 532",
+            "name": "Software Entrepreneurship",
             "credits": 4,
             "grade": "3.5"
           },
@@ -67,16 +73,10 @@
             "grade": "4.0"
           },
           {
-            "code": "ENTRE 532",
-            "name": "Software Entrepreneurship",
-            "credits": 4,
-            "grade": "3.5"
-          },
-          {
-            "code": "MKTG 565",
-            "name": "Business Applications of LLMs",
-            "credits": 4,
-            "grade": "3.8"
+            "code": "MKTG 579",
+            "name": "Cultural-Driven Sales and GTM",
+            "credits": 2,
+            "grade": "3.7"
           }
         ],
         "gradingScale": "Grades shown on a 4.0 scale."
