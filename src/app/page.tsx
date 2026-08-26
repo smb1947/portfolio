@@ -655,7 +655,7 @@ function HistoryDetailSummary({
       </p>
       <p className="type-body mt-4 max-w-4xl text-muted">{experience.summary}</p>
       {section === "education" && experience.education ? (
-        <div className="mt-5 max-w-4xl space-y-5">
+        <div className="mt-5 space-y-5">
           <a
             href={experience.education.credential.url}
             target="_blank"
