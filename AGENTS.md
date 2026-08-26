@@ -18,7 +18,7 @@ Guidance for future Codex work on this portfolio.
 ## Technical Rules
 
 - Keep code modular, readable, and aligned with existing component patterns.
-- Git workflow: stay on the currently checked-out branch unless the user explicitly requests a branch change or asks to create a new pull request. Follow the new-PR workflow below when that request is made.
+- Git workflow: stay on the currently checked-out branch unless the user explicitly requests a branch change, asks to create a branch, or asks to create a new pull request. Follow the new-PR workflow below when the user asks to create either a branch or a pull request.
 - Use Tailwind utilities, but keep class usage understandable.
 - Do not add external services, a CMS, analytics, or paid dependencies unless requested.
 - Prefer existing components and data patterns over introducing new abstractions.
@@ -27,9 +27,9 @@ Guidance for future Codex work on this portfolio.
 ## Workflow
 
 - Continue working on the currently checked-out branch unless the user explicitly asks to switch branches.
-- When the user explicitly asks to "create a new PR," first check whether an open PR already exists for the same work and base. If not, fetch the latest remote state, create and switch to a fresh feature branch from the latest `origin/main` before making the requested changes, and verify that `origin/main` is an ancestor of the new branch. Keep all related work on that branch, commit and push it, and open the pull request to `main`. Do not switch away from the new branch until the pull request is opened or the user directs otherwise.
+- When the user explicitly asks to "create a branch" or "create a new PR," treat that as a request for the complete branch-to-PR workflow. First check whether an open PR already exists for the same work and base. If not, fetch the latest remote state, create and switch to a fresh feature branch from the latest `origin/main` before making the requested changes, and verify that `origin/main` is an ancestor of the new branch. Keep all related work on that branch, commit and push it, and open the pull request to `main`. Do not ask the user to create the PR or request separate confirmation to open it. Do not switch away from the new branch until the pull request is opened or the user directs otherwise.
 - Commit and push completed changes to the remote every time unless the user explicitly says not to.
-- A user request to create or update a pull request authorizes committing and pushing the related, reviewed changes to that PR branch. Do not ask again for routine follow-up commits or pushes; still confirm before creating a new PR, switching branches, or publishing unrelated changes.
+- A user request to create a branch or create/update a pull request authorizes creating or switching to the necessary branch, committing and pushing the related reviewed changes, and opening or updating the PR. Do not ask again for routine branch creation, commits, pushes, or PR creation within that workflow; still confirm before publishing unrelated changes.
 - Do not create separate feature branches for normal development work; use them only for the PR packaging step or when the user explicitly asks for one.
 - Run `npm run build` only when necessary for the change, especially for code, dependency, configuration, or user-visible site changes.
 - Do not run browser visual checks or open the site in a browser unless the user explicitly asks for browser verification.

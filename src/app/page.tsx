@@ -5,6 +5,7 @@ import Image from "next/image";
 import {
   BicepsFlexed,
   Blocks,
+  BookOpen,
   Brain,
   BriefcaseBusiness,
   Building2,
@@ -13,7 +14,9 @@ import {
   Code2,
   Drama,
   Dumbbell,
+  FileText,
   HeartHandshake,
+  Info,
   Landmark,
   Linkedin,
   MapPin,
@@ -651,6 +654,54 @@ function HistoryDetailSummary({
         {experience.location}
       </p>
       <p className="type-body mt-4 max-w-4xl text-muted">{experience.summary}</p>
+      {section === "education" && experience.education ? (
+        <div className="mt-5 space-y-5">
+          <a
+            href={experience.education.credential.url}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Open ${experience.education.credential.label} in a new tab`}
+            title={experience.education.credential.label}
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-line bg-card px-4 text-sm font-bold text-coral shadow-sm transition-all duration-200 [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
+          >
+            <FileText className="h-4 w-4 flex-none" aria-hidden="true" />
+            {experience.education.credential.label}
+          </a>
+
+          {experience.education.courses?.length ? (
+            <div>
+              <div className="flex items-center gap-2">
+                <BookOpen className="h-4 w-4 text-coral" aria-hidden="true" />
+                <h5 className="type-meta font-bold uppercase tracking-[0.12em] text-navy">
+                  Selected coursework
+                </h5>
+              </div>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {experience.education.courses.map((course) => (
+                  <li
+                    key={`${course.code ?? experience.title}-${course.name}`}
+                    className="rounded-xl border border-line bg-background/60 px-4 py-3"
+                  >
+                    <p className="text-sm font-bold leading-snug text-navy">
+                      {course.code ? <span className="text-teal">{course.code} · </span> : null}
+                      {course.name}
+                    </p>
+                    <p className="mt-1 text-xs font-semibold text-muted">
+                      {course.credits} {course.credits === 1 ? "credit" : "credits"} · Grade {course.grade}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              {experience.education.gradingScale ? (
+                <p className="mt-3 flex items-start gap-2 text-xs font-semibold text-muted">
+                  <Info className="mt-0.5 h-3.5 w-3.5 flex-none text-teal" aria-hidden="true" />
+                  {experience.education.gradingScale}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </article>
   );
 }

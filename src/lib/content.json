@@ -42,7 +42,44 @@
       "type": "education",
       "education": {
         "type": "Masters",
-        "name": "Master of Business Administration (MBA), Management Science (STEM)"
+        "name": "Master of Business Administration (MBA), Management Science (STEM)",
+        "credential": {
+          "label": "Transcript",
+          "url": "https://drive.google.com/file/d/1MQmN3LZHD4Ro3x3UvMI1tACUlo5HgDeZ/view?usp=sharing"
+        },
+        "courses": [
+          {
+            "code": "MKTG 565",
+            "name": "Building Business Applications of LLMs and Generative Models",
+            "credits": 4,
+            "grade": "3.8"
+          },
+          {
+            "code": "MKTG 554",
+            "name": "Strategic Product Management",
+            "credits": 4,
+            "grade": "3.5"
+          },
+          {
+            "code": "ENTRE 532",
+            "name": "Software Entrepreneurship",
+            "credits": 4,
+            "grade": "3.5"
+          },
+          {
+            "code": "FIN 579",
+            "name": "Behavioral Finance",
+            "credits": 4,
+            "grade": "4.0"
+          },
+          {
+            "code": "MKTG 579",
+            "name": "Cultural-Driven Sales and GTM",
+            "credits": 2,
+            "grade": "3.7"
+          }
+        ],
+        "gradingScale": "Grades shown on a 4.0 scale."
       },
       "title": "Master of Business Administration (MBA), Management Science (STEM)",
       "organization": "Foster School of Business, University of Washington",
@@ -333,7 +370,11 @@
       "type": "education",
       "education": {
         "type": "Fellowship",
-        "name": "Product Management Fellowship"
+        "name": "Product Management Fellowship",
+        "credential": {
+          "label": "Certificate",
+          "url": "https://drive.google.com/file/d/1op7yLh8vBJuMJTwj_aTEUr4ujsjE_I_2/view?usp=sharing"
+        }
       },
       "title": "Product Management Fellowship",
       "organization": "NextLeap",
@@ -543,8 +584,12 @@
     {
       "type": "education",
       "education": {
-        "type": "Certification",
-        "name": "Advanced AI/ML Certification (ML & Deep Learning)"
+        "type": "Certificate",
+        "name": "Advanced AI/ML Certification (ML & Deep Learning)",
+        "credential": {
+          "label": "Certificate",
+          "url": "https://drive.google.com/file/d/1WpSKHP7B66AJLpU9PNkxDp7gh6SvziVL/view?usp=sharing"
+        }
       },
       "title": "Advanced AI/ML Certification (ML & Deep Learning)",
       "organization": "IIIT Hyderabad",
@@ -582,7 +627,44 @@
       "type": "education",
       "education": {
         "type": "Bachelors",
-        "name": "Bachelor of Engineering, Computer Science"
+        "name": "Bachelor of Engineering, Computer Science",
+        "credential": {
+          "label": "Transcript",
+          "url": "https://drive.google.com/file/d/1zeSYvUc-lVAuYvJRkZLSVnF0s6g1H61R/view?usp=sharing"
+        },
+        "courses": [
+          {
+            "code": "14CS341",
+            "name": "Cloud Computing",
+            "credits": 4,
+            "grade": "9"
+          },
+          {
+            "code": "14CS314",
+            "name": "Big Data",
+            "credits": 4,
+            "grade": "10"
+          },
+          {
+            "code": "14CS331",
+            "name": "Computer Network Security",
+            "credits": 4,
+            "grade": "10"
+          },
+          {
+            "code": "14CS403",
+            "name": "Machine Learning",
+            "credits": 4,
+            "grade": "9"
+          },
+          {
+            "code": "14CS453",
+            "name": "Introduction to Business",
+            "credits": 2,
+            "grade": "9"
+          }
+        ],
+        "gradingScale": "Grade points shown on a 10-point scale."
       },
       "title": "Bachelor of Engineering, Computer Science",
       "organization": "PES University",
@@ -645,7 +727,7 @@
         "version": 4,
         "paragraphs": [
           "Hi 👋, I’m Shankar, a **Technical Product Builder**. I turn a deep understanding of **ambiguous customer problems** into structured strategies and prototypes that **align stakeholders**, and ultimately into **intuitive products** people trust and adopt.",
-          "Over **6 years at Microsoft Azure and AWS**, I’ve helped build **planet-scale cloud platforms** where every decision balances performance, reliability, cost, and customer needs. My work has ranged from scaling Azure Storage to **1Tbps and 200K IOPS** to identifying Amazon S3 cost-optimization opportunities with **up to 40% savings potential**. I’m currently iterating on **v3 of StreakFit AI**, a personalized gym buddy shaped by insights from 30+ customer interviews.",
+          "Over **6 years at Microsoft Azure and AWS**, I’ve helped shape **planet-scale cloud platforms** where every decision balances performance, reliability, cost, and customer needs. My work has ranged from scaling Azure Storage to **1Tbps and 200K IOPS** to identifying Amazon S3 cost-optimization opportunities with **up to 40% savings potential**. I’m currently iterating on **v3 of StreakFit AI**, a personalized gym buddy shaped by insights from 30+ customer interviews.",
           "Outside work, I’m usually **training** my body and mind at the gym, **chasing** beautiful trails across the Pacific Northwest, or **musing** on the forces that shape how people think and act."
         ]
       }

@@ -4,7 +4,7 @@
 
 Hi 👋, I’m Shankar, a **Technical Product Builder**. I turn a deep understanding of **ambiguous customer problems** into structured strategies and prototypes that **align stakeholders**, and ultimately into **intuitive products** people trust and adopt.
 
-Over **6 years at Microsoft Azure and AWS**, I’ve helped build **planet-scale cloud platforms** where every decision balances performance, reliability, cost, and customer needs. My work has ranged from scaling Azure Storage to **1Tbps and 200K IOPS** to identifying Amazon S3 cost-optimization opportunities with **up to 40% savings potential**. I’m currently iterating on **v3 of StreakFit AI**, a personalized gym buddy shaped by insights from 30+ customer interviews.
+Over **6 years at Microsoft Azure and AWS**, I’ve helped shape **planet-scale cloud platforms** where every decision balances performance, reliability, cost, and customer needs. My work has ranged from scaling Azure Storage to **1Tbps and 200K IOPS** to identifying Amazon S3 cost-optimization opportunities with **up to 40% savings potential**. I’m currently iterating on **v3 of StreakFit AI**, a personalized gym buddy shaped by insights from 30+ customer interviews.
 
 Outside work, I’m usually **training** my body and mind at the gym, **chasing** beautiful trails across the Pacific Northwest, or **musing** on the forces that shape how people think and act.
 
