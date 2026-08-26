@@ -660,7 +660,7 @@ function HistoryDetailSummary({
             href={experience.education.credential.url}
             target="_blank"
             rel="noreferrer"
-            aria-label={`Open ${experience.education.credential.label}`}
+            aria-label={`Open ${experience.education.credential.label} in a new tab`}
             title={experience.education.credential.label}
             className="inline-flex h-11 items-center gap-2 rounded-full border border-line bg-card px-4 text-sm font-bold text-coral shadow-sm transition-all duration-200 [@media(hover:hover)]:hover:-translate-y-0.5 [@media(hover:hover)]:hover:border-teal/40 [@media(hover:hover)]:hover:bg-teal [@media(hover:hover)]:hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
           >
