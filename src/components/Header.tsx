@@ -46,6 +46,10 @@ function getSectionId(href: string) {
   return sectionPathMap[href] ?? "";
 }
 
+function getMobileNavClassName(label: string) {
+  return `mobile-nav-${label.toLowerCase()}`;
+}
+
 function shouldHandleSectionClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
 }
@@ -371,9 +375,38 @@ export function Header() {
         {isMobileMenuOpen ? (
           <nav
             className="mb-3 overflow-hidden rounded-[1.25rem] border border-line bg-card p-2 shadow-lift"
-            aria-label="Utility menu"
+            aria-label="Navigation menu"
           >
             <div className="grid gap-1">
+              {navItems.map((link) => {
+                const sectionId = getSectionId(link.href);
+                const Icon = navIconMap[link.label] ?? UserRound;
+                const isActive = activeSection === sectionId;
+
+                return (
+                  <Link
+                    key={`overflow-${link.href}`}
+                    href={sectionId ? `#${sectionId}` : link.href}
+                    aria-current={isActive ? "location" : undefined}
+                    onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
+                    className={`mobile-overflow-item ${getMobileNavClassName(link.label)} group/item min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 ${
+                      isActive ? "text-coral" : "text-navy/72 [@media(hover:hover)]:hover:text-teal"
+                    }`}
+                  >
+                    <span
+                      className={`grid h-10 w-10 place-items-center rounded-full transition ${
+                        isActive
+                          ? "bg-coral text-white shadow-soft"
+                          : "bg-background text-navy [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white"
+                      }`}
+                    >
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <span>{link.label}</span>
+                  </Link>
+                );
+              })}
+              <div className="mobile-overflow-divider mx-2 hidden h-px bg-line" aria-hidden="true" />
               <button
                 type="button"
                 className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-2 text-left text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20"
@@ -430,7 +463,7 @@ export function Header() {
                 aria-current={isActive ? "location" : undefined}
                 aria-label={link.label}
                 onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
-                className={`mobile-nav-item desktop-nav-item group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
+                className={`mobile-nav-item ${getMobileNavClassName(link.label)} desktop-nav-item group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
                   isActive ? "z-10 text-coral" : "z-0 text-navy/72 [@media(hover:hover)]:hover:text-teal"
                 }`}
               >

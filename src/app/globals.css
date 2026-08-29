@@ -464,6 +464,10 @@ button {
     gap: 0;
   }
 
+  .mobile-overflow-item {
+    display: none;
+  }
+
   .mobile-nav-item {
     min-width: 0;
     flex: 1 1 0%;
@@ -482,6 +486,17 @@ button {
   .nav-utility-divider {
     flex: none;
     margin-inline: 0.25rem;
+  }
+}
+
+@media (max-width: 399px) {
+  .mobile-nav-links > .mobile-nav-contact {
+    display: none;
+  }
+
+  .mobile-overflow-item.mobile-nav-contact,
+  .mobile-overflow-divider {
+    display: grid;
   }
 }
 
@@ -504,6 +519,24 @@ button {
   .mobile-menu-button {
     width: 2.25rem;
     grid-template-columns: 2.25rem;
+  }
+
+  .mobile-nav-links > .mobile-nav-education {
+    display: none;
+  }
+
+  .mobile-overflow-item.mobile-nav-education {
+    display: grid;
+  }
+}
+
+@media (max-width: 319px) {
+  .mobile-nav-links > .mobile-nav-experience {
+    display: none;
+  }
+
+  .mobile-overflow-item.mobile-nav-experience {
+    display: grid;
   }
 }
 
