@@ -458,10 +458,12 @@ button {
   .mobile-primary-nav {
     width: 100%;
     max-width: 48rem;
+    justify-content: space-evenly;
+    padding-inline: 0;
   }
 
   .mobile-nav-links {
-    gap: 0;
+    display: contents;
   }
 
   .mobile-overflow-item {
@@ -470,7 +472,8 @@ button {
 
   .mobile-nav-item {
     min-width: 0;
-    flex: 1 1 0%;
+    width: 2.5rem;
+    flex: none;
     grid-template-columns: minmax(0, 1fr);
     justify-items: center;
     padding-inline: 0;
@@ -499,7 +502,8 @@ button {
 @media (max-width: 359px) {
   .mobile-primary-nav {
     gap: 0;
-    padding: 0.375rem;
+    padding-block: 0.375rem;
+    padding-inline: 0;
   }
 
   .mobile-nav-icon {
@@ -510,6 +514,7 @@ button {
   .mobile-nav-item,
   .mobile-menu-button {
     min-height: 2.75rem;
+    width: 2.25rem;
   }
 
   .mobile-menu-button {
