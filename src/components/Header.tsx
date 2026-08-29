@@ -366,7 +366,7 @@ export function Header() {
   const ShareIcon = shareStatus === "copied" ? Check : Share2;
 
   return (
-    <header ref={headerRef} className="fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
+    <header ref={headerRef} className="mobile-site-header fixed inset-x-0 bottom-4 z-50 px-4 xl:inset-y-auto xl:left-6 xl:right-auto xl:top-1/2 xl:bottom-auto xl:-translate-y-1/2 xl:px-0">
       <div className="mx-auto max-w-[calc(100vw-2rem)] xl:hidden">
         {isMobileMenuOpen ? (
           <nav
@@ -414,10 +414,10 @@ export function Header() {
         ) : null}
       </div>
       <nav
-        className="group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-center xl:overflow-visible xl:rounded-[1.25rem]"
+        className="mobile-primary-nav group mx-auto flex max-w-[calc(100vw-2rem)] items-center gap-1 overflow-hidden rounded-full border-2 border-coral bg-card p-2 shadow-lift transition-all duration-300 xl:mx-0 xl:w-16 xl:max-w-none xl:flex-col xl:items-center xl:overflow-visible xl:rounded-[1.25rem]"
         aria-label="Primary navigation"
       >
-        <div className="flex flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-center xl:justify-center xl:gap-1">
+        <div className="mobile-nav-links flex min-w-0 flex-1 items-center justify-center gap-1 xl:flex-none xl:flex-col xl:items-center xl:justify-center xl:gap-1">
           {navItems.map((link) => {
             const sectionId = getSectionId(link.href);
             const Icon = navIconMap[link.label] ?? UserRound;
@@ -430,12 +430,12 @@ export function Header() {
                 aria-current={isActive ? "location" : undefined}
                 aria-label={link.label}
                 onClick={(event) => navigateToSection(event, sectionId, link.label, link.href)}
-                className={`desktop-nav-item group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
+                className={`mobile-nav-item desktop-nav-item group/item relative grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold transition focus:outline-none focus:ring-4 focus:ring-teal/20 xl:grid-cols-1 xl:justify-items-center xl:gap-0 xl:px-0 ${
                   isActive ? "z-10 text-coral" : "z-0 text-navy/72 [@media(hover:hover)]:hover:text-teal"
                 }`}
               >
                 <span
-                  className={`relative grid h-10 w-10 flex-none place-items-center rounded-full transition ${
+                  className={`mobile-nav-icon relative grid h-10 w-10 flex-none place-items-center rounded-full transition ${
                     isActive
                       ? "bg-coral text-white shadow-soft"
                       : "bg-background text-navy shadow-sm [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white"
@@ -480,7 +480,7 @@ export function Header() {
         <div className="nav-utility-divider mx-2 h-8 w-px bg-line xl:mx-0 xl:my-1.5 xl:h-px xl:w-full" aria-hidden="true" />
         <button
           type="button"
-          className="group/item grid min-h-12 grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:hidden print:hidden"
+          className="mobile-menu-button group/item grid min-h-12 flex-none grid-cols-[2.5rem_1fr] items-center gap-3 rounded-full px-1 text-sm font-bold text-navy/72 transition [@media(hover:hover)]:hover:text-teal focus:outline-none focus:ring-4 focus:ring-teal/20 xl:hidden print:hidden"
           aria-expanded={isMobileMenuOpen}
           aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           title={isMobileMenuOpen ? "Close" : "Menu"}
@@ -491,7 +491,7 @@ export function Header() {
             }
           }}
         >
-          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
+          <span className="mobile-nav-icon grid h-10 w-10 flex-none place-items-center rounded-full bg-background text-navy shadow-sm transition [@media(hover:hover)]:group-hover/item:bg-teal [@media(hover:hover)]:group-hover/item:text-white">
             {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
           </span>
           <span className="hidden min-w-0 overflow-hidden whitespace-nowrap text-left opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
