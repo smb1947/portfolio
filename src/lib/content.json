@@ -522,7 +522,7 @@
       "location": "Bangalore, India",
       "from": "Jul 2021",
       "to": "Jul 2024",
-      "summary": "Built Azure Data Lake Storage capabilities across a Windows client for Blob NFS, a high-performance metadata cache, diagnostic tools, and high-throughput infrastructure for enterprise and HPC workloads.",
+      "summary": "Shipped Azure Data Lake Storage capabilities across a Windows client for Blob NFS, a high-performance metadata cache, diagnostic tools, and high-throughput infrastructure for enterprise and HPC workloads.",
       "projects": [
         {
           "title": "WSLBlobNFS PowerShell Module and Package Distribution",
@@ -593,7 +593,7 @@
       "location": "Hyderabad, India",
       "from": "Jul 2018",
       "to": "Jul 2020",
-      "summary": "Built Azure Monitor and Migrate product experiences and cloud infrastructure improvements across UX, performance, cost, reliability, and disaster recovery.",
+      "summary": "Shipped Azure Monitor and Migrate product experiences and cloud infrastructure improvements across UX, performance, cost, reliability, and disaster recovery.",
       "projects": []
     },
     {
