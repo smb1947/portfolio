@@ -517,12 +517,12 @@
         "companyName": "Microsoft",
         "teamName": "Azure Core Storage"
       },
-      "title": "Technical Product Owner, Azure Storage",
+      "title": "Technical Product Owner, Azure Data Lake Storage",
       "organization": "Microsoft",
       "location": "Bangalore, India",
       "from": "Jul 2021",
       "to": "Jul 2024",
-      "summary": "Led Azure Core Storage product and engineering work across Blob NFS, AI incident diagnosis, distributed caching, and high-throughput infrastructure for enterprise and HPC workloads.",
+      "summary": "Built Azure Data Lake Storage capabilities across a Windows client for Blob NFS, a high-performance metadata cache, diagnostic tools, and high-throughput infrastructure for enterprise and HPC workloads.",
       "projects": [
         {
           "title": "WSLBlobNFS PowerShell Module and Package Distribution",
@@ -588,7 +588,7 @@
         "companyName": "Microsoft",
         "teamName": "Azure Core Monitor & Migrate"
       },
-      "title": "Software Engineer, Azure Core Monitor & Migrate",
+      "title": "Software Engineer, Azure Monitor & Migrate",
       "organization": "Microsoft",
       "location": "Hyderabad, India",
       "from": "Jul 2018",
