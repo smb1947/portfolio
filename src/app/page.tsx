@@ -39,7 +39,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import {
   aboutProfile,
-  portfolio
+  portfolio,
+  portfolioTitle
 } from "@/lib/data";
 import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
@@ -1101,7 +1102,7 @@ export default function Home() {
                 </div>
                 <div className="min-w-0 pt-1.5 sm:flex sm:h-full sm:flex-col sm:justify-center sm:gap-2 sm:pt-0 lg:gap-3">
                   <p className="type-supporting font-hero font-bold text-navy">
-                    {aboutProfile.title}
+                    {portfolioTitle}
                   </p>
                   <p className="hero-detail hidden font-hero font-bold text-navy sm:block">
                     <CredentialLine text={aboutProfile.context} />
