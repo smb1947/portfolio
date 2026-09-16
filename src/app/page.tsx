@@ -39,7 +39,8 @@ import {
 import type { LucideIcon } from "lucide-react";
 import {
   aboutProfile,
-  portfolio
+  portfolio,
+  portfolioTitle
 } from "@/lib/data";
 import type { Experience, Project } from "@/lib/data";
 import { publicAsset } from "@/lib/assets";
@@ -238,6 +239,10 @@ type LogoAsset = {
 };
 
 function getExperienceCompanyLogo(organization: string): LogoAsset | null {
+  if (organization.includes("Streak AI Technologies")) {
+    return { src: "/logos/streakai.png", alt: "Streak AI Technologies logo", compact: true };
+  }
+
   if (organization.includes("Microsoft")) {
     return { src: "/logos/microsoft.svg", alt: "Microsoft logo" };
   }
@@ -289,6 +294,10 @@ function ExperienceLogo({ organization }: { organization: string }) {
         <img
           src={publicAsset(logo.src)}
           alt=""
+          width={48}
+          height={48}
+          loading="lazy"
+          decoding="async"
           className={`h-full w-full object-contain ${
             logo.compact ? "p-1" : logo.padded ? "p-1.5" : "p-2"
           }`}
@@ -312,7 +321,15 @@ function ExperienceSubLogo({ organization }: { organization: string }) {
       className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border-2 border-card bg-white p-1 shadow-sm"
       aria-label={logo.alt}
     >
-      <img src={publicAsset(logo.src)} alt="" className="h-full w-full object-contain" />
+      <img
+        src={publicAsset(logo.src)}
+        alt=""
+        width={28}
+        height={28}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-contain"
+      />
     </span>
   );
 }
@@ -1097,7 +1114,7 @@ export default function Home() {
                 </div>
                 <div className="min-w-0 pt-1.5 sm:flex sm:h-full sm:flex-col sm:justify-center sm:gap-2 sm:pt-0 lg:gap-3">
                   <p className="type-supporting font-hero font-bold text-navy">
-                    {aboutProfile.title}
+                    {portfolioTitle}
                   </p>
                   <p className="hero-detail hidden font-hero font-bold text-navy sm:block">
                     <CredentialLine text={aboutProfile.context} />

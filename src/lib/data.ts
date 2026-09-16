@@ -167,6 +167,8 @@ export const aboutProfile: AboutProfile = {
   intro: getLatestAboutIntro(introVersions).paragraphs
 };
 
+export const portfolioTitle = aboutProfile.title;
+
 export const portfolio: PortfolioContent = {
   ...versionedPortfolio,
   aboutProfile
