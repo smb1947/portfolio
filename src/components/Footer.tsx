@@ -1,4 +1,4 @@
-import { site } from "@/lib/data";
+import { aboutProfile, site } from "@/lib/data";
 import { PrintWebsiteLink } from "@/components/PrintWebsiteLink";
 
 export function Footer() {
@@ -9,7 +9,7 @@ export function Footer() {
           {site.name}
           <span className="sr-only">, </span>
           <span className="text-coral" aria-hidden="true">{" ✦ "}</span>
-          AI Technical Product Builder
+          {aboutProfile.title}
           <span className="sr-only">, </span>
           <span className="text-teal" aria-hidden="true">{" ✦ "}</span>
           Crafted with ❤️ in 🇺🇸
