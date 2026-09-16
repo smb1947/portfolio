@@ -294,6 +294,10 @@ function ExperienceLogo({ organization }: { organization: string }) {
         <img
           src={publicAsset(logo.src)}
           alt=""
+          width={48}
+          height={48}
+          loading="lazy"
+          decoding="async"
           className={`h-full w-full object-contain ${
             logo.compact ? "p-1" : logo.padded ? "p-1.5" : "p-2"
           }`}
@@ -317,7 +321,15 @@ function ExperienceSubLogo({ organization }: { organization: string }) {
       className="grid h-7 w-7 place-items-center overflow-hidden rounded-full border-2 border-card bg-white p-1 shadow-sm"
       aria-label={logo.alt}
     >
-      <img src={publicAsset(logo.src)} alt="" className="h-full w-full object-contain" />
+      <img
+        src={publicAsset(logo.src)}
+        alt=""
+        width={28}
+        height={28}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-contain"
+      />
     </span>
   );
 }
