@@ -155,34 +155,6 @@
           ]
         },
         {
-          "title": "StreakFit AI",
-          "skills": [
-            "Customer interviews",
-            "Needs synthesis",
-            "Behavioral psychology"
-          ],
-          "tools": [
-            "OpenAI Codex",
-            "Figma",
-            "Interview notes"
-          ],
-          "description": "Discovered 3 student fitness pain points through 6 hypothesis-driven interviews; built a 0-to-1 personalized AI gym buddy MVP in 3 hours at the OpenAI Codex Hackathon; now targeting a broader release and iterating on v3 with AI features including check-ins, a conversational chatbot, and in-app nudges.",
-          "from": "Apr 2026",
-          "to": "Ongoing",
-          "resources": [
-            {
-              "type": "demo",
-              "label": "V3 Live Demo",
-              "url": "https://streakfit-v2-preview.vercel.app/"
-            },
-            {
-              "type": "demo",
-              "label": "V1 Demo",
-              "url": "https://drive.google.com/file/d/1rd8DRheXYJzFjwflZ8Kk6C21j7o9kA99/view?usp=sharing"
-            }
-          ]
-        },
-        {
           "title": "Asana Sales Strategy and GTM Assessment",
           "skills": [
             "Competitive analysis",
@@ -477,6 +449,49 @@
               "type": "slides",
               "label": "Slides",
               "url": "https://www.figma.com/@bourne007"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "work",
+      "work": {
+        "companyName": "Streak AI Technologies LLC",
+        "teamName": "StreakFit"
+      },
+      "title": "Founder & AI Product Builder",
+      "organization": "Streak AI Technologies LLC",
+      "location": "Seattle, WA",
+      "from": "Aug 2026",
+      "to": "Present",
+      "summary": "Founded Streak AI Technologies to build human-centered consumer AI products. Leading product strategy, customer discovery, design, engineering, and go-to-market for StreakFit.",
+      "projects": [
+        {
+          "title": "StreakFit AI",
+          "skills": [
+            "Customer interviews",
+            "Needs synthesis",
+            "Behavioral psychology"
+          ],
+          "tools": [
+            "OpenAI Codex",
+            "Figma",
+            "Interview notes"
+          ],
+          "description": "Discovered 3 student fitness pain points through 6 hypothesis-driven interviews; built a 0-to-1 personalized AI gym buddy MVP in 3 hours at the OpenAI Codex Hackathon; now targeting a broader release and iterating on v3 with AI features including check-ins, a conversational chatbot, and in-app nudges.",
+          "from": "Apr 2026",
+          "to": "Ongoing",
+          "resources": [
+            {
+              "type": "demo",
+              "label": "V3 Live Demo",
+              "url": "https://streakfit-v2-preview.vercel.app/"
+            },
+            {
+              "type": "demo",
+              "label": "V1 Demo",
+              "url": "https://drive.google.com/file/d/1rd8DRheXYJzFjwflZ8Kk6C21j7o9kA99/view?usp=sharing"
             }
           ]
         }

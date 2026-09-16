@@ -238,6 +238,10 @@ type LogoAsset = {
 };
 
 function getExperienceCompanyLogo(organization: string): LogoAsset | null {
+  if (organization.includes("Streak AI Technologies")) {
+    return { src: "/logos/streakai.png", alt: "Streak AI Technologies logo", compact: true };
+  }
+
   if (organization.includes("Microsoft")) {
     return { src: "/logos/microsoft.svg", alt: "Microsoft logo" };
   }
