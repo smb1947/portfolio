@@ -110,7 +110,7 @@ function HighlightedIntro({ text }: { text: string }) {
 function SectionHeading({ children }: { children: string }) {
   return (
     <div>
-      <h2 className="type-h2 font-serif font-[400] italic text-navy max-md:font-[450]">
+      <h2 className="polished-section-heading type-h2 font-serif font-[400] italic text-navy max-md:font-[450]">
         <QuestionWordHighlight text={children} />
       </h2>
       <div className="mt-2 h-1.5 w-14 rounded-full bg-coral sm:mt-2.5 sm:w-16" aria-hidden="true" />
@@ -449,7 +449,11 @@ function ProjectCard({
   return (
     <section
       id={id}
-      className={`flex h-full flex-col rounded-2xl border border-line ${surfaceClassName} p-5 transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft`}
+      className={`flex h-full flex-col rounded-2xl border border-line ${surfaceClassName} p-5 ${
+        surface === "card"
+          ? "featured-project-card"
+          : "transition duration-200 hover:-translate-y-0.5 hover:border-coral/30 hover:shadow-soft"
+      }`}
     >
       <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-4">
         <ProjectLogo title={project.title} />
@@ -1061,7 +1065,12 @@ export default function Home() {
       <section id="home" className="relative scroll-mt-24">
         <div className="relative mx-auto max-w-6xl px-5 pb-10 pt-14 sm:px-8 sm:pb-10 sm:pt-16 md:pb-12 md:pt-20">
           <div className="relative">
-            <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card shadow-soft sm:h-[28rem] md:h-[34rem]">
+            <div className="hero-glints pointer-events-none absolute -top-9 right-5 hidden h-7 w-20 sm:block" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="hero-banner relative h-[22rem] overflow-hidden rounded-[1.35rem] border border-line bg-card sm:h-[28rem] md:h-[34rem]">
               <picture>
                 <source
                   media="(max-width: 639px)"
@@ -1113,7 +1122,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="min-w-0 pt-1.5 sm:flex sm:h-full sm:flex-col sm:justify-center sm:gap-2 sm:pt-0 lg:gap-3">
-                  <p className="type-supporting font-hero font-bold text-navy">
+                  <p className="hero-role type-supporting font-hero font-bold text-navy">
                     {portfolioTitle}
                   </p>
                   <p className="hero-detail hidden font-hero font-bold text-navy sm:block">
@@ -1153,7 +1162,7 @@ export default function Home() {
         </div>
 
         <ProjectResourceSpotlight className="mt-12">
-          <h3 className="type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
+          <h3 className="polished-section-heading type-h3 font-serif font-[400] italic text-navy max-md:font-[450]">
             <QuestionWordHighlight text={aboutProfile.featuredProductsHeading} />
           </h3>
           <p className="type-body mt-3 text-muted">
@@ -1207,7 +1216,7 @@ export default function Home() {
                 aria-controls="featured-project-grid"
                 aria-expanded="true"
                 aria-label="Collapse featured projects"
-                className="card-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
+                className="card-collapse-button featured-projects-collapse-button inline-flex h-12 items-center justify-center overflow-hidden rounded-full border border-coral/40 bg-card text-coral shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-coral/20"
                 onClick={collapseFeaturedProducts}
               >
                 <ChevronUp className="h-5 w-5 flex-none" aria-hidden="true" />
