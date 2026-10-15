@@ -53,7 +53,7 @@ PORTFOLIO
 │
 ├── HERO
 │   ├── H1: Shankar Binjawadgi
-│   ├── S: Technical Product Builder (Cormorant Garamond 700)
+│   ├── S: Technical Product Manager (Cormorant Garamond 700)
 │   ├── S: AWS · Microsoft Azure · Foster
 │   └── S: Seattle, WA
 │

@@ -2,7 +2,7 @@
 
 ## Current Draft — Aug 25, 2026
 
-Hi 👋, I’m Shankar, a **Technical Product Builder**. I turn a deep understanding of **ambiguous customer problems** into structured strategies and prototypes that **align stakeholders**, and ultimately into **intuitive products** people trust and adopt.
+Hi 👋, I’m Shankar, a **Technical Product Manager**. I turn a deep understanding of **ambiguous customer problems** into structured strategies and prototypes that **align stakeholders**, and ultimately into **intuitive products** people trust and adopt.
 
 Over **6 years at Microsoft Azure and AWS**, I’ve helped shape **planet-scale cloud platforms** where every decision balances performance, reliability, cost, and customer needs. My work has ranged from scaling Azure Storage to **1Tbps and 200K IOPS** to identifying Amazon S3 cost-optimization opportunities with **up to 40% savings potential**. I’m currently iterating on **v3 of StreakFit AI**, a personalized gym buddy shaped by insights from 30+ customer interviews.
 
@@ -10,7 +10,7 @@ Outside work, I’m usually **training** my body and mind at the gym, **chasing*
 
 ## Published — Aug 24, 2026, Clarity Revision
 
-Hi 👋, I’m Shankar, a technical product builder who brings clarity to complex customer problems and turns them into products people trust and adopt. Over six years at Microsoft Azure and AWS, I’ve worked with cross-functional teams to build planet-scale cloud platforms where performance, reliability, cost, and customer needs rarely align neatly, and every technical decision carries a business trade-off.
+Hi 👋, I’m Shankar, a technical product manager who brings clarity to complex customer problems and turns them into products people trust and adopt. Over six years at Microsoft Azure and AWS, I’ve worked with cross-functional teams to build planet-scale cloud platforms where performance, reliability, cost, and customer needs rarely align neatly, and every technical decision carries a business trade-off.
 
 My work has ranged from scaling Azure Storage to 1Tbps and 200K IOPS, to discovering and defining Amazon S3 cost-optimization opportunities with up to 40% savings potential, to using insights from six customer interviews to build StreakFit AI, a personalized gym buddy.
 
@@ -20,7 +20,7 @@ Outside work, I’m usually hiking, working out, or exploring what shapes the wa
 
 ## Published — Aug 18, 2026, Personal-Rhythm Version
 
-Hi 👋, I’m Shankar, an AI-first Technical Product Builder who turns messy customer problems into clear direction and products people adopt and trust. I’ve spent years solving complex platform product problems at Microsoft and Amazon.
+Hi 👋, I’m Shankar, an AI-first Technical Product Manager who turns messy customer problems into clear direction and products people adopt and trust. I’ve spent years solving complex platform product problems at Microsoft and Amazon.
 
 The way I build products and grow as a person follows a personal rhythm. I start by discovering **WHAT** I want to take on next. When an idea keeps returning, I ask **WHY** I can’t let it go. Once the reason feels strong enough, I seek out different perspectives, weigh the trade-offs, work out **HOW** to make it real, and **COMMIT** to the work. I rarely know exactly how I’ll get there when I begin. My **WHY** gives me a reason to keep going, and **DISCIPLINE** carries me through the distance between hope and achievement. I **MONITOR** my progress and **ITERATE** on my approach until what I imagined becomes real.
 
@@ -30,7 +30,7 @@ This approach to growth has guided me from an engineering college in India to Mi
 
 ## Published — Aug 10, 2026, Tightened Version
 
-Hi 👋, I’m Shankar, an AI-first Technical Product Builder. I’ve spent years solving **complex platform problems** at Microsoft and Amazon.
+Hi 👋, I’m Shankar, an AI-first Technical Product Manager. I’ve spent years solving **complex platform problems** at Microsoft and Amazon.
 
 I enjoy taking **messy customer problems**, figuring out what matters, and **aligning stakeholders** around a clear path forward. From discovery through launch, I navigate constraints, make trade-offs, and keep things moving. I care deeply about **how users think and behave** to build thoughtful products that feel seamless and intuitive.
 
@@ -38,7 +38,7 @@ Outside product work, I’m usually hiking, working out, or trying to understand
 
 ## Published — Aug 10, 2026, Highlighted Version
 
-Hi 👋, I’m Shankar, an AI-first Technical Product Builder who brings **curiosity**, **technical depth, product taste, and grit** to ambiguous problems.
+Hi 👋, I’m Shankar, an AI-first Technical Product Manager who brings **curiosity**, **technical depth, product taste, and grit** to ambiguous problems.
 
 I’ve spent years solving **complex platform problems** at Microsoft and Amazon. I like taking **messy customer problems**, figuring out **what matters**, and **aligning stakeholders** around a clear path forward.
 
