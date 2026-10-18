@@ -270,7 +270,8 @@ button {
   position: relative;
 }
 
-.project-resource-button:is(:hover, :focus-visible) {
+.project-resource-button:is(:hover, :focus-visible),
+.project-resource-button[data-resource-spotlight="true"] {
   z-index: 20;
 }
 
@@ -311,7 +312,8 @@ button {
   transform: rotate(45deg);
 }
 
-.project-resource-button:focus-visible .project-resource-label {
+.project-resource-button:focus-visible .project-resource-label,
+.project-resource-button[data-resource-spotlight="true"] .project-resource-label {
   visibility: visible;
   opacity: 1;
 }
