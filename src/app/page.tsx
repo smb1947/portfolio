@@ -18,7 +18,6 @@ import {
   HeartHandshake,
   Info,
   Landmark,
-  Linkedin,
   MapPin,
   Mountain,
   MountainSnow,
@@ -189,15 +188,13 @@ function ManagerNoteCard({
   quote,
   name,
   title,
-  context,
-  link
+  context
 }: {
   eyebrow: string;
   quote: string;
   name: string;
   title: string;
   context: string;
-  link: string;
 }) {
   return (
     <article className="mt-5 rounded-2xl border border-line bg-card p-5 shadow-soft md:p-6">
@@ -209,17 +206,7 @@ function ManagerNoteCard({
             <HighlightedManagerQuote quote={quote} />
           </blockquote>
         </div>
-        <a
-          href={link}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Open LinkedIn comment"
-          title="LinkedIn Comment"
-          className="grid h-11 w-11 place-items-center self-center justify-self-center rounded-full border border-line bg-card text-coral shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal/40 hover:bg-teal hover:text-white focus:outline-none focus:ring-4 focus:ring-teal/20"
-        >
-          <Linkedin className="h-5 w-5" aria-hidden="true" />
-        </a>
-        <div className="min-w-0 self-center">
+        <div className="col-start-2 min-w-0 self-center">
           <p className="type-detail font-extrabold text-navy">{name}</p>
           <p className="type-detail mt-1 text-muted">{title}</p>
           <p className="type-meta mt-2 font-extrabold text-coral">
