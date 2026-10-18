@@ -101,6 +101,7 @@ export type ManagerNote = {
   name: string;
   title: string;
   context: string;
+  link: string;
 };
 
 export type AboutProfile = {
