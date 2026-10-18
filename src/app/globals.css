@@ -266,25 +266,73 @@ button {
   background-size: 640px 260px;
 }
 
+.project-resource-button {
+  position: relative;
+}
+
+.project-resource-button:is(:hover, :focus-visible) {
+  z-index: 20;
+}
+
+.project-resource-label {
+  position: absolute;
+  bottom: calc(100% + 0.75rem);
+  left: 0;
+  z-index: 20;
+  width: max-content;
+  max-width: min(16rem, calc(100vw - 3rem));
+  visibility: hidden;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--card);
+  padding: 0.6rem 0.85rem;
+  color: var(--navy);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+  overflow-wrap: anywhere;
+  opacity: 0;
+  box-shadow: var(--shadow-lift);
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.project-resource-label::before {
+  position: absolute;
+  bottom: -0.35rem;
+  left: calc(1.375rem - 0.31rem);
+  width: 0.62rem;
+  height: 0.62rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.project-resource-button:focus-visible .project-resource-label {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .project-resource-button:hover .project-resource-label {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .project-resource-button[data-resource-spotlight="true"] {
-  max-width: 12rem;
   border-color: color-mix(in srgb, var(--teal) 40%, transparent);
   background: var(--teal);
   color: #fffdf8;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  animation: project-resource-wiggle 680ms ease-in-out;
 }
 
-.project-resource-button[data-resource-spotlight="true"] .project-resource-icon {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.project-resource-button[data-resource-spotlight="true"] .project-resource-label {
-  margin-left: 0.5rem;
-  max-width: 8rem;
-  opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+  .project-resource-label {
+    transition: none;
+  }
 }
 
 .coffee-cue {
