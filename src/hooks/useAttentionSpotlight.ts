@@ -6,6 +6,7 @@ type AttentionSpotlightOptions = {
   activeAttribute: string;
   onActiveTargetChange?: (target: HTMLElement | null) => void;
   pauseSelector?: string;
+  intervalMs?: number;
   selectionMode?: "random" | "sequential";
   targetSelector: string;
 };
@@ -15,7 +16,8 @@ export function useAttentionSpotlight<T extends HTMLElement>({
   onActiveTargetChange,
   targetSelector,
   pauseSelector = targetSelector,
-  selectionMode = "random"
+  selectionMode = "random",
+  intervalMs = selectionMode === "sequential" ? 5000 : 10000
 }: AttentionSpotlightOptions) {
   const containerRef = useRef<T>(null);
   const onActiveTargetChangeRef = useRef(onActiveTargetChange);
@@ -127,7 +129,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       }
     }
 
-    const scheduleSpotlight = (delay = selectionMode === "sequential" ? 5000 : 10000) => {
+    const scheduleSpotlight = (delay = intervalMs) => {
       clearScheduleTimer();
 
       if (isPrinting || isPointerInteracting || isFocusInteracting || reduceMotionQuery.matches) {
@@ -262,7 +264,7 @@ export function useAttentionSpotlight<T extends HTMLElement>({
       clearSpotlightTimer();
       clearActiveTarget();
     };
-  }, [activeAttribute, pauseSelector, selectionMode, targetSelector]);
+  }, [activeAttribute, intervalMs, pauseSelector, selectionMode, targetSelector]);
 
   return containerRef;
 }

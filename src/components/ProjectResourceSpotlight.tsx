@@ -10,6 +10,7 @@ type ProjectResourceSpotlightProps = HTMLAttributes<HTMLDivElement> & {
 export function ProjectResourceSpotlight({ children, ...props }: ProjectResourceSpotlightProps) {
   const containerRef = useAttentionSpotlight<HTMLDivElement>({
     activeAttribute: "data-resource-spotlight",
+    intervalMs: 5000,
     targetSelector: "[data-project-resource-action]"
   });
 
